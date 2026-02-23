@@ -1,0 +1,151 @@
+{
+  "id": "PD-12",
+  "title": "Reasoning Enhancement",
+  "subtitle": "Reasoning Enhancement",
+  "description": "Extended Thinking, hierarchical LLM strategies, and MoE routing to enhance Agent reasoning capabilities and efficiency. Implements structured reasoning processes with verification and cost optimization through selective enablement based on task complexity.",
+  "sub_problems": [
+    "Extended Thinking: Leverage model deep thinking capabilities",
+    "Hierarchical LLM: Use small models for simple tasks, large models for complex tasks",
+    "Chain-of-Thought: Guide models through step-by-step reasoning",
+    "MoE Routing: Route tasks to expert models based on task type",
+    "Reasoning Verification: Validate correctness of reasoning process",
+    "Dual-Loop Decoupling: Separate evidence collection and reasoning solving into independent loops",
+    "Reasoning Chain Persistence: Record reasoning process as auditable step chains",
+    "Selective Precise Answers: Decide whether to generate precise concise answers based on question type"
+  ],
+  "best_practices": [
+    "Selective reasoning enablement: Generation tasks don't need deep reasoning, analysis tasks do",
+    "Three-tier budget allocation: Allocate thinking budget by task complexity to avoid token waste",
+    "Outline as living document: New information from subsequent searches should feed back to outline structure",
+    "XML structured output with fallback: Prioritize parsing structured tags with degradation strategy on failure",
+    "Prompt enhancement as independent subgraph: Decouple from main workflow for independent testing and reuse",
+    "Analysis loop with explicit stop conditions: Stop when tool plan is empty or returns none",
+    "Solve steps should reference analysis phase: Use available_cite to bridge two loops",
+    "Memory system should support version compatibility: Implement load_or_create pattern for checkpoint resumption"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Reasoning Method",
+      "values": {
+        "MiroThinker": "Extended Thinking internal reasoning chain within budget_tokens",
+        "DeepResearch": "Dynamic Outline search-outline alternating evolution",
+        "DeerFlow": "prompt_enhancer AI rewrite structured instructions",
+        "DeepTutor": "Dual-Loop: Analysis Loop collects evidence + Solve Loop step-by-step reasoning"
+      }
+    },
+    {
+      "name": "Model Strategy",
+      "values": {
+        "MiroThinker": "Three-tier budget light(8K)/medium(16K)/heavy(24K)",
+        "DeepResearch": "Planner+Writer dual Agent collaboration",
+        "DeerFlow": "AGENT_LLM_MAP configuration-driven model selection",
+        "DeepTutor": "Unified model, BaseAgent parameter configuration via agents.yaml"
+      }
+    },
+    {
+      "name": "Cost",
+      "values": {
+        "MiroThinker": "+$0.20-0.30 per article (selective enablement)",
+        "DeepResearch": "Concept-level (no implementation code)",
+        "DeerFlow": "Single LLM call (lightweight)",
+        "DeepTutor": "Configurable max_iterations and max_corrections to control call count"
+      }
+    },
+    {
+      "name": "Use Cases",
+      "values": {
+        "MiroThinker": "Analysis tasks (planning/review/verification)",
+        "DeepResearch": "Deep research with continuous outline evolution",
+        "DeerFlow": "User input preprocessing and enhancement",
+        "DeepTutor": "Academic QA, complex multi-step reasoning, scenarios requiring citation tracking"
+      }
+    },
+    {
+      "name": "Reasoning Pattern",
+      "values": {
+        "DeepTutor": "Multi-turn iterative: N analysis loop rounds + M corrections per solve loop step",
+        "PageIndex": "Thinking-First JSON — each LLM prompt forces thinking reasoning field before conclusion"
+      }
+    },
+    {
+      "name": "Output Structure",
+      "values": {
+        "DeepTutor": "SolveChainStep chain: each step contains target + tool_calls + response",
+        "PageIndex": "Unified {thinking, answer_field} JSON schema with extract_json fault-tolerant parsing"
+      }
+    },
+    {
+      "name": "Enhancement Strategy",
+      "values": {
+        "DeepTutor": "Analysis-solve decoupling + knowledge chain summarization + two-stage precise answers",
+        "PageIndex": "Tree search reasoning + verify-fix-retry loop + three-mode progressive degradation"
+      }
+    },
+    {
+      "name": "Cost Control",
+      "values": {
+        "DeepTutor": "Configuration-driven iteration limits + selective PrecisionAnswer enablement",
+        "PageIndex": "asyncio.gather concurrent batch calls + recursive large node subdivision to reduce per-call token consumption"
+      }
+    },
+    {
+      "name": "Retrieval Paradigm",
+      "values": {
+        "DeepTutor": "Multi-round RAG in Analysis Loop + hybrid Web Search retrieval",
+        "PageIndex": "Vectorless — use LLM reasoning to replace vector similarity, navigate tree structure for location"
+      }
+    },
+    {
+      "name": "Thinking Budget",
+      "values": {
+        "DeepTutor": "max_analysis_iterations × max_actions_per_round + max_solve_corrections",
+        "PageIndex": "No explicit token budget, implicitly constrain reasoning length via temperature=0 + structured JSON"
+      }
+    },
+    {
+      "name": "Tree Construction",
+      "values": {
+        "PageIndex": "Bottom-up: TOC detection → structure extraction → page mapping → large node recursive subdivision"
+      }
+    },
+    {
+      "name": "Expert Knowledge Integration",
+      "values": {
+        "PageIndex": "Inject Expert Knowledge directly into tree search prompt, no embedding fine-tuning needed"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "37.03",
+      "title": "reasoning_mcp_server.py Extended Thinking with Three-Tier Budget",
+      "description": "reasoning_mcp_server.py (63 lines only) exposes reasoning() tool via @mcp.tool(), calling Anthropic API with thinking={\"type\": \"enabled\", \"budget_tokens\": 19000} to enable Extended Thinking mode. ReasoningService encapsulates three-tier thinking budgets: light(8K tokens for QuestionerAgent evaluation), medium(16K for Planner planning), heavy(24K for FactCheck verification). Selective enablement strategy: Writer/Coder/Artist use normal mode (generation tasks don't need reasoning), Planner/Reviewer/FactCheck/ThreadChecker use Thinking mode (analysis tasks need reasoning). Incremental cost only +$0.20-0.30 per article with high ROI."
+    },
+    {
+      "source_id": "113.05",
+      "title": "WebWeaver Dynamic Outline Optimization",
+      "description": "Based on WebWeaver paper (arXiv 2509.13312) Dynamic Outline Optimization concept: outline is not one-time product but living document evolving with information collection. Planner Agent alternates Web search and outline revision in continuous loop, evaluating new information impact on existing outline each round, supporting section add/delete/merge/split and reordering. Search-Outline Interleaving creates positive feedback: outline v1 → identify gaps → search → new discoveries → outline v2 → ... Writer Agent uses Memory-Grounded Hierarchical Synthesis, retrieving most relevant evidence subset from memory for each section. Concept-level solution without source code migration."
+    },
+    {
+      "source_id": "1002.16",
+      "title": "prompt_enhancer LangGraph Subgraph with XML Structured Output Parsing",
+      "description": "DeerFlow's prompt_enhancer is independent LangGraph subgraph with three-file hierarchy: PromptEnhancerState(TypedDict, 4 fields: prompt/context/report_style/output) → prompt_enhancer_node() core enhancement logic (get_llm_by_type + apply_prompt_template Jinja2 template + XML <enhanced_prompt> tag parsing + fallback prefix removal) → build_graph() graph construction. Exposed via /api/enhance_prompt FastAPI endpoint. Supports 5 ReportStyle types (ACADEMIC/POPULAR_SCIENCE/NEWS/SOCIAL_MEDIA/STRATEGIC_INVESTMENT) and locale internationalization injection."
+    },
+    {
+      "source_id": "scan",
+      "title": "Loop Reasoning Enhancement Solution",
+      "description": "Decouple analysis and solving through multi-loop architecture to achieve traceable structured reasoning process"
+    },
+    {
+      "source_id": "scan",
+      "title": "CoT Research Reasoning Solution",
+      "description": "When Agent executes research tasks, directly searching user's original query often yields shallow results"
+    },
+    {
+      "source_id": "scan",
+      "title": "Reasoning-Based Retrieval Alternative to Vector Search",
+      "description": "Traditional RAG systems rely on vector similarity search (embedding + cosine similarity) for document retrieval, but similarity ≠ relevance. For professional long documents (financial reports, regulations, academic papers), vector search has three fundamental limitations"
+    }
+  ],
+  "_version": 3
+}

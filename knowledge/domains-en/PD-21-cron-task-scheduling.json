@@ -1,0 +1,19 @@
+{
+  "id": "PD-21",
+  "title": "Scheduled Task Scheduling",
+  "subtitle": "Cron/Task Scheduling",
+  "description": "Provides scheduled task capabilities for Agents, supporting three scheduling modes: one-time (at), periodic (every), and cron expressions. Tasks are persisted and Agents can autonomously create schedules through tool invocation.",
+  "sub_problems": [
+    "Support for multiple scheduling modes (at/every/cron)",
+    "Task persistence and recovery",
+    "Schedule execution and Agent callback integration",
+    "Timezone handling"
+  ],
+  "best_practices": [
+    "Define scheduling as a data structure (CronSchedule) and manage lifecycle uniformly through CronService",
+    "Persist tasks to JSON files to support recovery after process restart"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

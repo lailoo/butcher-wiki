@@ -1,0 +1,27 @@
+{
+  "id": "PD-19",
+  "slug": "multi-channel-messaging",
+  "title": "多渠道消息适配",
+  "subtitle": "Multi-Channel Messaging Adapter",
+  "icon": "message-circle",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "统一抽象多个聊天平台（IM/Email/社交）的消息收发接口，通过适配器模式和消息总线解耦渠道实现与核心业务逻辑，支持动态注册和生命周期管理。",
+  "tags": [
+    "adapter-pattern",
+    "message-bus",
+    "chat-platform",
+    "async-queue"
+  ],
+  "sub_problems": [
+    "平台 API 差异抽象（WebSocket vs HTTP vs SDK）",
+    "消息格式统一（文本/图片/文件/富文本）",
+    "权限控制（allow_from 白名单）",
+    "消息路由与会话隔离",
+    "渠道生命周期管理（启动/停止/重连）"
+  ],
+  "best_practices": [
+    "使用 ABC 基类定义统一接口（start/stop/send），通过 MessageBus 异步队列解耦",
+    "每个渠道独立配置，支持 allow_from 白名单控制访问权限"
+  ]
+}

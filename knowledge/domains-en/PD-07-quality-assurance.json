@@ -1,0 +1,134 @@
+{
+  "id": "PD-07",
+  "title": "Quality Assurance",
+  "subtitle": "Quality Assurance",
+  "description": "Multi-dimensional automated evaluation of generated content through Generator-Critic iterative loops. Ensures Agent output quality meets standards.",
+  "sub_problems": [
+    "Fact checking: Does generated content align with source materials",
+    "Format validation: Does output conform to expected format",
+    "Consistency checking: Are results consistent across multiple generations",
+    "Scoring mechanism: Automated quality scoring",
+    "Iterative improvement: Generator-Critic loop until quality threshold is met",
+    "Citation integrity: Do citation IDs in generated text actually exist in the citation library",
+    "Input security validation: Are uploaded file types, sizes, and MIME types compliant"
+  ],
+  "best_practices": [
+    "Separate Generator and Critic: Self-evaluation by the same Agent performs poorly; adversarial collaboration elevates quality",
+    "Multi-dimensional evaluation over single score: Score accuracy/expression/professionalism separately for precise problem identification",
+    "Triple termination conditions prevent waste: Stop when score threshold met OR improvement converges OR round limit reached",
+    "Structured feedback is actionable: specific_issues + improvement_suggestions, not vague \"make it better\"",
+    "Failure isolation matrix: Retry critical nodes, skip enhancement nodes, differentiate handling by importance",
+    "Paragraph-level granularity over full-text: Evaluate and improve paragraph-by-paragraph for better precision than single full-text score",
+    "Pydantic model validation over manual dict checks: Type safety, auto-formatted error messages, nested validation support",
+    "Classify over reject: RelevanceAnalyzer marks high/partial rather than pass/fail, preserving all content value",
+    "Two-stage precision saves resources: First determine if precise answers are needed, avoid uniform precision for all questions"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Checking Method",
+      "values": {
+        "DeerFlow": "Three-layer fault isolation + failure isolation matrix",
+        "VibeBlog(13)": "Three-stage Reviewer (objective/expression/professionalism)",
+        "VibeBlog(69.04)": "Generator-Critic dual Agent iterative loop",
+        "DeepTutor": "Four-layer progression: Pydantic structural validation → citation integrity → semantic classification → precision decision",
+        "PageIndex": "LLM-as-Judge fuzzy matching + deterministic boundary validation dual-layer verification"
+      }
+    },
+    {
+      "name": "Evaluation Dimensions",
+      "values": {
+        "DeerFlow": "5-state machine (PENDING/RUNNING/COMPLETED/FAILED/TIMED_OUT)",
+        "VibeBlog(13)": "accuracy(40)+expression(30)+professionalism(20)+completeness(10)",
+        "VibeBlog(69.04)": "information_density/logical_coherence/professional_depth/expression_quality",
+        "DeepTutor": "Structural correctness + citation existence + semantic relevance (high/partial)",
+        "PageIndex": "Title-page correspondence accuracy (quantified accuracy scoring)"
+      }
+    },
+    {
+      "name": "Evaluation Granularity",
+      "values": {
+        "DeerFlow": "Node-level (core/enhancement/loop differentiation)",
+        "VibeBlog(13)": "Full-text level (problem type + severity classification)",
+        "VibeBlog(69.04)": "Paragraph-level (4-dimensional evaluation per paragraph)",
+        "DeepTutor": "Independent validation per Agent output, 5 Pydantic models cover full pipeline"
+      }
+    },
+    {
+      "name": "Iteration Mechanism",
+      "values": {
+        "DeerFlow": "Node retry + recursion_limit",
+        "VibeBlog(13)": "score >= 80 passing threshold",
+        "VibeBlog(69.04)": "Triple termination (score >= 9.0 / delta < 0.3 / max_rounds=2)",
+        "DeepTutor": "Tenacity exponential backoff retry (default 2 attempts), no Generator-Critic loop"
+      }
+    },
+    {
+      "name": "Feedback Mechanism",
+      "values": {
+        "DeepTutor": "Pydantic ValidationError formatted as readable error messages, drives retry",
+        "PageIndex": "Accuracy threshold tiered decision: 1.0 pass / >0.6 fix / ≤0.6 downgrade regenerate"
+      }
+    },
+    {
+      "name": "Auto-Repair",
+      "values": {
+        "DeepTutor": "fix_invalid_citations() automatically removes invalid citation IDs",
+        "PageIndex": "Scope-narrowed targeted repair + validate after repair, max 3 retry rounds"
+      }
+    },
+    {
+      "name": "Coverage Scope",
+      "values": {
+        "DeepTutor": "Five output types: Investigate/Note/Reflect/Plan/Solve + citations + configuration + file uploads",
+        "PageIndex": "TOC extraction completeness + conversion completeness + page mapping accuracy + physical boundary legality"
+      }
+    },
+    {
+      "name": "Concurrency Strategy",
+      "values": {
+        "DeepTutor": "Research CitationManager uses asyncio.Lock to protect parallel ID allocation",
+        "PageIndex": "asyncio.gather concurrent validation and repair, tasks completely independent"
+      }
+    },
+    {
+      "name": "Degradation Path",
+      "values": {
+        "DeepTutor": "RelevanceAnalyzer failure returns default partial; safe_parse returns default value",
+        "PageIndex": "Three-level progressive degradation: TOC with page numbers → TOC without page numbers → full-text scan without TOC"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "102.07",
+      "title": "Three-Layer Fault Isolation + SubagentStatus 5-State Machine + Failure Isolation Matrix",
+      "description": "DeerFlow implements three-layer fault tolerance: workflow layer (recursion_limit=25/50 prevents infinite loops), Agent layer (SubagentStatus 5-state machine PENDING→RUNNING→COMPLETED/FAILED/TIMED_OUT + dual thread pool architecture), LLM call layer (DanglingToolCallMiddleware auto-injects status=\"error\" placeholder to fix dangling tool calls + SummarizationMiddleware three-trigger compression). Failure isolation matrix: critical nodes (coordinator/planner) retry, enhancement nodes (researcher/coder) skip, loop nodes (human_feedback) have recursion_limit."
+    },
+    {
+      "source_id": "13",
+      "title": "Reviewer Multi-Dimensional Scoring System + 6 Check Dimensions + Problem Classification",
+      "description": "Three-stage quality check: Phase 0 learning objective achievement (LEARNING_OBJECTIVE_MISMATCH/CONTRADICTION/INSUFFICIENT + TERMINOLOGY_UNDEFINED/CONFUSION/MISUSE + CONTENT_OFF_TOPIC/IRRELEVANT_DISCUSSION), Phase 1 expression quality (SENTENCE_TOO_LONG/GRAMMAR_ERROR/LOGIC_JUMP/REPETITION + WORD_MISUSE/CONCEPT_CONFUSION/INACCURATE_EXPRESSION + MISSING_TRANSITION/PARAGRAPH_TOO_LONG), Phase 2 professionalism (TERMINOLOGY_INCONSISTENCY/TRANSLATION_INCONSISTENT + CODE_BLOCK_MISSING_LANGUAGE/LIST_FORMAT_INCONSISTENT + MISSING_SOURCE_CITATION/HANGING_REFERENCE). Multi-dimensional scoring: accuracy(40) + expression_quality(30) + professionalism(20) + completeness(10) = 100 points, passing threshold score >= 80."
+    },
+    {
+      "source_id": "69.04",
+      "title": "Generator-Critic Dual Agent Iterative Loop + SectionEvaluator 4-Dimensional Evaluation",
+      "description": "Inspired by AutoFigure's Generator-Critic Loop: WriterAgent generates/improves content, QuestionerAgent (SectionEvaluator) evaluates each section across 4 dimensions (information_density/logical_coherence/professional_depth/expression_quality). Outputs structured JSON: scores + overall_quality + specific_issues + improvement_suggestions. Triple termination conditions: score threshold (overall_quality >= 9.0) + improvement magnitude (delta < 0.3 stops convergence) + max rounds (max_rounds=2). Key methods: evaluate_section() paragraph-level evaluation, improve_section() targeted improvement, _should_improve_sections() convergence judgment."
+    },
+    {
+      "source_id": "scan",
+      "title": "Multi-Layer Output Validation and Citation Integrity Solution",
+      "description": "Input security validation (file uploads, configuration files) is also a prerequisite for quality assurance."
+    },
+    {
+      "source_id": "scan",
+      "title": "Source Citation Verification Solution",
+      "description": "Citations in LLM-generated research reports exhibit four classes of quality issues."
+    },
+    {
+      "source_id": "scan",
+      "title": "LLM Output Accuracy Verification Closed Loop",
+      "description": "LLM performance on long-document structured tasks (PDF TOC extraction, chapter page mapping) shows non-negligible error rates. Typical issues include structural data errors."
+    }
+  ],
+  "_version": 3
+}

@@ -1,0 +1,32 @@
+{
+  "id": "PD-18",
+  "slug": "i18n-engineering",
+  "title": "国际化工程",
+  "subtitle": "Multi-language Support Engineering",
+  "icon": "globe",
+  "color": "#3B82F6",
+  "severity": "high",
+  "description": "AI Agent 在全球化部署中需要支持多语言交互、本地化提示词和跨语言上下文管理。国际化工程涉及语言检测、动态翻译、文化适配和多语言知识库的协调，确保 Agent 在不同语言环境下的一致性和准确性。",
+  "tags": [
+    "i18n",
+    "multi-language",
+    "localization",
+    "translation",
+    "language-detection",
+    "cultural-adaptation"
+  ],
+  "sub_problems": [
+    "语言检测与路由：自动识别用户输入语言并路由到对应的处理流程",
+    "提示词多语言管理：维护和版本控制多语言 Prompt 模板，确保语义一致性",
+    "翻译质量控制：处理翻译错误、文化差异和领域术语的准确性",
+    "多语言上下文融合：在混合语言场景下正确维护对话历史和知识检索",
+    "本地化适配：处理时区、货币、日期格式等地域特定的数据表示"
+  ],
+  "best_practices": [
+    "使用语言标签（BCP 47）统一标识语言，建立清晰的语言路由策略",
+    "将 Prompt 模板与翻译内容分离，通过配置管理系统集中维护多语言版本",
+    "引入翻译质量评分机制，对关键路径的翻译进行人工审核和反馈循环",
+    "在上下文中显式标记语言标签，避免混合语言导致的歧义和错误",
+    "建立多语言测试集和基准，定期评估不同语言下的 Agent 性能差异"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "id": "PD-02",
+  "title": "Multi-Agent Orchestration",
+  "subtitle": "Multi-Agent Orchestration",
+  "description": "Coordinates how multiple specialized agents execute tasks sequentially or in parallel, distributes work, and aggregates results. The core challenge is balancing flexibility with controllability across distributed agent execution.",
+  "sub_problems": [
+    "Task decomposition: Breaking complex tasks into parallelizable subtasks",
+    "Execution orchestration: DAG scheduling, sequential/parallel/conditional branching",
+    "State synchronization: Sharing context and intermediate results across agents",
+    "Result aggregation: Merging results from multiple sub-agents and conflict resolution",
+    "Dynamic routing: Selecting appropriate agents based on task type",
+    "Pattern selection: Choosing different orchestration modes for different task types within the same system",
+    "Iteration convergence: Determining when agent loops should terminate (should_stop signal design)",
+    "Dynamic queue expansion: Adding new topics to the scheduling queue when discovered during research"
+  ],
+  "best_practices": [
+    "Start simple: Single agent with multiple tools is often easier to debug than multiple agents",
+    "Define clear role boundaries: Each agent's responsibilities must be distinct to avoid overlap",
+    "Make state serializable: State passed between agents must be serializable for persistence and recovery",
+    "Implement timeouts and circuit breakers: Parallel agents need timeout mechanisms to prevent single-agent blocking",
+    "Validate aggregated results: Check consistency when merging results and handle conflicts",
+    "Use federated orchestration: Different modules can use different orchestration patterns without forced uniformity",
+    "Lazy initialization: Create non-essential agents only on first use to reduce resource waste",
+    "Async wrapper: Provide async wrappers for non-thread-safe components to support smooth parallel mode transitions"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Orchestration pattern",
+      "values": {
+        "DeerFlow": "Lead Agent → task_tool dynamic delegation",
+        "GPT-Researcher": "DeepResearchSkill tree-based recursion",
+        "MiroThinker": "run_sub_agent() sub-agents as tools",
+        "DeepTutor": "Federated multi-pattern: Dual-Loop/DynamicQueue/Pipeline/StateMachine per module"
+      }
+    },
+    {
+      "name": "Parallelization capability",
+      "values": {
+        "DeerFlow": "Dual thread pools _scheduler_pool + _execution_pool",
+        "GPT-Researcher": "asyncio.Semaphore(2) async concurrency",
+        "MiroThinker": "Sequential execution (sub-agents in independent turns)",
+        "DeepTutor": "Research module Semaphore-controlled parallelism, asyncio.gather batch execution"
+      }
+    },
+    {
+      "name": "State management",
+      "values": {
+        "DeerFlow": "SubagentConfig + SubagentResult + 5-state state machine",
+        "GPT-Researcher": "visited_urls + learnings cross-layer propagation",
+        "MiroThinker": "Independent message_history without polluting main agent",
+        "DeepTutor": "Three-layer Memory persistence + GuidedSession session state machine"
+      }
+    },
+    {
+      "name": "Concurrency limits",
+      "values": {
+        "DeerFlow": "SubagentLimitMiddleware MAX_CONCURRENT=3",
+        "GPT-Researcher": "Semaphore(2) + breadth halved per layer",
+        "MiroThinker": "None (sequential execution)",
+        "DeepTutor": "asyncio.Semaphore(max_parallel) + asyncio.Lock for shared state protection"
+      }
+    },
+    {
+      "name": "Tool isolation",
+      "values": {
+        "DeerFlow": "disallowed_tools=[\"task\"] prevents recursive nesting",
+        "GPT-Researcher": "Independent GPTResearcher instance per sub-query",
+        "MiroThinker": "YAML-configured independent tool set per sub_agent",
+        "DeepTutor": "Research unified _call_tool routing, Solve isolated via ToolAgent"
+      }
+    },
+    {
+      "name": "Module autonomy",
+      "values": {
+        "DeepTutor": "5 independent orchestrators each selecting optimal orchestration pattern"
+      }
+    },
+    {
+      "name": "Lazy initialization",
+      "values": {
+        "DeepTutor": "Solve Loop Agents created on first use only, reducing startup overhead"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "102.01",
+      "title": "Lead Agent → SubagentExecutor dynamic delegation with task_tool.py parallel orchestration",
+      "description": "Lead Agent dynamically delegates subtasks to Subagents via task_tool.py's task() function. SubagentExecutor (executor.py) uses dual thread pool architecture: _scheduler_pool(3) for scheduling + _execution_pool(3) for execution. SubagentConfig (config.py) defines name/tools/model/timeout with model=\"inherit\" support for parent model reuse. SubagentLimitMiddleware enforces MAX_CONCURRENT_SUBAGENTS=3 limit. Tool isolation via disallowed_tools=[\"task\"] prevents recursive nesting."
+    },
+    {
+      "source_id": "41.02",
+      "title": "DeepResearchSkill tree-based recursion with breadth=4 depth=2 and asyncio.Semaphore(2) concurrency control",
+      "description": "gpt_researcher/skills/deep_research.py's DeepResearchSkill implements tree-based recursive research: each layer generates breadth sub-queries, each creating independent GPTResearcher instances executing conduct_research(). Breadth halves per layer max(2, breadth//2) to control exponential growth. asyncio.Semaphore(2) limits concurrency. Cross-layer sharing via visited_urls deduplication + learnings knowledge accumulation. Default parameters breadth=4 depth=2 produce ~36 searches + 20 LLM calls in 3-5 minutes."
+    },
+    {
+      "source_id": "37.05",
+      "title": "run_sub_agent() sub-agents as tools with expose_sub_agents_as_tools() configuration-driven approach",
+      "description": "orchestrator.py:327-499's run_sub_agent() executes sub-agents independently with isolated system_prompt, tool_definitions, message_history, and max_turns limits. settings.py's expose_sub_agents_as_tools() exposes sub-agents as callable tools for the main agent. YAML configuration (conf/agent/multi_agent.yaml) defines main_agent and sub_agents (agent-browsing/agent-research/agent-citation), each with independent tool sets and turn limits."
+    },
+    {
+      "source_id": "scan",
+      "title": "Multi-module dual-loop orchestration pattern",
+      "description": "Multiple orchestration modes coexist within the same system, with optimal strategy selected based on task characteristics"
+    }
+  ],
+  "_version": 3
+}

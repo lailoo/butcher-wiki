@@ -1,0 +1,19 @@
+{
+  "id": "PD-23",
+  "title": "Pydantic Configuration-Driven Architecture",
+  "subtitle": "Config-Driven Architecture",
+  "description": "Uses Pydantic models to define complete configuration trees, supporting JSON file loading, environment variable overrides, and multi-path discovery. All system behavior is driven by declarative configuration rather than hardcoded values.",
+  "sub_problems": [
+    "Configuration schema definition and validation",
+    "Multi-source configuration merging (files/environment variables/defaults)",
+    "Configuration path discovery strategy",
+    "Nested configuration structure management"
+  ],
+  "best_practices": [
+    "Define strongly-typed configurations using Pydantic BaseModel with automatic validation and documentation",
+    "Support camelCase aliases for frontend JSON format compatibility"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

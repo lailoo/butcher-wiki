@@ -1,0 +1,124 @@
+{
+  "id": "PD-11",
+  "title": "Observability",
+  "subtitle": "Observability & Cost Tracking",
+  "description": "LLM call tracing, token metering, cost analysis, and structured logging. Without observability, you're flying blind. Track every API call's input, output, latency, and token consumption across multiple providers with unified data structures.",
+  "sub_problems": [
+    "Call tracing: input/output/latency for each LLM invocation",
+    "Token metering: precise token consumption accounting per call",
+    "Cost analysis: cost breakdown by model, task, and user",
+    "Structured logging: queryable structured logs instead of plain text",
+    "Alerting: alerts for cost overruns and high error rates"
+  ],
+  "best_practices": [
+    "Extract token counts precisely from API responses: don't estimate with len(content)/1.5, error margin exceeds 30%",
+    "Distinguish 4 token types: input/output/cache_read/cache_write each have different billing rules",
+    "Adapt to multi-provider differences: OpenAI lacks cache_write, Anthropic has all 4 types, need unified data structure",
+    "Structured logging + JSON persistence: enables programmatic cost distribution and performance bottleneck analysis",
+    "Sub-agent log isolation: each sub-agent in multi-agent systems logs in independent sessions"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Tracing approach",
+      "values": {
+        "MiroThinker-Token": "TokenUsage TypedDict extracts precisely from API response",
+        "MiroThinker-Logging": "TaskLog + StepLog two-level structured logging",
+        "MiroThinker-Tracing": "AOP install_tracing() zero-intrusion interception",
+        "PageIndex": "Logger passed through function parameters layer-by-layer, no distributed tracing"
+      }
+    },
+    {
+      "name": "Data granularity",
+      "values": {
+        "MiroThinker-Token": "4 token types (includes cache_read/cache_write)",
+        "MiroThinker-Logging": "Step-level (each LLM call/tool execution/decision point)",
+        "MiroThinker-Tracing": "Call-level (input/output/tokens/duration/model)"
+      }
+    },
+    {
+      "name": "Persistence",
+      "values": {
+        "MiroThinker-Token": "In-memory accumulation + last_call_tokens",
+        "MiroThinker-Logging": "JSON file persistence",
+        "MiroThinker-Tracing": "In-memory + optional log writing"
+      }
+    },
+    {
+      "name": "Multi-provider support",
+      "values": {
+        "MiroThinker-Token": "OpenAI/Anthropic difference adaptation (cache_write field variance)",
+        "MiroThinker-Logging": "Provider-agnostic",
+        "MiroThinker-Tracing": "Provider-agnostic (AOP layer interception)"
+      }
+    },
+    {
+      "name": "Log format",
+      "values": {
+        "PageIndex": "Custom JsonLogger, full JSON array rewrite to file"
+      }
+    },
+    {
+      "name": "Metric collection",
+      "values": {
+        "PageIndex": "Entry records total_page_number + total_token, pipeline steps record intermediate states"
+      }
+    },
+    {
+      "name": "Visualization",
+      "values": {
+        "PageIndex": "No built-in visualization, relies on manual JSON file inspection"
+      }
+    },
+    {
+      "name": "Cost tracking",
+      "values": {
+        "PageIndex": "tiktoken pre-calculates document token total, no LLM call-level token tracking"
+      }
+    },
+    {
+      "name": "Log levels",
+      "values": {
+        "PageIndex": "Interface supports info/error/debug/exception four levels, but levels not written to data"
+      }
+    },
+    {
+      "name": "Crash safety",
+      "values": {
+        "PageIndex": "Full file rewrite on each write, no data loss on process crash"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "37.31",
+      "title": "TokenUsage TypedDict four-dimensional tracking with multi-provider adaptation",
+      "description": "base_client.py:32-49 defines TokenUsage(TypedDict) unifying 4 token types: total_input_tokens/total_output_tokens/total_cache_read_input_tokens/total_cache_write_input_tokens. openai_client.py _update_token_usage() extracts from usage_data.prompt_tokens/completion_tokens, retrieves cache hits via prompt_tokens_details.cached_tokens (OpenAI lacks cache_write). anthropic_client.py _update_token_usage() extracts all 4 types (includes cache_creation_input_tokens/cache_read_input_tokens). Dual-mode tracking: cumulative + last_call_tokens for single-call records."
+    },
+    {
+      "source_id": "37.08",
+      "title": "TaskLog + StepLog + ColoredFormatter structured task logging",
+      "description": "task_logger.py implements two-level structured logging: TaskLog (task-level with task_id/status/steps/total_tokens/sub_agent_sessions) and StepLog (step-level with timestamp/level/title/detail/metadata). Each LLM call, tool execution, and decision point recorded as StepLog. log_step() appends to steps list and console output simultaneously. save() persists to JSON file. ColoredFormatter colors by level (ERROR red/WARNING yellow/INFO green/DEBUG cyan). start_sub_agent_session() creates independent session records for sub-agents."
+    },
+    {
+      "source_id": "47",
+      "title": "AOP install_tracing() + TraceCollector lightweight tracing system",
+      "description": "Lightweight local LLM call tracing system complementing cloud-based Langfuse. TraceCollector gathers input/output/tokens/duration/model for each LLM call. install_tracing() injects tracing logic via AOP interception with zero intrusion. Supports trace_id correlation across all calls in single task. Integrates with TaskLog, automatically writing trace data to step logs."
+    },
+    {
+      "source_id": "scan",
+      "title": "Three-layer observability architecture",
+      "description": "Multi-agent educational tutoring systems face three-layer observability challenges requiring coordinated tracing across agent boundaries, token accounting across provider APIs, and cost attribution per user session."
+    },
+    {
+      "source_id": "scan",
+      "title": "LangSmith integration tracing approach",
+      "description": "Agent system debugging and optimization face unique challenges requiring distributed tracing across multiple LLM calls, tool invocations, and decision branches with unified context propagation."
+    },
+    {
+      "source_id": "scan",
+      "title": "Structured JSON logging approach",
+      "description": "PDF document structure parsing is a multi-stage LLM-intensive pipeline: TOC detection → TOC extraction → page mapping → accuracy validation → error correction. Each stage involves multiple LLM calls facing observability challenges requiring per-stage token tracking and error attribution."
+    }
+  ],
+  "_version": 3
+}

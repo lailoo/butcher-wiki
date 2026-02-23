@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone*)",
+      "Bash(ls*)",
+      "Bash(wc*)",
+      "Bash(find*)",
+      "Read",
+      "Glob",
+      "Grep",
+      "Write",
+      "Edit"
+    ],
+    "deny": [
+      "Bash(rm -rf*)",
+      "Bash(sudo*)"
+    ]
+  }
+}

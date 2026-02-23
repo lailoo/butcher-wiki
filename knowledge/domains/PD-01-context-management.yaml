@@ -1,0 +1,51 @@
+---
+id: "PD-01"
+slug: "context-management"
+title: "上下文管理"
+subtitle: "Context Window Management"
+severity: critical
+
+problem: |
+  LLM 的上下文窗口是有限资源。在 Agent 执行长任务时（多轮对话、长文生成、深度研究），
+  prompt 会不断膨胀：历史消息 + 工具调用结果 + 搜索素材 + 指令模板，
+  很容易突破 128K 甚至 200K 的上限。一旦超限，API 直接报 400 错误，整个任务崩溃。
+
+  这不是一个"优化"问题，而是一个"生存"问题——不解决它，Agent 就无法处理任何复杂任务。
+
+sub_problems:
+  - name: "Token 估算"
+    description: "在调用 LLM 前，精确或近似估算当前 prompt 的 token 数"
+  - name: "超限裁剪"
+    description: "当估算超限时，按优先级裁剪内容（旧消息、工具结果、搜索素材）"
+  - name: "摘要压缩"
+    description: "将长历史对话压缩为摘要，保留关键信息，释放 token 空间"
+  - name: "滑动窗口"
+    description: "只保留最近 N 轮对话或最近 N 个工具结果"
+  - name: "预算分配"
+    description: "为不同内容类型分配 token 预算（指令 20%、上下文 50%、输出 30%）"
+
+solutions:
+  - project: "mirothinker"
+    file: "PD-01-mirothinker.md"
+  - project: "deerflow"
+    file: "PD-01-deerflow.md"
+  - project: "gpt-researcher"
+    file: "PD-01-gpt-researcher.md"
+
+comparison: "PD-01-comparison.md"
+
+related_domains:
+  - id: "PD-11"
+    relation: "可观测性提供 token 用量数据，是上下文管理的决策依据"
+  - id: "PD-03"
+    relation: "超限是一种失败场景，容错机制需要与上下文管理协同"
+  - id: "PD-10"
+    relation: "上下文压缩通常实现为中间件"
+
+references:
+  - title: "Own Your Context Window"
+    source: "12-Factor Agents, Factor 3"
+    url: "https://github.com/humanlayer/12-factor-agents"
+  - title: "Managing Context in LLM Applications"
+    source: "Anthropic Cookbook"
+    url: "https://github.com/anthropics/anthropic-cookbook"

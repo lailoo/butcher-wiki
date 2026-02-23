@@ -1,0 +1,134 @@
+{
+  "id": "PD-01",
+  "title": "Context Window Management",
+  "subtitle": "Context Window Management",
+  "description": "LLM context windows are finite, and in long-running tasks, preserving critical information while trimming redundant content and avoiding token overflow is essential. This is not an optimization problem—it's a survival problem.",
+  "sub_problems": [
+    "Token estimation: Accurately estimate token count of the current prompt before calling the LLM",
+    "Overflow trimming: Trim content by priority (old messages, tool results, search materials)",
+    "Summary compression: Compress long conversation history into summaries while retaining key information",
+    "Sliding window: Retain only the last N conversation turns or last N tool results",
+    "Budget allocation: Allocate token budgets across different content types",
+    "Tool output compression: Compress large raw tool outputs into structured summaries while preserving core knowledge",
+    "Prompt template management: Systematically manage system prompts via external configuration files with multi-language support"
+  ],
+  "best_practices": [
+    "Estimation is mandatory: Regardless of approach, always know current token usage before calling the LLM",
+    "Reserve safety margin: MiroThinker's 85% strategy is worth emulating—reserve 15-20% space for output",
+    "Tiered trimming beats one-size-fits-all: Tool results > old conversations > system prompts, prioritized by importance",
+    "Validate format after compression: Fixing dangling tool calls is easily overlooked but critical",
+    "Account for multi-provider differences: Different LLMs have different tokenizers requiring adaptation",
+    "Truncate at source rather than downstream: Limit size when creating data structures to prevent large data from entering the pipeline",
+    "Multi-level fallback ensures availability: API > tiktoken > litellm > estimation guarantees token tracking in any environment",
+    "Preserve original data references after compression: ToolTrace stores both summary and truncated raw_answer for traceability"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Estimation method",
+      "values": {
+        "MiroThinker": "tiktoken o200k_base precise estimation",
+        "DeerFlow": "tokens/messages/fraction three thresholds",
+        "DeepResearch": "AutoTokenizer precise counting",
+        "GPT-Researcher": "trim_context_to_word_limit word count ceiling",
+        "DeepTutor": "Four-level fallback: API response > tiktoken > litellm > word_count×1.3",
+        "PageIndex": "tiktoken per-model encoding precise token calculation per page"
+      }
+    },
+    {
+      "name": "Compression strategy",
+      "values": {
+        "MiroThinker": "Remove last conversation pair",
+        "DeerFlow": "LLM summarization replaces old messages + dangling tool call repair",
+        "DeepResearch": "AgentFold step-level merging + ReSum full replacement",
+        "GPT-Researcher": "25000 word hard trim + visited_urls deduplication",
+        "DeepTutor": "NoteAgent LLM summarization + ToolTrace 50KB source truncation",
+        "PageIndex": "Tree node merging + token threshold pruning"
+      }
+    },
+    {
+      "name": "Trigger mechanism",
+      "values": {
+        "MiroThinker": "ensure_summary_context() pre-call check",
+        "DeerFlow": "Three triggers with OR logic (any satisfied)",
+        "DeepResearch": "LLM-initiated <compress> tag + 90% threshold",
+        "GPT-Researcher": "Trim after recursive search completion",
+        "DeepTutor": "Auto-trigger NoteAgent compression after each tool call",
+        "PageIndex": "Auto-split when grouped token total exceeds LLM limit"
+      }
+    },
+    {
+      "name": "Implementation location",
+      "values": {
+        "MiroThinker": "openai_client.py LLM client internals",
+        "DeerFlow": "AgentMiddleware independent middleware",
+        "DeepResearch": "infer.py inference main loop + react_agent.py",
+        "GPT-Researcher": "deep_research.py skill layer",
+        "DeepTutor": "Agent layer (NoteAgent) + data structure layer (ToolTrace.__post_init__)",
+        "PageIndex": "utils.py count_tokens + page_index.py grouping algorithm"
+      }
+    },
+    {
+      "name": "Fault tolerance design",
+      "values": {
+        "MiroThinker": "Fallback to len//4 estimation",
+        "DeerFlow": "Summarization failure reverts to keeping last 15 messages",
+        "DeepResearch": "Independent ReSum model server without occupying main model window",
+        "GPT-Researcher": "Semaphore(2) concurrency control",
+        "DeepTutor": "Dual-layer exceptions LLMContextError + ProviderContextWindowError + auto message mapping",
+        "PageIndex": "Three-level fallback + validate_and_truncate index bounds protection"
+      }
+    },
+    {
+      "name": "Splitting granularity",
+      "values": {
+        "DeepTutor": "Per tool call granularity, each call independently compressed into one ToolTrace",
+        "PageIndex": "Page-level grouping with overlap_page ensuring semantic coherence"
+      }
+    },
+    {
+      "name": "Prompt templating",
+      "values": {
+        "DeepTutor": "YAML multi-language prompts + singleton caching + zh→cn→en fallback chain"
+      }
+    },
+    {
+      "name": "Tree construction",
+      "values": {
+        "PageIndex": "Bottom-up merging with recursive splitting for token-exceeded nodes"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "37.33",
+      "title": "_estimate_tokens() tiktoken estimation + ensure_summary_context() auto-fallback",
+      "description": "openai_client.py:363-382 _estimate_tokens() uses tiktoken o200k_base encoder for precise token estimation (fallback cl100k_base → len//4). openai_client.py:384-444 ensure_summary_context() checks before final answer generation whether prompt_tokens + completion_tokens + summary_tokens + max_tokens + 1000 buffer exceeds limit; if exceeded, removes last assistant-user conversation pair. Safety coefficient 1.5x."
+    },
+    {
+      "source_id": "102.07",
+      "title": "DanglingToolCallMiddleware + SummarizationMiddleware dual middleware fault-tolerant compression",
+      "description": "DanglingToolCallMiddleware scans AIMessage.tool_calls in before_model hook, injecting status=\"error\" placeholder messages for dangling calls lacking ToolMessage responses. SummarizationMiddleware supports three trigger conditions (tokens threshold/message count/fraction usage), triggering LLM-generated summaries replacing old messages while retaining last N messages. AI/Tool message pair protection prevents splitting. Summarization failure reverts to keeping last 15 messages."
+    },
+    {
+      "source_id": "113.01",
+      "title": "AgentFold <compress> tag + ReSum 90% threshold full-replacement summarization",
+      "description": "AgentFold/infer.py:78 enables LLM to proactively generate <compress> tags declaring foldable history steps. update_and_sort_steps() (infer.py:170-198) maintains step_list data structure, merging consecutive steps into [Compressed Step X to Y]. ReSum (WebResummer/src/react_agent.py:135) calls independent summarization model for full message replacement when token usage reaches 90%. Uses two prompts: QUERY_SUMMARY_PROMPT (initial) and QUERY_SUMMARY_PROMPT_LAST (incremental)."
+    },
+    {
+      "source_id": "41.02",
+      "title": "trim_context_to_word_limit() 25000 word ceiling + visited_urls cross-layer deduplication",
+      "description": "gpt_researcher/skills/deep_research.py DeepResearchSkill trims merged learnings + context + citations to 25000 words after tree-structured recursive search (breadth=4, depth=2) completes. Cross-layer shared visited_urls set implements URL-level deduplication preventing duplicate fetches. Concurrency controlled via asyncio.Semaphore(2) limiting simultaneous queries."
+    },
+    {
+      "source_id": "scan",
+      "title": "NoteAgent information compression and multi-layer token tracking",
+      "description": "LLM-driven information compression rather than simple truncation preserves semantic integrity, representing an advanced context management strategy."
+    },
+    {
+      "source_id": "scan",
+      "title": "Token budget document splitting strategy",
+      "description": "LLM context windows have hard token limits. When processing ultra-long documents (hundreds-page PDFs, large Markdown files), strategic splitting becomes essential."
+    }
+  ],
+  "_version": 3
+}

@@ -1,0 +1,19 @@
+{
+  "id": "PD-13",
+  "title": "Multi-Source RAG Pipeline Architecture",
+  "subtitle": "Multi-Provider RAG Pipeline Architecture",
+  "description": "Agent systems need to retrieve information from multiple knowledge sources, with different scenarios suited to different RAG backends (vector retrieval, knowledge graphs, multimodal). This domain addresses how to design pluggable RAG pipelines that allow each knowledge base to independently select the optimal retrieval strategy.",
+  "sub_problems": [
+    "Unified interface design for multiple RAG backends",
+    "Knowledge base-level provider configuration management",
+    "Dynamic retrieval mode switching (hybrid/dense/graph)",
+    "Componentized orchestration of document parsing → chunking → embedding → indexing"
+  ],
+  "best_practices": [
+    "Maintain independent configuration for each knowledge base with runtime RAG provider switching support",
+    "Componentized design (parser/chunker/embedder/indexer/retriever) enabling flexible composition"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

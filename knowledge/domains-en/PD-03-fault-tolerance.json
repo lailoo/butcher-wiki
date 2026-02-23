@@ -1,0 +1,152 @@
+{
+  "id": "PD-03",
+  "title": "Fault Tolerance & Retry",
+  "subtitle": "Fault Tolerance & Retry",
+  "description": "Detecting, recovering, and retrying when LLM calls fail, responses are truncated, or formats are malformed. Agent system robustness depends on fault tolerance design.",
+  "sub_problems": [
+    "API call failures: network timeouts, rate limits, service unavailability",
+    "Response format errors: JSON parsing failures, missing required fields",
+    "Response truncation: output exceeds max_tokens and gets cut off",
+    "Hallucination detection: LLM generates non-existent tool names or parameters",
+    "Cascading failures: one Agent failure crashes the entire workflow",
+    "Multi-provider avalanche: one provider's continuous failures slow down the entire system",
+    "LLM output structure validation: JSON field types/enum values don't match Agent expectations",
+    "Configuration error early detection: YAML config missing or type errors only exposed at runtime"
+  ],
+  "best_practices": [
+    "Retry is mandatory: any LLM call can fail, retries are a basic requirement",
+    "Exponential backoff + jitter: prevent retry storms, add random jitter",
+    "Set maximum retry count: infinite retries exhaust budget",
+    "Log every failure: enables post-mortem failure pattern analysis",
+    "Design fallback strategies upfront: don't decide degradation tactics in production",
+    "Circuit breaker three-state protection: fail fast on continuous failures, probe recovery periodically",
+    "Sliding window error rate tracking: more accurate than simple counters for real-time health",
+    "Pydantic model validation for LLM output: compile-time type safety + runtime structure validation",
+    "Two-layer retry decoupling: business and transport layers retry independently with clear responsibilities"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Truncation/Error Detection",
+      "values": {
+        "MiroThinker": "finish_reason==\"length\" detects truncation",
+        "DeerFlow": "DanglingToolCallMiddleware scans dangling tool_calls",
+        "GPT-Researcher": "visited_urls cross-layer deduplication detects repeats",
+        "DeepTutor": "ProviderContextWindowError detects context overflow; Pydantic field_validator detects tool name hallucinations"
+      }
+    },
+    {
+      "name": "Retry/Recovery Strategy",
+      "values": {
+        "MiroThinker": "max_tokens*1.1 progressive expansion, max 10 retries",
+        "DeerFlow": "5-state machine FAILED→reschedule",
+        "GPT-Researcher": "search source degradation chain Tavily→Google→summary",
+        "DeepTutor": "Two-layer retry: Factory tenacity exponential backoff (max=120s) + Provider 1.5^n+random backoff"
+      }
+    },
+    {
+      "name": "Timeout Protection",
+      "values": {
+        "MiroThinker": "@with_timeout(600) 10 minutes",
+        "DeerFlow": "execution_future.result(timeout=900s) 15 minutes",
+        "GPT-Researcher": "Semaphore(2) concurrency rate limiting",
+        "DeepTutor": "LLMTimeoutError(408) + embedding request_timeout=30s config"
+      }
+    },
+    {
+      "name": "Graceful Degradation",
+      "values": {
+        "MiroThinker": "Last retry still truncated→return truncated result and continue",
+        "DeerFlow": "TIMED_OUT state + cancel() cleanup",
+        "GPT-Researcher": "breadth halved progressively + trim_context 25000 words",
+        "DeepTutor": "Multi-language Prompt fallback chain (zh→cn→en); safe_parse returns default value"
+      }
+    },
+    {
+      "name": "Retry Strategy",
+      "values": {
+        "DeepTutor": "tenacity exponential backoff, Factory layer max=5 retries, Provider layer max=3 retries",
+        "PageIndex": "Fixed interval sleep(1) + max_retries=10, broad except Exception catch"
+      }
+    },
+    {
+      "name": "Degradation Plan",
+      "values": {
+        "DeepTutor": "Circuit breaker open→fail fast; safe_parse returns default value to continue execution",
+        "PageIndex": "Three-level progressive degradation: TOC with page numbers → TOC without page numbers → full text scan without TOC, triggered when accuracy<0.6"
+      }
+    },
+    {
+      "name": "Error Classification",
+      "values": {
+        "DeepTutor": "11-level exception hierarchy + rule chain mapping engine, distinguishes retryable/non-retryable",
+        "PageIndex": "No exception type distinction, unified catch; semantic layer quantifies quality via accuracy"
+      }
+    },
+    {
+      "name": "Recovery Mechanism",
+      "values": {
+        "DeepTutor": "CircuitBreaker three-state: closed→open→half-open→closed, 60s recovery window",
+        "PageIndex": "Targeted fix: only retry failed entries (max_attempts=3), not full batch retry"
+      }
+    },
+    {
+      "name": "Monitoring & Alerting",
+      "values": {
+        "DeepTutor": "ErrorRateTracker 60s sliding window, 50% threshold triggers alert_callback",
+        "PageIndex": "JsonLogger records accuracy and degradation decisions per step, no real-time alerts"
+      }
+    },
+    {
+      "name": "Output Validation",
+      "values": {
+        "DeepTutor": "Pydantic BaseModel validates LLM output structure, ValidationError→LLMParseError→retry"
+      }
+    },
+    {
+      "name": "Configuration Pre-validation",
+      "values": {
+        "DeepTutor": "ConfigValidator validates YAML completeness at startup, distinguishes error/warning levels"
+      }
+    },
+    {
+      "name": "Continuation Capability",
+      "values": {
+        "PageIndex": "finish_reason + LLM completeness dual-condition gating, chat_history concatenation for continuation up to 5 rounds"
+      }
+    },
+    {
+      "name": "Concurrent Fault Tolerance",
+      "values": {
+        "PageIndex": "asyncio.gather(return_exceptions=True) isolates single-item repair failures"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "37.32",
+      "title": "Truncation Auto-expansion + Error Classification Retry + Timeout Protection",
+      "description": "openai_client.py:128-192 detects finish_reason==\"length\" and auto-expands max_tokens*1.1, max 10 retries; if last retry still truncated, returns truncated result without crashing. openai_client.py:228-277 intelligent error classification: TimeoutError→retry, CancelledError→throw, \"Error code: 400\"+\"longer than\"→context overflow fast-fail. base_client.py:222 @with_timeout(600) adds 10-minute timeout protection to LLM calls. Fixed 30s wait interval."
+    },
+    {
+      "source_id": "102.07",
+      "title": "SubagentExecutor 5-State Machine + Dual Thread Pools + Dangling Tool Call Middleware",
+      "description": "executor.py implements 5-state machine PENDING→RUNNING→COMPLETED/FAILED/TIMED_OUT. Dual thread pools: _scheduler_pool(3) + _execution_pool(3). 15-minute hard timeout execution_future.result(timeout=900s), FuturesTimeoutError marks TIMED_OUT and cancel(). DanglingToolCallMiddleware scans AIMessage.tool_calls missing ToolMessage in before_model hook, injects status=\"error\" placeholder. Global _background_tasks + thread lock ensures concurrency safety."
+    },
+    {
+      "source_id": "41.02",
+      "title": "Cross-layer URL Deduplication + Semaphore Concurrency Protection + Search Source Degradation Chain",
+      "description": "DeepResearchSkill tree recursion passes visited_urls set across layers for URL-level deduplication avoiding duplicate fetches. asyncio.Semaphore(2) limits max 2 concurrent sub-queries per layer, preventing API rate limits. Each sub-query creates isolated GPTResearcher instance. Search source failure auto-degrades: Tavily→Google→search summary fallback. breadth halved progressively max(2, breadth//2) controls exponential explosion. Final trim_context_to_word_limit(25000) trims context."
+    },
+    {
+      "source_id": "scan",
+      "title": "Four-Layer Fault Tolerance & Circuit Breaker",
+      "description": "Circuit breaker protection and error rate monitoring for multi-provider scenarios, preventing continuous failures from exhausting budget"
+    },
+    {
+      "source_id": "scan",
+      "title": "Multi-Layer Fault Tolerance & Three-Level Degradation",
+      "description": "PDF document structure parsing is a multi-step pipeline highly dependent on LLM. PageIndex's core function is parsing PDF documents into hierarchical directory tree structures, involving:"
+    }
+  ],
+  "_version": 3
+}

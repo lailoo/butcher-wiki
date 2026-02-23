@@ -1,0 +1,26 @@
+{
+  "id": "PD-22",
+  "slug": "skill-plugin-system",
+  "title": "技能插件系统",
+  "subtitle": "Skill/Plugin System",
+  "icon": "sparkles",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "通过 Markdown 文件（SKILL.md）定义 Agent 技能，支持工作区和内置两级技能源、需求检查、优先级覆盖，实现 Agent 能力的声明式扩展。",
+  "tags": [
+    "plugin",
+    "skill",
+    "markdown-driven",
+    "extensibility"
+  ],
+  "sub_problems": [
+    "技能发现与加载（多目录扫描）",
+    "需求检查与可用性过滤",
+    "优先级覆盖（workspace > builtin）",
+    "技能内容注入到系统提示词"
+  ],
+  "best_practices": [
+    "技能以 Markdown 文件描述，降低创建门槛",
+    "workspace 技能优先于 builtin，支持用户自定义覆盖"
+  ]
+}

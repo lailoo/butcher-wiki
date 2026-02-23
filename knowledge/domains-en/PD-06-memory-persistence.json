@@ -1,0 +1,81 @@
+{
+  "id": "PD-06",
+  "title": "Memory Persistence",
+  "subtitle": "Memory Persistence",
+  "description": "How to store and retrieve user preferences, historical context, and factual knowledge across sessions. The agent's \"long-term memory\" capability.",
+  "sub_problems": [
+    "Memory storage: selecting appropriate storage backends (vector databases, key-value stores, file systems)",
+    "Memory retrieval: efficiently retrieving relevant memories",
+    "Memory updates: how new information updates or overwrites old memories",
+    "Memory expiration: cleanup strategies for outdated information",
+    "Cross-session: sharing memory across different sessions"
+  ],
+  "best_practices": [
+    "LLM extraction outperforms manual logging: LLM captures implicit preferences and context from conversations, while manual add_fact operations are too coarse-grained",
+    "Debouncing is mandatory: 30s window + thread_id deduplication to avoid wasted LLM calls in high-frequency conversation scenarios",
+    "Confidence gating: not all information deserves to be remembered, 0.7 threshold filters low-value facts",
+    "Configuration over hardcoding: all 8 parameters should be configurable, supporting runtime dynamic adjustment",
+    "Atomic writes protect data: temp + rename pattern prevents data corruption from interrupted writes",
+    "Middleware pattern keeps business logic transparent: memory read/write operations should not intrude into business code"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Memory structure",
+      "values": {
+        "DeerFlow(102.03)": "Three-layer user/history/facts + 6-dimensional context",
+        "DeerFlow(1002.05)": "8-item Pydantic configuration parameters"
+      }
+    },
+    {
+      "name": "Update mechanism",
+      "values": {
+        "DeerFlow(102.03)": "MemoryUpdateQueue 30s debouncing + thread_id deduplication + batch processing",
+        "DeerFlow(1002.05)": "Gateway REST API runtime dynamic modification"
+      }
+    },
+    {
+      "name": "Fact extraction",
+      "values": {
+        "DeerFlow(102.03)": "LLM structured output (5 fact types + 0.7 confidence threshold)",
+        "DeerFlow(1002.05)": "Configuration fact_confidence_threshold/max_facts controls extraction behavior"
+      }
+    },
+    {
+      "name": "Storage method",
+      "values": {
+        "DeerFlow(102.03)": "Single JSON file + atomic writes (temp + rename)",
+        "DeerFlow(1002.05)": "Global singleton MemoryConfig + 6 module consumers"
+      }
+    },
+    {
+      "name": "Injection method",
+      "values": {
+        "DeerFlow(102.03)": "MemoryMiddleware after_agent auto-enqueue + format_memory_for_injection() injects <memory> tags",
+        "DeerFlow(1002.05)": "injection_enabled + max_injection_tokens controls injection behavior"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "102.03",
+      "title": "Three-layer memory structure + MemoryUpdateQueue debouncing + LLM auto fact extraction",
+      "description": "User/history/facts three-layer memory stored in memory.json: user layer contains workContext (2-3 sentences)/personalContext (1-2 sentences)/topOfMind (3-5 sentences), history layer contains recentMonths (4-6 sentences)/earlierContext (3-5 sentences)/longTermBackground (2-4 sentences), facts layer is a discrete fact list (5 types: preference/knowledge/context/behavior/goal). MemoryUpdateQueue implements 30s debouncing (threading.Timer) + thread_id deduplication + threading.Lock concurrency safety + _processing flag prevents re-entrance + 0.5s interval between batch operations. MemoryUpdater uses LLM to analyze conversations and extract structured JSON (6-dimensional context shouldUpdate judgment + newFacts confidence filtering + factsToRemove cleanup), atomic writes (temp + rename). MemoryMiddleware.after_agent() filters messages (retains only human + AI without tool_calls) before enqueuing."
+    },
+    {
+      "source_id": "1002.05",
+      "title": "MemoryConfig Pydantic configuration + Gateway API exposure",
+      "description": "MemoryConfig (BaseModel) defines 8 configurable parameters: enabled (bool)/storage_path (str)/debounce_seconds (int, ge=1, le=300)/model_name (Optional[str])/max_facts (int, ge=10, le=500)/fact_confidence_threshold (float, ge=0.0, le=1.0)/injection_enabled (bool)/max_injection_tokens (int, ge=100, le=10000). Global singleton pattern: get_memory_config() thread-safe retrieval, load_memory_config_from_dict() loads from dictionary. Gateway API exposes 3 REST endpoints (GET/PUT /api/memory/config + POST /api/memory/config/reset). Consumed by 6 modules: queue/updater/middleware/prompt/gateway router/lead_agent."
+    },
+    {
+      "source_id": "scan",
+      "title": "Multi-layer memory chain persistence solution",
+      "description": "Educational tutoring agents need to maintain multiple memory types during a single problem-solving process: knowledge fragments collected during investigation, step chains during solving, tool call reference tracing, and cross-session conversation history. These memories have different lifecycles and access patterns—investigation memory has high-frequency read/write during analysis loops, solution chains append sequentially as steps progress, reference memory requires global deduplication and ID mapping, and session memory requires cross-request persistence."
+    },
+    {
+      "source_id": "scan",
+      "title": "Research report caching solution",
+      "description": "Research agents produce substantial intermediate results across multi-turn interactions (search summaries, analysis reports, citation data). These results present three structural challenges:"
+    }
+  ],
+  "_version": 3
+}

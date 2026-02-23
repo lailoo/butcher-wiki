@@ -1,0 +1,19 @@
+{
+  "id": "PD-22",
+  "title": "Skill Plugin System",
+  "subtitle": "Skill/Plugin System",
+  "description": "Defines Agent skills through Markdown files (SKILL.md), supporting two-tier skill sources (workspace and builtin), requirement validation, and priority override to enable declarative capability extension for Agents.",
+  "sub_problems": [
+    "Skill discovery and loading (multi-directory scanning)",
+    "Requirement validation and availability filtering",
+    "Priority override (workspace > builtin)",
+    "Skill content injection into system prompts"
+  ],
+  "best_practices": [
+    "Skills described as Markdown files to lower creation barriers",
+    "Workspace skills take priority over builtin, enabling user customization and override"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

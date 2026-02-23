@@ -1,0 +1,65 @@
+{
+  "id": "PD-10",
+  "title": "Middleware Pipeline",
+  "subtitle": "Middleware Pipeline",
+  "description": "Decoupled composable middleware for cross-cutting concerns in the Agent lifecycle. Logging, rate limiting, caching, and other concerns are injected through middleware. Middleware executes in a strict order with support for conditional activation and state merging.",
+  "sub_problems": [
+    "Middleware registration: How to define and register middleware",
+    "Execution order: Middleware execution sequence and priority",
+    "Context passing: How middleware passes context between layers",
+    "Error handling: Middleware exceptions do not affect main flow",
+    "Composability: Middleware can be freely combined and removed"
+  ],
+  "best_practices": [
+    "Middleware order has dependencies: ThreadData must execute first (directory creation), ClarificationMiddleware must execute last (clarification interception)",
+    "Conditional activation reduces overhead: Unnecessary middleware is dynamically disabled via RunnableConfig to avoid wasteful execution",
+    "State merging rather than direct modification: Middleware returns dict merged by framework to avoid concurrent modification conflicts",
+    "Sync/async dual mode: Support both synchronous and asynchronous call scenarios, async versions use a prefix (abefore_model)",
+    "Cross-cutting concerns must be independently testable: Each middleware can be unit tested independently without depending on other middleware"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Middleware base class",
+      "values": {
+        "DeerFlow": "AgentMiddleware[S] generic base class, built-in to LangChain"
+      }
+    },
+    {
+      "name": "Hook points",
+      "values": {
+        "DeerFlow": "5 types: before_agent/before_model/after_model/after_agent/wrap_tool_call"
+      }
+    },
+    {
+      "name": "Middleware layers",
+      "values": {
+        "DeerFlow": "11 layers, explicit order control via _build_middlewares()"
+      }
+    },
+    {
+      "name": "Conditional activation",
+      "values": {
+        "DeerFlow": "Runtime configuration driven by RunnableConfig.configurable"
+      }
+    },
+    {
+      "name": "State management",
+      "values": {
+        "DeerFlow": "State merged from dict returns, None returns do not modify state"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "102.02",
+      "title": "AgentMiddleware[S] Generic Base Class + 11-Layer Middleware Chain",
+      "description": "_build_middlewares() registers 11 middleware layers in strict order: (1)ThreadDataMiddleware(before_agent, thread data directory isolation) → (2)UploadsMiddleware(before_agent, file upload injection) → (3)SandboxMiddleware(before_agent, sandbox environment retrieval) → (4)DanglingToolCallMiddleware(before_model, dangling tool call repair) → (5)SummarizationMiddleware(LangChain built-in, three-trigger compression) → (6)TodoListMiddleware(enabled in plan_mode, task tracking) → (7)TitleMiddleware(after_agent, auto-generate thread title) → (8)MemoryMiddleware(after_agent, async queue long-term memory update) → (9)ViewImageMiddleware(before_model, base64 image injection) → (10)SubagentLimitMiddleware(after_model, truncate over-limit parallel task calls) → (11)ClarificationMiddleware(wrap_tool_call, clarification interception must be last). 5 hook point types: before_agent/before_model/after_model/after_agent/wrap_tool_call. Sync/async dual mode (before_model/abefore_model). State-driven: dict|None returns merge state updates."
+    },
+    {
+      "source_id": "scan",
+      "title": "Composable Pipeline",
+      "description": "RAG (Retrieval-Augmented Generation) system processing is naturally pipeline-based: document parsing → chunking → embedding → indexing → retrieval. Different scenarios require different component combinations—academic PDFs need MinerU parser + knowledge graph indexing, plain text documents only need simple chunking + vector indexing. How can these components be freely combined and replaced on-demand while maintaining a unified call interface?"
+    }
+  ],
+  "_version": 3
+}

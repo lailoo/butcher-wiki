@@ -1,0 +1,91 @@
+{
+  "id": "PD-05",
+  "title": "Sandbox Isolation",
+  "subtitle": "Sandbox Isolation",
+  "description": "How to isolate the execution environment when Agent runs code to prevent host machine pollution. Balancing security and convenience.",
+  "sub_problems": [
+    "Code execution isolation: User code runs in sandbox without affecting the host machine",
+    "File system isolation: Agent can only access designated directories",
+    "Network isolation: Restrict Agent's network access scope",
+    "Resource limits: Constraints on CPU, memory, and execution time",
+    "Environment consistency: Consistency between sandbox environment and target environment",
+    "Import control: Restrict importable modules to prevent dangerous API calls",
+    "Intent-to-code isolation: LLM converts user intent to code before execution, avoiding direct injection"
+  ],
+  "best_practices": [
+    "Dual-layer abstraction is best practice: Provider manages lifecycle, Sandbox manages operations; DeerFlow's pattern is worth learning",
+    "Virtual paths must translate bidirectionally: input translation + output reverse translation, otherwise Agent sees real paths and gets confused",
+    "Lazy initialization saves resources: not all Agents need sandbox, create only on first tool call",
+    "Set execution timeout: MiroThinker 600s, blog scenario 30s, prevent infinite loops from exhausting resources",
+    "Defend against LLM hallucination: INVALID_SANDBOX_IDS blacklist is simple and effective defense",
+    "Result truncation protection: auto-truncate output exceeding threshold to avoid token explosion",
+    "AST static analysis import whitelist is zero-overhead pre-execution security check, suitable to supplement process isolation",
+    "Configuration loading priority chain (environment variables > module config > global config > defaults) allows same codebase to adapt to multiple deployment environments",
+    "LLM intent→code conversion is safer than direct user input execution; ToolAgent's _generate_code_from_intent pattern is worth learning"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Isolation Level",
+      "values": {
+        "DeerFlow": "Provider+Sandbox dual-layer abstraction (Local subprocess / Aio Docker)",
+        "MiroThinker": "E2B cloud sandbox (complete isolation)",
+        "DeepTutor": "Process-level: subprocess.run + tempfile temporary directory, production environment stacked with Docker container"
+      }
+    },
+    {
+      "name": "Virtual Paths",
+      "values": {
+        "DeerFlow": "/mnt/user-data/* bidirectional translation + output reverse translation",
+        "MiroThinker": "None (direct sandbox path operations)",
+        "DeepTutor": "No virtual path translation, direct allowed_roots whitelist validation on real paths"
+      }
+    },
+    {
+      "name": "Lifecycle Management",
+      "values": {
+        "DeerFlow": "SandboxMiddleware lazy initialization + idle timeout recovery 600s",
+        "MiroThinker": "Independent instance per task + DEFAULT_TIMEOUT=600s",
+        "DeepTutor": "Lazy initialization + TemporaryDirectory context manager auto-cleanup"
+      }
+    },
+    {
+      "name": "Defensive Design",
+      "values": {
+        "DeerFlow": "Structured exception hierarchy (SandboxError levels)",
+        "MiroThinker": "INVALID_SANDBOX_IDS blacklist + result/error truncation",
+        "DeepTutor": "Three-layer defense in depth: ImportGuard(AST) + path whitelist + subprocess timeout"
+      }
+    },
+    {
+      "name": "Code Repair",
+      "values": {
+        "DeerFlow": "None",
+        "MiroThinker": "validate_and_fix() LLM auto-repair (max 2 attempts)",
+        "DeepTutor": "ToolAgent detects exit_code failure then adds error prefix hint for path correction"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "102.04",
+      "title": "SandboxProvider ABC + Virtual Path Mapping + Middleware Lifecycle",
+      "description": "Classic Provider + Sandbox dual-layer abstraction: SandboxProvider(ABC) manages sandbox lifecycle (acquire/get/release), Sandbox(ABC) provides 5 tools (bash/ls/read_file/write_file/str_replace). LocalSandbox uses subprocess + local FS (global singleton), AioSandbox uses HTTP API → Docker/Apple Container. Virtual path system translates /mnt/user-data/workspace/* bidirectionally (tool layer replace_virtual_path + sandbox layer _resolve_path + output reverse translation _reverse_resolve_paths_in_output). SandboxMiddleware controls lazy initialization (lazy_init=True defers to first tool call), AioSandbox supports deterministic ID sha256(thread_id)[:8], idle timeout recovery 600s, atexit graceful shutdown."
+    },
+    {
+      "source_id": "37.01",
+      "title": "E2B Code Interpreter Cloud Sandbox + LLM Auto-Repair",
+      "description": "python_mcp_server.py provides cloud code execution environment via e2b_code_interpreter.Sandbox. Core constants: DEFAULT_TIMEOUT=600s single execution timeout, MAX_RESULT_LEN=20000 character result truncation, MAX_ERROR_LEN=4000 character error truncation. INVALID_SANDBOX_IDS blacklist (default/sandbox1/sandbox/some_id/new_sandbox) prevents LLM from fabricating sandbox IDs. Supports file upload to sandbox. Each task gets independent Sandbox instance without interference. Migration adaptation as CodeValidatorService: timeout reduced to 30s, result truncation reduced to 5000 characters, validate_and_fix() uses LLM auto-repair on validation failure (max 2 attempts)."
+    },
+    {
+      "source_id": "scan",
+      "title": "Path Whitelist Approach",
+      "description": "Agent system needs to read and write files when executing research tasks: saving search results, generating reports, caching intermediate data. Unrestricted file access introduces security risks."
+    },
+    {
+      "source_id": "scan",
+      "title": "Process-Level Workspace Isolation Approach",
+      "description": "Lightweight process isolation in educational scenarios: no external sandbox service dependency, implements application-layer security through subprocess + AST inspection"
+    }
+  ],
+  "_version": 3
+}

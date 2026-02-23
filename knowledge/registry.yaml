@@ -1,0 +1,160 @@
+# Horizon Wiki — 知识库全局索引
+
+# 问题域注册表
+domains:
+  - id: "PD-01"
+    slug: "context-management"
+    title: "上下文管理"
+    subtitle: "Context Window Management"
+    icon: "brain"
+    color: "#6366f1"  # indigo
+    severity: critical
+    description: "LLM 上下文窗口有限，长任务中如何保留关键信息、裁剪冗余内容、避免 token 超限崩溃"
+    tags: ["token-estimation", "truncation", "compression", "sliding-window"]
+
+  - id: "PD-02"
+    slug: "multi-agent-orchestration"
+    title: "多 Agent 编排"
+    subtitle: "Multi-Agent Orchestration"
+    icon: "network"
+    color: "#8b5cf6"  # violet
+    severity: critical
+    description: "多个专职 Agent 如何协调执行顺序、并行分发任务、汇聚结果"
+    tags: ["parallel", "dag", "lead-subagent", "state-sync"]
+
+  - id: "PD-03"
+    slug: "fault-tolerance"
+    title: "容错与重试"
+    subtitle: "Fault Tolerance & Retry"
+    icon: "shield"
+    color: "#ec4899"  # pink
+    severity: critical
+    description: "LLM 调用失败、响应截断、格式错误时如何检测、恢复、重试"
+    tags: ["retry", "rollback", "degradation", "exponential-backoff"]
+
+  - id: "PD-04"
+    slug: "tool-system"
+    title: "工具系统"
+    subtitle: "Tool System Design"
+    icon: "wrench"
+    color: "#f59e0b"  # amber
+    severity: high
+    description: "统一管理、注册、发现、执行工具；MCP 协议标准化"
+    tags: ["mcp", "tool-manager", "hot-reload", "permission"]
+
+  - id: "PD-05"
+    slug: "sandbox-isolation"
+    title: "沙箱隔离"
+    subtitle: "Sandbox Isolation"
+    icon: "box"
+    color: "#10b981"  # emerald
+    severity: high
+    description: "Agent 执行代码时如何隔离环境，防止宿主机污染"
+    tags: ["docker", "e2b", "subprocess", "virtual-path"]
+
+  - id: "PD-06"
+    slug: "memory-persistence"
+    title: "记忆持久化"
+    subtitle: "Memory Persistence"
+    icon: "database"
+    color: "#06b6d4"  # cyan
+    severity: high
+    description: "跨会话的用户偏好、历史上下文、事实知识如何存储和检索"
+    tags: ["vector-store", "structured-memory", "debounce", "cross-session"]
+
+  - id: "PD-07"
+    slug: "quality-assurance"
+    title: "质量检查"
+    subtitle: "Quality Assurance"
+    icon: "check-circle"
+    color: "#84cc16"  # lime
+    severity: high
+    description: "生成内容的多维自动评估、Generator-Critic 迭代循环"
+    tags: ["reviewer", "fact-check", "consistency", "scoring"]
+
+  - id: "PD-08"
+    slug: "search-retrieval"
+    title: "搜索与检索"
+    subtitle: "Search & Retrieval"
+    icon: "search"
+    color: "#3b82f6"  # blue
+    severity: critical
+    description: "多搜索源聚合、树状递归深度研究、知识缺口检测"
+    tags: ["multi-source", "recursive-search", "knowledge-gap", "credibility"]
+
+  - id: "PD-09"
+    slug: "human-in-the-loop"
+    title: "Human-in-the-Loop"
+    subtitle: "Human-Agent Interaction"
+    icon: "user-check"
+    color: "#f97316"  # orange
+    severity: medium
+    description: "Agent 执行中如何在关键节点暂停、向用户澄清、获取审批"
+    tags: ["clarification", "approval", "interrupt", "multi-turn"]
+
+  - id: "PD-10"
+    slug: "middleware-pipeline"
+    title: "中间件管道"
+    subtitle: "Middleware Pipeline"
+    icon: "layers"
+    color: "#a855f7"  # purple
+    severity: medium
+    description: "Agent 生命周期中横切关注点的可组合中间件解耦"
+    tags: ["lifecycle-hooks", "composable", "aop", "plugin"]
+
+  - id: "PD-11"
+    slug: "observability"
+    title: "可观测性"
+    subtitle: "Observability & Cost Tracking"
+    icon: "activity"
+    color: "#14b8a6"  # teal
+    severity: high
+    description: "LLM 调用链路追踪、Token 计量、成本分析、结构化日志"
+    tags: ["tracing", "token-tracking", "cost", "structured-log"]
+
+  - id: "PD-12"
+    slug: "reasoning-enhancement"
+    title: "推理增强"
+    subtitle: "Reasoning Enhancement"
+    icon: "zap"
+    color: "#eab308"  # yellow
+    severity: medium
+    description: "Extended Thinking、分层 LLM 策略、MoE 路由"
+    tags: ["extended-thinking", "tiered-llm", "moe", "chain-of-thought"]
+
+# 已分析项目
+projects:
+  - name: "MiroThinker"
+    slug: "mirothinker"
+    repo: "https://github.com/MiroMindAI/MiroThinker"
+    language: "Python"
+    description: "AI 深度思考与研究助手"
+    domains: ["PD-01", "PD-02", "PD-03", "PD-04", "PD-05", "PD-08", "PD-11", "PD-12"]
+
+  - name: "DeerFlow"
+    slug: "deerflow"
+    repo: "https://github.com/bytedance/deer-flow"
+    language: "Python"
+    description: "字节跳动深度研究框架"
+    domains: ["PD-01", "PD-02", "PD-03", "PD-04", "PD-05", "PD-06", "PD-07", "PD-09", "PD-10"]
+
+  - name: "GPT-Researcher"
+    slug: "gpt-researcher"
+    repo: "https://github.com/assafelovic/gpt-researcher"
+    language: "Python"
+    description: "自主深度研究 Agent"
+    domains: ["PD-01", "PD-02", "PD-06", "PD-08", "PD-09", "PD-12"]
+
+  - name: "DeepResearch"
+    slug: "deep-research"
+    repo: "https://github.com/Alibaba-NLP/DeepResearch"
+    language: "Python"
+    description: "通义深度研究框架"
+    domains: ["PD-01", "PD-05", "PD-08", "PD-12"]
+
+  - name: "DeepWiki"
+    slug: "deepwiki"
+    repo: "https://github.com/AsyncFuncAI/deepwiki-open"
+    language: "Python + TypeScript"
+    description: "Git 仓库自动 Wiki 生成器（纵向分析标杆）"
+    domains: ["PD-08"]

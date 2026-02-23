@@ -1,0 +1,164 @@
+{
+  "id": "PD-08",
+  "title": "Search and Retrieval",
+  "subtitle": "Search & Retrieval",
+  "description": "Aggregates multiple search sources, performs tree-structured recursive deep research, and detects knowledge gaps. Core capability for agents to acquire external knowledge.",
+  "sub_problems": [
+    "Multi-source aggregation: Integrate Web search, academic search, code search, and other sources",
+    "Recursive deepening: Auto-generate sub-queries for deeper research when initial search is insufficient",
+    "Knowledge gap detection: Identify parts where current information is insufficient to answer",
+    "Source credibility: Evaluate trustworthiness and relevance of search results",
+    "Deduplication and fusion: Deduplicate and merge results from multiple sources",
+    "Engine selection: Auto-select optimal RAG engine based on document type and precision requirements",
+    "Component orthogonality: RAG pipeline stages (parsing/chunking/embedding/indexing/retrieval) can be independently replaced without affecting each other",
+    "Embedding backend adaptation: Unified interface supporting multiple embedding services like OpenAI/Jina/Cohere/Ollama"
+  ],
+  "best_practices": [
+    "Tree-structured recursive search is standard for deep research: halve breadth layer-by-layer to control exponential explosion, use visited_urls for deduplication",
+    "Dual-engine mutual fallback: Don't rely on single search source, language-aware routing improves Chinese and English search quality",
+    "Goal-oriented extraction beats full-text return: Use LLM to extract only information relevant to current goal, saving tokens",
+    "Progressive degradation truncation: Better to truncate than fail, three-level degradation 70% → 70% → 25K characters",
+    "Independent summarization LLM reduces cost: Use cheaper model for summarization, doesn't occupy main reasoning LLM context",
+    "Search strategy must be configurable: Parameterize breadth/depth, different tasks need different search depths",
+    "Factory lazy loading avoids dependency pollution: Delayed import via closure, users only install needed RAG backend dependencies",
+    "Fluent API pipeline assembly is more flexible than inheritance: Skip unnecessary stages (e.g., LightRAG doesn't need chunker)",
+    "Consolidate SERP results using provider-specific Jinja2 templates, AI providers directly use built-in answers",
+    "Silent fallback from FAISS to numpy cosine when unavailable, maintain interface consistency"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Search architecture",
+      "values": {
+        "GPT-Researcher": "DeepResearchSkill tree-structured recursion (breadth=4, depth=2)",
+        "MiroThinker": "Serper + Zhipu dual-engine language-aware routing",
+        "DeepResearch": "Visit two-stage goal-oriented extraction pipeline",
+        "DeepTutor": "Dual-layer architecture: RAG three engines (LlamaIndex/LightRAG/RAGAnything) + Web six providers"
+      }
+    },
+    {
+      "name": "Deduplication mechanism",
+      "values": {
+        "GPT-Researcher": "visited_urls cross-layer URL-level deduplication",
+        "MiroThinker": "filter_google_search_result() result filtering",
+        "DeepResearch": "None (each Visit is independent)",
+        "DeepTutor": "RAG instance caching (_instances dict deduplicated by working_dir), no cross-provider result deduplication"
+      }
+    },
+    {
+      "name": "Result processing",
+      "values": {
+        "GPT-Researcher": "trim_context_to_word_limit(25000) hard truncation",
+        "MiroThinker": "Return search snippets directly",
+        "DeepResearch": "EXTRACTOR_PROMPT → {rational, evidence, summary} structured extraction",
+        "DeepTutor": "AnswerConsolidator dual strategy: Jinja2 template rendering + LLM summary synthesis"
+      }
+    },
+    {
+      "name": "Fault tolerance strategy",
+      "values": {
+        "GPT-Researcher": "asyncio.Semaphore(2) concurrency control",
+        "MiroThinker": "Dual-engine mutual fallback",
+        "DeepResearch": "Progressive truncation (70%→70%→25K) + JSON fault tolerance with 3 retries",
+        "DeepTutor": "FAISS→cosine fallback, ImportError capture, KB metadata fallback to env var"
+      }
+    },
+    {
+      "name": "Cost control",
+      "values": {
+        "GPT-Researcher": "~36 searches + 20 LLM calls",
+        "MiroThinker": "Serper free tier 2500 calls",
+        "DeepResearch": "Optional independent summarization LLM with 7B model to reduce cost",
+        "DeepTutor": "Three engines tiered by speed/accuracy, embedding adapter supports local Ollama zero-cost option"
+      }
+    },
+    {
+      "name": "Retrieval method",
+      "values": {
+        "DeepTutor": "Vector (FAISS/cosine), knowledge graph (LightRAG hybrid/local/global/naive), multimodal (RAGAnything)",
+        "PageIndex": "LLM reasoning-based tree search, no vector database, production uses MCTS"
+      }
+    },
+    {
+      "name": "Index structure",
+      "values": {
+        "DeepTutor": "FAISS IndexFlatIP + LightRAG knowledge graph + LlamaIndex VectorStoreIndex coexist",
+        "PageIndex": "Hierarchical tree index (title/page/summary), auto TOC detection for PDF + MD header parsing"
+      }
+    },
+    {
+      "name": "Ranking strategy",
+      "values": {
+        "DeepTutor": "DenseRetriever cosine similarity top-k, LightRAG built-in ranking, Tavily native relevance score",
+        "PageIndex": "LLM reasoning output thinking + node_list, non-similarity-based ranking"
+      }
+    },
+    {
+      "name": "Caching mechanism",
+      "values": {
+        "DeepTutor": "RAG instance-level caching (ClassVar dict), no query result caching",
+        "PageIndex": "Tree index built once and persisted as JSON, retrieval passes only tree structure not original text"
+      }
+    },
+    {
+      "name": "Extensibility",
+      "values": {
+        "DeepTutor": "Component Protocol + decorator registration, add new pipeline/provider with zero core code changes",
+        "PageIndex": "Three multi-document strategies (metadata SQL / semantics DocScore / description LLM)"
+      }
+    },
+    {
+      "name": "Parsing fault tolerance",
+      "values": {
+        "DeepTutor": "FileTypeRouter multi-encoding attempts (UTF-8→GBK→Latin-1→replace), binary detection skip",
+        "PageIndex": "Three-level fallback (has TOC with page numbers → has TOC no page numbers → no TOC) + validation fix loop max 3 rounds"
+      }
+    },
+    {
+      "name": "Multimodal support",
+      "values": {
+        "DeepTutor": "RAGAnything supports PDF image/table/formula extraction, MinerU parsing + image migration to canonical path",
+        "PageIndex": "Vision RAG: VLM directly reasons on PDF page images, no OCR needed"
+      }
+    },
+    {
+      "name": "Expert knowledge integration",
+      "values": {
+        "DeepTutor": "ArXiv PaperSearchTool academic search + Serper scholar mode + citation formatting",
+        "PageIndex": "Tree search prompt directly injects domain preference, no embedding fine-tuning needed"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "41.02",
+      "title": "DeepResearchSkill Tree-Structured Recursive Search with Halving Breadth and URL Deduplication",
+      "description": "DeepResearchSkill in gpt_researcher/skills/deep_research.py implements tree-structured recursive deep research: breadth=4 (4 sub-queries per layer), depth=2 (2 recursion levels), concurrency_limit=2 (asyncio.Semaphore concurrency control). Step 0 generate_research_plan() performs initial search for background → LLM generates 3 clarification questions → constructs combined_query. Each layer generate_search_queries() generates sub-queries → each sub-query creates independent GPTResearcher instance (state isolation) → conduct_research() → process_research_results() extracts learnings + follow-up questions. Breadth halves per layer max(2, breadth//2) to control exponential explosion. Cross-layer shared visited_urls implements URL-level deduplication. Finally trim_context_to_word_limit(25000) truncates and merges results."
+    },
+    {
+      "source_id": "75.02",
+      "title": "Serper Google Search with Zhipu Dual-Engine Routing and Language-Aware Fallback",
+      "description": "MiroThinker calls Serper API through two-layer MCP nesting (searching_google_mcp_server.py → serper_mcp_server.py → https://google.serper.dev), essentially a Google search proxy. During migration, skip MCP wrapper and call Serper API directly as new search source in SmartSearchService parallel with Zhipu. Routing strategy: Chinese topics → Zhipu primary + Serper supplements English results, English topics → Serper primary + Zhipu supplements Chinese results. Either engine unavailable → auto fallback. Serper free tier 2500 calls, single blog post uses 3-8 searches. filter_google_search_result() filters search results."
+    },
+    {
+      "source_id": "113.02",
+      "title": "Visit Tool Two-Stage Goal-Oriented Web Extraction with Progressive Degradation Truncation",
+      "description": "Visit(BaseTool) in inference/tool_visit.py implements two-stage information extraction pipeline: Stage 1 uses Jina API (https://r.jina.ai/{url}, 3 retries + 50s timeout) to fetch raw Markdown full text → Stage 2 uses independent summarization LLM (SUMMARY_MODEL_NAME env var configurable) + EXTRACTOR_PROMPT for goal-oriented extraction, outputs {rational, evidence, summary} three-field JSON. truncate_to_tokens(text, 95000) uses tiktoken cl100k_base for precise truncation. Summarization failure triggers progressive degradation truncation: 70% → 70% → 25000 characters. JSON fault-tolerant parsing: direct json.loads → extract content between {} → re-invoke LLM (max 3 times)."
+    },
+    {
+      "source_id": "scan",
+      "title": "Three-Engine RAG with Six-Source Search Solution",
+      "description": "Switchable three-engine RAG with six-source Web search component architecture, supports selecting optimal retrieval strategy per scenario"
+    },
+    {
+      "source_id": "scan",
+      "title": "Git Repository RAG Retrieval Solution",
+      "description": "Understanding a Git repository codebase requires answering various questions"
+    },
+    {
+      "source_id": "scan",
+      "title": "Tree-Structured Vector-Free RAG Retrieval Solution",
+      "description": "Traditional RAG systems rely on vector databases for semantic similarity retrieval, with three fundamental limitations"
+    }
+  ],
+  "_version": 3
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-21",
+  "slug": "cron-task-scheduling",
+  "title": "定时任务调度",
+  "subtitle": "Cron/Task Scheduling",
+  "icon": "clock",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "为 Agent 提供定时任务能力，支持一次性（at）、周期性（every）和 cron 表达式三种调度模式，任务持久化存储，Agent 可通过工具调用自主创建调度。",
+  "tags": [
+    "cron",
+    "scheduler",
+    "periodic-task",
+    "persistence"
+  ],
+  "sub_problems": [
+    "多种调度模式支持（at/every/cron）",
+    "任务持久化与恢复",
+    "调度执行与 Agent 回调集成",
+    "时区处理"
+  ],
+  "best_practices": [
+    "将调度定义为数据结构（CronSchedule），通过 CronService 统一管理生命周期",
+    "任务持久化到 JSON 文件，支持进程重启后恢复"
+  ]
+}

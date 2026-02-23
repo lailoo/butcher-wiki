@@ -1,0 +1,23 @@
+{
+  "id": "PD-17",
+  "title": "Streaming Output",
+  "subtitle": "Streaming Output & Real-time Response Handling",
+  "description": "AI Agents need to handle streaming responses from LLMs, enabling real-time output, incremental updates, and progressive result display. Streaming significantly reduces perceived latency and improves user experience, but introduces complex challenges in state management, error handling, and data consistency.",
+  "sub_problems": [
+    "Token-level buffering and chunking: How to efficiently receive, buffer, and distribute LLM streaming tokens while avoiding memory overflow and processing delays",
+    "Streaming error recovery: Detection, recovery, and user notification mechanisms when errors occur during streaming transmission",
+    "Multi-consumer synchronization: Synchronization and backpressure handling when multiple downstream systems (UI, logging, storage) consume streaming data simultaneously",
+    "Streaming result aggregation: Aggregating dispersed token streams into structured results (JSON, Markdown), handling format validation and partial result persistence",
+    "Streaming timeout and cancellation: Timeout control for long-running streaming transfers and graceful handling of user cancellation operations"
+  ],
+  "best_practices": [
+    "Use event-driven architecture (EventEmitter/Observable) to decouple streaming data production and consumption, supporting multiple listeners",
+    "Implement backpressure mechanisms to prevent fast producers from overwhelming slow consumers, using buffered queues and flow control",
+    "Set explicit timeouts and cancellation tokens for streaming responses, enabling users to interrupt long-running operations",
+    "Maintain checkpoints during streaming transmission, allowing partial result persistence and resumable transfers",
+    "Perform incremental validation on streaming output, detecting format errors early and notifying users promptly rather than waiting for complete responses"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

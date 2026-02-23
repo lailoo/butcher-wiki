@@ -1,0 +1,68 @@
+{
+  "id": "PD-09",
+  "title": "Human-in-the-Loop",
+  "subtitle": "Human-Agent Interaction",
+  "description": "How to pause agent execution at critical checkpoints, clarify with users, and obtain approvals. A key aspect of human-agent collaboration.",
+  "sub_problems": [
+    "Pause point design: which operations require human confirmation",
+    "Clarification requests: how agents ask users when uncertain",
+    "Approval workflows: approval mechanisms for risky operations",
+    "Feedback integration: how user feedback influences subsequent execution",
+    "Multi-turn interaction: multi-turn human-agent dialogue in complex tasks"
+  ],
+  "best_practices": [
+    "CLARIFY→PLAN→ACT priority: agents must clarify first when uncertain, strictly prohibit acting then asking",
+    "Structured clarification types: use enumerated types (missing_info, etc.) rather than free text for easier frontend UI rendering",
+    "Middleware interception over node-level hardcoding: wrap_tool_call hooks decouple clarification logic from business logic",
+    "interrupt() over threading.Event: non-blocking, supports persistence, scalable to multiple interruption points",
+    "Automatic timeout handling: default behavior when users don't respond for extended periods, prevents permanent task suspension"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Pause mechanism",
+      "values": {
+        "DeerFlow-Clarification": "ClarificationMiddleware wrap_tool_call + Command(goto=END)",
+        "DeerFlow-Interrupt": "LangGraph interrupt() + Command(resume=...)"
+      }
+    },
+    {
+      "name": "Clarification types",
+      "values": {
+        "DeerFlow-Clarification": "5 structured types (missing_info/ambiguous/approach/risk/suggestion)",
+        "DeerFlow-Interrupt": "single confirm_outline type"
+      }
+    },
+    {
+      "name": "State persistence",
+      "values": {
+        "DeerFlow-Clarification": "depends on LangGraph checkpoint",
+        "DeerFlow-Interrupt": "SqliteSaver persistence, supports process restart recovery"
+      }
+    },
+    {
+      "name": "Implementation layer",
+      "values": {
+        "DeerFlow-Clarification": "three layers: Tool + Middleware + Prompt",
+        "DeerFlow-Interrupt": "single layer: interrupt() within graph node"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "102.05",
+      "title": "ClarificationMiddleware with five-type proactive clarification",
+      "description": "Three-layer architecture for proactive clarification: ask_clarification @tool at tool layer (5 types: missing_info/ambiguous_requirement/approach_choice/risk_confirmation/suggestion) → ClarificationMiddleware at middleware layer (wrap_tool_call interception, _format_clarification_message formats icon-labeled messages, Command(goto=END) interrupts graph execution) → Prompt layer (<clarification_system> block in lead_agent/prompt.py enforces CLARIFY→PLAN→ACT workflow priority). Frontend detects and renders clarification UI via isClarificationToolMessage()."
+    },
+    {
+      "source_id": "101.113",
+      "title": "LangGraph interrupt() with Command(resume=...) native interruption recovery",
+      "description": "Replace threading.Event blocking with native LangGraph interrupt(): _planner_node calls interrupt({type: confirm_outline}) to automatically interrupt graph execution and persist checkpoint, frontend displays interrupt data, user action triggers POST /api/tasks/resume, backend resumes graph execution via Command(resume=action). Supports SqliteSaver persistence for task recovery after process restart."
+    },
+    {
+      "source_id": "scan",
+      "title": "Research plan confirmation approach",
+      "description": "Research-focused agents face two core user anxieties when executing long-running tasks:"
+    }
+  ],
+  "_version": 3
+}

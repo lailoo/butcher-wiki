@@ -1,0 +1,23 @@
+{
+  "id": "PD-18",
+  "title": "Internationalization Engineering",
+  "subtitle": "Multi-language Support Engineering",
+  "description": "AI Agents in global deployments require multi-language interaction support, localized prompts, and cross-language context management. Internationalization engineering involves language detection, dynamic translation, cultural adaptation, and coordination of multi-language knowledge bases to ensure Agent consistency and accuracy across different language environments.",
+  "sub_problems": [
+    "Language Detection and Routing: Automatically identify user input language and route to corresponding processing pipelines",
+    "Multi-language Prompt Management: Maintain and version control multi-language prompt templates while ensuring semantic consistency",
+    "Translation Quality Control: Handle translation errors, cultural differences, and domain terminology accuracy",
+    "Multi-language Context Fusion: Correctly maintain conversation history and knowledge retrieval in mixed-language scenarios",
+    "Localization Adaptation: Handle timezone, currency, date format, and other region-specific data representations"
+  ],
+  "best_practices": [
+    "Use language tags (BCP 47) for unified language identification and establish clear language routing strategies",
+    "Separate prompt templates from translated content, centrally maintain multi-language versions through configuration management systems",
+    "Introduce translation quality scoring mechanisms and conduct manual review and feedback loops for critical path translations",
+    "Explicitly mark language tags in context to avoid ambiguity and errors caused by language mixing",
+    "Establish multi-language test sets and benchmarks, regularly evaluate Agent performance differences across languages"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

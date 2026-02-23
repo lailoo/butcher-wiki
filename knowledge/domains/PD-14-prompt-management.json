@@ -1,0 +1,26 @@
+{
+  "id": "PD-14",
+  "slug": "prompt-management",
+  "title": "多语言 Prompt 管理",
+  "subtitle": "Multi-Language Prompt Management",
+  "icon": "sparkles",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "Agent 系统中 prompt 分散在各模块，需要统一管理、支持多语言、热更新和版本控制。该域解决如何将 prompt 从代码中解耦，实现结构化的 prompt 资产管理。",
+  "tags": [
+    "prompt",
+    "i18n",
+    "configuration",
+    "YAML"
+  ],
+  "sub_problems": [
+    "Prompt 与代码解耦（YAML/JSON 外部化）",
+    "多语言 fallback 链设计",
+    "Prompt 缓存与热重载",
+    "按 module/agent 层级组织 prompt 文件"
+  ],
+  "best_practices": [
+    "使用 YAML 文件外部化 prompt，按 module/agent/language 三级目录组织",
+    "实现语言 fallback 链，确保缺失翻译时优雅降级到默认语言"
+  ]
+}

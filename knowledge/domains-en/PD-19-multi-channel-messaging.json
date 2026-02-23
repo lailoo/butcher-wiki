@@ -1,0 +1,20 @@
+{
+  "id": "PD-19",
+  "title": "Multi-Channel Messaging Adapter",
+  "subtitle": "Multi-Channel Messaging Adapter",
+  "description": "Unifies message sending and receiving interfaces across multiple chat platforms (IM/Email/Social) using adapter pattern and message bus to decouple channel implementation from core business logic, supporting dynamic registration and lifecycle management.",
+  "sub_problems": [
+    "Platform API abstraction (WebSocket vs HTTP vs SDK)",
+    "Message format normalization (text/image/file/rich text)",
+    "Access control (allow_from whitelist)",
+    "Message routing and session isolation",
+    "Channel lifecycle management (startup/shutdown/reconnection)"
+  ],
+  "best_practices": [
+    "Define unified interface using ABC base class (start/stop/send), decouple channels via MessageBus async queue",
+    "Independent configuration per channel with allow_from whitelist for access control"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

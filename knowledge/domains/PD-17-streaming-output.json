@@ -1,0 +1,31 @@
+{
+  "id": "PD-17",
+  "slug": "streaming-output",
+  "title": "流式输出",
+  "subtitle": "Streaming Output & Real-time Response Handling",
+  "icon": "zap",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "AI Agent 需要处理 LLM 的流式响应，实现实时输出、增量更新和渐进式结果展示。流式输出能显著降低用户感知延迟，提升交互体验，但引入了复杂的状态管理、错误处理和数据一致性挑战。",
+  "tags": [
+    "streaming",
+    "real-time",
+    "incremental-output",
+    "token-buffering",
+    "backpressure"
+  ],
+  "sub_problems": [
+    "Token 级别的缓冲与分块：如何高效地接收、缓冲和分发 LLM 流式 token，避免内存溢出和处理延迟",
+    "流式错误恢复：流式传输中途出现错误时的检测、恢复和用户通知机制",
+    "多消费者同步：多个下游系统（UI、日志、存储）同时消费流式数据时的同步和背压处理",
+    "流式结果聚合：将分散的 token 流聚合为结构化结果（JSON、Markdown），处理格式验证和部分结果保存",
+    "流式超时与取消：长时间流式传输的超时控制、用户取消操作的优雅处理"
+  ],
+  "best_practices": [
+    "使用事件驱动架构（EventEmitter/Observable）解耦流式数据生产和消费，支持多个监听器",
+    "实现背压机制（backpressure）防止快速生产者淹没慢速消费者，使用缓冲队列和流量控制",
+    "为流式响应设置明确的超时和取消令牌（CancellationToken），支持用户中断长时间操作",
+    "在流式传输中保留检查点（checkpoint），允许部分结果持久化和断点续传",
+    "对流式输出进行增量验证，及时发现格式错误并通知用户，避免等待完整响应才发现问题"
+  ]
+}

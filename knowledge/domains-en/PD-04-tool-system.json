@@ -1,0 +1,108 @@
+{
+  "id": "PD-04",
+  "title": "Tool System",
+  "subtitle": "Tool System Design",
+  "description": "Unified management, registration, discovery, and execution of tools with MCP protocol standardization. The tool system defines the boundary of Agent capabilities.",
+  "sub_problems": [
+    "Tool registration: How to define and register tool schema (name, parameters, return values)",
+    "Tool discovery: How agents know which tools are available",
+    "Permission control: Which tools require user confirmation before execution",
+    "Result formatting: How to format tool return values into LLM-understandable text",
+    "MCP protocol: Model Context Protocol standardizes tool interfaces",
+    "Tool result summarization: How to compress raw tool output into LLM-consumable summaries",
+    "Tool call lifecycle: How to track all states from pending→running→success/failed",
+    "Graceful tool degradation: How to ensure core tools remain available when dependencies are missing"
+  ],
+  "best_practices": [
+    "Tool descriptions must be precise: LLMs select tools based on descriptions, vague descriptions cause misselection",
+    "Parameters should have defaults: Reduce the number of parameters LLMs need to decide",
+    "Return results should be structured: Facilitates LLM parsing and referencing",
+    "Dangerous operations need confirmation: File deletion, network requests require human-in-the-loop",
+    "Control tool quantity: Too many tools dilute LLM selection accuracy",
+    "Separate thin wrapper layer from service layer: tools/ handles interface adaptation only, logic goes in services/",
+    "Truncate tool results before summarization: Prevent oversized output from exhausting context window",
+    "Use AST inspection before code execution: ImportGuard intercepts dangerous modules before execution"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Tool registration method",
+      "values": {
+        "DeerFlow(config)": "YAML config.yaml → resolve_variable() reflection loading",
+        "DeerFlow(MCP)": "JSON mcp_config.json → McpServerConfig",
+        "MiroThinker": "server_configs list + StdioServerParameters",
+        "DeepTutor": "Module import + __init__.py unified re-export, no decorators/registry"
+      }
+    },
+    {
+      "name": "Tool grouping/permissions",
+      "values": {
+        "DeerFlow(config)": "tool_groups (web/file:read/file:write/bash) + SubagentConfig whitelist/blacklist",
+        "DeerFlow(MCP)": "enabled field controls enable/disable",
+        "MiroThinker": "tool_blacklist set disables specific tools",
+        "DeepTutor": "YAML valid_tools whitelist + Agent-level tool subset assignment"
+      }
+    },
+    {
+      "name": "MCP protocol support",
+      "values": {
+        "DeerFlow(config)": "Built-in tools use @tool decorator, MCP tools merged via get_cached_mcp_tools()",
+        "DeerFlow(MCP)": "Full support for stdio/SSE/HTTP three transport types",
+        "MiroThinker": "Native MCP, 7 types of StdioServerParameters tool servers",
+        "DeepTutor": "Not supported, tool interface is project-internal Python functions"
+      }
+    },
+    {
+      "name": "Hot reload/caching",
+      "values": {
+        "DeerFlow(config)": "Modify YAML use path to switch, requires restart",
+        "DeerFlow(MCP)": "mtime cache invalidation auto-detects config changes",
+        "MiroThinker": "Loaded at startup, fixed during runtime",
+        "DeepTutor": "Provider switchable at runtime (env/config), no tool hot reload"
+      }
+    },
+    {
+      "name": "Timeout protection",
+      "values": {
+        "DeerFlow(config)": "No built-in timeout",
+        "DeerFlow(MCP)": "No built-in timeout",
+        "MiroThinker": "@with_timeout(1200) 20-minute hard timeout",
+        "DeepTutor": "code_executor subprocess.timeout + configurable code_timeout"
+      }
+    },
+    {
+      "name": "Result summarization",
+      "values": {
+        "DeepTutor": "LLM-driven tool result summarization middleware, summarize after truncating to 2000 characters"
+      }
+    },
+    {
+      "name": "Lifecycle tracking",
+      "values": {
+        "DeepTutor": "ToolCallRecord dataclass 6-state machine + JSON persistence"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "102.08",
+      "title": "config.yaml → ToolConfig → resolve_variable() reflection loading + tool_groups grouping + SubagentConfig whitelist/blacklist",
+      "description": "Declarative tool configuration in config.yaml (name/group/use triplet), parsed by ToolConfig (Pydantic) then reflection-loaded via resolve_variable(): importlib.import_module(module_path) + getattr(module, variable_name) + isinstance type validation. Four tool_groups (web/file:read/file:write/bash), get_available_tools(groups=[\"web\"]) filters by group. Community tools follow unified pattern: each tool under src/community/ decorated with @tool(\"tool_name\"), reads YAML extra parameters via get_app_config().get_tool_config(\"tool_name\").model_extra. SubagentConfig supports tools (whitelist) and disallowed_tools (blacklist, defaults to disallowing \"task\" to prevent recursive delegation). ConfigDict(extra=\"allow\") enables parameter pass-through."
+    },
+    {
+      "source_id": "1002.06",
+      "title": "MCP protocol integration: McpServerConfig + get_cached_mcp_tools() mtime caching + three transport protocols",
+      "description": "backend/src/mcp/ implements complete MCP integration in 4 files (~200 lines). McpServerConfig (Pydantic) defines enabled/type/command/args/env/url/headers. build_servers_config() iterates enabled servers to build langchain-mcp-adapters parameters with error isolation (single server failure doesn't affect others). get_mcp_tools() reads latest config from disk each time ensuring Gateway API changes take effect immediately. get_cached_mcp_tools() uses file mtime cache invalidation + asyncio.Lock prevents concurrency + ThreadPoolExecutor supports sync environments. Supports stdio/SSE/HTTP three transport protocols. resolve_env_variables() recursively resolves $ENV_VAR. Four-level config file lookup priority: parameters→environment variables→CWD→parent directory."
+    },
+    {
+      "source_id": "37.09",
+      "title": "ToolManager MCP multi-server management + tool_blacklist + @with_timeout(1200) + fix_tool_call_arguments()",
+      "description": "ToolManager (ToolManagerProtocol) in manager.py unifies management of multiple MCP servers. server_configs list defines 7 tool servers (tool-python/tool-google-search/tool-jina-scrape/tool-reasoning/tool-reader/tool-vqa/tool-transcribe), each configured with StdioServerParameters. get_all_tool_definitions() retrieves all tool schemas, execute_tool_call(server_name, tool_name, arguments) executes calls. tool_blacklist set disables specific tools. @with_timeout(1200) decorator adds 20-minute timeout protection to tool execution. fix_tool_call_arguments() corrects common LLM parameter errors. Supports persistent browser session storage."
+    },
+    {
+      "source_id": "scan",
+      "title": "Academic scenario tool system",
+      "description": "In academic scenarios, tool results require LLM secondary summarization and citation tracking, representing an important extension dimension of the tool system"
+    }
+  ],
+  "_version": 3
+}

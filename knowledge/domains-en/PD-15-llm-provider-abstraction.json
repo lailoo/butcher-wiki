@@ -1,0 +1,76 @@
+{
+  "id": "PD-15",
+  "title": "LLM Provider Abstraction Layer",
+  "subtitle": "LLM Provider Abstraction Layer",
+  "description": "Agent systems need to support multiple LLM providers (OpenAI/Anthropic/local models) with runtime capability detection and unified error handling. This domain addresses how to design a provider abstraction layer that decouples upper-layer Agent code from specific LLM implementations.",
+  "sub_problems": [
+    "Provider registration and factory pattern",
+    "Model capability detection (function calling, vision, etc.)",
+    "Unified error mapping and exception handling",
+    "Cloud vs local provider separation",
+    "Embedding provider multi-adapter support",
+    "Thinking tags cleanup (reasoning model <think> tag filtering)",
+    "URL auto-detection and /v1 suffix completion",
+    "Provider presets frontend configuration display",
+    "Token parameter compatibility (max_tokens vs max_completion_tokens)"
+  ],
+  "best_practices": [
+    "Use registry + factory pattern to manage provider lifecycle",
+    "Implement capabilities detection layer to enable Agent dynamic behavior adjustment based on model capabilities",
+    "Use MODEL_OVERRIDES for model-level exceptions (e.g., forced_temperature) to avoid provider-level configuration bloat",
+    "Error mapping adopts optional SDK loading (try import), rules for uninstalled SDKs are automatically skipped",
+    "Stream retry requires manual loop implementation, tenacity does not support AsyncGenerator decoration"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Registration mechanism",
+      "values": {
+        "DeepTutor": "Decorator @register_provider auto-registers to global dictionary"
+      }
+    },
+    {
+      "name": "Capability detection",
+      "values": {
+        "DeepTutor": "Static configuration table PROVIDER_CAPABILITIES × MODEL_OVERRIDES with 4-level fallback"
+      }
+    },
+    {
+      "name": "Error mapping",
+      "values": {
+        "DeepTutor": "MappingRule chain + status_code fast path with optional SDK loading"
+      }
+    },
+    {
+      "name": "Cloud/local separation",
+      "values": {
+        "DeepTutor": "URL blacklist/whitelist auto-routing via CLOUD_DOMAINS + LOCAL_HOSTS + LOCAL_PORTS"
+      }
+    },
+    {
+      "name": "Retry strategy",
+      "values": {
+        "DeepTutor": "Two-layer retry: built-in BaseLLMProvider + Factory tenacity with circuit breaker pre-check"
+      }
+    },
+    {
+      "name": "Embedding abstraction",
+      "values": {
+        "DeepTutor": "Independent adapter pattern with EmbeddingProviderManager static mapping of 6 bindings"
+      }
+    },
+    {
+      "name": "Traffic control",
+      "values": {
+        "DeepTutor": "Per-provider independent TrafficController + global ErrorRateTracker sliding window"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "scan",
+      "title": "Abstraction",
+      "description": "Unify LLM/embedding multi-provider interface differences with capability detection, error mapping, and intelligent routing"
+    }
+  ],
+  "_version": 3
+}

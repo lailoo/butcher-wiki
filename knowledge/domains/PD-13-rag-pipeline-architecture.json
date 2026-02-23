@@ -1,0 +1,26 @@
+{
+  "id": "PD-13",
+  "slug": "rag-pipeline-architecture",
+  "title": "多源 RAG Pipeline 架构",
+  "subtitle": "Multi-Provider RAG Pipeline Architecture",
+  "icon": "shield",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "Agent 系统需要从多种知识源检索信息，不同场景适合不同 RAG 后端（向量检索、知识图谱、多模态）。该域解决如何设计可插拔的 RAG pipeline，让每个知识库可独立选择最优检索策略。",
+  "tags": [
+    "RAG",
+    "knowledge-base",
+    "retrieval",
+    "pipeline"
+  ],
+  "sub_problems": [
+    "多 RAG 后端统一接口设计",
+    "知识库级别的 provider 配置管理",
+    "检索模式动态切换（hybrid/dense/graph）",
+    "文档解析→分块→嵌入→索引的组件化编排"
+  ],
+  "best_practices": [
+    "为每个知识库维护独立配置，支持运行时切换 RAG provider",
+    "组件化设计（parser/chunker/embedder/indexer/retriever）支持自由组合"
+  ]
+}

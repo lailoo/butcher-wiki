@@ -1,0 +1,68 @@
+{
+  "id": "PD-14",
+  "title": "Multi-Language Prompt Management",
+  "subtitle": "Multi-Language Prompt Management",
+  "description": "Prompts in Agent systems are scattered across modules and require unified management with multi-language support, hot updates, and version control. This domain addresses how to decouple prompts from code and implement structured prompt asset management.",
+  "sub_problems": [
+    "Decoupling prompts from code via YAML/JSON externalization",
+    "Multi-language fallback chain design",
+    "Prompt caching and hot reloading",
+    "Organizing prompt files by module/agent hierarchy",
+    "Secure prompt access and missing value fallback mechanisms",
+    "Nested subdirectory prompt path resolution using recursive discovery",
+    "Automated prompt injection integration at BaseAgent layer"
+  ],
+  "best_practices": [
+    "Externalize prompts using YAML files organized in three-level directories: module/agent/language",
+    "Implement language fallback chains to gracefully degrade to default language when translations are missing",
+    "Use Singleton pattern with class-level caching to avoid redundant I/O and support module-granularity cache invalidation",
+    "Inject prompts uniformly in BaseAgent constructor so subclasses don't need manual invocation",
+    "Standardize multiple language input formats with parse_language() into internal language codes"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Storage Format",
+      "values": {
+        "DeepTutor": "YAML files with multi-line strings (|) and flat key-value structure"
+      }
+    },
+    {
+      "name": "Organization Hierarchy",
+      "values": {
+        "DeepTutor": "module/prompts/lang/[subdir/]agent.yaml with three levels plus optional subdirectories"
+      }
+    },
+    {
+      "name": "Fallback Strategy",
+      "values": {
+        "DeepTutor": "Hardcoded fallback chain zh→cn→en, unknown languages default to en"
+      }
+    },
+    {
+      "name": "Caching Mechanism",
+      "values": {
+        "DeepTutor": "Class-level dictionary cache with Singleton pattern, supporting module-level invalidation and forced reload"
+      }
+    },
+    {
+      "name": "Integration Approach",
+      "values": {
+        "DeepTutor": "Automatic injection in BaseAgent constructor, unified management of 50+ YAML files across 6 modules"
+      }
+    },
+    {
+      "name": "Path Resolution",
+      "values": {
+        "DeepTutor": "Three-tier strategy: subdirectory priority → direct path → recursive search"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "scan",
+      "title": "Multi-Language Prompt Management",
+      "description": "Unified management of loading, caching, degradation, and organizational structure for multi-language prompts across Agent systems"
+    }
+  ],
+  "_version": 3
+}

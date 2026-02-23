@@ -1,0 +1,23 @@
+{
+  "id": "PD-16",
+  "title": "Hallucination Mitigation",
+  "subtitle": "LLM Hallucination Mitigation",
+  "description": "Large language models frequently generate false, inaccurate, or contradictory content, which poses serious trust and business risks in production environments. This domain focuses on identifying, quantifying, and reducing hallucinations through multi-layer validation, fact alignment, and output constraints to enhance Agent reliability.",
+  "sub_problems": [
+    "Hallucination Detection: How to identify false or unverifiable information in model outputs in real-time",
+    "Fact Alignment: How to align and verify model outputs against trusted knowledge bases, documents, or external data sources",
+    "Confidence Scoring: How to quantify model confidence in its outputs and decide whether to accept or reject based on scores",
+    "Output Constraints: How to limit hallucination generation through prompt engineering, structured outputs, or decoding strategies",
+    "Graceful Degradation: How to elegantly degrade to retrieval, querying, or human intervention when hallucinations are detected"
+  ],
+  "best_practices": [
+    "Build multi-layer validation pipelines: Combine semantic similarity, fact-checking tools, and external knowledge bases for cross-verification",
+    "Use citation tracking: Require models to provide source references for each key claim to enable traceability and verification",
+    "Set confidence thresholds: Define appropriate confidence thresholds based on business scenarios and trigger degradation or human review when below threshold",
+    "Regular evaluation and fine-tuning: Establish benchmark datasets for hallucination detection and continuously evaluate and improve detection models",
+    "Transparency on uncertainty: Explicitly mark uncertain parts in outputs to prevent users from trusting false information"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

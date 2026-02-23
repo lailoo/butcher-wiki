@@ -1,0 +1,27 @@
+{
+  "id": "PD-20",
+  "slug": "multi-provider-llm-gateway",
+  "title": "多 LLM Provider 统一接入",
+  "subtitle": "Multi-Provider LLM Gateway",
+  "icon": "globe",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "通过统一接口层接入多个 LLM 提供商，实现模型名到 Provider 的自动路由、API 密钥管理、请求格式适配，降低模型切换成本。",
+  "tags": [
+    "llm-gateway",
+    "litellm",
+    "model-routing",
+    "provider-registry"
+  ],
+  "sub_problems": [
+    "模型名→Provider 自动路由",
+    "API 密钥和 base_url 管理",
+    "请求/响应格式适配",
+    "自定义 OpenAI 兼容端点支持",
+    "OAuth 认证流程（如 Codex）"
+  ],
+  "best_practices": [
+    "使用 LiteLLM 作为统一适配层，通过 registry 注册表实现 model→provider 映射",
+    "支持 gateway 模式统一转发，避免 if-elif 链式判断"
+  ]
+}

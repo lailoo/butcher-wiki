@@ -1,0 +1,27 @@
+{
+  "id": "PD-15",
+  "slug": "llm-provider-abstraction",
+  "title": "LLM Provider 抽象层",
+  "subtitle": "LLM Provider Abstraction Layer",
+  "icon": "shield",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "Agent 系统需要支持多个 LLM 提供商（OpenAI/Anthropic/本地模型），且需要在运行时检测模型能力、统一错误处理。该域解决如何设计 provider 抽象层，使上层 Agent 代码与具体 LLM 实现解耦。",
+  "tags": [
+    "LLM",
+    "provider",
+    "abstraction",
+    "factory-pattern"
+  ],
+  "sub_problems": [
+    "Provider 注册与工厂模式",
+    "模型能力检测（function calling、vision 等）",
+    "统一错误映射与异常处理",
+    "Cloud vs Local provider 分离",
+    "Embedding provider 多 adapter 支持"
+  ],
+  "best_practices": [
+    "使用 registry + factory 模式管理 provider 生命周期",
+    "实现 capabilities 检测层，让 Agent 根据模型能力动态调整行为"
+  ]
+}

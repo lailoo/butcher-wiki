@@ -1,0 +1,20 @@
+{
+  "id": "PD-20",
+  "title": "Multi-LLM Provider Unified Gateway",
+  "subtitle": "Multi-Provider LLM Gateway",
+  "description": "Integrate multiple LLM providers through a unified interface layer, enabling automatic routing from model names to providers, API key management, and request format adaptation. This reduces the cost of switching between models.",
+  "sub_problems": [
+    "Automatic routing from model name to provider",
+    "API key and base_url management",
+    "Request/response format adaptation",
+    "Custom OpenAI-compatible endpoint support",
+    "OAuth authentication flow support (e.g., Codex)"
+  ],
+  "best_practices": [
+    "Use LiteLLM as a unified adapter layer, implementing model-to-provider mapping through a registry",
+    "Support gateway mode for centralized request forwarding, avoiding if-elif chain logic"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}
