@@ -35,3 +35,4 @@ image*.png
 !/docs/screenshots/*.png
 logs/
 
+.vercel
