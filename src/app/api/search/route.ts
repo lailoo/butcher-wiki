@@ -94,14 +94,14 @@ export async function POST(req: NextRequest) {
       anthropicApiKey: apiKey,
       clientOptions: { baseURL: process.env.ANTHROPIC_BASE_URL || 'https://api.anthropic.com' },
       temperature: 0,
-      maxTokens: 1024,
+      maxTokens: 8000,
     });
 
     const context = getContext();
     const systemPrompt = lang === 'en' ? SYSTEM_PROMPT_EN : SYSTEM_PROMPT_ZH;
     const response = await llm.invoke([
       new SystemMessage(systemPrompt + context),
-      new HumanMessage(query.trim()),
+      new HumanMessage(`Search query: "${query.trim()}"\n\nReturn JSON only, no other text.`),
     ]);
 
     // 从 LLM 响应中提取 JSON
