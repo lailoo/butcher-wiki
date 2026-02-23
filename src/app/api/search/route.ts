@@ -112,7 +112,8 @@ export async function POST(req: NextRequest) {
     // 提取 JSON（可能被 markdown code block 包裹）
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
-      return NextResponse.json({ error: 'Search result parse failed' }, { status: 500 });
+      console.error('Search: LLM returned non-JSON:', text.slice(0, 200));
+      return NextResponse.json({ error: `Search result parse failed: ${text.slice(0, 100) || 'empty response'}` }, { status: 500 });
     }
 
     const result = JSON.parse(jsonMatch[0]);
