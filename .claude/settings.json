@@ -9,7 +9,8 @@
       "Glob",
       "Grep",
       "Write",
-      "Edit"
+      "Edit",
+      "WebFetch"
     ],
     "deny": [
       "Bash(rm -rf*)",

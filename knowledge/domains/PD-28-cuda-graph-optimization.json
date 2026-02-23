@@ -1,0 +1,26 @@
+{
+  "id": "PD-28",
+  "slug": "cuda-graph-optimization",
+  "title": "CUDA Graph 与编译优化",
+  "subtitle": "CUDA Graph & Torch Compile Optimization",
+  "icon": "zap",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "通过 CUDA Graph 捕获和 torch.compile 消除 GPU kernel launch 开销。model_runner.py 在 decode 阶段预捕获不同 batch size 的 CUDA Graph，运行时直接 replay 避免重复 launch。sampler/rotary_embedding/layernorm/activation 均用 @torch.compile 装饰，attention 层使用 Triton 自定义 kernel (store_kvcache_kernel) 实现高效 KV Cache 写入。",
+  "tags": [
+    "CUDA Graph",
+    "torch.compile",
+    "Triton kernel",
+    "kernel优化"
+  ],
+  "sub_problems": [
+    "CUDA Graph 捕获与 replay（decode 阶段）",
+    "graph 变量预分配与填充（padding 到捕获尺寸）",
+    "torch.compile 应用于计算密集算子",
+    "Triton JIT kernel 实现 KV Cache store"
+  ],
+  "best_practices": [
+    "仅对 decode 阶段捕获 CUDA Graph（batch size 可预测）",
+    "使用 graph pool 共享显存，减少碎片"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-26",
+  "slug": "continuous-batching-scheduler",
+  "title": "连续批处理调度",
+  "subtitle": "Continuous Batching Scheduler",
+  "icon": "layers",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "迭代级别的动态批处理调度器。nano-vllm 的 scheduler.py 实现了 prefill/decode 两阶段调度：waiting 队列中的新请求优先 prefill，running 队列中的序列持续 decode。支持 preempt 抢占机制——当显存不足时驱逐低优先级序列，释放块后重新排队。",
+  "tags": [
+    "continuous batching",
+    "调度器",
+    "preemption",
+    "iteration-level"
+  ],
+  "sub_problems": [
+    "prefill vs decode 阶段分离调度",
+    "max_num_seqs 和 max_num_batched_tokens 双重限制",
+    "抢占策略（LIFO 驱逐 running 尾部序列）",
+    "序列状态机（WAITING → RUNNING → FINISHED）"
+  ],
+  "best_practices": [
+    "prefill 优先策略确保新请求快速响应",
+    "抢占时完整释放块并重新入 waiting 队列，保证公平性"
+  ]
+}

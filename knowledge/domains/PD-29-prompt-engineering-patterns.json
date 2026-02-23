@@ -1,0 +1,29 @@
+{
+  "id": "PD-29",
+  "slug": "prompt-engineering-patterns",
+  "title": "Prompt 工程模式",
+  "subtitle": "Prompt Engineering Patterns",
+  "icon": "sparkles",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "System prompt 的结构化设计模式：身份定义、行为约束、输出格式控制、XML 标签分区、few-shot 示例、规则优先级等。是 AI Agent 产品化的核心工程能力。",
+  "tags": [
+    "system-prompt",
+    "identity",
+    "behavioral-constraints",
+    "output-format",
+    "prompt-design"
+  ],
+  "sub_problems": [
+    "身份与角色定义（<identity> 标签 vs 自然语言描述）",
+    "行为约束的优先级与冲突解决",
+    "输出格式控制（XML 标签 vs Markdown vs JSON）",
+    "Few-shot 示例的选择与放置策略",
+    "Prompt 版本管理与 A/B 测试"
+  ],
+  "best_practices": [
+    "使用结构化标签（如 <identity>、<rules>、<tools_parallelization>）分区组织 prompt",
+    "将安全约束放在 prompt 最前部以确保优先级",
+    "为不同 LLM 维护独立的 prompt 变体而非通用 prompt"
+  ]
+}

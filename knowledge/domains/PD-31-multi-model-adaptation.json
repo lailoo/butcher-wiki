@@ -1,0 +1,27 @@
+{
+  "id": "PD-31",
+  "slug": "multi-model-adaptation",
+  "title": "多模型适配",
+  "subtitle": "Multi-Model Adaptation",
+  "icon": "sparkles",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "同一 Agent 框架针对不同 LLM（GPT-5、Claude Sonnet 4、Gemini 2.5 Pro 等）的 prompt 和工具定义适配策略。解决模型能力差异带来的行为一致性问题。",
+  "tags": [
+    "multi-model",
+    "model-routing",
+    "prompt-adaptation",
+    "LLM-agnostic"
+  ],
+  "sub_problems": [
+    "不同模型的 prompt 格式偏好差异",
+    "工具调用能力的模型间差异处理",
+    "模型特定的性能优化指令",
+    "统一行为输出的跨模型一致性保证"
+  ],
+  "best_practices": [
+    "为每个目标模型维护独立的 prompt 文件而非条件分支",
+    "抽取共享的行为规则为公共模块，模型特定指令单独维护",
+    "在工具定义层保持统一 schema，在 prompt 层做模型适配"
+  ]
+}

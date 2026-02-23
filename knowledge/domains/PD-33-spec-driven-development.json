@@ -1,0 +1,28 @@
+{
+  "id": "PD-33",
+  "slug": "spec-driven-development",
+  "title": "Spec 驱动开发",
+  "subtitle": "Spec-Driven Development",
+  "icon": "sparkles",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "AI Agent 从'直接编码'到'先规划后实现'的工作流演进：需求文档→设计文档→任务分解→逐步实现。Kiro 的三阶段流程和 Traycer 的 plan/phase 模式是典型代表。",
+  "tags": [
+    "spec",
+    "requirements",
+    "design-doc",
+    "task-decomposition",
+    "planning-mode"
+  ],
+  "sub_problems": [
+    "需求文档的结构化格式（EARS、用户故事）",
+    "设计文档与实现代码的一致性保证",
+    "任务分解的粒度控制",
+    "规划模式与执行模式的切换机制"
+  ],
+  "best_practices": [
+    "使用模式分类器（如 Kiro 的 Mode_Classifier）自动判断任务是否需要规划",
+    "需求文档生成后必须经用户确认再进入设计阶段",
+    "任务列表使用 TODO 工具持续跟踪进度"
+  ]
+}

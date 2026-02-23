@@ -1,0 +1,26 @@
+{
+  "id": "PD-25",
+  "slug": "prefix-caching",
+  "title": "前缀缓存",
+  "subtitle": "Automatic Prefix Caching",
+  "icon": "refresh-cw",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "跨请求复用相同前缀的 KV Cache，避免重复计算。nano-vllm 在 block_manager.py 中用 xxhash 对 token 块计算哈希，通过 hash_to_block_id 字典实现自动前缀匹配，命中时直接复用物理块并跳过 prefill，显著提升多轮对话和共享 system prompt 场景的吞吐。",
+  "tags": [
+    "prefix caching",
+    "hash匹配",
+    "KV复用",
+    "推理加速"
+  ],
+  "sub_problems": [
+    "块级哈希计算（含前缀链式哈希）",
+    "缓存命中判断与 num_cached_tokens 跳过",
+    "缓存失效与驱逐策略",
+    "prefill 阶段 cu_seqlens_q vs cu_seqlens_k 分离"
+  ],
+  "best_practices": [
+    "使用链式哈希（prefix hash → current hash）保证前缀唯一性",
+    "通过 num_cached_tokens 精确跳过已缓存 token 的 prefill 计算"
+  ]
+}

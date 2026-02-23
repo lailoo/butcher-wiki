@@ -117,8 +117,9 @@ CC CLI 参数:
 - `--output-format stream-json` 实时流式输出
 - `--allowedTools "Bash Read Glob Grep"` 限制工具
 - `--dangerously-skip-permissions` 跳过权限确认
-- `--max-budget-usd 1` 单次扫描成本限制
 - `--no-session-persistence` 不保存会话
+
+<!-- - `--max-budget-usd 1` 单次扫描成本限制 -->
 
 CC 自动加载 `.claude/skills/butcher-scan/SKILL.md` 作为切割行为指引。
 

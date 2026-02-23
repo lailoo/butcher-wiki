@@ -1,0 +1,26 @@
+{
+  "id": "PD-24",
+  "slug": "kv-cache-memory-management",
+  "title": "KV Cache 内存管理",
+  "subtitle": "KV Cache Memory Management",
+  "icon": "database",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "LLM 推理中 KV Cache 的分页式内存管理。nano-vllm 在 block_manager.py 中实现了 PagedAttention 风格的块分配器，通过 block_table 映射、引用计数、按需分配/释放物理块，解决 KV Cache 显存碎片化和浪费问题。",
+  "tags": [
+    "PagedAttention",
+    "KV Cache",
+    "内存管理",
+    "显存优化"
+  ],
+  "sub_problems": [
+    "物理块分配与释放（引用计数）",
+    "block_table 逻辑→物理映射",
+    "显存预算估算（gpu_memory_utilization）",
+    "块大小选择与对齐"
+  ],
+  "best_practices": [
+    "使用引用计数管理物理块生命周期，支持前缀缓存共享",
+    "通过 can_allocate/can_append 预检查避免 OOM"
+  ]
+}

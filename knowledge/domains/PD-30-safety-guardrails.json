@@ -1,0 +1,29 @@
+{
+  "id": "PD-30",
+  "slug": "safety-guardrails",
+  "title": "安全护栏",
+  "subtitle": "Safety Guardrails",
+  "icon": "shield",
+  "color": "#EF4444",
+  "severity": "high",
+  "description": "AI Agent 的安全边界设计：PII 过滤、恶意代码拒绝、prompt 注入防御、秘密泄露防护、操作权限边界。确保 Agent 在自主执行时不越界。",
+  "tags": [
+    "security",
+    "PII",
+    "prompt-injection",
+    "guardrail",
+    "permission-boundary"
+  ],
+  "sub_problems": [
+    "Prompt 注入防御（拒绝泄露系统指令）",
+    "PII 检测与替换策略",
+    "恶意代码请求识别与拒绝",
+    "文件系统操作的权限边界",
+    "网络请求的安全约束"
+  ],
+  "best_practices": [
+    "在 prompt 中显式声明'不泄露内部指令'规则",
+    "对 PII 使用占位符替换而非简单删除",
+    "区分'需要用户确认的危险操作'和'可自主执行的安全操作'"
+  ]
+}

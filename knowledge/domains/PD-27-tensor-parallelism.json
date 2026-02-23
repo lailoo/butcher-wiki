@@ -1,0 +1,26 @@
+{
+  "id": "PD-27",
+  "slug": "tensor-parallelism",
+  "title": "张量并行推理",
+  "subtitle": "Tensor Parallelism",
+  "icon": "cpu",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "多 GPU 张量并行推理实现。nano-vllm 通过 NCCL 后端的 torch.distributed 实现 TP，在 linear.py 中提供 ColumnParallelLinear/RowParallelLinear/QKVParallelLinear 三种并行线性层，自动按 tp_size 切分权重。model_runner.py 用 multiprocessing spawn 启动多进程，rank 0 为主进程通过 Event 同步调度。",
+  "tags": [
+    "tensor parallel",
+    "NCCL",
+    "多GPU",
+    "模型并行"
+  ],
+  "sub_problems": [
+    "权重按列/行切分与 weight_loader 自动分片",
+    "QKV 三路并行切分（head 维度均分）",
+    "all_reduce 通信同步",
+    "多进程生命周期管理（spawn + Event 同步）"
+  ],
+  "best_practices": [
+    "weight_loader 模式：每个参数自带加载逻辑，支持异构切分",
+    "rank 0 主控 + Event 信号驱动从进程，避免复杂 RPC"
+  ]
+}

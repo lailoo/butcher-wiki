@@ -128,5 +128,23 @@
   "Switch language": "Switch language",
 
   "Translating...": "Translating...",
-  "Translation unavailable": "Translation unavailable"
+  "Translation unavailable": "Translation unavailable",
+
+  "Trending": "Trending",
+  "trending_desc": "Auto-scan GitHub Trending projects, 2 at a time, extracting reusable engineering components.",
+  "Refresh Trending": "Refresh Trending",
+  "Scan Next 2": "Scan Next 2",
+  "Refreshing...": "Refreshing...",
+  "Scanning...": "Scanning...",
+  "trending_repos": "{{count}} Trending Repos",
+  "scanned_count": "{{count}} Scanned",
+  "unscanned_count": "{{count}} Pending",
+  "stars_today": "{{count}} stars today",
+  "domains_found": "{{count}} domains found",
+  "Scan failed": "Scan failed",
+  "Scanned": "Scanned",
+  "Pending": "Pending",
+  "No trending data": "No trending data yet. Click \"Refresh Trending\" to fetch.",
+  "Last updated": "Last updated",
+  "All scanned": "All scanned"
 }

@@ -1,0 +1,28 @@
+{
+  "id": "PD-32",
+  "slug": "code-edit-protocol",
+  "title": "代码编辑协议",
+  "subtitle": "Code Edit Protocol",
+  "icon": "sparkles",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "AI Agent 安全修改代码文件的协议设计：精确字符串替换、diff 格式、编辑确认机制、并发编辑冲突处理。是 AI 编码助手的核心交互协议。",
+  "tags": [
+    "code-edit",
+    "diff",
+    "file-operation",
+    "string-replace",
+    "safe-edit"
+  ],
+  "sub_problems": [
+    "精确替换 vs 全文重写的选择策略",
+    "编辑操作的原子性与回滚机制",
+    "多文件编辑的顺序依赖处理",
+    "编辑冲突检测与解决"
+  ],
+  "best_practices": [
+    "使用 old_string/new_string 精确替换而非全文重写以减少错误",
+    "编辑前强制读取文件以确保上下文一致",
+    "对不可并行的编辑操作（如 edit_file）显式禁止并行调用"
+  ]
+}

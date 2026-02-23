@@ -128,5 +128,23 @@
   "Switch language": "切换语言",
 
   "Translating...": "翻译中...",
-  "Translation unavailable": "暂无翻译"
+  "Translation unavailable": "暂无翻译",
+
+  "Trending": "Trending",
+  "trending_desc": "GitHub Trending 项目自动扫描，每次扫描 2 个项目，提取可复用的工程组件。",
+  "Refresh Trending": "刷新 Trending",
+  "Scan Next 2": "扫描下 2 个",
+  "Refreshing...": "刷新中...",
+  "Scanning...": "扫描中...",
+  "trending_repos": "{{count}} 个 Trending 项目",
+  "scanned_count": "{{count}} 个已扫描",
+  "unscanned_count": "{{count}} 个待扫描",
+  "stars_today": "{{count}} stars today",
+  "domains_found": "发现 {{count}} 个域",
+  "Scan failed": "扫描失败",
+  "Scanned": "已扫描",
+  "Pending": "待扫描",
+  "No trending data": "暂无 Trending 数据，点击「刷新 Trending」获取",
+  "Last updated": "上次更新",
+  "All scanned": "全部已扫描"
 }

@@ -34,5 +34,6 @@ test-results/
 image*.png
 !/docs/screenshots/*.png
 logs/
+knowledge/trending-state.json
 
 .vercel
