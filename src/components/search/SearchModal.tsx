@@ -35,6 +35,19 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { t, i18n } = useTranslation();
 
+  // Global ESC key listener — works regardless of focus
+  useEffect(() => {
+    if (!open) return;
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        onClose();
+      }
+    };
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, [open, onClose]);
+
   // Auto-focus input when modal opens
   useEffect(() => {
     if (open) {
@@ -94,8 +107,6 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
     } else if (e.key === 'Enter' && matches[selectedIndex]) {
       e.preventDefault();
       navigateTo(matches[selectedIndex]);
-    } else if (e.key === 'Escape') {
-      onClose();
     }
   };
 
