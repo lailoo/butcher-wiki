@@ -167,4 +167,3 @@ for (const tier of tiers) {
 return choose(resolveDefaultAgentId(input.cfg), "default");
 ```
 
-<!-- PLACEHOLDER_CHUNK3 -->

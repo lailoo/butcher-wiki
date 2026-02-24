@@ -1,0 +1,31 @@
+{
+  "id": "PD-54",
+  "slug": "agent-core-architecture",
+  "title": "Agent 核心架构",
+  "subtitle": "Agent Core Architecture and Design Patterns",
+  "icon": "brain",
+  "color": "#8B5CF6",
+  "severity": "critical",
+  "description": "定义 AI Agent 的核心架构设计、生命周期管理和状态流转机制。涵盖 Agent 的初始化、执行循环、决策流程和资源管理，是构建可靠 Agent 系统的基础。",
+  "tags": [
+    "agent-design",
+    "lifecycle-management",
+    "state-machine",
+    "execution-loop",
+    "architecture-pattern"
+  ],
+  "sub_problems": [
+    "Agent 生命周期管理：从初始化、运行、暂停到销毁的完整状态管理",
+    "执行循环设计：感知-决策-执行的核心循环实现与优化",
+    "Agent 继承与组合：单一职责 Agent 与复杂 Agent 的设计模式",
+    "资源生命周期：内存、连接、上下文的申请、使用和释放管理",
+    "Agent 间通信协议：Agent 之间的消息传递、协议定义和交互模式"
+  ],
+  "best_practices": [
+    "采用状态机模式明确定义 Agent 的各个状态及其转移条件",
+    "实现清晰的执行循环接口，支持同步/异步、流式/批量等多种执行模式",
+    "通过依赖注入和接口抽象降低 Agent 与具体实现的耦合度",
+    "为 Agent 提供完整的初始化和清理钩子，确保资源正确管理",
+    "设计可扩展的 Agent 基类，支持继承、混入和组合等多种扩展方式"
+  ]
+}

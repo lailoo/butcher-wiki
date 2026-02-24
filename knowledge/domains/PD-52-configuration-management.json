@@ -1,0 +1,25 @@
+{
+  "id": "PD-52",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "类型安全的分层配置系统，支持多模块独立配置和环境隔离",
+  "tags": [
+    "config",
+    "TOML",
+    "pydantic"
+  ],
+  "sub_problems": [
+    "配置分层与覆盖",
+    "类型安全校验",
+    "线程安全单例",
+    "多环境切换"
+  ],
+  "best_practices": [
+    "Pydantic 模型验证配置",
+    "TOML 分层覆盖模式"
+  ]
+}

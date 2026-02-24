@@ -52,6 +52,15 @@ Butcher Wiki 是一个**跨项目工程知识库**。它扫描开源项目的源
 项目 E ──┘                      └── 推理增强   ── [C的解法, D的解法]
 ```
 
+### 核心流程
+
+1. **扫描** — `butcher-scan` 对任意 GitHub 项目做深度源码分析，把它的工程能力拆解匹配到问题域（PD-01 上下文管理、PD-02 多 Agent 编排、PD-04 工具系统...）
+2. **发现** — 如果项目有不属于已有域的独立工程能力，自动创建新域（比如 OpenClaw 扫出了 PD-34 消息网关、PD-37 安全审计等 14 个新域）
+3. **文档** — `butcher-doc` 为每个匹配的域生成标准化知识文档，包含源码分析、设计哲学、迁移指南、测试用例
+4. **横向对比** — 同一个域下多个项目的方案自动汇入对比表（第 7 章的 `comparison_data`），比如 PD-02 多 Agent 编排下有 DeerFlow 的 LangGraph DAG、OpenManus 的 PlanningFlow、OpenClaw 的 Subagent Registry 三种方案并列
+
+扫描的项目越多，每个域下的方案就越丰富，横向对比也越有价值。
+
 ### 核心设计思想
 
 **三层知识结构**
@@ -100,23 +109,28 @@ Butcher Wiki 是一个**跨项目工程知识库**。它扫描开源项目的源
 
 ### 已收录项目
 
-知识库已收录 6 个开源项目，共 48 篇源码级解决方案：
+知识库已收录 10 个开源项目，覆盖 47+ 个问题域，共 91 篇源码级解决方案：
 
-| 项目 | 解决方案数 | 覆盖域 |
-|------|-----------|--------|
-| [DeepTutor](https://github.com/baoyu0/DeepTutor) | 13 篇 | PD-01 ~ PD-12, PD-14, PD-15 |
-| [DeerFlow](https://github.com/bytedance/deer-flow) | 9 篇 | PD-02, PD-03, PD-04, PD-05, PD-06, PD-07, PD-09, PD-10, PD-11 |
-| [GPT-Researcher](https://github.com/assafelovic/gpt-researcher) | 8 篇 | PD-01, PD-02, PD-03, PD-06, PD-07, PD-08, PD-09, PD-12 |
-| [MiroThinker](https://github.com/baoyu0/MiroThinker) | 6 篇 | PD-01, PD-02, PD-03, PD-04, PD-05, PD-11 |
-| [PageIndex](https://github.com/baoyu0/page-index) | 6 篇 | PD-01, PD-03, PD-07, PD-08, PD-11, PD-12 |
-| [DeepResearch](https://github.com/baoyu0/DeepResearch) | 3 篇 | PD-05, PD-08, PD-12 |
+| 项目 | 解决方案数 | 说明 |
+|------|-----------|------|
+| [OpenClaw](https://github.com/openclaw/openclaw) | 23 篇 | 多渠道消息网关、安全审计、技能管理等 |
+| [OpenManus](https://github.com/FoundationAgents/OpenManus) | 14 篇 | 工具系统、计划编排、A2A 协议等 |
+| [DeepTutor](https://github.com/baoyu0/DeepTutor) | 13 篇 | 学术场景全栈 Agent 能力 |
+| [DeerFlow](https://github.com/bytedance/deer-flow) | 9 篇 | LangGraph DAG 编排、检查点持久化 |
+| [GPT-Researcher](https://github.com/assafelovic/gpt-researcher) | 8 篇 | Master-Worker 并行、搜索源降级 |
+| [MiroThinker](https://github.com/baoyu0/MiroThinker) | 6 篇 | tiktoken 上下文管理、Docker 沙箱 |
+| [PageIndex](https://github.com/baoyu0/page-index) | 6 篇 | Token 预算分割、树状递归搜索 |
+| [SystemPrompts](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) | 4 篇 | IDE Agent Prompt 工程模式 |
+| [Nanobot](https://github.com/ArcadeAI/nanobot) | 4 篇 | Spawn 子 Agent 异步编排 |
+| [DeepResearch](https://github.com/baoyu0/DeepResearch) | 3 篇 | 路径白名单沙箱、深度搜索 |
 
 *持续扫描中 — 输入任意 Git 仓库地址即可添加新项目。*
 
 ### 核心功能
 
-- **问题域浏览** — 18 个工程问题域，每个域聚合多个项目的解决方案
+- **问题域浏览** — 47+ 个工程问题域，每个域聚合多个项目的解决方案
 - **项目扫描** — 输入 Git 仓库地址，自动克隆、7 阶段深度分析、提取工程组件（特性数量根据项目规模动态调整 5~30 个）
+- **GitHub Trending 自动扫描** — 定时抓取 GitHub Trending 项目，自动扫描入库
 - **横向对比** — 同一问题域下不同项目的实现方案对比表
 - **知识文档** — 每个解决方案附带详细的源码分析文档（含代码片段、Mermaid 架构图）
 - **动态域发现** — 扫描时自动发现新的工程模式，创建扩展域（PD-13+）
@@ -129,7 +143,7 @@ Butcher Wiki 是一个**跨项目工程知识库**。它扫描开源项目的源
 ### 问题域
 
 <details>
-<summary>18 个工程问题域（动态新增）</summary>
+<summary>47+ 个工程问题域（持续动态新增）</summary>
 
 | # | 问题域 | 核心问题 |
 |---|--------|---------|
@@ -387,6 +401,15 @@ Project D ──┤                      ├── ...
 Project E ──┘                      └── PD-12 Reasoning          ── [C's approach, D's]
 ```
 
+### Core Workflow
+
+1. **Scan** — `butcher-scan` performs deep source code analysis on any GitHub project, decomposing its engineering capabilities and matching them to problem domains (PD-01 Context Management, PD-02 Multi-Agent Orchestration, PD-04 Tool System...)
+2. **Discover** — If a project has engineering capabilities that don't belong to any existing domain, new domains are automatically created (e.g., OpenClaw's scan discovered 14 new domains including PD-34 Message Gateway, PD-37 Security Audit)
+3. **Document** — `butcher-doc` generates standardized knowledge documents for each matched domain, including source code analysis, design philosophy, migration guides, and test cases
+4. **Compare** — Solutions from multiple projects under the same domain are automatically aggregated into comparison tables (Chapter 7's `comparison_data`), e.g., PD-02 Multi-Agent Orchestration shows DeerFlow's LangGraph DAG, OpenManus's PlanningFlow, and OpenClaw's Subagent Registry side by side
+
+The more projects you scan, the richer each domain's solutions become, and the more valuable the cross-project comparisons.
+
 ### Core Design
 
 **Three-Layer Knowledge Structure**
@@ -421,8 +444,9 @@ Problem Domain
 
 ### Key Features
 
-- **Problem Domain Browsing** — 18 engineering problem domains, each aggregating solutions from multiple projects
+- **Problem Domain Browsing** — 47+ engineering problem domains, each aggregating solutions from multiple projects
 - **Project Scanning** — Enter a Git repo URL, auto-clone, 7-phase deep analysis, extract engineering components (feature count dynamically adjusted 5~30 based on project size)
+- **GitHub Trending Auto-Scan** — Periodically fetches GitHub Trending projects and auto-scans them into the knowledge base
 - **Cross-Project Comparison** — Side-by-side comparison tables for solutions within the same domain
 - **Knowledge Docs** — Each solution includes detailed source code analysis (with code snippets, Mermaid diagrams)
 - **Dynamic Domain Discovery** — Auto-discovers new engineering patterns during scanning, creates extension domains (PD-13+)
@@ -448,16 +472,20 @@ Problem Domain
 
 ### Projects Indexed
 
-The knowledge base currently indexes 6 open-source projects with 48 source-level solution docs:
+The knowledge base currently indexes 10 open-source projects across 47+ problem domains with 91 source-level solution docs:
 
-| Project | Solutions | Domains Covered |
-|---------|-----------|-----------------|
-| [DeepTutor](https://github.com/baoyu0/DeepTutor) | 13 | PD-01 ~ PD-12, PD-14, PD-15 |
-| [DeerFlow](https://github.com/bytedance/deer-flow) | 9 | PD-02 ~ PD-07, PD-09 ~ PD-11 |
-| [GPT-Researcher](https://github.com/assafelovic/gpt-researcher) | 8 | PD-01 ~ PD-03, PD-06 ~ PD-09, PD-12 |
-| [MiroThinker](https://github.com/baoyu0/MiroThinker) | 6 | PD-01 ~ PD-05, PD-11 |
-| [PageIndex](https://github.com/baoyu0/page-index) | 6 | PD-01, PD-03, PD-07, PD-08, PD-11, PD-12 |
-| [DeepResearch](https://github.com/baoyu0/DeepResearch) | 3 | PD-05, PD-08, PD-12 |
+| Project | Solutions | Highlights |
+|---------|-----------|------------|
+| [OpenClaw](https://github.com/openclaw/openclaw) | 23 | Message gateway, security audit, skill management |
+| [OpenManus](https://github.com/FoundationAgents/OpenManus) | 14 | Tool system, planning orchestration, A2A protocol |
+| [DeepTutor](https://github.com/baoyu0/DeepTutor) | 13 | Full-stack academic Agent capabilities |
+| [DeerFlow](https://github.com/bytedance/deer-flow) | 9 | LangGraph DAG orchestration, checkpoint persistence |
+| [GPT-Researcher](https://github.com/assafelovic/gpt-researcher) | 8 | Master-Worker parallel, search source fallback |
+| [MiroThinker](https://github.com/baoyu0/MiroThinker) | 6 | tiktoken context management, Docker sandbox |
+| [PageIndex](https://github.com/baoyu0/page-index) | 6 | Token budget splitting, tree-recursive search |
+| [SystemPrompts](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) | 4 | IDE Agent prompt engineering patterns |
+| [Nanobot](https://github.com/ArcadeAI/nanobot) | 4 | Spawn sub-agent async orchestration |
+| [DeepResearch](https://github.com/baoyu0/DeepResearch) | 3 | Path whitelist sandbox, deep search |
 
 *Continuously growing — enter any Git repo URL to add new projects.*
 

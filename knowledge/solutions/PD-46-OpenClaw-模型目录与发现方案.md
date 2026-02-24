@@ -161,4 +161,3 @@ async function discoverOllamaModels(baseUrl?: string): Promise<ModelDefinitionCo
 }
 ```
 
-<!-- PLACEHOLDER_2 -->

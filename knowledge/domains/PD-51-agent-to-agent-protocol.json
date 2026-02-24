@@ -1,0 +1,25 @@
+{
+  "id": "PD-51",
+  "slug": "agent-to-agent-protocol",
+  "title": "Agent-to-Agent 协议",
+  "subtitle": "Agent-to-Agent Protocol",
+  "icon": "link",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "实现标准化 Agent 间通信协议，支持跨系统 Agent 互操作",
+  "tags": [
+    "A2A",
+    "protocol",
+    "interoperability"
+  ],
+  "sub_problems": [
+    "协议适配层",
+    "请求验证",
+    "事件队列管理",
+    "任务生命周期"
+  ],
+  "best_practices": [
+    "封装现有 Agent 为协议兼容服务",
+    "使用事件队列解耦请求处理"
+  ]
+}

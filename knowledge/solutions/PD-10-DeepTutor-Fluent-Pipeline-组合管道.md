@@ -102,4 +102,3 @@ class Component(Protocol):
         ...
 ```
 
-<!-- APPEND_PLACEHOLDER_1 -->

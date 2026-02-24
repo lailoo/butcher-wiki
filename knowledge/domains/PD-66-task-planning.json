@@ -1,0 +1,25 @@
+{
+  "id": "PD-66",
+  "slug": "task-planning",
+  "title": "任务规划模式",
+  "subtitle": "Task Planning Mode",
+  "icon": "check-circle",
+  "color": "#14B8A6",
+  "severity": "medium",
+  "description": "Agent 将复杂任务分解为可跟踪的 Todo 列表并实时更新进度",
+  "tags": [
+    "planning",
+    "todo",
+    "task-tracking",
+    "progress"
+  ],
+  "sub_problems": [
+    "任务分解",
+    "状态管理",
+    "实时进度更新",
+    "条件启用"
+  ],
+  "best_practices": [
+    "仅对3步以上复杂任务启用规划模式，避免简单任务的额外开销"
+  ]
+}

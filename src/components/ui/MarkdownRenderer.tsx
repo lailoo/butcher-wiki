@@ -1,8 +1,23 @@
 'use client';
 
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/github-dark.css';
+import { MermaidBlock } from './MermaidBlock';
+
+function extractTextContent(node: React.ReactNode): string {
+  if (typeof node === 'string') return node;
+  if (typeof node === 'number') return String(node);
+  if (!node) return '';
+  if (Array.isArray(node)) return node.map(extractTextContent).join('');
+  if (React.isValidElement(node)) {
+    const props = node.props as { children?: React.ReactNode };
+    return extractTextContent(props.children);
+  }
+  return '';
+}
 
 export function MarkdownRenderer({ content }: { content: string }) {
   return (
@@ -26,7 +41,18 @@ export function MarkdownRenderer({ content }: { content: string }) {
           }
           return <code className="bg-[var(--code-bg)] border border-[var(--glass-border)] rounded px-1.5 py-0.5 text-xs font-mono text-[var(--accent-blue)]" {...props}>{children}</code>;
         },
-        pre: ({ children }) => <pre className="bg-[var(--bg-secondary)] border border-[var(--glass-border)] rounded-lg p-4 overflow-x-auto mb-4 text-xs leading-relaxed">{children}</pre>,
+        pre: ({ children, ...props }) => {
+          // Detect mermaid: <pre><code class="language-mermaid">...</code></pre>
+          const child = React.Children.toArray(children)[0];
+          if (React.isValidElement(child)) {
+            const childProps = child.props as { className?: string; children?: React.ReactNode };
+            if (childProps.className?.includes('language-mermaid')) {
+              const code = extractTextContent(childProps.children);
+              return <MermaidBlock code={code} />;
+            }
+          }
+          return <pre className="bg-[var(--bg-secondary)] border border-[var(--glass-border)] rounded-lg p-4 overflow-x-auto mb-4 text-xs leading-relaxed" {...props}>{children}</pre>;
+        },
         table: ({ children }) => <div className="overflow-x-auto mb-4"><table className="w-full text-sm border-collapse">{children}</table></div>,
         thead: ({ children }) => <thead className="border-b border-[var(--glass-border)]">{children}</thead>,
         th: ({ children }) => <th className="text-left text-xs font-medium text-[var(--text-muted)] uppercase tracking-wider px-3 py-2">{children}</th>,

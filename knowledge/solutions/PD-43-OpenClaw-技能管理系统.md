@@ -125,7 +125,6 @@ for (const skill of workspaceSkills) {
 - `maxSkillsLoadedPerSource = 200`：单个源最多加载 200 个技能
 - `maxSkillFileBytes = 256KB`：单个 SKILL.md 文件大小上限
 
-<!-- PLACEHOLDER_2_2_2 -->
 
 #### 2.2.2 声明式资格评估引擎
 

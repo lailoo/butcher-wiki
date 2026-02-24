@@ -1,0 +1,23 @@
+{
+  "id": "PD-54",
+  "title": "Agent Core Architecture",
+  "subtitle": "Agent Core Architecture and Design Patterns",
+  "description": "Defines the core architectural design, lifecycle management, and state transition mechanisms of AI Agents. Covers Agent initialization, execution loops, decision processes, and resource management, forming the foundation for building reliable Agent systems.",
+  "sub_problems": [
+    "Agent lifecycle management: Complete state management from initialization, execution, suspension to termination",
+    "Execution loop design: Implementation and optimization of the perception-decision-execution core cycle",
+    "Agent inheritance and composition: Design patterns for single-responsibility Agents and complex Agents",
+    "Resource lifecycle: Request, usage, and release management of memory, connections, and context",
+    "Inter-Agent communication protocol: Message passing, protocol definition, and interaction patterns between Agents"
+  ],
+  "best_practices": [
+    "Adopt state machine pattern to clearly define Agent states and their transition conditions",
+    "Implement clear execution loop interfaces supporting multiple execution modes: synchronous/asynchronous, streaming/batch",
+    "Reduce coupling between Agent and concrete implementations through dependency injection and interface abstraction",
+    "Provide complete initialization and cleanup hooks for Agents to ensure proper resource management",
+    "Design extensible Agent base classes supporting multiple extension approaches: inheritance, mixins, and composition"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

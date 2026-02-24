@@ -405,4 +405,3 @@ restore();
 
 ---
 
-<!-- APPEND_PLACEHOLDER_3 -->

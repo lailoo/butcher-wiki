@@ -249,4 +249,3 @@ Hook 按优先级排序（`src/plugins/hooks.ts:113-120`），高优先级 hook 
 | Subagent | `subagent_spawning` / `subagent_spawned` / `subagent_ended` | mixed | 子代理生命周期 |
 | Gateway | `gateway_start` / `gateway_stop` | void | 网关生命周期 |
 
-<!-- APPEND_PLACEHOLDER_3 -->

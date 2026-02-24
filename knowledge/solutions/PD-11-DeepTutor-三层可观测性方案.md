@@ -44,4 +44,3 @@ DeepTutor 构建了三层可观测性体系，每层独立又可协同：
 
 ### 2.1 架构概览
 
-<!-- PLACEHOLDER_ARCH -->

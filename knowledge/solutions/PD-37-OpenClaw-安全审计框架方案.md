@@ -397,4 +397,3 @@ export function scanSource(source: string, filePath: string, rules: ScanRule[]) 
 
 ---
 
-<!-- PLACEHOLDER_CONTENT_2 -->

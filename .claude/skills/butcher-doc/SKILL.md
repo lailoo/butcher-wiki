@@ -160,12 +160,23 @@ graph TD
 ### 2.2 核心实现
 （关键代码分析，≥ 5 处 file:line 引用，包含实际代码片段 ≥ 2 段）
 
-```python
-# 示例：不是伪代码，是源项目的真实代码摘录
+**重要：每段代码片段前必须配一个 Mermaid 流程图**，先展示执行流程再贴代码。格式：
+
+\```mermaid
+graph TD
+    A[入口/触发] --> B{判断/分支}
+    B -->|条件1| C[处理步骤1]
+    B -->|条件2| D[处理步骤2]
+    C --> E[输出/结果]
+\```
+
+对应源码 `path/to/file.py:45-78`：
+\```python
+# 源项目的真实代码摘录（不是伪代码）
 class ActualClassName:
     def actual_method(self, param: Type) -> ReturnType:
         ...
-```
+\```
 
 ### 2.3 实现细节
 （重要的实现细节和技巧，数据流图）
@@ -313,8 +324,9 @@ class TestCoreFunctionality:
 | 2 | 源项目 file:line 引用 | ≥ 5 处（含行数） |
 | 3 | 实际代码片段 | ≥ 2 段，代码总行数 ≥ 20 行 |
 | 4 | 架构图 | ≥ 1 张（ASCII/Mermaid） |
-| 5 | 7 章完整性 | 全部 7 章都有实质内容 |
-| 6 | 横向对比 JSON | 第 7 章包含有效的 `comparison_data` JSON 代码块 |
+| 5 | 代码配套流程图 | 每段代码片段（≥8行）前必须有 Mermaid 流程图，至少 2 对 |
+| 6 | 7 章完整性 | 全部 7 章都有实质内容 |
+| 7 | 横向对比 JSON | 第 7 章包含有效的 `comparison_data` JSON 代码块 |
 
 ### Good vs Bad 示例
 
@@ -398,13 +410,50 @@ GitHub: {repo_url}
 | `/butcher-doc PD-XX <repo_path>` | 为指定域生成单个文档 |
 | `/butcher-doc --check <file>` | 对已有文档执行质量门控检查 |
 
+## 文档写入方式（极其重要！）
+
+文档内容较长（通常 200-500 行），**禁止使用 Write 工具**（Write 有 150 行限制，超出后需要多轮 Edit 追加，容易因上下文耗尽导致文档截断不完整）。
+
+**必须使用 Bash echo/cat 分步写入：**
+
+1. 先在内存中规划好全部 7 章内容
+2. 用 Bash 写入第 1-2 章：
+   ```bash
+   cat > knowledge/solutions/PD-XX-ProjectName-方案简述.md << 'BUTCHER_EOF'
+   # PD-XX.NN ProjectName — 方案标题
+   ...（第 1-2 章内容）...
+   BUTCHER_EOF
+   ```
+3. 用 Bash 追加第 3-4 章：
+   ```bash
+   cat >> knowledge/solutions/PD-XX-ProjectName-方案简述.md << 'BUTCHER_EOF'
+   ## 第 3 章 迁移指南
+   ...（第 3-4 章内容）...
+   BUTCHER_EOF
+   ```
+4. 用 Bash 追加第 5-7 章：
+   ```bash
+   cat >> knowledge/solutions/PD-XX-ProjectName-方案简述.md << 'BUTCHER_EOF'
+   ## 第 5 章 跨域关联
+   ...（第 5-7 章内容）...
+   BUTCHER_EOF
+   ```
+
+**每次 cat/echo 不超过 200 行**，分 3 次写完。这样即使上下文紧张，每次追加都是独立的 Bash 调用，不会因为 Write+Edit 链断裂导致文档截断。
+
+**禁止：**
+- 不要用 Write 工具写文档（会触发分块限制）
+- 不要用 Edit 工具追加大段内容（依赖 placeholder 链，容易断裂）
+- 不要一次性写入超过 200 行（heredoc 太长可能被截断）
+
 ## 规则
 
 1. 所有分析必须基于实际代码，不要猜测或假设
 2. 代码引用必须精确到 file:line（通过 Read 工具验证）
 3. 代码片段必须是源项目的真实代码摘录，不是伪代码
-4. 生成的文档必须遵循 6 章标准格式
-5. 质量门控 5 项全部通过才能输出
+4. 生成的文档必须遵循 7 章标准格式
+5. 质量门控全部通过才能输出
 6. 每个域的文档独立完整，不依赖其他域文档才能理解
 7. 迁移指南中的代码模板必须可运行（不是示意性的）
+8. **必须用 Bash cat/echo 写文档，禁止用 Write 工具**
 

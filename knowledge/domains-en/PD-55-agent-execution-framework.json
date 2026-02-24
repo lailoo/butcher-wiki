@@ -1,0 +1,23 @@
+{
+  "id": "PD-55",
+  "title": "Execution Framework",
+  "subtitle": "Agent Execution Framework Design",
+  "description": "The Agent execution framework is the core infrastructure of AI Agent engineering, responsible for coordinating the Agent lifecycle, task scheduling, step execution, and result delivery. A well-designed execution framework ensures Agents complete complex tasks efficiently and reliably while supporting asynchronous processing, error recovery, and performance optimization.",
+  "sub_problems": [
+    "Execution engine architecture: How to design a general-purpose execution engine supporting synchronous/asynchronous and serial/parallel execution",
+    "Step orchestration and flow control: How to manage multi-step execution flows, conditional branching, and loop control for Agents",
+    "Timeout and resource limits: How to implement execution timeout detection, memory/CPU constraints, and resource isolation",
+    "Execution state tracking: How to maintain execution context, intermediate results, and complete execution traces",
+    "Performance and throughput: How to optimize batch processing, concurrent execution, and resource utilization"
+  ],
+  "best_practices": [
+    "Adopt event-driven architecture to decouple execution flows into composable event handlers",
+    "Implement hierarchical timeout management mechanisms, distinguishing global timeouts, step timeouts, and operation timeouts",
+    "Use state machine patterns to standardize Agent execution phases (initialization → execution → completion → cleanup)",
+    "Provide structured execution logging and tracing capabilities for debugging and performance analysis",
+    "Design extensible execution strategy interfaces supporting custom scheduling, retry, and fallback logic"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

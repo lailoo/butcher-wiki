@@ -1,0 +1,25 @@
+{
+  "id": "PD-49",
+  "slug": "multi-llm-provider-adapter",
+  "title": "多 LLM 提供商适配",
+  "subtitle": "Multi-LLM Provider Adapter",
+  "icon": "globe",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "统一接口适配多个 LLM 提供商，屏蔽 API 差异实现无缝切换",
+  "tags": [
+    "LLM",
+    "adapter",
+    "multi-provider"
+  ],
+  "sub_problems": [
+    "API 格式转换",
+    "认证方式统一",
+    "流式响应适配",
+    "模型能力检测"
+  ],
+  "best_practices": [
+    "使用适配器模式统一接口",
+    "按 config_name 单例缓存实例"
+  ]
+}

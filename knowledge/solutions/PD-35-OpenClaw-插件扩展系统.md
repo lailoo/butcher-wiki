@@ -294,4 +294,3 @@ export function validateJsonSchemaValue(params: {
 
 插件可注册自定义命令绕过 LLM（`src/plugins/commands.ts:108-141`）。命令名不能与内置命令冲突（30+ 保留名），执行时有参数长度限制（4096 字符）和控制字符过滤。
 
-<!-- APPEND_PLACEHOLDER_3 -->

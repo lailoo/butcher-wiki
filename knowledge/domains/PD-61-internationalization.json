@@ -1,0 +1,25 @@
+{
+  "id": "PD-61",
+  "slug": "internationalization",
+  "title": "国际化",
+  "subtitle": "Internationalization (i18n)",
+  "icon": "globe",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "多语言支持、语言检测和翻译管理机制",
+  "tags": [
+    "i18n",
+    "locale",
+    "translation",
+    "multi-language"
+  ],
+  "sub_problems": [
+    "类型安全的翻译键",
+    "浏览器语言自动检测",
+    "语言偏好持久化",
+    "翻译文件组织"
+  ],
+  "best_practices": [
+    "TypeScript 接口定义翻译结构确保编译时类型检查"
+  ]
+}

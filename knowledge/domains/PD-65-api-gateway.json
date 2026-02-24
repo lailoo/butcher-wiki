@@ -1,0 +1,27 @@
+{
+  "id": "PD-65",
+  "slug": "api-gateway",
+  "title": "API 网关",
+  "subtitle": "API Gateway",
+  "icon": "layers",
+  "color": "#3B82F6",
+  "severity": "medium",
+  "description": "统一 API 入口、路由分发和服务编排的网关层",
+  "tags": [
+    "gateway",
+    "fastapi",
+    "nginx",
+    "reverse-proxy",
+    "REST"
+  ],
+  "sub_problems": [
+    "路由分发",
+    "服务发现",
+    "CORS 处理",
+    "健康检查",
+    "API 文档自动生成"
+  ],
+  "best_practices": [
+    "Nginx 做反向代理统一入口，FastAPI 提供 OpenAPI 文档自动生成"
+  ]
+}

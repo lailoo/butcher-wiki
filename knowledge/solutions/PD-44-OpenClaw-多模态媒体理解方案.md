@@ -258,4 +258,3 @@ decision = {
 
 CLI entry 支持模板变量替换（`runner.entries.ts:555-566`），变量包括 `{{MediaPath}}`、`{{OutputDir}}`、`{{Prompt}}`、`{{MaxChars}}` 等，使得任意命令行工具都可以作为 media understanding backend。
 
-<!-- PLACEHOLDER_CHUNK3 -->

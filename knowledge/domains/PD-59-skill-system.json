@@ -1,0 +1,25 @@
+{
+  "id": "PD-59",
+  "slug": "skill-system",
+  "title": "技能系统",
+  "subtitle": "Skill System",
+  "icon": "sparkles",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "Agent 能力的模块化封装、发现、加载和管理机制",
+  "tags": [
+    "skills",
+    "capability",
+    "progressive-loading"
+  ],
+  "sub_problems": [
+    "技能发现与注册",
+    "渐进式加载",
+    "技能元数据解析",
+    "运行时启用禁用",
+    "技能安装与分发"
+  ],
+  "best_practices": [
+    "Markdown-based 技能定义便于人类编辑和 Agent 消费"
+  ]
+}

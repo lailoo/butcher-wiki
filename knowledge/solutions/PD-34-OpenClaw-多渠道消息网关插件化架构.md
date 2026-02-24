@@ -240,4 +240,3 @@ export async function deliverOutboundPayloads(
 3. 逐 payload 发送，支持 text/media/poll 三种类型
 4. 触发 `message_sending`（可修改/取消）和 `message_sent` 钩子
 
-<!-- APPEND_PLACEHOLDER_2 -->

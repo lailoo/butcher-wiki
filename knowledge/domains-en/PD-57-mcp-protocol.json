@@ -1,0 +1,23 @@
+{
+  "id": "PD-57",
+  "title": "MCP Protocol",
+  "subtitle": "Model Context Protocol Integration",
+  "description": "MCP (Model Context Protocol) is a standardized Agent-LLM communication protocol that defines interaction specifications for tool invocation, resource access, and prompt injection. In AI Agent engineering, correctly implementing the MCP protocol is essential for ensuring seamless collaboration between Agents and external systems, while enhancing interoperability and scalability.",
+  "sub_problems": [
+    "MCP server implementation: How to correctly implement MCP servers that support tool definition, resource exposure, and prompt management capabilities",
+    "MCP client integration: How Agents connect to multiple servers as MCP clients, managing connection lifecycle and request routing",
+    "Protocol version compatibility: Handling compatibility issues between different MCP versions to ensure forward and backward compatibility",
+    "Error handling and recovery: Defining clear error codes, exception handling mechanisms, and connection recovery strategies",
+    "Performance and streaming: Optimizing MCP message serialization, supporting streaming responses and large file transfers"
+  ],
+  "best_practices": [
+    "Strictly adhere to MCP specifications using official SDKs or reference implementations to avoid compatibility issues from custom protocol variants",
+    "Design clear metadata and documentation for tools, resources, and prompts to facilitate Agent discovery and capability understanding",
+    "Implement robust connection management and heartbeat detection mechanisms to ensure MCP connection stability and timely fault detection",
+    "Implement fault tolerance strategies such as request timeouts, retries, and circuit breakers at the MCP message layer to enhance system resilience",
+    "Provide observability support for MCP protocols including logging, tracing, and metrics to facilitate debugging and performance analysis"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

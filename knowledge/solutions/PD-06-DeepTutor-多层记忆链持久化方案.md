@@ -249,4 +249,3 @@ Solve Loop:
   solve_memory.save()
 ```
 
-<!-- PLACEHOLDER_CONTENT_2 -->

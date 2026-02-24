@@ -1,0 +1,23 @@
+{
+  "id": "PD-56",
+  "title": "AI Search",
+  "subtitle": "Intelligent Search & Retrieval System",
+  "description": "Implement efficient semantic search and information retrieval capabilities within AI Agent systems, supporting multi-source data queries, relevance ranking, and result aggregation. This domain addresses how Agents rapidly locate and acquire relevant information, directly impacting decision quality and response accuracy.",
+  "sub_problems": [
+    "Query Understanding & Expansion: How to transform user natural language queries into effective search signals, supporting synonym expansion, contextual enrichment, and multi-turn query optimization",
+    "Multi-Source Data Retrieval: How to uniformly integrate and query data from diverse sources (vector databases, full-text indexes, knowledge graphs, etc.) and perform result fusion",
+    "Relevance Ranking: How to design multi-dimensional ranking strategies (semantic similarity, temporal freshness, authority, etc.) to ensure the most relevant results are prioritized",
+    "Search Performance Optimization: How to guarantee low-latency search on large-scale datasets, including index optimization, caching strategies, and concurrency control",
+    "Search Result Explainability: How to provide Agents with interpretable information about search results, supporting result traceability and confidence assessment"
+  ],
+  "best_practices": [
+    "Adopt hybrid search strategy (BM25 + vector retrieval), combining sparse and dense representations to improve recall and precision",
+    "Implement query rewriting pipeline supporting spell correction, entity recognition, intent classification, and other preprocessing steps",
+    "Design layered index architecture, using caching for hot data and asynchronous index updates for cold data",
+    "Establish search quality evaluation framework through A/B testing and user feedback to continuously optimize ranking models",
+    "Provide metadata and source information for search results, enabling Agents to verify and trace result origins"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

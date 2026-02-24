@@ -1,0 +1,25 @@
+{
+  "id": "PD-50",
+  "slug": "browser-automation",
+  "title": "浏览器自动化",
+  "subtitle": "Browser Automation",
+  "icon": "eye",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "Agent 驱动的浏览器自动化，支持状态感知和视觉反馈的网页交互",
+  "tags": [
+    "browser",
+    "automation",
+    "playwright"
+  ],
+  "sub_problems": [
+    "浏览器状态获取",
+    "截图注入上下文",
+    "多标签管理",
+    "沙箱内浏览器"
+  ],
+  "best_practices": [
+    "每步注入浏览器状态到 prompt",
+    "使用 BrowserContextHelper 解耦状态管理"
+  ]
+}

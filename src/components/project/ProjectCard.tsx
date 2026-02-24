@@ -86,7 +86,7 @@ export function ProjectCard({ project }: { project: ProjectEntry }) {
                   className="text-[10px] font-mono px-2 py-0.5 rounded-full"
                   style={{ color: d.color, backgroundColor: `${d.color}15`, border: `1px solid ${d.color}25` }}
                 >
-                  {d.id}
+                  {d.title}
                 </span>
               ))}
             </div>

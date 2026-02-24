@@ -1,0 +1,31 @@
+{
+  "id": "PD-57",
+  "slug": "mcp-protocol",
+  "title": "MCP协议",
+  "subtitle": "Model Context Protocol Integration",
+  "icon": "link",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "MCP（Model Context Protocol）是标准化的 Agent-LLM 通信协议，定义了工具调用、资源访问、提示词注入等交互规范。在 AI Agent 工程中，正确实现 MCP 协议是确保 Agent 与外部系统无缝协作、提升互操作性和可扩展性的关键。",
+  "tags": [
+    "mcp-protocol",
+    "agent-communication",
+    "tool-integration",
+    "context-exchange",
+    "protocol-design"
+  ],
+  "sub_problems": [
+    "MCP 服务端实现：如何正确实现 MCP 服务端，支持工具定义、资源暴露、提示词管理等核心能力",
+    "MCP 客户端集成：Agent 如何作为 MCP 客户端连接多个服务端，管理连接生命周期和请求路由",
+    "协议版本兼容性：处理不同 MCP 版本间的兼容性问题，确保向前向后兼容",
+    "错误处理与恢复：定义清晰的错误码、异常处理机制和连接恢复策略",
+    "性能与流式传输：优化 MCP 消息序列化、支持流式响应和大文件传输"
+  ],
+  "best_practices": [
+    "严格遵循 MCP 规范定义，使用官方 SDK 或参考实现，避免自定义协议变体导致的兼容性问题",
+    "为工具、资源、提示词设计清晰的元数据和文档，便于 Agent 发现和理解可用能力",
+    "实现完善的连接管理和心跳检测机制，确保 MCP 连接的稳定性和及时故障发现",
+    "在 MCP 消息层面实现请求超时、重试、断路器等容错策略，提升系统韧性",
+    "提供 MCP 协议的可观测性支持（日志、追踪、指标），便于调试和性能分析"
+  ]
+}

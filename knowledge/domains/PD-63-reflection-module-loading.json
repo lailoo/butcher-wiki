@@ -1,0 +1,25 @@
+{
+  "id": "PD-63",
+  "slug": "reflection-module-loading",
+  "title": "反射式模块加载",
+  "subtitle": "Reflection & Dynamic Module Loading",
+  "icon": "refresh-cw",
+  "color": "#F59E0B",
+  "severity": "medium",
+  "description": "运行时动态解析和加载模块、类和变量的插件化机制",
+  "tags": [
+    "reflection",
+    "dynamic-import",
+    "plugin",
+    "module-loading"
+  ],
+  "sub_problems": [
+    "模块路径解析",
+    "类型验证",
+    "基类检查",
+    "错误处理"
+  ],
+  "best_practices": [
+    "module.path:ClassName 格式统一路径规范，带类型校验防止运行时错误"
+  ]
+}

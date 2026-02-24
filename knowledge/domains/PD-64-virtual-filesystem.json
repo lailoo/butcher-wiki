@@ -1,0 +1,25 @@
+{
+  "id": "PD-64",
+  "slug": "virtual-filesystem",
+  "title": "虚拟文件系统",
+  "subtitle": "Virtual File System",
+  "icon": "file-text",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "Agent 可见的虚拟路径与物理路径之间的映射和隔离机制",
+  "tags": [
+    "virtual-path",
+    "path-mapping",
+    "file-isolation",
+    "workspace"
+  ],
+  "sub_problems": [
+    "虚拟路径到物理路径映射",
+    "线程级目录隔离",
+    "本地与容器路径统一",
+    "文件上传与产出管理"
+  ],
+  "best_practices": [
+    "统一虚拟路径接口屏蔽底层存储差异，每线程独立目录防止数据泄漏"
+  ]
+}

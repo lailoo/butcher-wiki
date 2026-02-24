@@ -1,0 +1,23 @@
+{
+  "id": "PD-58",
+  "title": "Skill Integration",
+  "subtitle": "Skill Integration and Management",
+  "description": "In AI Agent systems, skills are atomic capability units requiring unified integration, registration, invocation, and lifecycle management mechanisms. This domain addresses how agents can flexibly discover, load, execute, and unload various skills while ensuring skill isolation and composability.",
+  "sub_problems": [
+    "Skill registration and discovery: How to establish a unified skill registry supporting dynamic registration, version management, and metadata description",
+    "Skill loading and unloading: How to safely load and unload skills while preventing resource leaks and dependency conflicts",
+    "Skill invocation interface: How to define a unified skill invocation protocol supporting synchronous/asynchronous and streaming/non-streaming execution",
+    "Skill dependency management: How to handle inter-skill dependencies, version compatibility, and conflict resolution",
+    "Skill permissions and isolation: How to enforce permission control, resource limits, and execution isolation for skills"
+  ],
+  "best_practices": [
+    "Use interfaces/protocols to define skill specifications, ensuring pluggability and interoperability",
+    "Implement a skill metadata system (name, version, input parameters, output parameters, dependencies, etc.) supporting automatic discovery and documentation generation",
+    "Adopt factory pattern or dependency injection for skill lifecycle management, avoiding hardcoded coupling",
+    "Provide timeout control, error recovery, and logging mechanisms for skill execution",
+    "Design a skill composition framework supporting chained skill invocation and conditional branching execution"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 3
+}

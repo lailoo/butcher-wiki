@@ -1,0 +1,26 @@
+{
+  "id": "PD-60",
+  "slug": "config-driven-architecture",
+  "title": "配置驱动架构",
+  "subtitle": "Config-Driven Architecture",
+  "icon": "settings",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "通过声明式配置文件驱动系统行为，支持环境变量和热重载",
+  "tags": [
+    "configuration",
+    "yaml",
+    "env-variables",
+    "hot-reload"
+  ],
+  "sub_problems": [
+    "多层配置优先级",
+    "环境变量解析",
+    "运行时配置热重载",
+    "配置校验与类型安全",
+    "多进程配置同步"
+  ],
+  "best_practices": [
+    "Pydantic BaseModel 做配置校验，$ENV 语法解析环境变量"
+  ]
+}

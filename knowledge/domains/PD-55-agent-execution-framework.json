@@ -1,0 +1,31 @@
+{
+  "id": "PD-55",
+  "slug": "agent-execution-framework",
+  "title": "执行框架",
+  "subtitle": "Agent Execution Framework Design",
+  "icon": "cpu",
+  "color": "#FF6B6B",
+  "severity": "critical",
+  "description": "Agent执行框架是AI Agent工程的核心基础设施，负责协调Agent的生命周期、任务调度、步骤执行和结果返回。设计合理的执行框架能够确保Agent高效、可靠地完成复杂任务，同时支持异步处理、错误恢复和性能优化。",
+  "tags": [
+    "execution-engine",
+    "task-scheduling",
+    "lifecycle-management",
+    "async-processing",
+    "performance-optimization"
+  ],
+  "sub_problems": [
+    "执行引擎架构：如何设计支持同步/异步、串行/并行的通用执行引擎",
+    "步骤编排与流控：如何管理Agent的多步骤执行流程、条件分支和循环控制",
+    "超时与资源限制：如何实现执行超时检测、内存/CPU限制和资源隔离",
+    "执行状态追踪：如何维护执行上下文、中间结果和完整的执行轨迹",
+    "性能与吞吐量：如何优化批处理、并发执行和资源利用率"
+  ],
+  "best_practices": [
+    "采用事件驱动架构，将执行流程解耦为可组合的事件处理器",
+    "实现分层的超时管理机制，区分全局超时、步骤超时和操作超时",
+    "使用状态机模式规范化Agent执行的各个阶段（初始化→执行→完成→清理）",
+    "提供结构化的执行日志和追踪能力，便于调试和性能分析",
+    "设计可扩展的执行策略接口，支持自定义调度、重试和降级逻辑"
+  ]
+}

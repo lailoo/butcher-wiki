@@ -77,4 +77,3 @@ AI 编码工具（Cursor、Claude Code、Lovable、Replit、Manus、v0、Trae、
 
 #### 2.2.1 Schema 结构对比：OpenAI vs Anthropic 协议
 
-<!-- PLACEHOLDER_MORE_CONTENT -->
