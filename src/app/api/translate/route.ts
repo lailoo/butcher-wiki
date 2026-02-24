@@ -26,10 +26,9 @@ Return ONLY a JSON object with these fields:
   "sub_problems": ["translated sub-problems"],
   "best_practices": ["translated best practices"],
   "comparison_dimensions": [{"name": "translated dimension name", "values": {"ProjectName": "translated value"}}],
-  "solutions": [{"source_id": "keep original", "title": "translated title", "description": "translated description", "design_philosophy": ["translated philosophy"], "migration_scenarios": ["translated scenarios"]}]
+  "solutions": [{"source_id": "keep original", "project": "keep original", "title": "translated title", "description": "translated description", "design_philosophy": ["translated philosophy"], "migration_scenarios": ["translated scenarios"]}]
 }
-Keep all project names, source_ids, and technical identifiers unchanged.
-Do NOT include any text outside the JSON.`;
+Keep all project names, source_ids, and technical identifiers unchanged. Each solution must keep its original "project" field value.`;
 
 const SOLUTION_SYSTEM = `You are a professional translator for a software engineering knowledge base.
 Translate the following Chinese markdown document into English.
@@ -68,6 +67,7 @@ async function translateDomain(domainId: string, llm: ChatAnthropic) {
     comparison_dimensions: domain.comparison_dimensions,
     solutions: domain.solutions.map(s => ({
       source_id: s.source_id,
+      project: s.project,
       title: s.title,
       description: s.description,
       design_philosophy: (s as unknown as Record<string, unknown>).design_philosophy || [],

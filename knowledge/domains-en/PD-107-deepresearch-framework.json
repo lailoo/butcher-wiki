@@ -1,0 +1,23 @@
+{
+  "id": "PD-107",
+  "title": "Deep Research Framework",
+  "subtitle": "Deep Research Framework for AI Agents",
+  "description": "The Deep Research Framework equips AI Agents with multi-turn iteration, multi-source information fusion, and logical reasoning capabilities to systematically analyze and validate complex problems. Through structured research processes, information aggregation, and cross-validation, the framework helps Agents generate more reliable and in-depth research conclusions.",
+  "sub_problems": [
+    "Research Process Design: How to design multi-turn iterative research strategies that balance depth with efficiency",
+    "Information Source Management: Collection, deduplication, prioritization, and conflict resolution of multi-source information",
+    "Reasoning Chain Construction: Traceability of logical derivation from raw information to conclusions",
+    "Fact Verification: Cross-validate information authenticity and identify and eliminate hallucinations and contradictions",
+    "Conclusion Generation: Comprehensive synthesis and confidence assessment based on multi-turn research results"
+  ],
+  "best_practices": [
+    "Adopt phased research strategy: Information collection → Initial analysis → Deep verification → Conclusion generation, with clear objectives and exit conditions for each phase",
+    "Establish information provenance mechanism: Record source, timestamp, and credibility score for each piece of information to support complete conclusion traceability",
+    "Implement multi-source cross-validation: Verify the same fact from multiple independent sources with conflict detection and automatic escalation mechanisms",
+    "Design dynamic research depth control: Dynamically adjust iteration rounds based on problem complexity, information consistency, and time budget",
+    "Provide research process visualization: Generate research trees, information dependency graphs, and reasoning chains for manual review and debugging"
+  ],
+  "comparison_dimensions": [],
+  "solutions": [],
+  "_version": 5
+}

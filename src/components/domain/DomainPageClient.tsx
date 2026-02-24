@@ -51,12 +51,14 @@ export function DomainPageClient({ domain, domainContext, knowledgeDocSlugs }: D
     sub_problems: domain.sub_problems,
     best_practices: domain.best_practices,
     comparison_dimensions: domain.comparison_dimensions,
-    solutions: domain.solutions.map(s => ({ source_id: s.source_id, title: s.title, description: s.description })),
+    solutions: domain.solutions.map(s => ({ source_id: s.source_id, project: s.project, title: s.title, description: s.description })),
   });
 
   // Build translated solutions by merging original data with translated fields
-  const translatedSolutions = domain.solutions.map(s => {
-    const ts = localDomain.solutions?.find(t => t.source_id === s.source_id);
+  // Match by project name (unique within domain) — source_id is not unique for scanned solutions
+  const translatedSolutions = domain.solutions.map((s, idx) => {
+    const ts = localDomain.solutions?.find(t => t.source_id === s.source_id && t.project === s.project)
+      ?? localDomain.solutions?.[idx];
     if (!ts) return s;
     return {
       ...s,

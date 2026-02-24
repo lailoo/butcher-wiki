@@ -10,7 +10,7 @@ const DOMAINS_EN_DIR = path.join(process.cwd(), 'knowledge', 'domains-en');
 const SOLUTIONS_EN_DIR = path.join(process.cwd(), 'knowledge', 'solutions-en');
 
 /** Current translation schema version. Bump when adding new required fields. */
-const TRANSLATION_VERSION = 4;
+const TRANSLATION_VERSION = 5;
 
 export interface DomainTranslation {
   id: string;
@@ -20,7 +20,7 @@ export interface DomainTranslation {
   sub_problems: string[];
   best_practices: string[];
   comparison_dimensions?: { name: string; values: Record<string, string> }[];
-  solutions?: { source_id: string; title: string; description: string; design_philosophy?: string[]; migration_scenarios?: string[] }[];
+  solutions?: { source_id: string; project?: string; title: string; description: string; design_philosophy?: string[]; migration_scenarios?: string[] }[];
   _version?: number;
 }
 

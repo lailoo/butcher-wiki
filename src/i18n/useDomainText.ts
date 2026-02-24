@@ -10,7 +10,7 @@ interface DomainTextFields {
   sub_problems: string[];
   best_practices: string[];
   comparison_dimensions?: { name: string; values: Record<string, string> }[];
-  solutions?: { source_id: string; title: string; description: string; design_philosophy?: string[]; migration_scenarios?: string[] }[];
+  solutions?: { source_id: string; project?: string; title: string; description: string; design_philosophy?: string[]; migration_scenarios?: string[] }[];
 }
 
 interface UseDomainTextResult extends DomainTextFields {
