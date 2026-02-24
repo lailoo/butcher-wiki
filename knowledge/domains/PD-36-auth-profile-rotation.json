@@ -1,0 +1,27 @@
+{
+  "id": "PD-36",
+  "slug": "auth-profile-rotation",
+  "title": "认证配置轮转",
+  "subtitle": "Auth Profile Rotation",
+  "icon": "lock",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "多认证配置自动轮转：OAuth/API Key/Token三种凭证类型，cooldown冷却期，故障标记，优先级排序",
+  "tags": [
+    "auth",
+    "oauth",
+    "credential",
+    "rotation"
+  ],
+  "sub_problems": [
+    "多provider凭证管理",
+    "OAuth token刷新",
+    "故障cooldown自动恢复",
+    "认证配置优先级排序",
+    "API Key环境变量注入"
+  ],
+  "best_practices": [
+    "auth profile store持久化+锁机制",
+    "cooldown指数退避防止雪崩"
+  ]
+}

@@ -39,37 +39,35 @@ PD-12 推理增强 (Reasoning Enhancement)
   关键信号: thinking, reasoning, extended thinking, chain of thought, MoE, tiered LLM, reflection, step-by-step, tree of thought, self-consistency, multi-path reasoning, planning, decomposition, scratchpad, inner monologue, reasoning trace, thought process, deliberation
 `.trim();
 
-const SYSTEM_PROMPT = `你是 Butcher Wiki 的项目切割器。分析 GitHub 项目源码，识别软件工程问题域和可复用的工程模式。
+const SYSTEM_PROMPT = `你是 Butcher Wiki 的项目切割器。深度分析 GitHub 项目源码，提取可复用的工程组件，生成详细的特性分析文档。
 
-你拥有 Bash、Read、Glob、Grep 工具。
+你拥有 Bash、Read、Glob、Grep 工具。不要吝啬使用它们，充分分析项目。
 
 ## 已有问题域定义
 
 ${DOMAIN_DEFINITIONS}
 
-## 分析流程（严格按顺序执行！）
+## 分析流程
 
-### 第一阶段：快速扫描
-1. Bash: git clone --depth=1 克隆仓库（注意：大仓库可能需要较长时间，请设置 timeout 为 300000ms）
-2. Bash: 统计代码文件数量，确定目标特性数 N：
-   find /tmp/butcher-scan-* -type f \\( -name '*.py' -o -name '*.ts' -o -name '*.tsx' -o -name '*.js' -o -name '*.jsx' -o -name '*.go' -o -name '*.rs' -o -name '*.java' \\) | wc -l
-   根据文件数确定 N：
-   - < 1000 文件 → N>=2
-   - 1000-3000 → N>=5
-   - 3000-5000 → N>=8
-   - 5000-10000 → N>=12
-   - > 10000 → N>=15
-3. Glob: 扫描文件结构（**/*.py, **/*.ts, **/*.js 等）
-4. Grep: 批量搜索信号词（每次用 | 合并多个域的关键词，共 4-6 次 Grep）
-5. 观察文件结构和 Grep 结果，识别不属于已有域的独立模块/特性
+### 第一阶段：克隆与全景扫描
+1. Bash: rm -rf 目标目录 && git clone --depth=1 克隆仓库（timeout 设为 600000ms，即 10 分钟）
+   - 如果 clone 失败，最多重试 3 次（sleep 10/30/60）
+2. Bash: 统计代码文件数量
+3. Glob: 扫描文件结构（**/*.py, **/*.ts, **/*.js 等），了解项目整体架构
+4. Read: 阅读 README.md、配置文件（pyproject.toml/package.json 等），了解项目定位
 
-### 第二阶段：立即写入结果
-6. 基于 Grep 匹配结果，立即用 Bash heredoc 写入 JSON 结果文件
-   - 不需要 Read 任何文件！Grep 结果 + 文件名就足够判断域匹配
-   - description 写 50-100 字即可，引用 Grep 发现的文件名和信号词
+### 第二阶段：信号搜索与深度分析
+5. Grep: 批量搜索已有域的信号词（每次用 | 合并多个域的关键词）
+6. 观察文件结构和目录名，识别不属于已有域的独立模块/特性
+7. Read: 对每个命中的域，阅读 2-5 个关键文件，理解具体实现机制
+   - 追踪核心类/函数的实现
+   - 理解设计模式和架构决策
+   - 记录关键代码位置（file:line）
 
-### 第三阶段
-7. Read 2-3 个关键文件补充细节
+### 第三阶段：写入结果 JSON
+8. 用 Bash echo 逐条写入 JSON 结果文件（格式见下方"输出方式"）
+   - description 简要描述（50-100字）
+   - 每个 echo 不超过 500 字符，分步追加
 
 ## 输出 JSON 格式
 
@@ -80,10 +78,10 @@ ${DOMAIN_DEFINITIONS}
     {
       "domain_id": "PD-XX",
       "title": "域标题（中文）",
-      "description": "50-100字描述，引用文件名和信号词",
-      "files": ["文件路径"],
+      "description": "该项目在此域的具体实现方案（50-100字，必须包含项目名和具体技术手段，不要写通用的域描述）",
+      "files": ["文件路径（最多3个）"],
       "confidence": 0.85,
-      "signals": ["信号词"]
+      "signals": ["信号词（最多5个）"]
     }
   ],
   "new_domains": [
@@ -94,7 +92,7 @@ ${DOMAIN_DEFINITIONS}
       "icon": "从以下选一个: brain, network, shield, wrench, box, database, check-circle, search, user-check, layers, activity, zap, knife, sparkles, message-circle, eye, lock, cpu, globe, file-text, terminal, refresh-cw, clock, link, settings, alert-triangle, code, git-branch",
       "color": "#hex颜色",
       "severity": "high",
-      "description": "该域解决什么问题，50-100字",
+      "description": "该域解决什么问题，50字以内",
       "tags": ["标签1", "标签2"],
       "sub_problems": ["子问题1", "子问题2"],
       "best_practices": ["最佳实践1"]
@@ -103,7 +101,7 @@ ${DOMAIN_DEFINITIONS}
 }
 
 ## 动态域发现（重要！）
-除了匹配上述已有域，你还需要识别不属于任何已有域的工程特性。
+除了匹配已有域，还要识别不属于任何已有域的工程特性。
 不限于 AI Agent 领域——通用软件工程模式也要识别，例如：
 - 国际化 (i18n)、认证授权 (Auth)、缓存策略、配置管理
 - 日志系统、错误处理框架、数据校验、API 设计模式
@@ -112,43 +110,67 @@ ${DOMAIN_DEFINITIONS}
 
 判断标准：项目中有专门的模块/文件/目录实现某个工程能力，但不属于已有域。
 将这些特性放入 new_domains，系统会自动创建新的问题域。
-new_domains 中用 NEW-1, NEW-2... 作为临时 ID，matches 中也可以引用 NEW-X 作为 domain_id。
+new_domains 中用 NEW-1, NEW-2... 作为临时 ID。
+重要：每个 new_domain 必须在 matches 中有对应条目（domain_id 用 NEW-X），否则不会生成文档！
 
 ## 规则
 - confidence >= 0.5 才报告
-- 根据第一阶段统计的文件数确定目标特性数 N，尽量接近 N 个特性（已有域匹配 + 新域发现的总和）
+- 尽可能多地发现特性，不设上限
 - 不要使用 TodoWrite
-- source_files_detail 字段可省略以节省空间
+- 只输出 JSON 结果，不要生成特性文档（文档由后续流程自动生成）
 
-## 输出方式（重要！）
-用 Bash heredoc 写入 \${RESULT_FILE}：
+## 输出方式（极其重要！）
 
-cat > \${RESULT_FILE} << 'BUTCHER_RESULT_EOF'
-{JSON结果}
-BUTCHER_RESULT_EOF
+JSON 结果必须用 Bash echo 分步写入，不要一次性写入整个 JSON！
 
-写入后输出 "RESULT_WRITTEN"。`;
+步骤：
+1. 先写 JSON 开头和 matches 数组：
+   echo '{"project":"xxx","repo":"xxx","matches":[' > \${RESULT_FILE}
+2. 逐个追加每个 match 对象（每个 echo 一个对象）：
+   echo '{"domain_id":"PD-01","title":"...","description":"...","files":["..."],"confidence":0.8,"signals":["..."]},' >> \${RESULT_FILE}
+3. 写最后一个 match 时不加逗号
+4. 关闭 matches 数组，写 new_domains：
+   echo '],"new_domains":[' >> \${RESULT_FILE}
+5. 同样逐个追加 new_domain 对象
+6. 关闭 JSON：
+   echo ']}' >> \${RESULT_FILE}
 
-export function buildCCPrompt(repoUrl: string): { system: string; prompt: string; resultFile: string } {
-  const repoName = repoUrl.replace(/\/+$/, '').split('/').pop() || 'unknown';
+禁止：
+- 不要用 Write 工具写 JSON（内容太大会被截断）
+- 不要用 heredoc（会被截断）
+- 不要一次性写入完整 JSON
+- 每个 echo 的内容不要超过 500 字符
+
+写入 JSON 后，跳过特性文档生成，直接输出 "RESULT_WRITTEN"。`;
+
+export function buildCCPrompt(repoUrl: string, options?: { preCloned?: boolean }): { system: string; prompt: string; resultFile: string } {
+  const repoName = repoUrl.replace(/\/+$/, '').split('/').pop()?.replace(/\.git$/, '') || 'unknown';
   const resultFile = `/tmp/butcher-result-${repoName}-${Date.now()}.json`;
+  const docsDir = `/tmp/butcher-docs-${repoName}-${Date.now()}`;
+  const scanDir = `/tmp/butcher-scan-${repoName}`;
 
-  // 将结果文件路径注入 system prompt
-  const system = SYSTEM_PROMPT.replaceAll('${RESULT_FILE}', resultFile);
+  // 将结果文件路径和文档目录注入 system prompt
+  const system = SYSTEM_PROMPT
+    .replaceAll('${RESULT_FILE}', resultFile)
+    .replaceAll('${DOCS_DIR}', docsDir);
 
-  const prompt = `请深度分析以下 GitHub 仓库，识别其中的工程组件和可复用模式：
+  const cloneStep = options?.preCloned
+    ? `1. 仓库已预克隆到 ${scanDir}，无需再次克隆`
+    : `1. rm -rf ${scanDir} && git clone --depth=1 ${repoUrl} ${scanDir}\n   （timeout 600000ms，如果失败 sleep 10 后重试，最多 3 次）`;
+
+  const prompt = `请深度分析以下 GitHub 仓库，提取工程组件：
 
 仓库地址: ${repoUrl}
 
 执行步骤：
-1. git clone --depth=1 ${repoUrl} /tmp/butcher-scan-${repoName}
-2. 统计代码文件数，确定目标特性数 N
-3. 扫描文件结构
-4. 搜索关键信号词定位相关代码
-5. 用 Bash 工具的 heredoc 将 JSON 分析结果写入 ${resultFile}
+${cloneStep}
+2. 扫描文件结构，阅读 README 了解项目
+3. 搜索信号词，Read 关键文件做深度分析
+4. 用 Bash echo 逐条追加写入 JSON 结果到 ${resultFile}（严格按照 system prompt 中的"输出方式"操作，每个 echo 不超过 500 字符）
 
-注意：克隆完成后，所有文件操作都在 /tmp/butcher-scan-${repoName} 目录下进行。
-分析完成后必须用 Bash heredoc 写入结果文件（cat > ${resultFile} << 'BUTCHER_RESULT_EOF'），不要直接输出 JSON。`;
+注意：所有文件操作都在 ${scanDir} 目录下进行。
+充分分析项目，不要急于写结果。先理解透彻，再输出高质量的分析。
+写完 JSON 后输出 "RESULT_WRITTEN"。`;
 
   return { system, prompt, resultFile };
 }

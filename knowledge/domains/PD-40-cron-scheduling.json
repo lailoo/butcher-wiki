@@ -1,0 +1,26 @@
+{
+  "id": "PD-40",
+  "slug": "cron-scheduling",
+  "title": "定时任务调度",
+  "subtitle": "Cron Job Scheduling",
+  "icon": "clock",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "内置cron服务：支持一次性/周期性任务，持久化存储，catch-up补偿，stagger错峰，隔离agent执行，session reaper自动清理",
+  "tags": [
+    "cron",
+    "scheduler",
+    "task"
+  ],
+  "sub_problems": [
+    "cron表达式解析",
+    "任务持久化存储",
+    "catch-up补偿执行",
+    "错峰调度",
+    "隔离agent运行"
+  ],
+  "best_practices": [
+    "CronService状态机管理",
+    "session-reaper自动清理过期会话"
+  ]
+}

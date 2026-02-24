@@ -1,0 +1,27 @@
+{
+  "id": "PD-46",
+  "slug": "model-catalog-discovery",
+  "title": "模型目录与发现",
+  "subtitle": "Model Catalog & Discovery",
+  "icon": "search",
+  "color": "#0ea5e9",
+  "severity": "medium",
+  "description": "多provider模型自动发现：Bedrock/Ollama/HuggingFace/BytePlus/Together等，模型别名映射，provider配置自动注入，模型兼容性适配",
+  "tags": [
+    "model",
+    "catalog",
+    "provider",
+    "discovery"
+  ],
+  "sub_problems": [
+    "多provider模型发现",
+    "模型别名映射",
+    "provider凭证自动注入",
+    "模型兼容性适配",
+    "模型选择策略"
+  ],
+  "best_practices": [
+    "model-catalog.ts统一模型注册",
+    "aliasIndex快速查找"
+  ]
+}

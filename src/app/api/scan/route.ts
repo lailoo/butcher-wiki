@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
 import path from 'path';
 import fs from 'fs';
+import { exec } from 'child_process';
 import { CCRunner, CCProgressEvent } from '@/lib/cc-runner';
 import { buildCCPrompt } from '@/lib/scan-prompt';
 import { getDomainById, ALL_DOMAINS, invalidateDomainsCache } from '@/data/domains';
@@ -124,6 +125,38 @@ function parseGitHubUrl(url: string): { owner: string; repo: string } | null {
   const m = url.match(/github\.com\/([^/]+)\/([^/\s#?]+)/);
   if (!m) return null;
   return { owner: m[1], repo: m[2].replace(/\.git$/, '') };
+}
+
+/** 预克隆仓库到本地（避免 CCRunner watchdog 超时） */
+async function preCloneRepo(repoUrl: string, targetDir: string): Promise<void> {
+  if (fs.existsSync(targetDir) && fs.readdirSync(targetDir).length > 1) {
+    console.log(`[scan] 仓库已存在: ${targetDir}，跳过克隆`);
+    return;
+  }
+  const delays = [0, 10_000, 30_000];
+  for (let i = 0; i < delays.length; i++) {
+    if (delays[i] > 0) {
+      await new Promise(r => setTimeout(r, delays[i]));
+    }
+    try {
+      await new Promise<void>((resolve, reject) => {
+        const cmd = `rm -rf ${targetDir} && git clone --depth=1 ${repoUrl} ${targetDir}`;
+        console.log(`[scan] 预克隆 (第${i + 1}次): ${cmd}`);
+        exec(cmd, { timeout: 3_000_000 }, (err, _stdout, stderr) => {
+          if (err) {
+            console.error(`[scan] 预克隆失败: ${stderr || err.message}`);
+            reject(new Error(err.message));
+          } else {
+            resolve();
+          }
+        });
+      });
+      console.log(`[scan] 预克隆完成: ${targetDir}`);
+      return;
+    } catch (err) {
+      if (i === delays.length - 1) throw new Error(`预克隆失败（${delays.length}次重试后）: ${(err as Error).message}`);
+    }
+  }
 }
 
 /** Fallback: 从 CC done 事件的 resultText 中提取 JSON */
@@ -264,10 +297,19 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: '无效的 GitHub URL' }, { status: 400 });
   }
 
-  const { system, prompt, resultFile } = buildCCPrompt(repoUrl);
   const repoName = repoUrl.replace(/\/+$/, '').split('/').pop()?.replace(/\.git$/, '') || 'unknown';
   const repoPath = `/tmp/butcher-scan-${repoName}`;
   const encoder = new TextEncoder();
+
+  // 预克隆仓库（在 SSE stream 之前完成，避免 CCRunner watchdog 超时）
+  try {
+    await preCloneRepo(repoUrl, repoPath);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : '预克隆失败';
+    return Response.json({ error: msg }, { status: 500 });
+  }
+
+  const { system, prompt, resultFile } = buildCCPrompt(repoUrl, { preCloned: true });
 
   const stream = new ReadableStream({
     start(controller) {
@@ -278,19 +320,19 @@ export async function POST(req: NextRequest) {
       };
 
       // Phase 1: Scan
-      emit({ type: 'phase', data: 'cloning' });
-      emit({ type: 'log', data: `启动 Claude Code 分析 ${parsed.owner}/${parsed.repo}...` });
-      emit({ type: 'progress', data: 5 });
+      emit({ type: 'phase', data: 'scanning' });
+      emit({ type: 'log', data: `仓库已预克隆，启动 Claude Code 分析 ${parsed.owner}/${parsed.repo}...` });
+      emit({ type: 'progress', data: 15 });
 
       const scanRunner = new CCRunner({
         prompt,
         systemPrompt: system,
         cwd: PROJECT_ROOT,
-        timeoutMs: 600_000,
-        noOutputTimeoutMs: 240_000,
-        allowedTools: 'Bash Read Glob Grep',
+        timeoutMs: 1_800_000,
+        noOutputTimeoutMs: 600_000,
+        allowedTools: 'Bash Read Glob Grep Write',
         disallowedTools: 'TodoWrite Task',
-        maxBudgetUsd: 5,
+        maxBudgetUsd: 500,
         skipResultExtraction: true,
       });
 
@@ -325,6 +367,26 @@ export async function POST(req: NextRequest) {
           const mappedId = domainMapping.get(m.domain_id);
           return mappedId ? { ...m, domain_id: mappedId } : m;
         });
+
+        // 兜底：如果 new_domain 没有对应 match，自动补一个
+        for (let i = 0; i < newDomains.length; i++) {
+          const tempId = `NEW-${i + 1}`;
+          const realId = domainMapping.get(tempId);
+          if (!realId) continue;
+          const hasMatch = scanMatches.some(m => m.domain_id === realId || m.domain_id === tempId);
+          if (!hasMatch) {
+            const proposal = newDomains[i];
+            scanMatches.push({
+              domain_id: realId,
+              title: proposal.title,
+              description: proposal.description,
+              files: [],
+              confidence: 0.7,
+              signals: proposal.tags || [],
+            });
+            emit({ type: 'log', data: `[${realId}] 自动补充 match: ${proposal.title}` });
+          }
+        }
 
         // 增量过滤
         const projectName = parsed!.repo;        const beforeCount = scanMatches.length;

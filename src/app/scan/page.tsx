@@ -107,18 +107,6 @@ export default function ScanPage() {
   const handleScan = async () => {
     if (!repoUrl.trim()) return;
 
-    // 检查缓存
-    const cached = getCachedResult(repoUrl);
-    if (cached) {
-      setPhase('done');
-      setProgress(100);
-      setResults(cached);
-      setFromCache(true);
-      setLogEntries([{ kind: 'text', message: t('Cached result for this project'), timestamp: Date.now() }]);
-      setError('');
-      return;
-    }
-
     // Reset state
     setPhase('cloning');
     setProgress(0);

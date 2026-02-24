@@ -1,0 +1,26 @@
+{
+  "id": "PD-34",
+  "slug": "multi-channel-messaging",
+  "title": "多渠道消息网关",
+  "subtitle": "Multi-Channel Messaging Gateway",
+  "icon": "message-circle",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一接入WhatsApp/Telegram/Slack/Discord/Signal/iMessage等10+消息渠道的网关架构",
+  "tags": [
+    "messaging",
+    "gateway",
+    "channel"
+  ],
+  "sub_problems": [
+    "渠道适配器抽象",
+    "消息格式统一",
+    "渠道健康监控",
+    "QR码配对登录",
+    "消息路由分发"
+  ],
+  "best_practices": [
+    "ChannelPlugin接口统一适配器模式",
+    "渠道健康监控自动重启(cooldown+限流)"
+  ]
+}

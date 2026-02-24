@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 
 export interface DomainMetadata {
+  solution_summary?: string;  // 项目特定的方案摘要（用于卡片展示）
   description?: string;
   sub_problems?: string[];
   best_practices?: string[];
@@ -70,6 +71,7 @@ function extractDomainMetadata(content: string): DomainMetadata | undefined {
     try {
       const data = JSON.parse(blockMatch[1]);
       const meta: DomainMetadata = {};
+      if (typeof data.solution_summary === 'string' && data.solution_summary) meta.solution_summary = data.solution_summary;
       if (typeof data.description === 'string' && data.description) meta.description = data.description;
       if (Array.isArray(data.sub_problems) && data.sub_problems.length > 0) meta.sub_problems = data.sub_problems;
       if (Array.isArray(data.best_practices) && data.best_practices.length > 0) meta.best_practices = data.best_practices;

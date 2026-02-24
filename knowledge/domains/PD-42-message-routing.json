@@ -1,0 +1,26 @@
+{
+  "id": "PD-42",
+  "slug": "message-routing",
+  "title": "消息路由引擎",
+  "subtitle": "Message Routing Engine",
+  "icon": "git-branch",
+  "color": "#a855f7",
+  "severity": "high",
+  "description": "多维度消息路由：peer/guild/team/account/channel/role绑定，支持通配符匹配、父级继承、Discord角色路由，session key自动生成",
+  "tags": [
+    "routing",
+    "binding",
+    "session"
+  ],
+  "sub_problems": [
+    "多维度路由匹配",
+    "绑定优先级排序",
+    "session key生成",
+    "agent路由解析",
+    "通配符与继承"
+  ],
+  "best_practices": [
+    "matchedBy字段记录路由决策来源",
+    "normalizeAccountId统一ID格式"
+  ]
+}

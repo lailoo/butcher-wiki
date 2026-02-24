@@ -785,7 +785,9 @@ const PD12: DomainData = {
 
 // ─── 动态合并扫描到的新项目 ───
 function scannedDocToSolution(doc: ScannedDoc): DomainSolution {
-  const desc = doc.domainMetadata?.description
+  // 优先用 solution_summary（项目特定），其次 description（域级补充），最后 fallback
+  const desc = doc.domainMetadata?.solution_summary
+    || doc.domainMetadata?.description
     || `由 Butcher Scanner 自动生成的 ${doc.project} ${doc.title} 方案文档`;
   return {
     project: doc.project,

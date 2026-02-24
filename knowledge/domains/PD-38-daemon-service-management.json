@@ -1,0 +1,27 @@
+{
+  "id": "PD-38",
+  "slug": "daemon-service-management",
+  "title": "守护进程管理",
+  "subtitle": "Daemon Service Management",
+  "icon": "cpu",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "跨平台守护进程：launchd(macOS)/systemd(Linux)/schtasks(Windows)统一抽象，支持安装/卸载/重启/状态检查",
+  "tags": [
+    "daemon",
+    "launchd",
+    "systemd",
+    "service"
+  ],
+  "sub_problems": [
+    "跨平台服务抽象",
+    "plist/unit文件生成",
+    "服务状态检测",
+    "运行时二进制路径解析",
+    "环境变量传递"
+  ],
+  "best_practices": [
+    "GatewayService统一接口抽象三平台",
+    "service-audit运行时健康检查"
+  ]
+}

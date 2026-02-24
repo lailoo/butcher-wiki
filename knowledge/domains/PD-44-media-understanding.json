@@ -1,0 +1,27 @@
+{
+  "id": "PD-44",
+  "slug": "media-understanding",
+  "title": "多模态媒体理解",
+  "subtitle": "Media Understanding Pipeline",
+  "icon": "eye",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "图片/音频/视频/PDF多模态处理管道：provider路由(vision/audio/deepgram)、并发控制、格式检测、沙箱媒体暂存、链接内容提取",
+  "tags": [
+    "media",
+    "vision",
+    "audio",
+    "multimodal"
+  ],
+  "sub_problems": [
+    "多模态provider路由",
+    "音频转写预处理",
+    "图片sanitization",
+    "并发限制",
+    "媒体格式检测"
+  ],
+  "best_practices": [
+    "runner.ts统一执行入口",
+    "concurrency.ts并发控制"
+  ]
+}

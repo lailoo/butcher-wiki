@@ -1,0 +1,26 @@
+{
+  "id": "PD-35",
+  "slug": "plugin-extension-system",
+  "title": "插件扩展系统",
+  "subtitle": "Plugin Extension System",
+  "icon": "layers",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "完整的插件生命周期管理：发现/安装/加载/启用/卸载，支持npm/git/bundled三种来源",
+  "tags": [
+    "plugin",
+    "extension",
+    "sdk"
+  ],
+  "sub_problems": [
+    "插件发现与安装",
+    "插件配置schema校验",
+    "插件运行时隔离",
+    "插件hook注册",
+    "插件工具注入"
+  ],
+  "best_practices": [
+    "manifest-registry统一插件元数据",
+    "jiti动态加载TypeScript插件"
+  ]
+}

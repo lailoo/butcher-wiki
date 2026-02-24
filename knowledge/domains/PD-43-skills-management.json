@@ -1,0 +1,26 @@
+{
+  "id": "PD-43",
+  "slug": "skills-management",
+  "title": "技能管理系统",
+  "subtitle": "Skills Management System",
+  "icon": "sparkles",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "Agent技能发现/安装/加载：支持bundled/npm/git来源，workspace级技能快照，技能prompt注入system prompt，技能命令注册，环境变量覆盖",
+  "tags": [
+    "skills",
+    "install",
+    "workspace"
+  ],
+  "sub_problems": [
+    "技能发现与安装",
+    "技能eligibility检查",
+    "技能prompt构建",
+    "workspace同步",
+    "技能命令注册"
+  ],
+  "best_practices": [
+    "SkillSnapshot快照机制",
+    "bundled allowlist白名单控制"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-41",
+  "slug": "browser-automation",
+  "title": "浏览器自动化",
+  "subtitle": "Browser Automation",
+  "icon": "globe",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "Playwright驱动的浏览器自动化：CDP协议控制、Chrome profile管理、扩展中继、截图/导航/交互工具、沙箱浏览器容器(noVNC)",
+  "tags": [
+    "browser",
+    "playwright",
+    "cdp",
+    "automation"
+  ],
+  "sub_problems": [
+    "Chrome实例管理",
+    "CDP协议封装",
+    "浏览器profile隔离",
+    "扩展中继认证",
+    "AI辅助页面操作"
+  ],
+  "best_practices": [
+    "navigation-guard防止意外导航",
+    "server-context热重载profile"
+  ]
+}

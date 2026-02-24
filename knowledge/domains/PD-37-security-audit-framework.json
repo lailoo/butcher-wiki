@@ -1,0 +1,26 @@
+{
+  "id": "PD-37",
+  "slug": "security-audit-framework",
+  "title": "安全审计框架",
+  "subtitle": "Security Audit Framework",
+  "icon": "shield",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "自动化安全审计：文件权限检查、沙箱配置校验、密钥泄露扫描、攻击面分析、插件代码安全扫描",
+  "tags": [
+    "security",
+    "audit",
+    "scanning"
+  ],
+  "sub_problems": [
+    "文件系统权限审计",
+    "配置敏感信息检测",
+    "沙箱安全校验",
+    "插件信任评估",
+    "危险工具策略管控"
+  ],
+  "best_practices": [
+    "severity分级(info/warn/critical)",
+    "remediation建议自动生成"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-47",
+  "slug": "config-schema-validation",
+  "title": "配置Schema校验",
+  "subtitle": "Configuration Schema Validation",
+  "icon": "check-circle",
+  "color": "#22c55e",
+  "severity": "medium",
+  "description": "Zod驱动的配置schema校验：类型安全、环境变量替换、include文件合并、legacy迁移、敏感字段脱敏、配置备份轮转",
+  "tags": [
+    "config",
+    "schema",
+    "zod",
+    "validation"
+  ],
+  "sub_problems": [
+    "Zod schema定义",
+    "环境变量替换",
+    "include文件合并",
+    "legacy配置迁移",
+    "敏感字段脱敏"
+  ],
+  "best_practices": [
+    "zod-schema分模块组织",
+    "merge-patch安全合并防原型污染"
+  ]
+}

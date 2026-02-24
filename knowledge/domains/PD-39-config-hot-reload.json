@@ -1,0 +1,26 @@
+{
+  "id": "PD-39",
+  "slug": "config-hot-reload",
+  "title": "配置热重载",
+  "subtitle": "Configuration Hot Reload",
+  "icon": "refresh-cw",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "基于chokidar文件监听的配置热重载：hybrid模式区分hot/restart/none，按配置路径前缀匹配重载策略，支持渠道级精细重启",
+  "tags": [
+    "config",
+    "hot-reload",
+    "watch"
+  ],
+  "sub_problems": [
+    "配置变更检测",
+    "重载策略路由",
+    "渠道级精细重启",
+    "debounce防抖",
+    "配置合并与校验"
+  ],
+  "best_practices": [
+    "ReloadRule前缀匹配+action映射",
+    "hybrid模式最小化重启范围"
+  ]
+}

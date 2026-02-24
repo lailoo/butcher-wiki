@@ -1,0 +1,26 @@
+{
+  "id": "PD-45",
+  "slug": "tts-voice",
+  "title": "语音合成与交互",
+  "subtitle": "Text-to-Speech & Voice",
+  "icon": "terminal",
+  "color": "#d946ef",
+  "severity": "medium",
+  "description": "Edge TTS语音合成、语音通话扩展(voice-call)、Discord语音频道集成、macOS/iOS/Android原生语音唤醒，文本预处理优化朗读效果",
+  "tags": [
+    "tts",
+    "voice",
+    "speech"
+  ],
+  "sub_problems": [
+    "TTS引擎集成",
+    "语音通话管理",
+    "文本预处理",
+    "语音唤醒转发",
+    "多平台语音支持"
+  ],
+  "best_practices": [
+    "prepare-text预处理优化朗读",
+    "voice-call扩展独立包管理"
+  ]
+}
