@@ -1,0 +1,28 @@
+{
+  "id": "PD-106",
+  "slug": "mixin-architecture-pattern",
+  "title": "Mixin 架构模式",
+  "subtitle": "Mixin Architecture Pattern",
+  "icon": "code",
+  "color": "#14B8A6",
+  "severity": "medium",
+  "description": "通过 Mixin 多继承组合实现关注点分离的模块化架构",
+  "tags": [
+    "mixin",
+    "architecture",
+    "composition",
+    "modular"
+  ],
+  "sub_problems": [
+    "功能模块拆分与职责划分",
+    "Mixin 间依赖声明与类型提示",
+    "共享状态的一致性管理",
+    "初始化顺序与生命周期",
+    "接口契约与 TYPE_CHECKING"
+  ],
+  "best_practices": [
+    "每个 Mixin 只负责一个功能域",
+    "使用 TYPE_CHECKING 声明跨 Mixin 依赖",
+    "主类通过多继承组合所有 Mixin"
+  ]
+}

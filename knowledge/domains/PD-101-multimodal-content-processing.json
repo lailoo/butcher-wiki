@@ -1,0 +1,27 @@
+{
+  "id": "PD-101",
+  "slug": "multimodal-content-processing",
+  "title": "多模态内容处理",
+  "subtitle": "Multimodal Content Processing",
+  "icon": "eye",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "将图像、表格、公式等非文本内容转化为可检索的结构化知识",
+  "tags": [
+    "multimodal",
+    "vision",
+    "RAG"
+  ],
+  "sub_problems": [
+    "图像内容理解与描述生成",
+    "表格结构解析与数据提取",
+    "数学公式语义分析",
+    "多模态实体与知识图谱关联",
+    "上下文感知的模态处理"
+  ],
+  "best_practices": [
+    "为每种模态类型设计专用处理器",
+    "使用 LLM 生成结构化 JSON 描述",
+    "将多模态内容转化为文本 chunk 存入向量库"
+  ]
+}

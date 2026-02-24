@@ -1,0 +1,23 @@
+{
+  "id": "PD-92",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#6366F1",
+  "severity": "medium",
+  "description": "多层配置体系支持默认值、环境变量、.env文件和CLI参数的优先级覆盖",
+  "tags": [
+    "config",
+    "env",
+    "CLI"
+  ],
+  "sub_problems": [
+    "配置优先级链",
+    "类型安全转换",
+    "多实例配置隔离"
+  ],
+  "best_practices": [
+    "dataclass默认值→env→.env→CLI四层覆盖,自动为每个provider生成配置项"
+  ]
+}

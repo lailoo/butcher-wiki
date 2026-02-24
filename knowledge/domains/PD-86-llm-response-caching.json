@@ -1,0 +1,23 @@
+{
+  "id": "PD-86",
+  "slug": "llm-response-caching",
+  "title": "LLM响应缓存",
+  "subtitle": "LLM Response Caching",
+  "icon": "refresh-cw",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "缓存LLM调用结果避免重复计算,降低成本并加速响应",
+  "tags": [
+    "cache",
+    "LLM",
+    "cost-optimization"
+  ],
+  "sub_problems": [
+    "缓存键设计与命中率",
+    "流式响应缓存处理",
+    "缓存失效与清理策略"
+  ],
+  "best_practices": [
+    "使用prompt hash作为缓存键,区分不同调用模式独立控制缓存开关"
+  ]
+}

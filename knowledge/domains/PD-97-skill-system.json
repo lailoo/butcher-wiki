@@ -1,0 +1,25 @@
+{
+  "id": "PD-97",
+  "slug": "skill-system",
+  "title": "技能系统",
+  "subtitle": "Skill System",
+  "icon": "sparkles",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "通过文件系统加载可扩展技能定义，支持always-loaded和按需加载，动态注入Agent能力",
+  "tags": [
+    "技能",
+    "插件",
+    "能力扩展"
+  ],
+  "sub_problems": [
+    "技能发现与加载",
+    "always-loaded vs 按需加载",
+    "技能内容注入system prompt",
+    "技能依赖检测"
+  ],
+  "best_practices": [
+    "使用SKILL.md标准化技能定义",
+    "渐进式加载避免context膨胀"
+  ]
+}

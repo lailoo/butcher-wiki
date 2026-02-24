@@ -1,0 +1,25 @@
+{
+  "id": "PD-94",
+  "slug": "multi-llm-provider-management",
+  "title": "多LLM提供商管理",
+  "subtitle": "Multi-LLM Provider Management",
+  "icon": "cpu",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "统一管理多个LLM提供商的API Key、模型路由和回退策略，实现提供商无关的调用接口",
+  "tags": [
+    "LLM",
+    "多提供商",
+    "模型路由"
+  ],
+  "sub_problems": [
+    "API Key统一管理",
+    "提供商自动检测与回退",
+    "模型名称前缀映射",
+    "网关路由"
+  ],
+  "best_practices": [
+    "配置文件优先，环境变量作为回退",
+    "通过注册表模式管理提供商元数据"
+  ]
+}

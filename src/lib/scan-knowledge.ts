@@ -24,8 +24,8 @@ export interface ScannedDoc {
 
 const SOLUTIONS_DIR = path.join(process.cwd(), 'knowledge', 'solutions');
 
-// 文件名解析: PD-01-PageIndex-Token预算文档分割方案.md
-const FILENAME_RE = /^(PD-\d{2})-([A-Za-z0-9_-]+)-(.+)$/;
+// 文件名解析: PD-01-PageIndex-Token预算文档分割方案.md (支持 PD-100+ 三位数)
+const FILENAME_RE = /^(PD-\d{2,3})-([A-Za-z0-9_-]+)-(.+)$/;
 
 function filenameToSlug(domainId: string, project: string, title: string): string {
   // PD-01 + PageIndex + Token预算文档分割方案 → pd01-pageindex-token
@@ -63,6 +63,30 @@ function extractComparisonData(content: string): Record<string, string> | undefi
   return undefined;
 }
 
+/** 从文档 ### 1.2 节提取项目特定的解法概述作为 solution_summary fallback */
+function extractSolutionSummaryFromContent(content: string): string | undefined {
+  // 匹配 "### 1.2 XXX 的解法概述" 后的内容块
+  const overviewMatch = content.match(/###\s+1\.2[^\n]*\n+([\s\S]*?)(?=\n###|\n---)/);
+  if (!overviewMatch) return undefined;
+
+  const block = overviewMatch[1];
+  // 提取编号列表项（如 "1. **统一 BaseAgent 抽象层**：..."），拼接前 2 条
+  const listItems = block.match(/^\d+\.\s+\*\*[^*]+\*\*[：:][^\n]+/gm);
+  if (listItems && listItems.length >= 1) {
+    // 去掉 markdown 加粗，拼接前 2 条，截断到 120 字
+    const summary = listItems.slice(0, 2)
+      .map(item => item.replace(/^\d+\.\s+/, '').replace(/\*\*/g, '').trim())
+      .join('；');
+    return summary.slice(0, 120);
+  }
+
+  // fallback: 取第一段有意义的非空行
+  const firstLine = block.split('\n').find(l => l.trim().length > 20 && !l.startsWith('#'));
+  if (firstLine) return firstLine.trim().slice(0, 120);
+
+  return undefined;
+}
+
 /** 从文档中提取 ```json domain_metadata 代码块，或从 markdown 内容 fallback 提取 */
 function extractDomainMetadata(content: string): DomainMetadata | undefined {
   // 优先从 JSON 代码块提取
@@ -75,12 +99,22 @@ function extractDomainMetadata(content: string): DomainMetadata | undefined {
       if (typeof data.description === 'string' && data.description) meta.description = data.description;
       if (Array.isArray(data.sub_problems) && data.sub_problems.length > 0) meta.sub_problems = data.sub_problems;
       if (Array.isArray(data.best_practices) && data.best_practices.length > 0) meta.best_practices = data.best_practices;
+
+      // 如果没有 solution_summary，从文档 1.2 节自动提取项目特定描述
+      if (!meta.solution_summary) {
+        meta.solution_summary = extractSolutionSummaryFromContent(content);
+      }
+
       if (Object.keys(meta).length > 0) return meta;
     } catch { /* ignore */ }
   }
 
-  // Fallback: 从 markdown 内容提取 description
-  // 尝试匹配 "### 1.2" 或 "### 1.1" 后的第一段非空文字
+  // Fallback: 没有 domain_metadata 块时，从 markdown 内容提取
+  const summary = extractSolutionSummaryFromContent(content);
+  if (summary) {
+    return { solution_summary: summary };
+  }
+
   const descMatch = content.match(/###\s+1\.[12][^\n]*\n+([^\n#][^\n]{20,})/);
   if (descMatch) {
     return { description: descMatch[1].trim().slice(0, 300) };

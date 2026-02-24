@@ -1,0 +1,25 @@
+{
+  "id": "PD-95",
+  "slug": "code-index-reference-system",
+  "title": "代码索引与参考系统",
+  "subtitle": "Code Index & Reference System",
+  "icon": "search",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "通过LLM分析代码仓库构建结构化索引，为代码生成提供相关参考代码的检索能力",
+  "tags": [
+    "代码索引",
+    "参考检索",
+    "代码分析"
+  ],
+  "sub_problems": [
+    "代码文件摘要生成",
+    "文件间关系映射",
+    "关键词匹配与相关性评分",
+    "索引持久化与增量更新"
+  ],
+  "best_practices": [
+    "使用LLM生成高质量文件摘要",
+    "统一搜索接口合并目录加载和搜索步骤"
+  ]
+}

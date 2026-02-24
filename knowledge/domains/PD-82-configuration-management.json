@@ -1,0 +1,25 @@
+{
+  "id": "PD-82",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#14B8A6",
+  "severity": "medium",
+  "description": "多层优先级配置系统，统一管理环境变量、CLI参数和代码默认值",
+  "tags": [
+    "config",
+    "env",
+    "CLI"
+  ],
+  "sub_problems": [
+    "多层配置优先级合并",
+    "类型安全的环境变量解析",
+    "CLI参数自动生成",
+    "多实例配置隔离"
+  ],
+  "best_practices": [
+    "集中定义常量避免魔法数字",
+    "get_env_value统一处理类型转换和默认值"
+  ]
+}

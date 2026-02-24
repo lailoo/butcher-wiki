@@ -1,0 +1,28 @@
+{
+  "id": "PD-103",
+  "slug": "batch-concurrent-processing",
+  "title": "批量并发处理",
+  "subtitle": "Batch & Concurrent Processing",
+  "icon": "layers",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "大规模文档的并发解析、进度追踪与错误聚合",
+  "tags": [
+    "batch",
+    "concurrency",
+    "parallel",
+    "async"
+  ],
+  "sub_problems": [
+    "并发度控制与资源限制",
+    "进度追踪与报告",
+    "错误聚合与部分失败处理",
+    "文件夹递归扫描与过滤",
+    "同步/异步双模式支持"
+  ],
+  "best_practices": [
+    "使用 Semaphore 控制并发上限",
+    "提供 BatchProcessingResult 结构化结果",
+    "支持 dry-run 模式预检"
+  ]
+}

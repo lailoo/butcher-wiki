@@ -1,0 +1,26 @@
+{
+  "id": "PD-67",
+  "slug": "i18n-multilingual",
+  "title": "国际化与多语言",
+  "subtitle": "Internationalization & Multilingual",
+  "icon": "globe",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "前后端多语言支持、语言回退链、prompt本地化管理",
+  "tags": [
+    "i18n",
+    "locale",
+    "multilingual"
+  ],
+  "sub_problems": [
+    "前端UI多语言切换",
+    "后端Prompt多语言加载",
+    "语言回退链策略",
+    "动态语言检测"
+  ],
+  "best_practices": [
+    "使用i18next等成熟框架管理前端翻译",
+    "Prompt按语言分目录存储YAML文件",
+    "实现语言回退链避免缺失翻译"
+  ]
+}

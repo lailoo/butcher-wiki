@@ -1,0 +1,25 @@
+{
+  "id": "PD-98",
+  "slug": "subagent-delegation",
+  "title": "子Agent委托",
+  "subtitle": "Subagent Delegation",
+  "icon": "git-branch",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "在后台生成隔离的轻量Agent实例执行特定任务，共享LLM但拥有独立上下文",
+  "tags": [
+    "子Agent",
+    "后台任务",
+    "任务委托"
+  ],
+  "sub_problems": [
+    "子Agent生命周期管理",
+    "上下文隔离",
+    "结果回传与通知",
+    "并发任务追踪"
+  ],
+  "best_practices": [
+    "共享LLM Provider降低资源开销",
+    "通过MessageBus异步通信避免阻塞"
+  ]
+}

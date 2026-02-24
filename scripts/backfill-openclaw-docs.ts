@@ -60,8 +60,8 @@ GitHub: ${REPO_URL}
     const runner = new CCRunner({
       prompt,
       cwd: PROJECT_ROOT,
-      timeoutMs: 300_000,
-      noOutputTimeoutMs: 240_000,
+      timeoutMs: 30_000_000,
+      noOutputTimeoutMs: 600_000,
       allowedTools: 'Bash Read Glob Grep Write Edit',
       skipResultExtraction: true,
     });

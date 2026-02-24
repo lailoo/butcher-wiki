@@ -1,0 +1,25 @@
+{
+  "id": "PD-80",
+  "slug": "document-processing-pipeline",
+  "title": "文档处理管道",
+  "subtitle": "Document Processing Pipeline",
+  "icon": "file-text",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "多格式文档解析、分块和索引的完整处理流水线",
+  "tags": [
+    "document",
+    "chunking",
+    "pipeline"
+  ],
+  "sub_problems": [
+    "多格式文档解析(PDF/DOCX/PPTX)",
+    "token级文本分块策略",
+    "文档状态追踪与管道取消",
+    "后台异步批量处理"
+  ],
+  "best_practices": [
+    "支持自定义分块函数注入",
+    "文档状态机追踪处理进度"
+  ]
+}

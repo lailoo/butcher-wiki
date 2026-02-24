@@ -1,0 +1,27 @@
+{
+  "id": "PD-73",
+  "slug": "citation-management",
+  "title": "引用管理",
+  "subtitle": "Citation Management",
+  "icon": "link",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "学术引用ID生成、引用链追踪、报告内联引用自动插入",
+  "tags": [
+    "citation",
+    "reference",
+    "academic",
+    "traceability"
+  ],
+  "sub_problems": [
+    "全局引用ID生成与管理",
+    "工具调用到引用的映射追踪",
+    "并发安全的引用写入",
+    "报告中自动插入内联引用"
+  ],
+  "best_practices": [
+    "CitationManager统一管理全局引用ID",
+    "asyncio.Lock保证并发安全",
+    "ToolTrace记录完整的工具调用引用链"
+  ]
+}

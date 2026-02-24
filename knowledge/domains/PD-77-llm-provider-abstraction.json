@@ -1,0 +1,25 @@
+{
+  "id": "PD-77",
+  "slug": "llm-provider-abstraction",
+  "title": "LLM提供商抽象",
+  "subtitle": "LLM Provider Abstraction",
+  "icon": "cpu",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "统一多LLM提供商接口，实现模型切换零耦合",
+  "tags": [
+    "LLM",
+    "provider",
+    "abstraction"
+  ],
+  "sub_problems": [
+    "统一调用接口设计",
+    "提供商特定参数处理",
+    "流式/非流式响应统一",
+    "Azure/自托管端点适配"
+  ],
+  "best_practices": [
+    "函数式注入而非类继承实现解耦",
+    "每个提供商独立封装retry和timeout逻辑"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "PD-91",
+  "slug": "multiprocess-data-sharing",
+  "title": "多进程数据共享",
+  "subtitle": "Multi-Process Data Sharing",
+  "icon": "link",
+  "color": "#F97316",
+  "severity": "high",
+  "description": "在多进程(Gunicorn worker)环境下实现存储数据的安全共享与同步",
+  "tags": [
+    "multiprocessing",
+    "concurrency",
+    "lock"
+  ],
+  "sub_problems": [
+    "跨进程锁管理",
+    "共享状态一致性",
+    "锁超时与清理"
+  ],
+  "best_practices": [
+    "使用multiprocessing.Manager管理共享字典,KeyedLock实现命名空间级细粒度锁"
+  ]
+}

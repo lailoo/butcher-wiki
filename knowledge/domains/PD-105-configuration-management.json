@@ -1,0 +1,27 @@
+{
+  "id": "PD-105",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#6366F1",
+  "severity": "medium",
+  "description": "环境变量驱动的分层配置系统，支持运行时动态更新",
+  "tags": [
+    "config",
+    "environment",
+    "dataclass"
+  ],
+  "sub_problems": [
+    "环境变量与默认值管理",
+    "配置分组与层级组织",
+    "运行时配置热更新",
+    "向后兼容与废弃警告",
+    "配置验证与类型安全"
+  ],
+  "best_practices": [
+    "使用 dataclass + field(default_factory) 定义配置",
+    "通过 get_env_value 统一环境变量读取",
+    "提供 deprecated 属性保持向后兼容"
+  ]
+}

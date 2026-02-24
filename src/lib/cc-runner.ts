@@ -7,8 +7,8 @@ export interface CCRunOptions {
   prompt: string;
   systemPrompt?: string;
   cwd?: string;
-  timeoutMs?: number;         // 整体超时，默认 5 分钟
-  noOutputTimeoutMs?: number; // 无输出超时，默认 4 分钟
+  timeoutMs?: number;         // 整体超时，默认 500 分钟
+  noOutputTimeoutMs?: number; // 无输出超时，默认 10 分钟
   maxBudgetUsd?: number;      // 成本限制
   allowedTools?: string;      // 允许的工具，默认 'Bash Read Glob Grep'
   disallowedTools?: string;   // 禁用的工具
@@ -54,8 +54,8 @@ export class CCRunner extends EventEmitter {
       prompt,
       systemPrompt,
       cwd,
-      timeoutMs = 300_000,
-      noOutputTimeoutMs = 240_000,
+      timeoutMs = 30_000_000,
+      noOutputTimeoutMs = 600_000,
       maxBudgetUsd,
       allowedTools = 'Bash Read Glob Grep',
       disallowedTools,
@@ -91,11 +91,12 @@ export class CCRunner extends EventEmitter {
 
     // 整体超时
     this.overallTimer = setTimeout(() => {
-      this.emitEvent({ type: 'error', data: 'CC 分析超时（5分钟），已终止' });
+      const mins = Math.round(timeoutMs / 60_000);
+      this.emitEvent({ type: 'error', data: `CC 分析超时（${mins}分钟），已终止` });
       this.kill();
     }, timeoutMs);
 
-    // 无输出 watchdog（4 分钟）
+    // 无输出 watchdog
     this.resetWatchdog(noOutputTimeoutMs);
 
     // 监听 stdout
@@ -178,7 +179,8 @@ export class CCRunner extends EventEmitter {
   private resetWatchdog(timeoutMs: number): void {
     if (this.watchdogTimer) clearTimeout(this.watchdogTimer);
     this.watchdogTimer = setTimeout(() => {
-      this.emitEvent({ type: 'error', data: 'CC 长时间无输出（4分钟），已终止' });
+      const mins = Math.round(timeoutMs / 60_000);
+      this.emitEvent({ type: 'error', data: `CC 长时间无输出（${mins}分钟），已终止` });
       this.kill();
     }, timeoutMs);
   }

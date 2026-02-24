@@ -1,0 +1,23 @@
+{
+  "id": "PD-88",
+  "slug": "document-processing-pipeline",
+  "title": "文档处理流水线",
+  "subtitle": "Document Processing Pipeline",
+  "icon": "layers",
+  "color": "#10B981",
+  "severity": "high",
+  "description": "从文档入库到知识图谱构建的完整异步处理流水线",
+  "tags": [
+    "pipeline",
+    "document",
+    "ETL"
+  ],
+  "sub_problems": [
+    "文档状态机管理",
+    "失败重试与错误恢复",
+    "并行处理吞吐优化"
+  ],
+  "best_practices": [
+    "使用状态机追踪文档处理进度,支持track_id实时监控和错误文档重入队"
+  ]
+}

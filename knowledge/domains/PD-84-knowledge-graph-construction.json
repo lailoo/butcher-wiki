@@ -1,0 +1,36 @@
+{
+  "id": "PD-84",
+  "slug": "knowledge-graph-construction",
+  "title": "知识图谱构建",
+  "subtitle": "Knowledge Graph Construction",
+  "icon": "git-branch",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "从非结构化文本中自动抽取实体和关系,构建可查询的知识图谱",
+  "tags": [
+    "KG",
+    "NLP",
+    "entity-extraction"
+  ],
+  "sub_problems": [
+    "实体关系抽取准确性",
+    "图谱增量更新与合并",
+    "大规模图谱存储与查询优化",
+    "LLM输出格式损坏的容错解析",
+    "多文档同名实体的类型冲突解决",
+    "描述摘要的token预算控制与递归合并"
+  ],
+  "best_practices": [
+    "使用LLM+gleaning多轮补全提升抽取召回率",
+    "分隔符协议比JSON输出更稳定,LLM格式错误率更低",
+    "两阶段合并(先实体后关系)保证关系端点一定存在",
+    "实体类型用投票机制(Counter.most_common)容忍偶发分类错误"
+  ],
+  "solutions": [
+    {
+      "project": "LightRAG",
+      "file": "PD-84-LightRAG-LLM驱动知识图谱构建.md",
+      "summary": "LightRAG用分隔符协议prompt+gleaning多轮补全抽取实体关系,两阶段合并入图,Map-Reduce递归摘要合并描述,支持5种图存储后端"
+    }
+  ]
+}

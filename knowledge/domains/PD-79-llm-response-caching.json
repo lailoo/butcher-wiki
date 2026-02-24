@@ -1,0 +1,25 @@
+{
+  "id": "PD-79",
+  "slug": "llm-response-caching",
+  "title": "LLM响应缓存",
+  "subtitle": "LLM Response Caching",
+  "icon": "refresh-cw",
+  "color": "#8B5CF6",
+  "severity": "medium",
+  "description": "缓存LLM调用结果避免重复计算，降低成本和延迟",
+  "tags": [
+    "cache",
+    "LLM",
+    "cost-optimization"
+  ],
+  "sub_problems": [
+    "缓存键哈希策略",
+    "缓存命中率优化",
+    "流式响应缓存处理",
+    "缓存失效与清理"
+  ],
+  "best_practices": [
+    "分离query缓存和extract缓存的开关",
+    "扁平化缓存键结构便于管理和清理"
+  ]
+}

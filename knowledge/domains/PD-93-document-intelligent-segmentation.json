@@ -1,0 +1,25 @@
+{
+  "id": "PD-93",
+  "slug": "document-intelligent-segmentation",
+  "title": "文档智能分段",
+  "subtitle": "Document Intelligent Segmentation",
+  "icon": "file-text",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "将超长文档按语义边界智能分段，保持算法和概念完整性，支持按查询类型检索相关片段",
+  "tags": [
+    "文档处理",
+    "语义分段",
+    "长文本"
+  ],
+  "sub_problems": [
+    "语义边界检测",
+    "算法块完整性保持",
+    "查询感知检索",
+    "分段策略选择"
+  ],
+  "best_practices": [
+    "根据文档类型自适应选择分段策略",
+    "保持公式链和算法块不被切断"
+  ]
+}

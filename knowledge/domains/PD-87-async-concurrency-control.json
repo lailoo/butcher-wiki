@@ -1,0 +1,23 @@
+{
+  "id": "PD-87",
+  "slug": "async-concurrency-control",
+  "title": "异步并发控制",
+  "subtitle": "Async Concurrency Control",
+  "icon": "cpu",
+  "color": "#EF4444",
+  "severity": "high",
+  "description": "管理大量异步LLM/Embedding调用的并发度、优先级和超时",
+  "tags": [
+    "async",
+    "concurrency",
+    "priority-queue"
+  ],
+  "sub_problems": [
+    "优先级调度策略",
+    "多层超时保护",
+    "stuck任务检测与恢复"
+  ],
+  "best_practices": [
+    "基于PriorityQueue实现优先级并发控制,配合多层超时保护防止资源泄漏"
+  ]
+}

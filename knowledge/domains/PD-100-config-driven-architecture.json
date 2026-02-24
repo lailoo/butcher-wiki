@@ -1,0 +1,25 @@
+{
+  "id": "PD-100",
+  "slug": "config-driven-architecture",
+  "title": "配置驱动架构",
+  "subtitle": "Config-Driven Architecture",
+  "icon": "settings",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "通过YAML配置文件统一管理系统行为，支持Pydantic schema验证和环境变量覆盖",
+  "tags": [
+    "配置管理",
+    "YAML",
+    "Pydantic"
+  ],
+  "sub_problems": [
+    "配置schema定义与验证",
+    "多层配置合并策略",
+    "环境变量覆盖",
+    "运行时配置热加载"
+  ],
+  "best_practices": [
+    "使用Pydantic BaseSettings做类型安全的配置验证",
+    "配置文件优先，环境变量作为覆盖层"
+  ]
+}

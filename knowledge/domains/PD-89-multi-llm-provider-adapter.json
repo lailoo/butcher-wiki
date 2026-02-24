@@ -1,0 +1,23 @@
+{
+  "id": "PD-89",
+  "slug": "multi-llm-provider-adapter",
+  "title": "多LLM提供商适配",
+  "subtitle": "Multi-LLM Provider Adapter",
+  "icon": "globe",
+  "color": "#3B82F6",
+  "severity": "high",
+  "description": "统一适配多种LLM提供商API,支持运行时切换和配置驱动",
+  "tags": [
+    "LLM",
+    "adapter",
+    "provider"
+  ],
+  "sub_problems": [
+    "API差异抽象",
+    "认证方式统一",
+    "模型参数映射"
+  ],
+  "best_practices": [
+    "使用BindingOptions基类自动生成CLI参数和环境变量映射"
+  ]
+}

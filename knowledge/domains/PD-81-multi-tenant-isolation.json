@@ -1,0 +1,25 @@
+{
+  "id": "PD-81",
+  "slug": "multi-tenant-isolation",
+  "title": "多租户数据隔离",
+  "subtitle": "Multi-Tenant Data Isolation",
+  "icon": "box",
+  "color": "#6366F1",
+  "severity": "high",
+  "description": "通过命名空间机制实现多租户数据隔离，支持独立存储和配置",
+  "tags": [
+    "multi-tenant",
+    "namespace",
+    "isolation"
+  ],
+  "sub_problems": [
+    "workspace级存储目录隔离",
+    "命名空间前缀拼接",
+    "跨进程锁的命名空间感知",
+    "独立初始化与清理"
+  ],
+  "best_practices": [
+    "双层隔离(workspace+namespace)确保数据安全",
+    "每个实例支持独立.env配置"
+  ]
+}

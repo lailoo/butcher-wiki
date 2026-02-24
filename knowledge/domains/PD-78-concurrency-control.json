@@ -1,0 +1,25 @@
+{
+  "id": "PD-78",
+  "slug": "concurrency-control",
+  "title": "并发控制",
+  "subtitle": "Concurrency Control",
+  "icon": "layers",
+  "color": "#10B981",
+  "severity": "high",
+  "description": "管理异步LLM请求的并发度、优先级和超时，防止资源耗尽",
+  "tags": [
+    "async",
+    "concurrency",
+    "rate-limiting"
+  ],
+  "sub_problems": [
+    "优先级队列调度",
+    "多层超时保护",
+    "stuck任务检测与恢复",
+    "多进程锁协调"
+  ],
+  "best_practices": [
+    "装饰器模式封装并发限制逻辑",
+    "动态计算超时层级而非硬编码"
+  ]
+}

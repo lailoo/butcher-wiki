@@ -1,0 +1,27 @@
+{
+  "id": "PD-72",
+  "slug": "embedding-provider-adaptation",
+  "title": "Embedding多提供商适配",
+  "subtitle": "Embedding Provider Adaptation",
+  "icon": "layers",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "统一Embedding接口、适配器模式管理多提供商、兼容多RAG框架",
+  "tags": [
+    "embedding",
+    "adapter",
+    "vector",
+    "provider"
+  ],
+  "sub_problems": [
+    "多Embedding提供商统一接口",
+    "适配器模式隔离提供商差异",
+    "与LightRAG等框架的兼容适配",
+    "Embedding配置集中管理"
+  ],
+  "best_practices": [
+    "BaseEmbeddingAdapter定义统一接口",
+    "ADAPTER_MAPPING集中注册提供商",
+    "单例EmbeddingClient避免重复初始化"
+  ]
+}

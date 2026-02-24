@@ -1,0 +1,28 @@
+{
+  "id": "PD-104",
+  "slug": "knowledge-graph-construction",
+  "title": "知识图谱构建",
+  "subtitle": "Knowledge Graph Construction",
+  "icon": "git-branch",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "从文本和多模态内容自动提取实体与关系构建知识图谱",
+  "tags": [
+    "knowledge graph",
+    "entity",
+    "relation",
+    "NER"
+  ],
+  "sub_problems": [
+    "实体抽取与类型识别",
+    "关系抽取与权重计算",
+    "多模态实体的 belongs_to 关联",
+    "实体去重与增量合并",
+    "图谱存储与向量索引同步"
+  ],
+  "best_practices": [
+    "使用 LLM 进行实体关系抽取",
+    "为多模态实体建立与文档实体的层级关系",
+    "实体和关系同时存入图数据库和向量库"
+  ]
+}

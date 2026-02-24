@@ -1,0 +1,27 @@
+{
+  "id": "PD-71",
+  "slug": "realtime-communication",
+  "title": "实时通信",
+  "subtitle": "Real-time Communication",
+  "icon": "message-circle",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "WebSocket双向通信、进度广播、日志流式推送",
+  "tags": [
+    "websocket",
+    "streaming",
+    "real-time",
+    "broadcast"
+  ],
+  "sub_problems": [
+    "WebSocket连接池管理",
+    "按资源分组广播进度",
+    "日志流式推送到前端",
+    "断线重连与错误处理"
+  ],
+  "best_practices": [
+    "单例ProgressBroadcaster管理连接池",
+    "按kb_name分组避免广播污染",
+    "WebSocketLogHandler桥接日志系统与前端"
+  ]
+}

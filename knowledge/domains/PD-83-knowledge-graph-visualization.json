@@ -1,0 +1,25 @@
+{
+  "id": "PD-83",
+  "slug": "knowledge-graph-visualization",
+  "title": "知识图谱可视化",
+  "subtitle": "Knowledge Graph Visualization",
+  "icon": "eye",
+  "color": "#A855F7",
+  "severity": "medium",
+  "description": "交互式知识图谱可视化，支持3D渲染和Web界面浏览",
+  "tags": [
+    "visualization",
+    "graph",
+    "WebUI"
+  ],
+  "sub_problems": [
+    "3D图谱渲染与交互",
+    "社区检测与着色",
+    "实体/关系CRUD操作",
+    "大规模图谱性能优化"
+  ],
+  "best_practices": [
+    "社区检测算法辅助图谱理解",
+    "提供API+WebUI双通道访问图谱数据"
+  ]
+}

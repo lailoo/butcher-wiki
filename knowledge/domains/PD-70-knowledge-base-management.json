@@ -1,0 +1,27 @@
+{
+  "id": "PD-70",
+  "slug": "knowledge-base-management",
+  "title": "知识库管理",
+  "subtitle": "Knowledge Base Management",
+  "icon": "database",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "文档增量添加、多RAG管线切换、Hash去重、多模态解析",
+  "tags": [
+    "knowledge-base",
+    "RAG",
+    "document",
+    "indexing"
+  ],
+  "sub_problems": [
+    "增量文档添加与Hash去重",
+    "多RAG管线可插拔切换",
+    "多模态文档解析(PDF/Office/HTML)",
+    "知识库构建进度实时推送"
+  ],
+  "best_practices": [
+    "Hash校验避免重复索引",
+    "工厂模式管理多种RAG管线",
+    "懒加载避免不必要的重依赖导入"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-99",
+  "slug": "task-scheduling",
+  "title": "定时任务调度",
+  "subtitle": "Task Scheduling",
+  "icon": "clock",
+  "color": "#84cc16",
+  "severity": "medium",
+  "description": "Agent可自主创建和管理定时任务，支持一次性、周期性和cron表达式三种调度模式",
+  "tags": [
+    "定时任务",
+    "调度",
+    "cron"
+  ],
+  "sub_problems": [
+    "多种调度模式支持",
+    "任务持久化",
+    "Agent自主调度",
+    "任务状态管理"
+  ],
+  "best_practices": [
+    "将调度能力暴露为Agent工具",
+    "任务状态持久化到磁盘防止丢失"
+  ]
+}

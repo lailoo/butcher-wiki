@@ -1,0 +1,23 @@
+{
+  "id": "PD-85",
+  "slug": "multi-backend-storage-abstraction",
+  "title": "多后端存储抽象",
+  "subtitle": "Multi-Backend Storage Abstraction",
+  "icon": "database",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "通过统一抽象层支持多种存储后端的即插即用切换",
+  "tags": [
+    "storage",
+    "abstraction",
+    "plugin"
+  ],
+  "sub_problems": [
+    "存储接口统一设计",
+    "后端性能差异适配",
+    "数据迁移与兼容性"
+  ],
+  "best_practices": [
+    "定义抽象基类+注册表模式实现后端发现与加载"
+  ]
+}

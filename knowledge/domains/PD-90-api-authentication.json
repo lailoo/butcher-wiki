@@ -1,0 +1,23 @@
+{
+  "id": "PD-90",
+  "slug": "api-authentication",
+  "title": "认证授权",
+  "subtitle": "API Authentication & Authorization",
+  "icon": "lock",
+  "color": "#EC4899",
+  "severity": "medium",
+  "description": "为API服务提供JWT认证、角色管理和访问控制",
+  "tags": [
+    "auth",
+    "JWT",
+    "security"
+  ],
+  "sub_problems": [
+    "Token生命周期管理",
+    "多角色权限控制",
+    "API端点保护"
+  ],
+  "best_practices": [
+    "JWT+角色区分,通过环境变量配置账户,FastAPI Depends注入认证依赖"
+  ]
+}

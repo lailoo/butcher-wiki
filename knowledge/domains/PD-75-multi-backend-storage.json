@@ -1,0 +1,25 @@
+{
+  "id": "PD-75",
+  "slug": "multi-backend-storage",
+  "title": "多后端存储抽象",
+  "subtitle": "Multi-Backend Storage Abstraction",
+  "icon": "database",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "统一存储接口支持多种后端实现的热切换，解耦业务逻辑与存储细节",
+  "tags": [
+    "storage",
+    "abstraction",
+    "plugin"
+  ],
+  "sub_problems": [
+    "存储接口标准化",
+    "后端动态加载与注册",
+    "环境变量驱动的后端选择",
+    "跨后端数据迁移"
+  ],
+  "best_practices": [
+    "定义ABC接口+注册表模式实现可插拔",
+    "验证存储实现兼容性后再初始化"
+  ]
+}

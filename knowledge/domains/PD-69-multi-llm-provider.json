@@ -1,0 +1,27 @@
+{
+  "id": "PD-69",
+  "slug": "multi-llm-provider",
+  "title": "多LLM提供商适配",
+  "subtitle": "Multi-LLM Provider Adaptation",
+  "icon": "cpu",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "统一LLM调用接口、自动路由Cloud/Local、能力矩阵管理",
+  "tags": [
+    "llm",
+    "provider",
+    "factory",
+    "adapter"
+  ],
+  "sub_problems": [
+    "Cloud与Local Provider自动路由",
+    "提供商能力矩阵集中管理",
+    "统一异常映射与错误处理",
+    "Streaming与非Streaming双模式"
+  ],
+  "best_practices": [
+    "Factory模式统一LLM调用入口",
+    "capabilities配置集中管理各提供商特性差异",
+    "URL检测自动路由本地与云端模型"
+  ]
+}

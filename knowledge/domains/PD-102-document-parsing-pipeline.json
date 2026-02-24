@@ -1,0 +1,28 @@
+{
+  "id": "PD-102",
+  "slug": "document-parsing-pipeline",
+  "title": "文档解析管线",
+  "subtitle": "Document Parsing Pipeline",
+  "icon": "file-text",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "多格式文档的统一解析、转换与结构化内容提取",
+  "tags": [
+    "parsing",
+    "PDF",
+    "OCR",
+    "document"
+  ],
+  "sub_problems": [
+    "多格式文件类型检测与路由",
+    "PDF/图片 OCR 解析",
+    "Office 文档格式转换",
+    "解析结果标准化",
+    "解析后端可插拔切换"
+  ],
+  "best_practices": [
+    "定义统一的 content_list 输出格式",
+    "使用策略模式支持多解析后端",
+    "对不支持的格式提供自动转换链路"
+  ]
+}

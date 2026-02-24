@@ -1,0 +1,25 @@
+{
+  "id": "PD-76",
+  "slug": "authentication-authorization",
+  "title": "认证授权",
+  "subtitle": "Authentication & Authorization",
+  "icon": "lock",
+  "color": "#EF4444",
+  "severity": "high",
+  "description": "API服务的身份验证和访问控制，保护敏感数据和操作",
+  "tags": [
+    "auth",
+    "JWT",
+    "security"
+  ],
+  "sub_problems": [
+    "JWT token生命周期管理",
+    "多认证模式(API Key+OAuth2)",
+    "角色权限控制",
+    "token自动续期与防刷"
+  ],
+  "best_practices": [
+    "支持白名单路径跳过认证",
+    "token续期加频率限制防止滥用"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-74",
+  "slug": "knowledge-graph-construction",
+  "title": "知识图谱构建",
+  "subtitle": "Knowledge Graph Construction",
+  "icon": "git-branch",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "从非结构化文本中自动抽取实体和关系，构建可查询的知识图谱",
+  "tags": [
+    "KG",
+    "entity extraction",
+    "NLP"
+  ],
+  "sub_problems": [
+    "实体识别与类型分类",
+    "关系抽取与去重",
+    "增量图谱更新与合并",
+    "多轮补充抽取(gleaning)"
+  ],
+  "best_practices": [
+    "使用结构化prompt模板约束LLM输出格式",
+    "实现merge策略处理实体/关系去重"
+  ]
+}

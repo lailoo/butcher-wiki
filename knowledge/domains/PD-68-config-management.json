@@ -1,0 +1,26 @@
+{
+  "id": "PD-68",
+  "slug": "config-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "分层YAML配置、模块级覆盖、preset模式、参数集中管理",
+  "tags": [
+    "config",
+    "yaml",
+    "preset"
+  ],
+  "sub_problems": [
+    "多层配置合并策略",
+    "模块级参数隔离",
+    "运行时配置切换",
+    "配置校验与默认值"
+  ],
+  "best_practices": [
+    "main.yaml作为全局基础配置，模块配置deep_merge覆盖",
+    "Agent参数集中到agents.yaml避免散落",
+    "提供preset模式简化用户配置"
+  ]
+}
