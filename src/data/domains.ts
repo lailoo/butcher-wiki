@@ -852,10 +852,16 @@ function mergeDomainsWithScanned(domains: DomainData[]): DomainData[] {
     const docs = byDomain.get(domain.id) || [];
     if (docs.length === 0) return domain;
 
-    // 合并 solutions：找出静态中没有的项目
-    const existingProjects = new Set(domain.solutions.map(s => s.project));
+    // 合并 solutions：找出静态中没有的项目（大小写不敏感去重）
+    const existingProjects = new Set(domain.solutions.map(s => s.project.toLowerCase()));
+    const seen = new Set(existingProjects);
     const newSolutions = docs
-      .filter(d => !existingProjects.has(d.project))
+      .filter(d => {
+        const key = d.project.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
       .map(scannedDocToSolution);
 
     // 合并 comparison_dimensions：填入已有维度 + 创建新维度

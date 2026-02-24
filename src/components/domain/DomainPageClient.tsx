@@ -75,7 +75,7 @@ export function DomainPageClient({ domain, domainContext, knowledgeDocSlugs }: D
     { label: t('Sub-problems'), href: '#sub-problems' },
     {
       label: t('Solutions from projects'), href: '#solutions',
-      children: domain.solutions.map(s => ({ label: s.project, href: `#sol-${s.project.toLowerCase()}` })),
+      children: domain.solutions.map((s, idx) => ({ label: s.project, href: `#sol-${idx}` })),
     },
     { label: t('Comparison'), href: '#comparison' },
     { label: t('Best Practices'), href: '#best-practices' },
@@ -143,8 +143,8 @@ export function DomainPageClient({ domain, domainContext, knowledgeDocSlugs }: D
               ))}
             </div>
             <div className="flex flex-col gap-3">
-              {translatedSolutions.map((s) => (
-                <SolutionListCard key={`${s.project}-${s.source_id}`} solution={s} color={domain.color} knowledgeDocSlug={knowledgeDocSlugs[`${domain.id}-${s.project}`]} />
+              {translatedSolutions.map((s, idx) => (
+                <SolutionListCard key={`${s.project}-${s.source_id}-${idx}`} solution={s} color={domain.color} knowledgeDocSlug={knowledgeDocSlugs[`${domain.id}-${s.project}`]} anchorId={`sol-${idx}`} />
               ))}
             </div>
           </section>

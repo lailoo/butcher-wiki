@@ -20,16 +20,17 @@ interface SolutionListCardProps {
   };
   color: string;
   knowledgeDocSlug?: string;
+  anchorId?: string;
 }
 
-export function SolutionListCard({ solution, color, knowledgeDocSlug }: SolutionListCardProps) {
+export function SolutionListCard({ solution, color, knowledgeDocSlug, anchorId }: SolutionListCardProps) {
   const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation();
 
   return (
     <div
       className="flex flex-col rounded-lg border border-[var(--glass-border)] bg-white/[0.02] backdrop-blur-sm transition-colors duration-200 hover:border-white/[0.15]"
-      id={`sol-${solution.project.toLowerCase()}`}
+      id={anchorId || `sol-${solution.project.toLowerCase()}`}
     >
       {/* Header — clickable to expand */}
       <button
