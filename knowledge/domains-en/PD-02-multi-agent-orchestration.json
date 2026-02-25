@@ -2,107 +2,300 @@
   "id": "PD-02",
   "title": "Multi-Agent Orchestration",
   "subtitle": "Multi-Agent Orchestration",
-  "description": "Coordinates how multiple specialized agents execute tasks sequentially or in parallel, distributes work, and aggregates results. The core challenge is balancing flexibility with controllability across distributed agent execution.",
+  "description": "Coordinates how multiple specialized agents execute tasks in sequence or parallel, distributes work, and aggregates results. The core challenge is balancing flexibility with controllability across distributed agent execution.",
   "sub_problems": [
     "Task decomposition: Breaking complex tasks into parallelizable subtasks",
     "Execution orchestration: DAG scheduling, sequential/parallel/conditional branching",
     "State synchronization: Sharing context and intermediate results across agents",
-    "Result aggregation: Merging results from multiple sub-agents and conflict resolution",
-    "Dynamic routing: Selecting appropriate agents based on task type",
+    "Result aggregation: Merging multiple agent outputs and resolving conflicts",
+    "Dynamic routing: Selecting appropriate agents based on task type at runtime",
+    "Dual pipeline reuse: Supporting multiple orchestration pipelines of different lengths while sharing common stages",
+    "Memory cleanup after writes: Preventing token explosion in long execution loops while retaining necessary context",
+    "Completeness assessment: Auto-detecting LLM output truncation and triggering adaptive retries",
     "Pattern selection: Choosing different orchestration modes for different task types within the same system",
     "Iteration convergence: Determining when agent loops should terminate (should_stop signal design)",
-    "Dynamic queue expansion: Adding new topics to the scheduling queue when discovered during research"
+    "Dynamic queue expansion: Adding new topics to the scheduling queue when discovered during processing",
+    "SOP encoding: Translating human team standard operating procedures into agent message subscription relationships",
+    "Message bus routing: Environment routing messages to target roles based on send_to/cause_by fields",
+    "Dual-mode switching: Toggling between fixed SOP pipelines and dynamic TeamLeader routing within the same team",
+    "Budget circuit breaker: Implementing global cost control across parallel agent execution",
+    "Recursion protection: Preventing child agents from infinitely spawning new child agents",
+    "Result naturalization: Converting child agent outputs into user-facing natural language responses"
   ],
   "best_practices": [
-    "Start simple: Single agent with multiple tools is often easier to debug than multiple agents",
-    "Define clear role boundaries: Each agent's responsibilities must be distinct to avoid overlap",
-    "Make state serializable: State passed between agents must be serializable for persistence and recovery",
-    "Implement timeouts and circuit breakers: Parallel agents need timeout mechanisms to prevent single-agent blocking",
-    "Validate aggregated results: Check consistency when merging results and handle conflicts",
-    "Use federated orchestration: Different modules can use different orchestration patterns without forced uniformity",
-    "Lazy initialization: Create non-essential agents only on first use to reduce resource waste",
-    "Async wrapper: Provide async wrappers for non-thread-safe components to support smooth parallel mode transitions"
+    "Start simple: Single agent with multiple tools often easier to debug than multiple agents",
+    "Clear role boundaries: Each agent's responsibilities must be distinct to avoid overlap",
+    "Serializable state: Agent-exchanged state must be serializable for persistence and recovery",
+    "Timeouts and circuit breakers: Parallel agents need timeout mechanisms to prevent single-agent blocking",
+    "Result validation: Check consistency when aggregating results and handle conflicts",
+    "MCP Server binding for tool isolation: Each agent sees only its required tools, reducing tool selection interference",
+    "Fan-in/fan-out for independent analysis: Parallel execution of concept and algorithm analysis saves ~50% time when dependencies don't exist",
+    "Analysis loop detection: Track last N tool calls; inject write operation correction when all are read operations",
+    "Federated orchestration: Different modules can use different orchestration modes without forced uniformity",
+    "Lazy initialization: Defer non-essential agent creation until first use to reduce resource waste",
+    "Async wrapper: Provide async wrappers for non-thread-safe components to support smooth parallel mode transitions",
+    "Message routing decoupling: Roles communicate through Environment message bus rather than direct calls",
+    "Idle detection with three conditions: msg_buffer empty AND no todo AND no news before marking idle",
+    "TeamLeader pause-and-wait: Set state to -1 after task assignment to pause self, resume after member feedback",
+    "Tool whitelist over blacklist: Child agents register only explicitly granted tools for better security",
+    "Result passback via message bus: Avoid child agents holding parent agent references to reduce coupling"
   ],
   "comparison_dimensions": [
     {
-      "name": "Orchestration pattern",
+      "name": "Orchestration mode",
       "values": {
         "DeerFlow": "Lead Agent → task_tool dynamic delegation",
         "GPT-Researcher": "DeepResearchSkill tree-based recursion",
-        "MiroThinker": "run_sub_agent() sub-agents as tools",
-        "DeepTutor": "Federated multi-pattern: Dual-Loop/DynamicQueue/Pipeline/StateMachine per module"
+        "MiroThinker": "run_sub_agent() child agents as tools",
+        "DeepCode": "8-stage sequential pipeline + ParallelLLM fan-in/fan-out parallelism",
+        "DeepTutor": "Federated multi-mode: Dual-Loop/DynamicQueue/Pipeline/StateMachine per module",
+        "MetaGPT": "Dual-mode: SOP implicit DAG (_watch subscription) + MGX TeamLeader dynamic routing",
+        "Nanobot": "Spawn-and-forget: Main agent asynchronously spawns child agents via spawn tool"
       }
     },
     {
-      "name": "Parallelization capability",
+      "name": "Parallelism capability",
       "values": {
         "DeerFlow": "Dual thread pools _scheduler_pool + _execution_pool",
         "GPT-Researcher": "asyncio.Semaphore(2) async concurrency",
-        "MiroThinker": "Sequential execution (sub-agents in independent turns)",
-        "DeepTutor": "Research module Semaphore-controlled parallelism, asyncio.gather batch execution"
+        "MiroThinker": "Sequential execution (child agents in independent rounds)",
+        "DeepCode": "mcp_agent ParallelLLM primitive with fan-out parallelism + fan-in aggregation",
+        "DeepTutor": "Research module Semaphore-controlled parallelism, asyncio.gather batch execution",
+        "MetaGPT": "asyncio.gather parallel execution of all non-idle roles, no concurrency limit",
+        "Nanobot": "Native parallelism: asyncio.create_task supports multiple simultaneous child agents"
       }
     },
     {
       "name": "State management",
       "values": {
-        "DeerFlow": "SubagentConfig + SubagentResult + 5-state state machine",
+        "DeerFlow": "SubagentConfig + SubagentResult + 5-state machine",
         "GPT-Researcher": "visited_urls + learnings cross-layer propagation",
-        "MiroThinker": "Independent message_history without polluting main agent",
-        "DeepTutor": "Three-layer Memory persistence + GuidedSession session state machine"
+        "MiroThinker": "Independent message_history prevents main agent pollution",
+        "DeepCode": "Function parameter passing dir_info Dict + ConciseMemoryAgent write-then-clear",
+        "DeepTutor": "Three-layer memory persistence + GuidedSession session state machine",
+        "MetaGPT": "RoleContext encapsulates memory/msg_buffer/state/todo, Pydantic serialization",
+        "Nanobot": "Complete isolation: Child agents have independent messages list, no main agent context sharing"
       }
     },
     {
       "name": "Concurrency limits",
       "values": {
         "DeerFlow": "SubagentLimitMiddleware MAX_CONCURRENT=3",
-        "GPT-Researcher": "Semaphore(2) + breadth halved per layer",
+        "GPT-Researcher": "Semaphore(2) + breadth halving per layer",
         "MiroThinker": "None (sequential execution)",
-        "DeepTutor": "asyncio.Semaphore(max_parallel) + asyncio.Lock for shared state protection"
+        "DeepCode": "ParallelLLM internal management, no explicit concurrency config",
+        "DeepTutor": "asyncio.Semaphore(max_parallel) + asyncio.Lock for shared state protection",
+        "MetaGPT": "No built-in semaphore, relies on n_round iteration limit and NoMoneyException budget circuit breaker",
+        "Nanobot": "No explicit limit: _running_tasks dict tracks but doesn't limit count"
       }
     },
     {
       "name": "Tool isolation",
       "values": {
         "DeerFlow": "disallowed_tools=[\"task\"] prevents recursive nesting",
-        "GPT-Researcher": "Independent GPTResearcher instance per sub-query",
-        "MiroThinker": "YAML-configured independent tool set per sub_agent",
-        "DeepTutor": "Research unified _call_tool routing, Solve isolated via ToolAgent"
+        "GPT-Researcher": "Each sub-query gets independent GPTResearcher instance",
+        "MiroThinker": "YAML config defines independent tool set per sub_agent",
+        "DeepCode": "Each agent binds independent MCP Server via server_names",
+        "DeepTutor": "Research unified _call_tool routing, Solve isolates via ToolAgent",
+        "MetaGPT": "Each role has independent tool_execution_map, TeamLeader exposes via @register_tool",
+        "Nanobot": "Whitelist registration: Child agents explicitly exclude message/spawn tools to prevent recursion"
       }
     },
     {
       "name": "Module autonomy",
       "values": {
-        "DeepTutor": "5 independent orchestrators each selecting optimal orchestration pattern"
+        "DeepCode": "7 specialist agents independent, chained via async functions",
+        "DeepTutor": "5 independent orchestrators each choose best-fit orchestration mode",
+        "MetaGPT": "Roles autonomously observe→think→act, Environment only routes messages without decision interference",
+        "Nanobot": "High autonomy: Child agents run 15 independent loops, return results via MessageBus"
       }
     },
     {
       "name": "Lazy initialization",
       "values": {
-        "DeepTutor": "Solve Loop Agents created on first use only, reducing startup overhead"
+        "DeepCode": "Agents use async with context manager for on-demand init and cleanup",
+        "DeepTutor": "Solve loop agents created only on first use, reducing startup overhead",
+        "MetaGPT": "model_validator(mode='after') defers actions/tools/memory initialization",
+        "Nanobot": "On-demand creation: Each spawn creates new ToolRegistry and messages"
+      }
+    },
+    {
+      "name": "Result passback",
+      "values": {
+        "DeepCode": "Fan-in agent auto-receives all fan-out results, pipeline passes via return values",
+        "MetaGPT": "Role.publish_message → Environment → TeamLeader senses completion",
+        "Nanobot": "MessageBus injection: Results as system messages trigger main agent natural response"
+      }
+    },
+    {
+      "name": "Dual pipeline",
+      "values": {
+        "DeepCode": "Paper-to-Code (8-stage) and Chat-to-Code (4-stage) share implementation layer",
+        "MetaGPT": "Classic SOP (use_fixed_sop) and MGX dynamic routing (use_mgx) coexist in same team"
+      }
+    },
+    {
+      "name": "Memory compression",
+      "values": {
+        "DeepCode": "ConciseMemoryAgent clears history after each write_file, retains only plan",
+        "MetaGPT": "RoleZeroLongTermMemory supports vector retrieval, memory_k limits short-term history"
       }
     }
   ],
   "solutions": [
     {
       "source_id": "102.01",
+      "project": "DeerFlow",
       "title": "Lead Agent → SubagentExecutor dynamic delegation with task_tool.py parallel orchestration",
-      "description": "Lead Agent dynamically delegates subtasks to Subagents via task_tool.py's task() function. SubagentExecutor (executor.py) uses dual thread pool architecture: _scheduler_pool(3) for scheduling + _execution_pool(3) for execution. SubagentConfig (config.py) defines name/tools/model/timeout with model=\"inherit\" support for parent model reuse. SubagentLimitMiddleware enforces MAX_CONCURRENT_SUBAGENTS=3 limit. Tool isolation via disallowed_tools=[\"task\"] prevents recursive nesting."
+      "description": "Lead Agent delegates subtasks to Subagents via task() tool in task_tool.py. SubagentExecutor (executor.py) uses dual thread pool architecture: _scheduler_pool(3) for scheduling + _execution_pool(3) for execution. SubagentConfig (config.py) defines name/tools/model/timeout, supporting model=\"inherit\" to reuse parent agent model. SubagentLimitMiddleware truncates task calls exceeding MAX_CONCURRENT_SUBAGENTS=3. Tool isolation via disallowed_tools=[\"task\"] prevents recursive nesting.",
+      "design_philosophy": [
+        "Dynamic orchestrator: Lead Agent decides parallelization strategy at runtime based on task nature, not compile-time fixed graph",
+        "Dual thread pool isolation: _scheduler_pool schedules, _execution_pool executes, no mutual blocking",
+        "Tool as delegation: task() tool is delegation entry point, Subagents disable task tool to prevent recursion",
+        "Model inheritance: model=\"inherit\" reuses parent agent model, reducing config redundancy"
+      ],
+      "migration_scenarios": [
+        "Complex tasks requiring runtime-determined parallelization strategy",
+        "Multiple subagents executing in parallel with timeout protection and state tracking",
+        "Existing LangGraph DAG projects needing parallel delegation within nodes"
+      ]
     },
     {
       "source_id": "41.02",
-      "title": "DeepResearchSkill tree-based recursion with breadth=4 depth=2 and asyncio.Semaphore(2) concurrency control",
-      "description": "gpt_researcher/skills/deep_research.py's DeepResearchSkill implements tree-based recursive research: each layer generates breadth sub-queries, each creating independent GPTResearcher instances executing conduct_research(). Breadth halves per layer max(2, breadth//2) to control exponential growth. asyncio.Semaphore(2) limits concurrency. Cross-layer sharing via visited_urls deduplication + learnings knowledge accumulation. Default parameters breadth=4 depth=2 produce ~36 searches + 20 LLM calls in 3-5 minutes."
+      "project": "GPT-Researcher",
+      "title": "DeepResearchSkill tree-based recursion breadth=4 depth=2 with asyncio.Semaphore(2) concurrency control",
+      "description": "DeepResearchSkill in gpt_researcher/skills/deep_research.py implements tree-based recursive research: each layer generates breadth sub-queries, each creating independent GPTResearcher instance executing conduct_research(). Breadth halves per layer via max(2, breadth//2) to control exponential explosion. asyncio.Semaphore(2) limits concurrency. Cross-layer sharing of visited_urls for deduplication + learnings for knowledge accumulation. Default parameters breadth=4 depth=2 produce ~36 searches + 20 LLM calls, taking 3-5 minutes.",
+      "design_philosophy": [
+        "Independent researcher per sub-query: GPTResearcher(query=sub_q) isolates state preventing pollution",
+        "Breadth halving per layer: max(2, breadth//2) controls exponential explosion",
+        "Cross-layer knowledge accumulation: learnings passed to subsequent layers for informed sub-query generation",
+        "Concurrency control: asyncio.Semaphore(2) prevents API rate limiting"
+      ],
+      "migration_scenarios": [
+        "Search-intensive agents requiring tree-based deep research",
+        "Multi-source information aggregation needing parallel sub-queries",
+        "Research agents needing search explosion control"
+      ]
     },
     {
       "source_id": "37.05",
-      "title": "run_sub_agent() sub-agents as tools with expose_sub_agents_as_tools() configuration-driven approach",
-      "description": "orchestrator.py:327-499's run_sub_agent() executes sub-agents independently with isolated system_prompt, tool_definitions, message_history, and max_turns limits. settings.py's expose_sub_agents_as_tools() exposes sub-agents as callable tools for the main agent. YAML configuration (conf/agent/multi_agent.yaml) defines main_agent and sub_agents (agent-browsing/agent-research/agent-citation), each with independent tool sets and turn limits."
+      "project": "MiroThinker",
+      "title": "run_sub_agent() child agents as tools with expose_sub_agents_as_tools() config-driven approach",
+      "description": "run_sub_agent() in orchestrator.py:327-499 executes child agents independently: independent system_prompt, tool_definitions, message_history, max_turns limit. expose_sub_agents_as_tools() in settings.py exposes child agents as callable tools for main agent. YAML config (conf/agent/multi_agent.yaml) defines main_agent and sub_agents (agent-browsing/agent-research/agent-citation), each with independent tool set and turn limits.",
+      "design_philosophy": [
+        "Child agents as tools: Main agent delegates subtasks via unified tool interface",
+        "Independent context: Each child agent has isolated message history preventing main agent pollution",
+        "YAML config-driven: sub_agents config defines tool set and turn limits",
+        "Independent session tracking: Child agent execution recorded in isolated session"
+      ],
+      "migration_scenarios": [
+        "Multi-role scenarios needing child agent context and tool set isolation",
+        "Projects where main agent dynamically delegates subtasks",
+        "Sequential workflows needing role isolation without parallelism"
+      ]
     },
     {
       "source_id": "scan",
-      "title": "Multi-module dual-loop orchestration pattern",
-      "description": "Multiple orchestration modes coexist within the same system, with optimal strategy selected based on task characteristics"
+      "project": "DeepCode",
+      "title": "7-Agent orchestration engine",
+      "description": "DeepCode uses mcp_agent framework's ParallelLLM for fan-in/fan-out parallelism, 7 specialist agents with MCP Server tool isolation, supporting Paper-to-Code and Chat-to-Code dual pipeline modes.",
+      "design_philosophy": [
+        "Specialist agent separation: Each agent handles specific domain (analysis, implementation, testing)",
+        "MCP Server tool isolation: Each agent accesses only domain-relevant tools",
+        "Dual pipeline architecture: Paper-to-Code (8-stage) and Chat-to-Code (4-stage) share implementation layer",
+        "Fan-in/fan-out parallelism: Independent analysis tasks execute in parallel, results aggregated"
+      ],
+      "migration_scenarios": [
+        "Code generation projects needing specialist agent separation",
+        "Multi-stage processing requiring both sequential and parallel execution",
+        "Projects supporting multiple input modalities (paper vs chat)"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "DeepTutor",
+      "title": "Multi-module dual-loop orchestration",
+      "description": "Unified BaseAgent abstraction layer: all agents inherit from BaseAgent in src/agents/base_agent.py:35, providing unified LLM calls, token tracking, prompt loading, config management. Five independent orchestrators (Research/Solve/Verify/Refine/Explain) each select best-fit mode: Dual-Loop for iterative refinement, DynamicQueue for topic discovery, Pipeline for sequential stages, StateMachine for state-driven transitions.",
+      "design_philosophy": [
+        "Unified abstraction: BaseAgent provides common interface for all agent types",
+        "Federated mode selection: Each module autonomously chooses orchestration mode",
+        "Three-layer memory: Persistent storage + session state + short-term context",
+        "Guided session state machine: Tracks conversation state across multiple turns"
+      ],
+      "migration_scenarios": [
+        "Educational systems needing multi-stage tutoring workflows",
+        "Projects with heterogeneous task types requiring different orchestration modes",
+        "Systems needing persistent learning state across sessions"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "MetaGPT",
+      "title": "SOP-driven multi-role orchestration",
+      "description": "MetaGPT uses SOP implicit DAG (_watch subscription) + MGXEnv TeamLeader dynamic routing for dual-mode multi-role orchestration, asyncio.gather for parallel execution. RoleContext encapsulates memory/msg_buffer/state/todo with Pydantic serialization. Roles autonomously observe→think→act; Environment handles message routing without decision interference.",
+      "design_philosophy": [
+        "SOP as implicit DAG: _watch subscriptions define dependencies without explicit graph",
+        "Dual-mode flexibility: Fixed SOP for predictable workflows, TeamLeader for dynamic routing",
+        "Role autonomy: Each role independently decides actions based on observations",
+        "Message bus decoupling: Roles communicate through Environment, not direct calls"
+      ],
+      "migration_scenarios": [
+        "Software development workflows with defined SOP",
+        "Projects needing both fixed pipelines and dynamic task routing",
+        "Multi-role systems requiring autonomous agent coordination"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "Nanobot",
+      "title": "Spawn child agent async orchestration",
+      "description": "asyncio.create_task async spawning: main agent creates background asyncio Task via spawn tool, returns confirmation immediately without blocking main loop (subagent.py:81-84). Independent tool registry: each child agent has isolated ToolRegistry. Child agents run 15 independent loops, return results via MessageBus. Whitelist tool registration prevents recursive spawning.",
+      "design_philosophy": [
+        "Fire-and-forget spawning: Main agent continues immediately after spawn, child runs asynchronously",
+        "Complete isolation: Child agents have independent messages, tools, and execution context",
+        "Result injection: Child results injected as system messages triggering main agent response",
+        "Recursion prevention: Whitelist registration excludes spawn/message tools from child agents"
+      ],
+      "migration_scenarios": [
+        "Systems needing non-blocking child agent spawning",
+        "Projects with highly independent subtasks suitable for async execution",
+        "Scenarios where child agent completion doesn't block main agent progress"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "OpenClaw",
+      "title": "Lifecycle subagent registry",
+      "description": "SubagentRunRecord registry: in-memory Map + disk persistence tracking complete state of each child agent execution (src/agents/subagent-registry.ts:42). Depth-limit recursion protection via maxSpawnDepth configuration. Lifecycle hooks for agent creation/execution/completion. State serialization for recovery and audit.",
+      "design_philosophy": [
+        "Persistent registry: All subagent executions tracked in memory and disk",
+        "Depth-limited recursion: maxSpawnDepth prevents infinite spawn chains",
+        "Lifecycle management: Hooks for creation/execution/completion events",
+        "State recovery: Serialized state enables resumption after failures"
+      ],
+      "migration_scenarios": [
+        "Systems requiring audit trail of all agent executions",
+        "Projects needing recursion depth limits for safety",
+        "Applications requiring agent state persistence and recovery"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "OpenManus",
+      "title": "PlanningFlow plan-driven orchestration",
+      "description": "PlanningFlow as orchestration core: not a DAG but linear plan executor. LLM generates step list first, then executes sequentially (app/flow/planning.py:94-134). Each step can spawn subtasks or delegate to specialized agents. Plan refinement based on execution feedback. Supports plan branching for conditional logic.",
+      "design_philosophy": [
+        "Plan-first execution: LLM generates complete plan before execution begins",
+        "Linear execution model: Steps execute sequentially with feedback loops",
+        "Adaptive refinement: Plan adjusts based on step execution results",
+        "Conditional branching: Plan supports if/else logic for dynamic paths"
+      ],
+      "migration_scenarios": [
+        "Complex workflows benefiting from upfront planning",
+        "Systems where execution plan visibility is important",
+        "Projects needing plan refinement based on intermediate results"
+      ]
     }
   ],
-  "_version": 3
+  "_version": 5
 }

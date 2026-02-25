@@ -1,0 +1,24 @@
+{
+  "id": "PD-108",
+  "slug": "privacy-control",
+  "title": "隐私控制",
+  "subtitle": "Privacy Control",
+  "icon": "lock",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "用户数据隐私保护机制，包括内容过滤、标签剥离、边缘处理等",
+  "tags": [
+    "privacy",
+    "data protection",
+    "content filter"
+  ],
+  "sub_problems": [
+    "用户级隐私标记",
+    "系统级防递归存储",
+    "边缘层数据过滤",
+    "ReDoS 防护"
+  ],
+  "best_practices": [
+    "在数据流入口(hook层)而非存储层做隐私过滤"
+  ]
+}

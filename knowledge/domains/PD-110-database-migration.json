@@ -1,0 +1,24 @@
+{
+  "id": "PD-110",
+  "slug": "database-migration",
+  "title": "数据库迁移",
+  "subtitle": "Database Migration",
+  "icon": "database",
+  "color": "#F59E0B",
+  "severity": "medium",
+  "description": "版本化 schema 演进、迁移管理、数据兼容性保障",
+  "tags": [
+    "migration",
+    "schema evolution",
+    "database"
+  ],
+  "sub_problems": [
+    "版本化迁移注册与执行",
+    "事务保护迁移原子性",
+    "向后兼容 rollback",
+    "FTS 索引迁移"
+  ],
+  "best_practices": [
+    "每个迁移包含 up/down 方法，用 schema_versions 表追踪状态"
+  ]
+}

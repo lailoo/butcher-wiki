@@ -1,0 +1,24 @@
+{
+  "id": "PD-115",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#64748B",
+  "severity": "medium",
+  "description": "分层配置加载、默认值管理、运行时模式切换",
+  "tags": [
+    "configuration",
+    "settings",
+    "defaults"
+  ],
+  "sub_problems": [
+    "分层优先级(文件>环境变量>默认值)",
+    "运行时模式切换",
+    "配置自动创建",
+    "设置热加载"
+  ],
+  "best_practices": [
+    "用 SettingsDefaultsManager 集中管理默认值，避免散落在各模块"
+  ]
+}

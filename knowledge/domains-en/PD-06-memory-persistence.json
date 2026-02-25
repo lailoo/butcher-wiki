@@ -2,80 +2,343 @@
   "id": "PD-06",
   "title": "Memory Persistence",
   "subtitle": "Memory Persistence",
-  "description": "How to store and retrieve user preferences, historical context, and factual knowledge across sessions. The agent's \"long-term memory\" capability.",
+  "description": "How to store and retrieve user preferences, historical context, and factual knowledge across sessions. The Agent's \"long-term memory\" system that persists information beyond individual conversations.",
   "sub_problems": [
-    "Memory storage: selecting appropriate storage backends (vector databases, key-value stores, file systems)",
+    "Memory storage: selecting appropriate storage backends (vector databases, KV stores, file systems)",
     "Memory retrieval: efficiently retrieving relevant memories",
     "Memory updates: how new information updates or overwrites old memories",
     "Memory expiration: cleanup strategies for outdated information",
-    "Cross-session: sharing memory across different sessions"
+    "Cross-session sharing: sharing memories across different sessions",
+    "Summary structuring: how to decompose code implementation summaries into queryable structured sections",
+    "File progress tracking: accurately tracking implemented/unimplemented file lists after memory cleanup",
+    "Capacity-triggered dumping: automatically migrating short-term memory to long-term storage when exceeding thresholds",
+    "Experience structuring: how to structure Agent req→resp pairs along with metrics and trajectory data",
+    "Dual retrieval backend switching: seamlessly switching between BM25 and vector retrieval for the same experience pool",
+    "LLM summary compression: maintaining controllable length for long conversation histories through sliding window segmented summarization",
+    "Loop detection: identifying when Agent gets stuck in repetitive output cycles based on memory content",
+    "Multimodal two-stage completion detection: expressing state when text processing completes but multimodal processing hasn't",
+    "Storage backend delegation: zero-configuration reuse of host framework's storage abstraction layer",
+    "Granular embedding: splitting individual memories into multiple semantically independent vector documents for improved matching accuracy",
+    "Incremental backfill: efficiently syncing data differences between SQLite and vector databases",
+    "Migration version conflicts: ensuring idempotency when multiple migration systems share a version table"
   ],
   "best_practices": [
-    "LLM extraction outperforms manual logging: LLM captures implicit preferences and context from conversations, while manual add_fact operations are too coarse-grained",
-    "Debouncing is mandatory: 30s window + thread_id deduplication to avoid wasted LLM calls in high-frequency conversation scenarios",
-    "Confidence gating: not all information deserves to be remembered, 0.7 threshold filters low-value facts",
+    "LLM extraction beats manual logging: LLM captures implicit preferences and context from conversations; manual add_fact is too coarse-grained",
+    "Debouncing is mandatory: 30s window + thread_id deduplication prevents LLM call waste in high-frequency conversation scenarios",
+    "Confidence gating: not all information deserves storage; 0.7 threshold filters low-value facts",
     "Configuration over hardcoding: all 8 parameters should be configurable, supporting runtime dynamic adjustment",
     "Atomic writes protect data: temp + rename pattern prevents data corruption from interrupted writes",
-    "Middleware pattern keeps business logic transparent: memory read/write operations should not intrude into business code"
+    "Middleware pattern keeps business logic clean: memory reads/writes shouldn't invade business code",
+    "Separate next steps from persistence: LLM-generated next_steps stay in-memory only, avoiding stale suggestions polluting the knowledge base",
+    "Event-driven beats round-driven: trigger memory cleanup on write_file calls rather than fixed rounds, precisely matching actual needs",
+    "Fuzzy path matching for file tracking: support partial path matching and boundary checks, tolerating LLM-generated path inconsistencies",
+    "Watch filtering for writes: only persist Action messages that the Role cares about, avoiding noise pollution in vector databases",
+    "Triple-condition gating: check k!=0, user message, and capacity exceeded before retrieving long-term memory, reducing unnecessary vector queries",
+    "Read/write separation switches: enable_read/enable_write independently control experience pool behavior, supporting gradual rollout and read-only modes",
+    "Dirty marking optimization: is_dirty flag avoids redundant Redis serialization writes when nothing changes",
+    "Singleton LLM shares token counting: multiple Agents using the same config_name LLM instance enables unified global cost tracking",
+    "Message count truncation is simple but risky: system messages may be dropped; production should add first-message protection",
+    "Dual validation with mtime+config_hash: both file modification and parsing config changes auto-invalidate cache, more reliable than mtime alone",
+    "atexit fallback + asyncio.gather concurrent finalize: data persists even if users forget manual cleanup",
+    "Delegation-based storage beats self-built: reuse host framework's KV storage abstraction; storage backend auto-switches with configuration, zero extra maintenance",
+    "3-layer search workflow: index-first then details, 10x token savings, forces Agent to follow search→timeline→get pattern",
+    "Granular vector documents: embed narrative/facts/text separately, avoiding semantic dilution from long documents",
+    "Idempotent migration checks actual state: PRAGMA table_info detects column existence rather than relying solely on version numbers",
+    "MCP protocol replaces direct dependencies: connect to chroma-mcp via stdio MCP, eliminating heavy dependencies like ONNX/WASM"
   ],
   "comparison_dimensions": [
     {
       "name": "Memory structure",
       "values": {
         "DeerFlow(102.03)": "Three-layer user/history/facts + 6-dimensional context",
-        "DeerFlow(1002.05)": "8-item Pydantic configuration parameters"
+        "DeerFlow(1002.05)": "8-item Pydantic configuration parameters",
+        "DeepCode": "Two-layer: ConciseMemoryAgent (workflow summaries) + MemoryStore (daily notes + MEMORY.md)",
+        "MetaGPT": "Four-layer separation: Memory (short-term list) → LongTermMemory (FAISS deduplication) → RoleZeroLTM (Chroma dump) → BrainMemory (Redis + LLM summary)",
+        "OpenManus": "Pydantic Memory model, List[Message] + max_messages sliding window",
+        "RAG-Anything": "Four-layer separation: parse_cache / doc_status / KG+VDB / llm_response_cache",
+        "claude-mem": "Three-layer structure: observations (discoveries) + session_summaries (summaries) + user_prompts (user input), each layer in separate table"
       }
     },
     {
       "name": "Update mechanism",
       "values": {
-        "DeerFlow(102.03)": "MemoryUpdateQueue 30s debouncing + thread_id deduplication + batch processing",
-        "DeerFlow(1002.05)": "Gateway REST API runtime dynamic modification"
+        "DeerFlow(102.03)": "MemoryUpdateQueue 30s debounce + thread_id deduplication + batch processing",
+        "DeerFlow(1002.05)": "Gateway REST API runtime dynamic modification",
+        "DeepCode": "Event-driven: write_file tool invocation triggers cleanup + LLM summary generation",
+        "MetaGPT": "Capacity-triggered dump (memory_k=200 threshold) + watch Action filtering for writes",
+        "OpenManus": "Check length after add_message, truncate tail when exceeding limit",
+        "RAG-Anything": "Incremental append to chunks_list + upsert overwrite",
+        "claude-mem": "Hook-driven real-time writes + ChromaSync syncs vector embeddings, incremental backfill for missing records"
       }
     },
     {
       "name": "Fact extraction",
       "values": {
         "DeerFlow(102.03)": "LLM structured output (5 fact types + 0.7 confidence threshold)",
-        "DeerFlow(1002.05)": "Configuration fact_confidence_threshold/max_facts controls extraction behavior"
+        "DeerFlow(1002.05)": "Configuration fact_confidence_threshold/max_facts controls extraction behavior",
+        "DeepCode": "LLM structured summary: 6 sections (core_purpose/public_interface/dependencies/notes/next_steps)",
+        "MetaGPT": "No independent fact extraction, relies on Message.content holistic storage",
+        "OpenManus": "No fact extraction, stores raw messages only",
+        "RAG-Anything": "LLM-driven entity-relation extraction + multimodal processor description generation",
+        "claude-mem": "XML parser extracts <observation> blocks from SDK responses, ModeManager validates type validity"
       }
     },
     {
       "name": "Storage method",
       "values": {
         "DeerFlow(102.03)": "Single JSON file + atomic writes (temp + rename)",
-        "DeerFlow(1002.05)": "Global singleton MemoryConfig + 6 module consumers"
+        "DeerFlow(1002.05)": "Global singleton MemoryConfig + 6 modules consume",
+        "DeepCode": "Markdown append (implement_code_summary.md) + date-sliced MD + JSONL sessions",
+        "MetaGPT": "FAISS vector index (disk JSON) + Chroma vector store + Redis KV cache",
+        "OpenManus": "Pure in-memory List, no persistence, lost on process exit",
+        "RAG-Anything": "Delegates to LightRAG KV storage abstraction, supports JSON/PostgreSQL backends",
+        "claude-mem": "SQLite WAL primary + ChromaDB vector store secondary, FTS5 full-text index as third search channel"
       }
     },
     {
       "name": "Injection method",
       "values": {
         "DeerFlow(102.03)": "MemoryMiddleware after_agent auto-enqueue + format_memory_for_injection() injects <memory> tags",
-        "DeerFlow(1002.05)": "injection_enabled + max_injection_tokens controls injection behavior"
+        "DeerFlow(1002.05)": "injection_enabled + max_injection_tokens control injection behavior",
+        "DeepCode": "Post-cleanup inject initial_plan + file list + knowledge base; read_code_mem MCP tool queries on-demand",
+        "MetaGPT": "find_news vector deduplication filtering + get merges short-term and long-term retrieval results",
+        "OpenManus": "self.messages passed directly to LLM ask_tool, system_msgs concatenated separately",
+        "RAG-Anything": "parse_document cache-first, skip parsing if hit, return directly",
+        "claude-mem": "MCP tools expose search/timeline/get_observations, Agent actively calls to retrieve memories"
+      }
+    },
+    {
+      "name": "Loop detection",
+      "values": {
+        "DeepCode": "File tracking deduplication: all_files_list vs implemented_files fuzzy path matching",
+        "MetaGPT": "No explicit loop detection, relies on find_news semantic deduplication to indirectly avoid",
+        "OpenManus": "is_stuck() based on assistant message content repetition, threshold 2 occurrences",
+        "RAG-Anything": "doc_status 6-state machine + multimodal_processed boolean flag prevents reprocessing",
+        "claude-mem": "SHA256 content_hash + 30s window deduplication prevents high-frequency duplicate storage"
+      }
+    },
+    {
+      "name": "Cost tracking",
+      "values": {
+        "DeepCode": "get_memory_statistics provides compression ratio and file progress metrics",
+        "MetaGPT": "Experience.metric records time_cost/money_cost/score",
+        "OpenManus": "LLM singleton accumulates total_input/completion_tokens + max_input_tokens quota",
+        "RAG-Anything": "parse_cache avoids reparse, llm_response_cache avoids duplicate LLM calls",
+        "claude-mem": "discovery_tokens column records discovery token cost per observation/summary"
+      }
+    },
+    {
+      "name": "Multi-provider summarization",
+      "values": {
+        "DeepCode": "Summary generation supports Anthropic/OpenAI/Google three LLM client routing",
+        "MetaGPT": "BrainMemory distinguishes MetaGPTLLM vs OpenAI two summary paths",
+        "RAG-Anything": "Not applicable (single LightRAG storage abstraction, backend switchable)"
+      }
+    },
+    {
+      "name": "Cache invalidation strategy",
+      "values": {
+        "MetaGPT": "Redis TTL 30-minute auto-expiry + is_dirty dirty flag avoids redundant writes",
+        "RAG-Anything": "mtime + config_hash dual validation, file modification or config change auto-invalidates",
+        "claude-mem": "90-day sliding window filters search results, expired records excluded from semantic ranking"
+      }
+    },
+    {
+      "name": "Lifecycle management",
+      "values": {
+        "MetaGPT": "recover_memory startup recovery + clean/clear explicit cleanup + persist manual persistence",
+        "RAG-Anything": "asyncio.gather concurrent finalize + atexit fallback cleanup",
+        "claude-mem": "v23 idempotent migration system, each migration checks actual state not just version number"
+      }
+    },
+    {
+      "name": "Granular embedding",
+      "values": {
+        "MetaGPT": "Message as single vector document, no sub-semantic splitting",
+        "claude-mem": "Each observation's narrative/facts/text split into independent vector documents, improves semantic matching accuracy"
+      }
+    },
+    {
+      "name": "Experience pool reuse",
+      "values": {
+        "MetaGPT": "ExperiencePool independent from memory system, BM25/Chroma dual backend + LLM Reranker + req→resp structured experience pairs"
+      }
+    },
+    {
+      "name": "MCP protocol integration",
+      "values": {
+        "claude-mem": "Communicate with chroma-mcp subprocess via stdio MCP, eliminates ONNX/WASM dependencies"
       }
     }
   ],
   "solutions": [
     {
       "source_id": "102.03",
-      "title": "Three-layer memory structure + MemoryUpdateQueue debouncing + LLM auto fact extraction",
-      "description": "User/history/facts three-layer memory stored in memory.json: user layer contains workContext (2-3 sentences)/personalContext (1-2 sentences)/topOfMind (3-5 sentences), history layer contains recentMonths (4-6 sentences)/earlierContext (3-5 sentences)/longTermBackground (2-4 sentences), facts layer is a discrete fact list (5 types: preference/knowledge/context/behavior/goal). MemoryUpdateQueue implements 30s debouncing (threading.Timer) + thread_id deduplication + threading.Lock concurrency safety + _processing flag prevents re-entrance + 0.5s interval between batch operations. MemoryUpdater uses LLM to analyze conversations and extract structured JSON (6-dimensional context shouldUpdate judgment + newFacts confidence filtering + factsToRemove cleanup), atomic writes (temp + rename). MemoryMiddleware.after_agent() filters messages (retains only human + AI without tool_calls) before enqueuing."
+      "project": "DeerFlow",
+      "title": "Three-layer memory structure with MemoryUpdateQueue debouncing and automatic LLM fact extraction",
+      "description": "Three-layer memory stored in memory.json: user layer contains workContext (2-3 sentences)/personalContext (1-2 sentences)/topOfMind (3-5 sentences); history layer contains recentMonths (4-6 sentences)/earlierContext (3-5 sentences)/longTermBackground (2-4 sentences); facts layer is discrete fact list (5 types: preference/knowledge/context/behavior/goal). MemoryUpdateQueue implements 30s debounce (threading.Timer) + thread_id deduplication + threading.Lock concurrency safety + _processing flag prevents re-entrance + 0.5s interval between batch processing. MemoryUpdater uses LLM to analyze conversations and extract structured JSON (6-dimensional context shouldUpdate judgment + newFacts confidence filtering + factsToRemove cleanup), atomic writes (temp + rename). MemoryMiddleware.after_agent() filters messages (keeps only human + AI without tool_calls) before enqueueing.",
+      "design_philosophy": [
+        "LLM-as-Memory-Extractor: LLM understands which information deserves storage better than rules, captures implicit preferences",
+        "Debounce-then-Batch: 30s debounce window collects multiple conversation turns before batch processing, balances real-time needs with API costs",
+        "Confidence-Gated Fact Storage: 0.7 confidence threshold gates storage, exceeding capacity triggers sorting by confidence with natural forgetting of low-score facts",
+        "Middleware-Driven Injection: MemoryMiddleware auto-enqueues at after_agent hook, completely transparent to business code"
+      ],
+      "migration_scenarios": [
+        "Agent projects needing to remember user preferences across sessions",
+        "High-frequency conversation scenarios requiring debouncing to reduce LLM call costs",
+        "Projects requiring automatic LLM-driven structured fact extraction instead of manual add_fact"
+      ]
     },
     {
       "source_id": "1002.05",
-      "title": "MemoryConfig Pydantic configuration + Gateway API exposure",
-      "description": "MemoryConfig (BaseModel) defines 8 configurable parameters: enabled (bool)/storage_path (str)/debounce_seconds (int, ge=1, le=300)/model_name (Optional[str])/max_facts (int, ge=10, le=500)/fact_confidence_threshold (float, ge=0.0, le=1.0)/injection_enabled (bool)/max_injection_tokens (int, ge=100, le=10000). Global singleton pattern: get_memory_config() thread-safe retrieval, load_memory_config_from_dict() loads from dictionary. Gateway API exposes 3 REST endpoints (GET/PUT /api/memory/config + POST /api/memory/config/reset). Consumed by 6 modules: queue/updater/middleware/prompt/gateway router/lead_agent."
+      "project": "DeerFlow",
+      "title": "MemoryConfig Pydantic configuration with Gateway API exposure",
+      "description": "MemoryConfig (BaseModel) defines 8 configurable parameters: enabled (bool)/storage_path (str)/debounce_seconds (int, ge=1, le=300)/model_name (Optional[str])/max_facts (int, ge=10, le=500)/fact_confidence_threshold (float, ge=0.0, le=1.0)/injection_enabled (bool)/max_injection_tokens (int, ge=100, le=10000). Global singleton pattern: get_memory_config() thread-safe retrieval, load_memory_config_from_dict() loads from dictionary. Gateway API exposes 3 REST endpoints (GET/PUT /api/memory/config + POST /api/memory/config/reset). Consumed by 6 modules: queue/updater/middleware/prompt/gateway router/lead_agent.",
+      "design_philosophy": [
+        "Configuration as documentation: Pydantic BaseModel provides built-in type validation and boundary constraints, self-describing config items",
+        "Global singleton + runtime mutability: get_memory_config() ensures global consistency, Gateway API supports runtime dynamic modification",
+        "6-module unified config source: queue/updater/middleware/prompt/gateway/lead_agent all read from same config",
+        "REST API exposure: frontend can directly call GET/PUT to manage memory configuration without service restart"
+      ],
+      "migration_scenarios": [
+        "Agent projects needing runtime memory parameter adjustment",
+        "Multi-module scenarios requiring shared configuration (avoiding hardcoded defaults across modules)",
+        "Projects exposing configuration to frontend management UI via API"
+      ]
     },
     {
       "source_id": "scan",
-      "title": "Multi-layer memory chain persistence solution",
-      "description": "Educational tutoring agents need to maintain multiple memory types during a single problem-solving process: knowledge fragments collected during investigation, step chains during solving, tool call reference tracing, and cross-session conversation history. These memories have different lifecycles and access patterns—investigation memory has high-frequency read/write during analysis loops, solution chains append sequentially as steps progress, reference memory requires global deduplication and ID mapping, and session memory requires cross-request persistence."
+      "project": "DeepCode",
+      "title": "Dual-layer memory with session persistence",
+      "description": "DeepCode uses write_file event-driven ConciseMemoryAgent to clean conversation history, LLM generates 6-section structured summary appended to implement_code_summary.md, paired with MemoryStore date-sliced and JSONL session persistence.",
+      "design_philosophy": [
+        "Event-driven cleanup: triggered by write_file tool calls rather than fixed intervals",
+        "Structured summarization: 6-section format (core_purpose/public_interface/dependencies/notes/next_steps) enables precise retrieval",
+        "Persistent session tracking: JSONL format supports incremental append and efficient querying"
+      ],
+      "migration_scenarios": [
+        "Code generation projects requiring persistent implementation tracking",
+        "Multi-turn coding sessions needing structured memory of implementation decisions"
+      ]
     },
     {
       "source_id": "scan",
-      "title": "Research report caching solution",
-      "description": "Research agents produce substantial intermediate results across multi-turn interactions (search summaries, analysis reports, citation data). These results present three structural challenges:"
+      "project": "DeepTutor",
+      "title": "Multi-domain memory chain persistence",
+      "description": "Three independent memory domains: InvestigateMemory (investigation knowledge chain), SolveMemory (solution step chain), CitationMemory (citation index), each serialized to separate JSON files in output_dir.",
+      "design_philosophy": [
+        "Domain separation: independent memory chains for different reasoning phases",
+        "Structured persistence: JSON serialization enables replay and analysis"
+      ],
+      "migration_scenarios": [
+        "Educational AI systems with distinct investigation and solution phases",
+        "Projects requiring citation tracking alongside reasoning chains"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "GPT-Researcher",
+      "title": "Research report caching strategy",
+      "description": "Two-layer caching mechanism for research report generation.",
+      "design_philosophy": [
+        "Cache efficiency: reduces redundant research operations"
+      ],
+      "migration_scenarios": [
+        "Research automation projects with repeated query patterns"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "LightRAG",
+      "title": "Four-layer pluggable storage abstraction",
+      "description": "Four abstraction base classes: StorageNameSpace → BaseKVStorage / BaseVectorStorage / BaseGraphStorage / DocStatusStorage, each layer defines standard interface contracts.",
+      "design_philosophy": [
+        "Backend agnostic: storage implementation swappable without code changes",
+        "Layered abstraction: separates concerns across KV/vector/graph/document status",
+        "Zero-configuration reuse: host framework storage auto-switches with configuration"
+      ],
+      "migration_scenarios": [
+        "Projects requiring flexible storage backend switching",
+        "Multi-backend deployments (JSON for dev, PostgreSQL for production)"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "MetaGPT",
+      "title": "Three-layer memory with vector experience pool",
+      "description": "Four-layer memory (Memory/LongTermMemory/RoleZeroLTM/BrainMemory) + independent ExperiencePool implements hierarchical persistence: FAISS vector deduplication + Redis LLM summarization + Chroma capacity dumping.",
+      "design_philosophy": [
+        "Hierarchical persistence: short-term → long-term → vector → summarized layers",
+        "Semantic deduplication: FAISS prevents duplicate experiences",
+        "Capacity-triggered migration: automatic promotion to long-term when exceeding thresholds"
+      ],
+      "migration_scenarios": [
+        "Multi-agent systems requiring shared experience pools",
+        "Projects needing semantic deduplication across large memory volumes"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "OpenClaw",
+      "title": "SQLite hybrid search memory system",
+      "description": "SQLite + sqlite-vec dual engine: Node.js built-in node:sqlite for relational storage, sqlite-vec extension for vector indexing, FTS5 for full-text search, all three share single SQLite database file.",
+      "design_philosophy": [
+        "Unified storage: single database file simplifies deployment",
+        "Multi-index search: vector + full-text + relational queries on same data",
+        "Native Node.js: no external dependencies beyond sqlite-vec"
+      ],
+      "migration_scenarios": [
+        "Node.js projects requiring lightweight hybrid search",
+        "Deployments avoiding external vector database services"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "OpenManus",
+      "title": "Sliding window message memory strategy",
+      "description": "Pydantic Memory + max_messages sliding window manages conversation history, LLM singleton caches by config_name and accumulates token consumption tracking, is_stuck() detects repetitive output loops.",
+      "design_philosophy": [
+        "Bounded memory: sliding window prevents unbounded growth",
+        "Singleton LLM: shared instance enables unified cost tracking",
+        "Loop detection: identifies stuck patterns via message repetition"
+      ],
+      "migration_scenarios": [
+        "Long-running Agent sessions requiring bounded memory",
+        "Multi-agent deployments needing unified token accounting"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "RAG-Anything",
+      "title": "Four-layer KV persistence with document state tracking",
+      "description": "RAG-Anything uses LightRAG KV storage to build four-layer persistence (parse_cache/doc_status/KG+VDB/llm_cache), implements cache invalidation via mtime+config_hash dual validation, 6-state machine tracks text+multimodal two-stage processing progress.",
+      "design_philosophy": [
+        "Multi-layer caching: parse/status/knowledge/response caches reduce redundant work",
+        "Dual validation: mtime+config_hash catches both file and configuration changes",
+        "State machine: 6-state model precisely tracks multimodal processing stages"
+      ],
+      "migration_scenarios": [
+        "RAG systems processing mixed text and multimodal content",
+        "Projects requiring precise document processing state tracking"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "claude-mem",
+      "title": "ChromaDB dual-layer memory persistence",
+      "description": "SQLite WAL + ChromaDB vector store dual architecture enables cross-session memory: granular embedding (narrative/facts as independent vector documents) + 3-layer search workflow (search→timeline→get) achieves 10x token savings.",
+      "design_philosophy": [
+        "Dual persistence: SQLite for structured data, ChromaDB for semantic search",
+        "Granular embedding: split observations into independent vectors for precise matching",
+        "3-layer search: index-first approach reduces token consumption",
+        "MCP integration: stdio protocol eliminates heavy dependencies"
+      ],
+      "migration_scenarios": [
+        "Long-running conversational AI requiring semantic memory search",
+        "Projects prioritizing token efficiency in memory retrieval",
+        "Deployments avoiding external vector database services"
+      ]
     }
   ],
-  "_version": 3
+  "_version": 5
 }

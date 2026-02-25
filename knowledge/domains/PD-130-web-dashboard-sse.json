@@ -1,0 +1,26 @@
+{
+  "id": "PD-130",
+  "slug": "web-dashboard-sse",
+  "title": "实时 Web 仪表盘",
+  "subtitle": "Real-time Web Dashboard",
+  "icon": "eye",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "基于 Next.js + SSE 的实时 Agent 监控面板，展示 session 状态和 PR 进度",
+  "tags": [
+    "sse",
+    "next.js",
+    "dashboard",
+    "real-time"
+  ],
+  "sub_problems": [
+    "SSE 事件流推送",
+    "TTL 缓存减少 API 调用",
+    "attention level 分级",
+    "session 序列化"
+  ],
+  "best_practices": [
+    "TTL 缓存 PR enrichment 数据减少 GitHub API 限流",
+    "globalThis 缓存服务单例适配 Next.js HMR"
+  ]
+}

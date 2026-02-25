@@ -1,0 +1,25 @@
+{
+  "id": "PD-125",
+  "slug": "session-lifecycle",
+  "title": "会话生命周期管理",
+  "subtitle": "Session Lifecycle Management",
+  "icon": "refresh-cw",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "管理 Agent 会话从创建到完成的完整生命周期，包括状态机、轮询和自动清理",
+  "tags": [
+    "state-machine",
+    "lifecycle",
+    "polling"
+  ],
+  "sub_problems": [
+    "状态转换检测",
+    "会话恢复",
+    "自动清理",
+    "并发轮询"
+  ],
+  "best_practices": [
+    "使用 re-entrancy guard 防止轮询重入",
+    "状态变更时重置反应追踪器"
+  ]
+}

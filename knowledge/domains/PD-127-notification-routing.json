@@ -1,0 +1,36 @@
+{
+  "id": "PD-127",
+  "slug": "notification-routing",
+  "title": "通知路由",
+  "subtitle": "Notification Routing",
+  "icon": "message-circle",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "按事件优先级将通知路由到不同渠道（桌面/Slack/Webhook），支持多通道并行推送。Agent 编排系统中事件驱动的多渠道通知分发与自动升级机制",
+  "tags": [
+    "notification",
+    "routing",
+    "priority",
+    "plugin",
+    "slack",
+    "webhook"
+  ],
+  "sub_problems": [
+    "优先级分级",
+    "多渠道推送",
+    "Slack Block Kit 构建",
+    "Webhook 集成",
+    "反应升级链（自动重试→超限升级为人类通知）",
+    "跨平台桌面通知适配（macOS osascript / Linux notify-send）",
+    "可选依赖懒加载与静默降级（composio-core SDK）",
+    "事件类型到优先级的自动推断规则"
+  ],
+  "best_practices": [
+    "按 priority 路由到不同 notifier 组合",
+    "notifier 失败不阻塞主流程",
+    "用关键词 includes() 推断优先级，新事件类型自动匹配无需显式映射",
+    "Webhook 仅对 429/5xx 重试，4xx 立即失败避免浪费重试次数",
+    "Composio SDK 懒加载 + 30s 超时保护，未安装时静默降级为 no-op",
+    "Slack action button ID 做 sanitize 防止特殊字符导致 API 报错"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-128",
+  "slug": "config-driven-orchestration",
+  "title": "配置驱动编排",
+  "subtitle": "Config-Driven Orchestration",
+  "icon": "file-text",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "通过 YAML 配置文件声明式定义项目、插件、反应规则，Zod 校验 + 智能默认值",
+  "tags": [
+    "yaml",
+    "zod",
+    "convention-over-configuration"
+  ],
+  "sub_problems": [
+    "配置校验与默认值",
+    "路径自动推导",
+    "hash 命名空间防冲突",
+    "配置文件发现"
+  ],
+  "best_practices": [
+    "convention over configuration 减少必填项",
+    "sha256 hash 配置路径实现全局唯一命名空间"
+  ]
+}

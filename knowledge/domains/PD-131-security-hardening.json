@@ -1,0 +1,25 @@
+{
+  "id": "PD-131",
+  "slug": "security-hardening",
+  "title": "安全加固",
+  "subtitle": "Security Hardening",
+  "icon": "shield",
+  "color": "#dc2626",
+  "severity": "high",
+  "description": "输入校验、路径遍历防护、控制字符过滤、shell 转义等多层安全措施",
+  "tags": [
+    "security",
+    "input-validation",
+    "shell-escape"
+  ],
+  "sub_problems": [
+    "路径遍历防护",
+    "控制字符注入防护",
+    "Shell 命令转义",
+    "密钥泄露检测"
+  ],
+  "best_practices": [
+    "validateSessionId 正则校验防止路径遍历",
+    "stripControlChars 过滤 tmux 命令注入"
+  ]
+}

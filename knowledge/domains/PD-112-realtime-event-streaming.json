@@ -1,0 +1,24 @@
+{
+  "id": "PD-112",
+  "slug": "realtime-event-streaming",
+  "title": "实时事件流",
+  "subtitle": "Real-time Event Streaming",
+  "icon": "activity",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "服务端推送事件、SSE 客户端管理、实时状态广播",
+  "tags": [
+    "SSE",
+    "event streaming",
+    "real-time"
+  ],
+  "sub_problems": [
+    "SSE 连接池管理",
+    "语义化事件广播",
+    "客户端断连处理",
+    "处理状态实时推送"
+  ],
+  "best_practices": [
+    "单次遍历广播避免两步清理，短路无客户端场景"
+  ]
+}

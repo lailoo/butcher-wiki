@@ -1,0 +1,24 @@
+{
+  "id": "PD-111",
+  "slug": "internationalization",
+  "title": "国际化",
+  "subtitle": "Internationalization (i18n)",
+  "icon": "globe",
+  "color": "#06B6D4",
+  "severity": "medium",
+  "description": "多语言支持、模式继承、prompt 本地化",
+  "tags": [
+    "i18n",
+    "localization",
+    "multi-language"
+  ],
+  "sub_problems": [
+    "模式继承与深度合并",
+    "prompt 模板本地化",
+    "README 多语言翻译",
+    "语言回退机制"
+  ],
+  "best_practices": [
+    "用继承模式(parent--override)避免重复，只覆盖需要翻译的字段"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "PD-114",
+  "slug": "async-queue-processing",
+  "title": "异步队列处理",
+  "subtitle": "Async Queue Processing",
+  "icon": "refresh-cw",
+  "color": "#F97316",
+  "severity": "medium",
+  "description": "事件驱动消息队列、原子消息认领、空闲超时管理",
+  "tags": [
+    "queue",
+    "async",
+    "event-driven"
+  ],
+  "sub_problems": [
+    "原子 claim-confirm 防重复",
+    "持久化待处理消息",
+    "空闲超时自动终止子进程",
+    "EventEmitter 唤醒避免轮询",
+    "生产者-消费者速率不匹配的背压控制",
+    "子进程僵尸进程检测与收割"
+  ],
+  "best_practices": [
+    "用 async iterator 模式消费队列，结合 AbortSignal 实现优雅取消",
+    "claim 事务内嵌入自愈逻辑，无需独立 watchdog 线程",
+    "waitForMessage 三路竞争（event/abort/timeout）确保无泄漏"
+  ],
+  "solutions": [
+    {
+      "id": "PD-114.01",
+      "project": "claude-mem",
+      "file": "PD-114-claude-mem-事件驱动异步消息队列.md",
+      "summary": "claude-mem 用 SQLite 4 态状态机 + EventEmitter 唤醒 + async iterator 实现事件驱动消息队列，claim-confirm 事务防重复，60s 自愈重置 stale 消息"
+    }
+  ]
+}

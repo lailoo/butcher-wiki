@@ -1,0 +1,25 @@
+{
+  "id": "PD-124",
+  "slug": "workspace-isolation",
+  "title": "工作区隔离",
+  "subtitle": "Workspace Isolation",
+  "icon": "git-branch",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "为并行任务创建独立的代码工作区，防止文件冲突和分支污染",
+  "tags": [
+    "git-worktree",
+    "isolation",
+    "parallel"
+  ],
+  "sub_problems": [
+    "工作区创建与销毁",
+    "分支管理",
+    "符号链接共享资源",
+    "工作区恢复"
+  ],
+  "best_practices": [
+    "使用 git worktree 而非 clone 节省磁盘",
+    "原子化 session ID 预留防止并发冲突"
+  ]
+}

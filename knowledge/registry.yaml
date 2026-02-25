@@ -122,6 +122,78 @@ domains:
     description: "Extended Thinking、分层 LLM 策略、MoE 路由"
     tags: ["extended-thinking", "tiered-llm", "moe", "chain-of-thought"]
 
+  - id: "PD-121"
+    slug: "configuration-management"
+    title: "配置管理"
+    subtitle: "Configuration Management"
+    icon: "settings"
+    color: "#64748b"  # slate
+    severity: medium
+    description: "分层配置系统支持环境变量、文件、CLI 多级覆盖"
+    tags: ["config", "yaml", "pydantic", "environment-variable"]
+
+  - id: "PD-122"
+    slug: "llm-output-structuring"
+    title: "LLM 输出结构化"
+    subtitle: "LLM Output Structuring"
+    icon: "code"
+    color: "#06b6d4"  # cyan
+    severity: high
+    description: "将 LLM 自由文本输出强制转换为类型安全的结构化数据"
+    tags: ["structured-output", "json-schema", "pydantic", "parser", "format-constraint"]
+
+  - id: "PD-114"
+    slug: "async-queue-processing"
+    title: "异步队列处理"
+    subtitle: "Async Queue Processing"
+    icon: "refresh-cw"
+    color: "#F97316"  # orange
+    severity: medium
+    description: "事件驱动消息队列、原子消息认领、空闲超时管理；单进程场景下用 SQLite 替代 Redis 实现轻量持久化队列的工程实践"
+    tags: ["queue", "async", "event-driven", "claim-confirm", "sqlite-queue"]
+
+
+  - id: "PD-116"
+    slug: "serialization-state-recovery"
+    title: "序列化与状态恢复"
+    subtitle: "Serialization & State Recovery"
+    icon: "save"
+    color: "#7c3aed"  # violet-dark
+    severity: high
+    description: "多 Agent 系统运行状态的全链路序列化、多态对象图持久化、异常自动 checkpoint 与跨会话断点恢复"
+    tags: ["serialize", "deserialize", "checkpoint", "recovery", "polymorphic", "pydantic"]
+
+
+  - id: "PD-120"
+    slug: "message-routing-communication"
+    title: "消息路由与通信"
+    subtitle: "Message Routing & Communication"
+    icon: "message-circle"
+    color: "#14b8a6"  # teal
+    severity: high
+    description: "多 Agent 间基于标签的消息路由、订阅和异步通信机制"
+    tags: ["message-routing", "pub-sub", "async-communication", "cause-by", "observer"]
+
+  - id: "PD-117"
+    slug: "multi-llm-provider-adapter"
+    title: "多 LLM Provider 适配"
+    subtitle: "Multi-LLM Provider Adapter"
+    icon: "cpu"
+    color: "#8b5cf6"  # violet
+    severity: high
+    description: "统一接入多种 LLM API 后端，屏蔽差异提供一致接口"
+    tags: ["LLM适配", "Provider", "统一接口", "registry-pattern", "multi-model"]
+
+  - id: "PD-127"
+    slug: "notification-routing"
+    title: "通知路由"
+    subtitle: "Notification Routing"
+    icon: "message-circle"
+    color: "#8b5cf6"  # violet
+    severity: medium
+    description: "按事件优先级将通知路由到不同渠道（桌面/Slack/Webhook），支持多通道并行推送"
+    tags: ["notification", "routing", "priority", "plugin", "slack", "webhook"]
+
 # 已分析项目
 projects:
   - name: "MiroThinker"
@@ -158,3 +230,24 @@ projects:
     language: "Python + TypeScript"
     description: "Git 仓库自动 Wiki 生成器（纵向分析标杆）"
     domains: ["PD-08"]
+
+  - name: "MetaGPT"
+    slug: "metagpt"
+    repo: "https://github.com/FoundationAgents/MetaGPT.git"
+    language: "Python"
+    description: "多 Agent 软件开发框架，Pydantic 分层配置系统"
+    domains: ["PD-01", "PD-06", "PD-08", "PD-09", "PD-10", "PD-11", "PD-116", "PD-117", "PD-120", "PD-121", "PD-122"]
+
+  - name: "claude-mem"
+    slug: "claude-mem"
+    repo: "https://github.com/thedotmack/claude-mem.git"
+    language: "TypeScript"
+    description: "Claude Code 记忆增强插件，事件驱动异步消息队列"
+    domains: ["PD-114"]
+
+  - name: "agent-orchestrator"
+    slug: "agent-orchestrator"
+    repo: "https://github.com/ComposioHQ/agent-orchestrator.git"
+    language: "TypeScript"
+    description: "多 Agent 编排器，插件化通知路由系统"
+    domains: ["PD-127"]

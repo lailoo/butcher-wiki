@@ -1,27 +1,53 @@
 {
   "id": "PD-04",
-  "title": "Tool System",
+  "title": "Tool System Design",
   "subtitle": "Tool System Design",
-  "description": "Unified management, registration, discovery, and execution of tools with MCP protocol standardization. The tool system defines the boundary of Agent capabilities.",
+  "description": "Unified management, registration, discovery, and execution of tools with MCP protocol standardization. The tool system defines the capability boundary of agents.",
   "sub_problems": [
     "Tool registration: How to define and register tool schema (name, parameters, return values)",
     "Tool discovery: How agents know which tools are available",
     "Permission control: Which tools require user confirmation before execution",
-    "Result formatting: How to format tool return values into LLM-understandable text",
+    "Result formatting: How to format tool return results into LLM-understandable text",
     "MCP protocol: Model Context Protocol standardizes tool interfaces",
-    "Tool result summarization: How to compress raw tool output into LLM-consumable summaries",
+    "Pseudo-tool guidance: How to use tools/list mechanism to convey tool usage specifications to LLM",
+    "MCP stdout protection: How to prevent logs from corrupting JSON-RPC protocol under stdio transport",
+    "Tool result token budget: How to design layered return formats to control token consumption per call",
+    "Dual-layer tool architecture: How to serve the same tool for both MCP protocol and internal Agent loop",
+    "Dynamic tool set composition: How to selectively activate tool subsets by scenario (implementation/evaluation)",
+    "Tool schema and implementation separation: How to evolve tool definitions independently without modifying implementation code",
+    "Tool result summarization: How to compress raw tool output into LLM-consumable summary text",
     "Tool call lifecycle: How to track all states from pending→running→success/failed",
-    "Graceful tool degradation: How to ensure core tools remain available when dependencies are missing"
+    "Tool graceful degradation: How to ensure core tools remain available when dependencies are missing",
+    "Tool recommendation: How to precisely recommend the most relevant tool subset for current task in large tool sets",
+    "Docstring as schema: How to auto-generate LLM-understandable tool descriptions from code comments",
+    "AST dynamic registration: How to register tools from source files without importing modules",
+    "Method-level exposure control: How class tools expose only specified methods while hiding internal implementation",
+    "Tool parameter validation: How to auto-validate parameter types and constraints before execute",
+    "Tool context injection: How to dynamically set tool routing information in multi-channel scenarios",
+    "Sub-agent tool isolation: How to implement tool-level permission control through independent registries"
   ],
   "best_practices": [
-    "Tool descriptions must be precise: LLMs select tools based on descriptions, vague descriptions cause misselection",
-    "Parameters should have defaults: Reduce the number of parameters LLMs need to decide",
+    "Tool descriptions must be precise: LLM selects tools based on descriptions; vague descriptions cause misselection",
+    "Parameters should have defaults: Reduces the number of parameters LLM needs to decide",
     "Return results should be structured: Facilitates LLM parsing and referencing",
     "Dangerous operations need confirmation: File deletion, network requests require human-in-the-loop",
     "Control tool quantity: Too many tools dilute LLM selection accuracy",
-    "Separate thin wrapper layer from service layer: tools/ handles interface adaptation only, logic goes in services/",
-    "Truncate tool results before summarization: Prevent oversized output from exhausting context window",
-    "Use AST inspection before code execution: ImportGuard intercepts dangerous modules before execution"
+    "MCP Server should be thin wrapper layer: Protocol conversion + HTTP forwarding; business logic sinks to independent services",
+    "Use pseudo-tools (__IMPORTANT) in tools/list to convey workflow specifications more reliably than system prompt",
+    "Search results return index first, fetch details on demand: Can save 10x token consumption",
+    "Return errors as strings rather than throwing exceptions: Lets LLM interpret errors and retry",
+    "Sub-agents use independent registry instances rather than runtime filtering: Compile-time isolation is safer than runtime checks",
+    "Conditional loading driven by environment variables: Unavailable tools not registered, prevents LLM selecting unavailable tools",
+    "Separate thin wrapper from service layer: tools/ only does interface adaptation; logic goes in services/",
+    "Truncate tool results before summarization: Prevents oversized output from bloating context window",
+    "Use AST to check imports before code execution: ImportGuard intercepts dangerous modules before execution",
+    "Use natural language schema rather than JSON Schema: LLM understands docstrings better than JSON Schema",
+    "Two-stage recommendation controls tokens: BM25 coarse filtering then LLM fine ranking; avoids full tool set bloating context",
+    "Decorator registration keeps code and schema in sync: Schema auto-updates when code changes; no manual maintenance needed",
+    "exclusive_tool_commands prevents duplicate operations: Keep only first command of same type; prevents LLM repeated calls",
+    "Return errors as strings rather than throwing exceptions: Lets LLM see errors and self-correct",
+    "MCP tool namespace isolation: Prefix mcp_{server}_ to avoid conflicts with built-in tools",
+    "Tool output truncation: Control context window bloat; ExecTool and WebFetch each have limits"
   ],
   "comparison_dimensions": [
     {
@@ -30,7 +56,11 @@
         "DeerFlow(config)": "YAML config.yaml → resolve_variable() reflection loading",
         "DeerFlow(MCP)": "JSON mcp_config.json → McpServerConfig",
         "MiroThinker": "server_configs list + StdioServerParameters",
-        "DeepTutor": "Module import + __init__.py unified re-export, no decorators/registry"
+        "claude-mem": "Array declaration + handler closure; MCP SDK setRequestHandler registration",
+        "DeepCode": "Dual-layer: FastMCP @mcp.tool decorator + nanobot Tool ABC inheritance registration",
+        "DeepTutor": "Module import + __init__.py unified re-export; no decorator/registry",
+        "MetaGPT": "@register_tool decorator + inspect auto-extract docstring/source to generate schema",
+        "Nanobot": "Tool ABC base class + ToolRegistry dict registry; name index O(1) lookup"
       }
     },
     {
@@ -39,25 +69,37 @@
         "DeerFlow(config)": "tool_groups (web/file:read/file:write/bash) + SubagentConfig whitelist/blacklist",
         "DeerFlow(MCP)": "enabled field controls enable/disable",
         "MiroThinker": "tool_blacklist set disables specific tools",
-        "DeepTutor": "YAML valid_tools whitelist + Agent-level tool subset assignment"
+        "claude-mem": "No grouping; 5 tools flat; CORS limits localhost access",
+        "DeepCode": "MCPToolDefinitions grouped by tool set + sub-agent independent registry isolation",
+        "DeepTutor": "YAML valid_tools whitelist + agent-level tool subset allocation",
+        "MetaGPT": "tags grouping + include_functions method-level filtering + 'Class:method' syntax",
+        "Nanobot": "Code-level isolation: main agent 9 tools; sub-agent 7 tools (no message/spawn/cron)"
       }
     },
     {
       "name": "MCP protocol support",
       "values": {
-        "DeerFlow(config)": "Built-in tools use @tool decorator, MCP tools merged via get_cached_mcp_tools()",
+        "DeerFlow(config)": "Built-in tools use @tool decorator; MCP tools merged via get_cached_mcp_tools()",
         "DeerFlow(MCP)": "Full support for stdio/SSE/HTTP three transport types",
-        "MiroThinker": "Native MCP, 7 types of StdioServerParameters tool servers",
-        "DeepTutor": "Not supported, tool interface is project-internal Python functions"
+        "MiroThinker": "MCP native; 7 types of StdioServerParameters tool servers",
+        "claude-mem": "Native MCP SDK; StdioServerTransport; thin wrapper delegates to Worker HTTP",
+        "DeepCode": "Core layer FastMCP Server; supports stdio/SSE communication",
+        "DeepTutor": "No support; tool interface is project-internal Python functions",
+        "MetaGPT": "No MCP support; uses custom schema format (description+signature+parameters)",
+        "Nanobot": "MCPToolWrapper bridge; supports stdio + HTTP dual transport; lazy-load connections"
       }
     },
     {
-      "name": "Hot reload/caching",
+      "name": "Hot update/caching",
       "values": {
-        "DeerFlow(config)": "Modify YAML use path to switch, requires restart",
+        "DeerFlow(config)": "Change YAML use path to switch implementation; requires restart",
         "DeerFlow(MCP)": "mtime cache invalidation auto-detects config changes",
-        "MiroThinker": "Loaded at startup, fixed during runtime",
-        "DeepTutor": "Provider switchable at runtime (env/config), no tool hot reload"
+        "MiroThinker": "Load at startup; fixed at runtime",
+        "claude-mem": "No hot update; Chroma availability runtime detection; strategy dynamic switching",
+        "DeepCode": "Environment variable conditional loading; comment-based tool set switching",
+        "DeepTutor": "Provider runtime switchable (env/config); no tool hot-loading",
+        "MetaGPT": "register_tools_from_path() supports runtime dynamic registration from file path; AST parsing without import",
+        "Nanobot": "Supports register/unregister dynamic add/remove; no event notification mechanism"
       }
     },
     {
@@ -66,43 +108,256 @@
         "DeerFlow(config)": "No built-in timeout",
         "DeerFlow(MCP)": "No built-in timeout",
         "MiroThinker": "@with_timeout(1200) 20-minute hard timeout",
-        "DeepTutor": "code_executor subprocess.timeout + configurable code_timeout"
+        "claude-mem": "Worker health check timeout detection; ppid heartbeat prevents orphan processes",
+        "DeepCode": "ExecTool 60s + MCP execute_bash 30s dual-layer timeout",
+        "DeepTutor": "code_executor subprocess.timeout + configurable code_timeout",
+        "MetaGPT": "No built-in timeout; _run_commands() breaks on exception to stop subsequent commands",
+        "Nanobot": "ExecTool 60s + MCP tools 30s; kill/cancel after timeout"
       }
     },
     {
       "name": "Result summarization",
       "values": {
-        "DeepTutor": "LLM-driven tool result summarization middleware, summarize after truncating to 2000 characters"
+        "claude-mem": "Markdown table index (~50-100 token/item); 3-Layer progressive disclosure",
+        "DeepCode": "read_code_mem extracts file summary from implement_code_summary.md",
+        "DeepTutor": "LLM-driven tool result summary middleware; truncate 2000 chars then summarize",
+        "MetaGPT": "Tool output directly concatenated as string; no layered summarization mechanism",
+        "Nanobot": "ExecTool truncate 10000 chars; WebFetch truncate 50000 chars"
       }
     },
     {
       "name": "Lifecycle tracking",
       "values": {
-        "DeepTutor": "ToolCallRecord dataclass 6-state machine + JSON persistence"
+        "claude-mem": "StrategySearchResult.usedChroma/fellBack marks strategy path",
+        "DeepCode": "log_operation records operation history + get_operation_history queries",
+        "DeepTutor": "ToolCallRecord dataclass 6-state machine + JSON persistence",
+        "MetaGPT": "No explicit state machine; _run_commands() sequential execution and output concatenation",
+        "Nanobot": "No explicit state tracking; error returned as string for LLM self-handling"
+      }
+    },
+    {
+      "name": "Parameter validation",
+      "values": {
+        "claude-mem": "additionalProperties=true loose schema + Worker-side normalization validation",
+        "DeepCode": "Tool.validate_params recursive JSON Schema validation",
+        "MetaGPT": "ToolSchema Pydantic soft validation (failure non-blocking); no runtime parameter type checking",
+        "Nanobot": "Tool ABC built-in recursive JSON Schema validation; auto-call before execute"
+      }
+    },
+    {
+      "name": "Security protection",
+      "values": {
+        "claude-mem": "CORS localhost-only + requireLocalhost middleware + console.log interception",
+        "DeepCode": "deny_patterns regex blacklist + validate_path path traversal detection + workspace limit",
+        "MetaGPT": "exclusive_tool_commands limits same-type commands to first execution; special_tool_commands special handling",
+        "Nanobot": "ExecTool 9 regex blacklists + path sandbox + workspace limit"
+      }
+    },
+    {
+      "name": "Pseudo-tool guidance",
+      "values": {
+        "claude-mem": "__IMPORTANT pseudo-tool in tools/list conveys workflow specifications"
+      }
+    },
+    {
+      "name": "Dual-layer API architecture",
+      "values": {
+        "claude-mem": "MCP→Worker HTTP→SearchManager→Orchestrator four-layer separation"
+      }
+    },
+    {
+      "name": "Tool recommendation strategy",
+      "values": {
+        "MetaGPT": "Two-stage: BM25/TypeMatch recall 20 → LLM fine-rank Top-5"
+      }
+    },
+    {
+      "name": "Schema generation method",
+      "values": {
+        "MetaGPT": "Dual-path: runtime inspect reflection + AST static parsing; docstring as schema"
       }
     }
   ],
   "solutions": [
     {
       "source_id": "102.08",
+      "project": "DeerFlow",
       "title": "config.yaml → ToolConfig → resolve_variable() reflection loading + tool_groups grouping + SubagentConfig whitelist/blacklist",
-      "description": "Declarative tool configuration in config.yaml (name/group/use triplet), parsed by ToolConfig (Pydantic) then reflection-loaded via resolve_variable(): importlib.import_module(module_path) + getattr(module, variable_name) + isinstance type validation. Four tool_groups (web/file:read/file:write/bash), get_available_tools(groups=[\"web\"]) filters by group. Community tools follow unified pattern: each tool under src/community/ decorated with @tool(\"tool_name\"), reads YAML extra parameters via get_app_config().get_tool_config(\"tool_name\").model_extra. SubagentConfig supports tools (whitelist) and disallowed_tools (blacklist, defaults to disallowing \"task\" to prevent recursive delegation). ConfigDict(extra=\"allow\") enables parameter pass-through."
+      "description": "Declarative config.yaml defines tools as (name/group/use) triplets; ToolConfig (Pydantic) parses then loads via resolve_variable(): importlib.import_module(module_path) + getattr(module, variable_name) + isinstance type validation. Four tool_groups (web/file:read/file:write/bash); get_available_tools(groups=[\"web\"]) filters by group. Community tools follow unified pattern: each tool in src/community/ uses @tool(\"tool_name\") decorator; reads YAML extra parameters via get_app_config().get_tool_config(\"tool_name\").model_extra. SubagentConfig supports tools (whitelist) and disallowed_tools (blacklist; defaults to disallow \"task\" to prevent recursive delegation). ConfigDict(extra=\"allow\") enables parameter pass-through.",
+      "design_philosophy": [
+        "Declarative config: YAML (name/group/use) triplets; change use path to switch tool implementation without code changes",
+        "Reflection loading: resolve_variable() dynamically loads via importlib; zero hard-coded dependencies",
+        "Group-based permissions: Four tool_groups implement subagent-level tool permission isolation",
+        "Parameter pass-through: ConfigDict(extra=\"allow\") + model_extra auto-forwards YAML extra fields to tools"
+      ],
+      "migration_scenarios": [
+        "Projects managing many tools declaratively (change YAML not code)",
+        "Multi-subagent orchestration requiring different tool permissions per agent (tool_groups + whitelist/blacklist)",
+        "Open platforms needing community tool plugin extensibility (src/community/ pattern)"
+      ]
     },
     {
       "source_id": "1002.06",
+      "project": "DeerFlow",
       "title": "MCP protocol integration: McpServerConfig + get_cached_mcp_tools() mtime caching + three transport protocols",
-      "description": "backend/src/mcp/ implements complete MCP integration in 4 files (~200 lines). McpServerConfig (Pydantic) defines enabled/type/command/args/env/url/headers. build_servers_config() iterates enabled servers to build langchain-mcp-adapters parameters with error isolation (single server failure doesn't affect others). get_mcp_tools() reads latest config from disk each time ensuring Gateway API changes take effect immediately. get_cached_mcp_tools() uses file mtime cache invalidation + asyncio.Lock prevents concurrency + ThreadPoolExecutor supports sync environments. Supports stdio/SSE/HTTP three transport protocols. resolve_env_variables() recursively resolves $ENV_VAR. Four-level config file lookup priority: parameters→environment variables→CWD→parent directory."
+      "description": "backend/src/mcp/ implements complete MCP integration in ~200 lines across 4 files. McpServerConfig (Pydantic) defines enabled/type/command/args/env/url/headers. build_servers_config() iterates enabled servers to build langchain-mcp-adapters parameters with error isolation (single server failure doesn't affect others). get_mcp_tools() reads latest config from disk each time ensuring Gateway API changes take effect immediately. get_cached_mcp_tools() caches based on file mtime + asyncio.Lock prevents concurrency + ThreadPoolExecutor supports sync environments. Supports stdio/SSE/HTTP three transport protocols. resolve_env_variables() recursively resolves $ENV_VAR. Four-level config file lookup priority: parameter→environment variable→CWD→parent directory.",
+      "design_philosophy": [
+        "Config-as-extension: Edit JSON config to onboard new MCP servers; zero code changes",
+        "mtime cache invalidation: Auto-detect config changes based on file modification time; Gateway API changes take effect immediately",
+        "Error isolation: Single MCP server failure doesn't affect other servers or built-in tools",
+        "Transport abstraction: stdio (local process)/SSE (streaming)/HTTP (standard) unified interface"
+      ],
+      "migration_scenarios": [
+        "Projects needing zero-code MCP server onboarding (GitHub/filesystem/database etc)",
+        "Production environments requiring tool hot-updates (mtime auto-detection)",
+        "Hybrid deployments mixing local tools (stdio) and remote tools (SSE/HTTP)"
+      ]
     },
     {
       "source_id": "37.09",
+      "project": "MiroThinker",
       "title": "ToolManager MCP multi-server management + tool_blacklist + @with_timeout(1200) + fix_tool_call_arguments()",
-      "description": "ToolManager (ToolManagerProtocol) in manager.py unifies management of multiple MCP servers. server_configs list defines 7 tool servers (tool-python/tool-google-search/tool-jina-scrape/tool-reasoning/tool-reader/tool-vqa/tool-transcribe), each configured with StdioServerParameters. get_all_tool_definitions() retrieves all tool schemas, execute_tool_call(server_name, tool_name, arguments) executes calls. tool_blacklist set disables specific tools. @with_timeout(1200) decorator adds 20-minute timeout protection to tool execution. fix_tool_call_arguments() corrects common LLM parameter errors. Supports persistent browser session storage."
+      "description": "ToolManager (ToolManagerProtocol) in manager.py unifies multiple MCP servers. server_configs list defines 7 tool servers (tool-python/tool-google-search/tool-jina-scrape/tool-reasoning/tool-reader/tool-vqa/tool-transcribe); each configured via StdioServerParameters. get_all_tool_definitions() retrieves all tool schemas; execute_tool_call(server_name, tool_name, arguments) executes calls. tool_blacklist set disables specific tools. @with_timeout(1200) decorator adds 20-minute timeout protection to tool execution. fix_tool_call_arguments() corrects common LLM parameter errors. Supports persistent browser session browser_session.",
+      "design_philosophy": [
+        "MCP native: Standardizes all tool interfaces via Model Context Protocol; 7 tool servers unified management",
+        "Blacklist mechanism: tool_blacklist set dynamically disables specific tools; adjustable at runtime",
+        "Timeout protection: @with_timeout(1200) 20-minute hard timeout prevents tool execution hangs",
+        "Parameter correction: fix_tool_call_arguments() auto-corrects common LLM parameter format errors; improves tool call success rate"
+      ],
+      "migration_scenarios": [
+        "Projects needing MCP protocol to unify multiple tool server types",
+        "Long-running tool execution (code execution/web scraping) requiring timeout protection",
+        "Agent systems where LLM tool call parameters frequently error and need auto-correction"
+      ]
     },
     {
       "source_id": "scan",
+      "project": "claude-mem",
+      "title": "MCP thin wrapper layer with 3-layer workflow tool system",
+      "description": "claude-mem implements 5-tool minimal interface via MCP thin wrapper + __IMPORTANT pseudo-tool + 3-Layer Workflow (search→timeline→detail). Strategy pattern search engine supports Chroma/SQLite/Hybrid with auto-fallback.",
+      "design_philosophy": [
+        "Thin wrapper: MCP layer only handles protocol conversion; business logic in independent services",
+        "Pseudo-tool guidance: __IMPORTANT in tools/list conveys workflow specifications more reliably than system prompt",
+        "3-Layer progressive disclosure: search returns index (~50-100 token/item) → timeline shows context → detail fetches full content",
+        "Strategy auto-fallback: Chroma unavailable → SQLite; hybrid search combines both"
+      ],
+      "migration_scenarios": [
+        "Memory-augmented agents needing progressive disclosure to control token consumption",
+        "Multi-backend search requiring graceful degradation when primary backend unavailable",
+        "Projects using pseudo-tools to guide LLM workflow rather than relying on system prompt"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "DeepCode",
+      "title": "Dual-layer MCP tool architecture",
+      "description": "DeepCode separates external MCP protocol tools from internal Agent tools via FastMCP Server + nanobot ToolRegistry dual-layer architecture. MCPToolDefinitions decouples schema from implementation. Sub-agents achieve tool-level permission isolation through independent registries.",
+      "design_philosophy": [
+        "Dual-layer separation: External MCP protocol layer + internal Agent tool layer; each independently evolved",
+        "Schema-implementation decoupling: MCPToolDefinitions allows schema evolution without touching implementation",
+        "Sub-agent isolation: Independent registry instances provide compile-time tool permission isolation"
+      ],
+      "migration_scenarios": [
+        "Projects needing to expose internal tools via MCP protocol without tight coupling",
+        "Multi-agent systems requiring different tool permissions per agent",
+        "Scenarios where tool schema and implementation evolve at different rates"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "DeepTutor",
       "title": "Academic scenario tool system",
-      "description": "In academic scenarios, tool results require LLM secondary summarization and citation tracking, representing an important extension dimension of the tool system"
+      "description": "Thin wrapper + service layer separation: src/tools/ is thin wrapper; real logic in src/services/. Tool files only do re-export and simple adaptation.",
+      "design_philosophy": [
+        "Layered architecture: Thin wrapper (interface adaptation) separate from service layer (business logic)",
+        "Maintainability: Tool changes don't require service layer modifications",
+        "Testability: Service layer logic testable independently from tool interface"
+      ],
+      "migration_scenarios": [
+        "Projects with complex business logic needing clean separation from tool interfaces",
+        "Academic/research systems where tool interfaces may change frequently"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "MetaGPT",
+      "title": "Decorator-driven tool registration with two-stage recommendation system",
+      "description": "MetaGPT uses @register_tool decorator + Google docstring to auto-generate schema. BM25 recall + LLM fine-rank two-stage recommendation. tool_execution_map string mapping dispatches execution.",
+      "design_philosophy": [
+        "Decorator-driven: @register_tool keeps code and schema in sync; schema auto-updates on code changes",
+        "Docstring-as-schema: Google docstring format auto-generates LLM-understandable schema",
+        "Two-stage recommendation: BM25 coarse filtering (20 candidates) → LLM fine-ranking (Top-5); controls token consumption",
+        "String dispatch: tool_execution_map enables dynamic tool execution without hard-coded conditionals"
+      ],
+      "migration_scenarios": [
+        "Projects with many tools needing efficient recommendation without bloating context",
+        "Systems where tool schema must stay synchronized with code changes",
+        "Scenarios requiring both recall (BM25) and ranking (LLM) for tool selection"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "Nanobot",
+      "title": "ABC registry tool system",
+      "description": "Tool ABC base class defines abstract interface; all tools implement name/description/parameters/execute. ToolRegistry dict registry provides O(1) name lookup. Built-in recursive JSON Schema parameter validation before execute.",
+      "design_philosophy": [
+        "ABC contract: Tool ABC enforces consistent interface across all tools",
+        "Registry pattern: ToolRegistry dict enables O(1) tool lookup by name",
+        "Built-in validation: Recursive JSON Schema validation auto-called before execute; catches parameter errors early",
+        "Extensibility: New tools simply inherit Tool ABC and register"
+      ],
+      "migration_scenarios": [
+        "Projects needing strict tool interface contracts",
+        "Systems with many tools requiring fast lookup and validation",
+        "Scenarios where parameter validation must happen before tool execution"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "OpenClaw",
+      "title": "Multi-layer tool strategy pipeline",
+      "description": "OpenClaw builds multi-layer tool strategy pipeline + plugin Hook lifecycle + tool loop detection three-in-one tool system.",
+      "design_philosophy": [
+        "Strategy pipeline: Multiple tool selection strategies layered; each can filter/rank candidates",
+        "Plugin Hooks: Lifecycle events (before_select/after_execute) enable extensibility",
+        "Loop detection: Prevents infinite tool call loops through execution history tracking"
+      ],
+      "migration_scenarios": [
+        "Complex Agent systems needing sophisticated tool selection strategies",
+        "Projects requiring plugin-based tool system extensibility",
+        "Scenarios where tool call loops must be detected and prevented"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "OpenManus",
+      "title": "BaseTool abstract base class with MCP bidirectional bridge",
+      "description": "Three-layer architecture: BaseTool abstract base class + MCP bidirectional bridge + execution layer.",
+      "design_philosophy": [
+        "Abstract base: BaseTool enforces consistent tool interface",
+        "Bidirectional bridge: Tools work both as MCP servers and internal Agent tools",
+        "Layered execution: Separate execution layer from tool definition"
+      ],
+      "migration_scenarios": [
+        "Projects needing tools to work both as MCP servers and internal Agent tools",
+        "Systems requiring clean separation between tool definition and execution"
+      ]
+    },
+    {
+      "source_id": "scan",
+      "project": "system-prompts-and-models-of-ai-tools",
+      "title": "Unified four-element tool structure patterns",
+      "description": "All tools follow unified structure: name + description + parameters (JSON Schema) + required fields.",
+      "design_philosophy": [
+        "Unified structure: Consistent four-element pattern across all tools enables standardization",
+        "JSON Schema: Formal parameter specification enables validation and documentation",
+        "Consistency: Uniform structure simplifies tool discovery and execution"
+      ],
+      "migration_scenarios": [
+        "Projects standardizing tool definitions across heterogeneous systems",
+        "Scenarios requiring formal tool specification for validation and documentation"
+      ]
     }
   ],
-  "_version": 3
+  "_version": 5
 }

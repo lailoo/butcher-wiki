@@ -1,0 +1,23 @@
+{
+  "id": "PD-116",
+  "slug": "serialization-state-recovery",
+  "title": "序列化与状态恢复",
+  "subtitle": "Serialization & State Recovery",
+  "icon": "refresh-cw",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "支持 Agent 系统中断后从检查点恢复完整运行状态",
+  "tags": [
+    "序列化",
+    "状态恢复",
+    "检查点"
+  ],
+  "sub_problems": [
+    "对象图序列化",
+    "增量状态保存",
+    "跨会话恢复"
+  ],
+  "best_practices": [
+    "使用 Pydantic model_dump 统一序列化"
+  ]
+}

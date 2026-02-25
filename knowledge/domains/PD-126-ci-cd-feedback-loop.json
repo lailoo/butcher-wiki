@@ -1,0 +1,25 @@
+{
+  "id": "PD-126",
+  "slug": "ci-cd-feedback-loop",
+  "title": "CI/CD 反馈闭环",
+  "subtitle": "CI/CD Feedback Loop",
+  "icon": "code",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "自动检测 CI 失败和 Code Review 变更，将反馈路由回 Agent 形成自动修复闭环",
+  "tags": [
+    "ci",
+    "code-review",
+    "feedback-loop"
+  ],
+  "sub_problems": [
+    "CI 状态检测",
+    "Review 评论提取",
+    "自动修复指令下发",
+    "升级到人工"
+  ],
+  "best_practices": [
+    "fail-closed 策略：CI 查询失败时报告为 failing 而非 none",
+    "区分人工评论和 bot 评论"
+  ]
+}

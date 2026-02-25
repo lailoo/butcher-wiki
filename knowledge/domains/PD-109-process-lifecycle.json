@@ -1,0 +1,32 @@
+{
+  "id": "PD-109",
+  "slug": "process-lifecycle",
+  "title": "进程生命周期管理",
+  "subtitle": "Process Lifecycle Management",
+  "icon": "cpu",
+  "color": "#EF4444",
+  "severity": "high",
+  "description": "守护进程管理、优雅关闭、孤儿进程清理、跨平台进程协调、版本热更新与并发重启防护",
+  "tags": [
+    "daemon",
+    "process management",
+    "graceful shutdown"
+  ],
+  "sub_problems": [
+    "PID 文件协调",
+    "多步有序关闭",
+    "孤儿进程检测与清理",
+    "跨平台进程生成",
+    "版本不匹配检测与自动重启",
+    "并发会话重启风暴防护",
+    "SDK 隐藏子进程 PID 捕获",
+    "Windows zombie port 修复"
+  ],
+  "best_practices": [
+    "关闭时先枚举子进程再逐步关闭服务",
+    "PID 文件由 worker 在 listen 成功后自写，不由 spawner 写入",
+    "区分 aggressive 和 age-gated 两类孤儿清理策略",
+    "用 PID 文件 mtime 协调多会话并发重启",
+    "daemon 模式忽略 SIGHUP + setsid 双重终端隔离"
+  ]
+}

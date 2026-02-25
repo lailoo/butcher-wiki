@@ -1,0 +1,29 @@
+{
+  "id": "PD-122",
+  "slug": "llm-output-structuring",
+  "title": "LLM 输出结构化",
+  "subtitle": "LLM Output Structuring",
+  "icon": "code",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "将 LLM 自由文本输出强制转换为类型安全的结构化数据",
+  "tags": [
+    "结构化输出",
+    "解析",
+    "格式修复"
+  ],
+  "sub_problems": [
+    "输出格式约束",
+    "解析与提取",
+    "格式错误修复",
+    "动态类型生成与模型缓存",
+    "多模式填充策略选择（JSON/XML/Code/Markdown）",
+    "LLM 自校正循环（Review-Revise）"
+  ],
+  "best_practices": [
+    "Pydantic 动态模型 + 标签包裹 + 后处理修复",
+    "双层重试 + 重试间自动修复（外层 LLM 重调 + 内层 JSON 精确修复）",
+    "CustomDecoder 宽松解析兼容单引号/三引号等非标准 JSON",
+    "模型类缓存注册表避免重复 create_model 导致类型比较失败"
+  ]
+}

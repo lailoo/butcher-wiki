@@ -1,0 +1,30 @@
+{
+  "id": "PD-121",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "分层配置系统支持环境变量、文件、CLI 多级覆盖；多 Agent 框架中按角色粒度定制配置的组合式架构",
+  "tags": [
+    "配置管理",
+    "YAML",
+    "环境变量",
+    "Pydantic"
+  ],
+  "sub_problems": [
+    "配置优先级合并",
+    "模块化配置",
+    "运行时配置更新",
+    "按角色/Agent 粒度定制 LLM 配置",
+    "配置缓存与强制刷新",
+    "敏感配置占位符检测"
+  ],
+  "best_practices": [
+    "Pydantic + YAML 实现类型安全配置",
+    "ContextMixin 私有配置覆盖共享配置实现角色级定制",
+    "YamlModelWithoutDefault 强制校验敏感配置非占位符",
+    "_CONFIG_CACHE 以路径元组为 key 避免重复加载"
+  ]
+}

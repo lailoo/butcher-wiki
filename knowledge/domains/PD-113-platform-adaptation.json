@@ -1,0 +1,39 @@
+{
+  "id": "PD-113",
+  "slug": "platform-adaptation",
+  "title": "平台适配",
+  "subtitle": "Platform Adaptation",
+  "icon": "layers",
+  "color": "#8B5CF6",
+  "severity": "medium",
+  "description": "多 IDE/多操作系统适配、输入输出标准化、跨平台兼容。IDE hook 格式标准化与跨 OS 进程生命周期管理的工程实践",
+  "tags": [
+    "adapter pattern",
+    "cross-platform",
+    "IDE integration"
+  ],
+  "sub_problems": [
+    "多 IDE 适配器(Claude Code/Cursor/Raw)",
+    "Windows/macOS/Linux 差异处理",
+    "超时倍率调整",
+    "守护进程生成方式适配",
+    "IDE 多版本字段兼容（Cursor conversation_id/generation_id/id 等）",
+    "Windows Bun 运行时路径解析（8 候选路径优先级搜索）",
+    "Windows 僵尸端口防护（socket 继承 + 延迟释放）",
+    "孤儿进程分级清理（立即杀死 vs 年龄门控）"
+  ],
+  "best_practices": [
+    "用 Adapter 模式隔离平台差异，核心逻辑保持平台无关",
+    "双层超时倍率区分 hook 快路径(1.5x)和 worker 慢路径(2.0x)",
+    "Windows 守护进程用 PowerShell Start-Process 而非 WMIC（继承环境变量）",
+    "PID 验证防命令注入：所有 taskkill/kill 前校验正整数"
+  ],
+  "solutions": [
+    {
+      "id": "PD-113.01",
+      "project": "claude-mem",
+      "file": "PD-113-claude-mem-Adapter-Platform-Adaptation.md",
+      "summary": "claude-mem 用 PlatformAdapter 接口统一 Claude Code/Cursor/Raw 三种 IDE 输入输出格式，ProcessManager 集中处理 Windows PowerShell/Unix setsid 守护进程生成与双层超时倍率"
+    }
+  ]
+}

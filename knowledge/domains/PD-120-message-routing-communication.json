@@ -1,0 +1,29 @@
+{
+  "id": "PD-120",
+  "slug": "message-routing-communication",
+  "title": "消息路由与通信",
+  "subtitle": "Message Routing & Communication",
+  "icon": "message-circle",
+  "color": "#14b8a6",
+  "severity": "high",
+  "description": "多 Agent 间基于标签的消息路由、订阅和异步通信机制",
+  "tags": [
+    "消息路由",
+    "发布订阅",
+    "异步通信"
+  ],
+  "sub_problems": [
+    "消息寻址与分发",
+    "订阅过滤",
+    "异步消息队列",
+    "自发消息处理（<self> 标签绕过 Environment）",
+    "触发器驱动的外部事件订阅",
+    "消息队列序列化与状态恢复"
+  ],
+  "best_practices": [
+    "cause_by 标签实现松耦合消息路由",
+    "类名字符串化确保路由标签可序列化可比较",
+    "Environment 中介者模式消除 Agent 间 N×N 直接依赖",
+    "双重过滤（cause_by ∈ watch OR name ∈ send_to）兼顾订阅和定向"
+  ]
+}

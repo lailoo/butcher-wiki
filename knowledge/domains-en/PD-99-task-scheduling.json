@@ -1,0 +1,77 @@
+{
+  "id": "PD-99",
+  "title": "Scheduled Task Scheduling",
+  "subtitle": "Task Scheduling",
+  "description": "Agents can autonomously create and manage scheduled tasks, supporting three scheduling modes: one-time, periodic, and cron expressions. Tasks are persisted and executed with callback loops to ensure reliable execution.",
+  "sub_problems": [
+    "Support for multiple scheduling modes",
+    "Task persistence",
+    "Agent-autonomous scheduling",
+    "Task state management",
+    "Agent callback execution loop after scheduled task trigger",
+    "Multi-channel message delivery (Telegram/WhatsApp/Slack)",
+    "Dual-entry task management via CLI and Agent"
+  ],
+  "best_practices": [
+    "Expose scheduling capabilities as Agent tools",
+    "Persist task state to disk to prevent data loss",
+    "Single-timer architecture to avoid resource waste from N jobs creating N timers",
+    "Decouple scheduling and execution via on_job callback; CronService independent of AgentLoop",
+    "Isolate conversation history with independent session_key per cron job"
+  ],
+  "comparison_dimensions": [
+    {
+      "name": "Scheduling modes",
+      "values": {
+        "DeepCode": "at (one-time) + every (interval) + cron expression with unified interface"
+      }
+    },
+    {
+      "name": "Timer architecture",
+      "values": {
+        "DeepCode": "Single asyncio.Task sleep-tick driven by global nearest wake-up time"
+      }
+    },
+    {
+      "name": "Persistence method",
+      "values": {
+        "DeepCode": "Single JSON file with load-on-startup and save-on-change"
+      }
+    },
+    {
+      "name": "Agent integration",
+      "values": {
+        "DeepCode": "CronTool inherits Tool ABC; autonomous operation via LLM function calling"
+      }
+    },
+    {
+      "name": "Execution model",
+      "values": {
+        "DeepCode": "on_job callback injects agent.process_direct() for complete Agent loop"
+      }
+    },
+    {
+      "name": "Task lifecycle",
+      "values": {
+        "DeepCode": "at auto-disables/deletes; every/cron auto-recalculates next_run"
+      }
+    },
+    {
+      "name": "CLI management",
+      "values": {
+        "DeepCode": "typer subcommands: cron list/add/remove/enable/run"
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "source_id": "scan",
+      "project": "DeepCode",
+      "title": "CronService Scheduled Task Scheduling",
+      "description": "DeepCode nanobot implements Agent-autonomous creation of three scheduling modes (at/every/cron) using asyncio single-timer and CronTool function calling, with JSON file persistence and on_job callback execution loop.",
+      "design_philosophy": [],
+      "migration_scenarios": []
+    }
+  ],
+  "_version": 5
+}

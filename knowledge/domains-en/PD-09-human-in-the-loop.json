@@ -2,67 +2,206 @@
   "id": "PD-09",
   "title": "Human-in-the-Loop",
   "subtitle": "Human-Agent Interaction",
-  "description": "How to pause agent execution at critical checkpoints, clarify with users, and obtain approvals. A key aspect of human-agent collaboration.",
+  "description": "How to pause Agent execution at critical checkpoints, clarify with users, and obtain approvals. A key aspect of human-AI collaboration. Covers pause point design, clarification requests, approval workflows, feedback integration, and multi-turn interactions.",
   "sub_problems": [
     "Pause point design: which operations require human confirmation",
-    "Clarification requests: how agents ask users when uncertain",
-    "Approval workflows: approval mechanisms for risky operations",
+    "Clarification requests: how Agent asks users when uncertain",
+    "Approval workflow: approval mechanisms for dangerous operations",
     "Feedback integration: how user feedback influences subsequent execution",
-    "Multi-turn interaction: multi-turn human-agent dialogue in complex tasks"
+    "Multi-turn interaction: multi-turn human-Agent dialogue in complex tasks",
+    "Plugin priority conflicts: execution order and context competition for multiple plugins at the same hook point",
+    "Interaction replay mechanism: race condition handling when WebSocket connection arrives after interaction request",
+    "Multi-round modification limits: convergence strategy when users repeatedly modify plans (max_modification_rounds)",
+    "Structured field-level revision: type validation and interaction flow when users modify Agent-generated structured content field by field",
+    "Composite confirmation directives: parsing user instructions that confirm current task while modifying subsequent tasks",
+    "Human-Agent role switching: wrapping humans as LLM interface to enable seamless role switching for any Agent",
+    "Approval identity binding: security mechanism to prevent approval ID replay from other clients",
+    "Multi-channel approval routing: routing strategy for forwarding single approval request to multiple interaction channels",
+    "Approval timeout fallback: askFallback safety degradation strategy when humans don't respond",
+    "Tool priority ordering: how to guide LLM to prioritize autonomous tools over asking humans when multiple tools coexist",
+    "Cross-environment adaptation: input source switching for same AskHuman interface across CLI/sandbox/A2A runtime environments"
   ],
   "best_practices": [
-    "CLARIFY→PLAN→ACT priority: agents must clarify first when uncertain, strictly prohibit acting then asking",
-    "Structured clarification types: use enumerated types (missing_info, etc.) rather than free text for easier frontend UI rendering",
+    "CLARIFY→PLAN→ACT priority: Agent must clarify first when uncertain, strictly prohibit acting then asking",
+    "Structured clarification types: use enumerated types (missing_info, etc.) rather than free text for easier frontend rendering",
     "Middleware interception over node-level hardcoding: wrap_tool_call hooks decouple clarification logic from business logic",
-    "interrupt() over threading.Event: non-blocking, supports persistence, scalable to multiple interruption points",
-    "Automatic timeout handling: default behavior when users don't respond for extended periods, prevents permanent task suspension"
+    "interrupt() over threading.Event: non-blocking, supports persistence, extensible to multiple interrupt points",
+    "Automatic timeout handling: default behavior when users don't respond for long periods, prevents permanent task suspension",
+    "Three-method protocol (should_trigger→create_interaction→process_response) enables independent plugin testing",
+    "asyncio.Future bridge pattern: backend await Future + frontend REST set_result decouples channels from logic",
+    "Global default registry + lazy loading: avoid circular imports, support on-demand plugin enablement",
+    "Three-tier review granularity: plan-level (Planner) → node-level (ActionNode) → LLM-level (HumanProvider), choose appropriate granularity per scenario",
+    "HUMAN_REVIEW hybrid mode: humans provide review opinions + LLM auto-modifies, balances controllability and efficiency",
+    "Globally pluggable input source: single set_human_input_func replacement applies to all interaction points, avoids per-component adaptation",
+    "Two-phase response mode: return accepted confirmation first, then asynchronously await final decision, prevents caller confusion between registration failure and waiting",
+    "Parameter whitelist filtering: only allow known-safe fields when forwarding approval parameters, prevents control field injection",
+    "Grace period for race conditions: maintain brief window after approval resolve for late-arriving awaitDecision calls to fetch results",
+    "Auto-expiry when no approval client: immediately expire when detecting no operator connection, prevents requests without approvers hanging indefinitely",
+    "Interaction as tool: implement human-Agent interaction as standard tool rather than special node, zero-cost integration with existing tool pipeline",
+    "Prompt constraints over hardcoding: use 'only for extreme cases' in system prompt to guide LLM call frequency control rather than code-level restrictions"
   ],
   "comparison_dimensions": [
     {
-      "name": "Pause mechanism",
+      "name": "Pause Mechanism",
       "values": {
         "DeerFlow-Clarification": "ClarificationMiddleware wrap_tool_call + Command(goto=END)",
-        "DeerFlow-Interrupt": "LangGraph interrupt() + Command(resume=...)"
+        "DeerFlow-Interrupt": "LangGraph interrupt() + Command(resume=...)",
+        "DeepCode": "Plugin hook point + asyncio.Future async wait, workflow pauses at run_hook",
+        "MetaGPT": "Planner.ask_review synchronously blocks after plan generation and task completion waiting for human input",
+        "OpenClaw": "Promise-based async wait, register() returns Promise, resolve()/expire() triggers",
+        "OpenManus": "No explicit pause, LLM autonomously decides to call ask_human tool"
       }
     },
     {
-      "name": "Clarification types",
+      "name": "Clarification Types",
       "values": {
         "DeerFlow-Clarification": "5 structured types (missing_info/ambiguous/approach/risk/suggestion)",
-        "DeerFlow-Interrupt": "single confirm_outline type"
+        "DeerFlow-Interrupt": "Single confirm_outline type",
+        "DeepCode": "Structured InteractionRequest (type/title/data/options), LLM generates guiding questions",
+        "MetaGPT": "Four keywords (confirm/change/redo/exit) + free text composite directives",
+        "OpenClaw": "Three-level decision model: allow-once / allow-always / deny",
+        "OpenManus": "Free text, single inquire string parameter"
       }
     },
     {
-      "name": "State persistence",
+      "name": "State Persistence",
       "values": {
-        "DeerFlow-Clarification": "depends on LangGraph checkpoint",
-        "DeerFlow-Interrupt": "SqliteSaver persistence, supports process restart recovery"
+        "DeerFlow-Clarification": "Depends on LangGraph checkpoint",
+        "DeerFlow-Interrupt": "SqliteSaver persistence, supports recovery after process restart",
+        "DeepCode": "WorkflowTask.pending_interaction in-memory storage, WebSocket replay resolves race conditions",
+        "MetaGPT": "working_memory temporarily stores unconfirmed feedback, clears after confirm, no disk persistence",
+        "OpenClaw": "Pure in-memory Map + 15s grace period, no persistence, lost on restart",
+        "OpenManus": "No persistence, input() synchronously blocks waiting"
       }
     },
     {
-      "name": "Implementation layer",
+      "name": "Implementation Layer",
       "values": {
-        "DeerFlow-Clarification": "three layers: Tool + Middleware + Prompt",
-        "DeerFlow-Interrupt": "single layer: interrupt() within graph node"
+        "DeerFlow-Clarification": "Tool + Middleware + Prompt three layers",
+        "DeerFlow-Interrupt": "Graph node-level interrupt() single layer",
+        "DeepCode": "Four-layer architecture: Plugin → Registry → Integration → WebSocket/API",
+        "MetaGPT": "Three layers: Planner (plan-level) + ActionNode (node-level) + HumanProvider (LLM-level)",
+        "OpenClaw": "Four-layer architecture: Agent → Gateway → security validation → multi-channel UI",
+        "OpenManus": "Tool layer, AskHuman inherits BaseTool"
+      }
+    },
+    {
+      "name": "Identity Binding",
+      "values": {
+        "DeepCode": "task_id binding, POST /respond/{task_id} requires matching waiting_for_input state",
+        "MetaGPT": "No identity binding, any end user can respond to review requests",
+        "OpenClaw": "deviceId priority + connId fallback, prevents approval ID replay attacks",
+        "OpenManus": "None, terminal input() has no identity verification"
+      }
+    },
+    {
+      "name": "Multi-Channel Routing",
+      "values": {
+        "DeepCode": "WebSocket broadcast + REST API response, frontend useStreaming handles uniformly",
+        "MetaGPT": "set_human_input_func global replacement switches input source, supports CLI/WebSocket/API switching",
+        "OpenClaw": "Discord buttons + Slack Actions + Web UI + Unix Socket four channels in parallel",
+        "OpenManus": "Terminal stdin only, A2A protocol exposed but routing not implemented"
+      }
+    },
+    {
+      "name": "Review Granularity Control",
+      "values": {
+        "MetaGPT": "ReviewMode/ReviseMode enum controls HUMAN/AUTO strategy per ActionNode granularity"
+      }
+    },
+    {
+      "name": "Human-Agent Role Switching",
+      "values": {
+        "MetaGPT": "HumanProvider implements BaseLLM interface, Role.is_human=True switches to human-driven mode"
       }
     }
   ],
   "solutions": [
     {
       "source_id": "102.05",
-      "title": "ClarificationMiddleware with five-type proactive clarification",
-      "description": "Three-layer architecture for proactive clarification: ask_clarification @tool at tool layer (5 types: missing_info/ambiguous_requirement/approach_choice/risk_confirmation/suggestion) → ClarificationMiddleware at middleware layer (wrap_tool_call interception, _format_clarification_message formats icon-labeled messages, Command(goto=END) interrupts graph execution) → Prompt layer (<clarification_system> block in lead_agent/prompt.py enforces CLARIFY→PLAN→ACT workflow priority). Frontend detects and renders clarification UI via isClarificationToolMessage()."
+      "project": "DeerFlow",
+      "title": "ClarificationMiddleware + ask_clarification Five-Type Active Clarification",
+      "description": "Three-layer architecture for active clarification: ask_clarification @tool at tool layer (5 types: missing_info/ambiguous_requirement/approach_choice/risk_confirmation/suggestion) → ClarificationMiddleware at middleware layer (wrap_tool_call interception, _format_clarification_message formats messages with icons, Command(goto=END) interrupts graph execution) → Prompt layer (<clarification_system> block in lead_agent/prompt.py enforces CLARIFY→PLAN→ACT workflow priority). Frontend detects and renders clarification UI via isClarificationToolMessage().",
+      "design_philosophy": [
+        "Better to ask one more question than assume execution: accuracy prioritized over speed",
+        "Three-layer decoupling: Tool declaration (@tool return_direct=True) + Middleware interception (wrap_tool_call) + Prompt instruction (<clarification_system>), each layer independently testable",
+        "CLARIFY→PLAN→ACT enforced priority: strictly prohibit act-then-ask pattern",
+        "Middleware chain tail registration: ClarificationMiddleware must be 11th (last) to ensure other middlewares complete before interception",
+        "Placeholder implementation + middleware interception: tool function body never executes, actual logic handled by middleware wrap_tool_call"
+      ],
+      "migration_scenarios": [
+        "Conversational Agents requiring user intent clarification (ask specific direction when topic ambiguous rather than use defaults)",
+        "High-risk operations requiring confirmation (file deletion, production config modification, long-running task startup confirmation)",
+        "Projects with existing LangGraph middleware architecture (intercept specific tool calls via wrap_tool_call hooks)",
+        "Scenarios requiring structured clarification types (5 types + options list) rather than free-text questions"
+      ]
     },
     {
       "source_id": "101.113",
-      "title": "LangGraph interrupt() with Command(resume=...) native interruption recovery",
-      "description": "Replace threading.Event blocking with native LangGraph interrupt(): _planner_node calls interrupt({type: confirm_outline}) to automatically interrupt graph execution and persist checkpoint, frontend displays interrupt data, user action triggers POST /api/tasks/resume, backend resumes graph execution via Command(resume=action). Supports SqliteSaver persistence for task recovery after process restart."
+      "project": "DeerFlow",
+      "title": "LangGraph interrupt() + Command(resume=...) Native Interrupt Recovery",
+      "description": "Replace threading.Event blocking with LangGraph native interrupt(): _planner_node calls interrupt({type: confirm_outline}) to automatically pause graph execution and persist checkpoint, frontend displays interrupt data, user action triggers POST /api/tasks/resume, backend resumes graph execution via Command(resume=action). Supports SqliteSaver persistence for recovery after process restart.",
+      "design_philosophy": [
+        "Native over custom: LangGraph interrupt() safer than threading.Event, non-blocking",
+        "State persistence: SqliteSaver replaces MemorySaver, supports recovery after process restart",
+        "Two-phase streaming: first SSE segment from startup to interrupt, second segment after Command(resume=...)",
+        "Backward compatible: retain old /confirm-outline endpoint with internal forwarding to /resume"
+      ],
+      "migration_scenarios": [
+        "Migrate from threading.Event blocking to LangGraph native interrupt",
+        "Agent workflows requiring multiple interrupt points (outline confirmation, risk confirmation, approach selection, etc.)",
+        "Long-running tasks needing checkpoint resumption (SqliteSaver persists checkpoints)",
+        "Frontend-backend separation architectures requiring two-phase SSE streaming"
+      ]
     },
     {
       "source_id": "scan",
-      "title": "Research plan confirmation approach",
-      "description": "Research-focused agents face two core user anxieties when executing long-running tasks:"
+      "project": "DeepCode",
+      "title": "Loop System",
+      "description": "DeepCode implements non-invasive User-in-Loop via PluginRegistry + InteractionPlugin three-method protocol, bridges WebSocket frontend and backend plugins using asyncio.Future, supports two interaction points: requirement clarification and plan approval.",
+      "design_philosophy": [],
+      "migration_scenarios": []
+    },
+    {
+      "source_id": "scan",
+      "project": "DeepTutor",
+      "title": "Rephrase Human-Agent Iteration Approach",
+      "description": "RephraseAgent dedicated responsibility: Agent specialized in topic optimization, maintains complete conversation history, supports multi-round iteration (rephrase_agent.py:20-41); LLM intent judgment + keyword fallback: check_user_satisfaction function determines satisfaction level and triggers rephrase when needed.",
+      "design_philosophy": [],
+      "migration_scenarios": []
+    },
+    {
+      "source_id": "scan",
+      "project": "GPT-Researcher",
+      "title": "Research Plan Confirmation Approach",
+      "description": "Research plan confirmation: Agent generates research outline, notifies frontend via callback, waits for user confirmation or modification before execution; intermediate report preview: upon completing each subtask, pushes intermediate results via callback, users can monitor progress in real-time.",
+      "design_philosophy": [],
+      "migration_scenarios": []
+    },
+    {
+      "source_id": "scan",
+      "project": "MetaGPT",
+      "title": "Three-Layer Human-Agent Review System",
+      "description": "MetaGPT implements three-layer architecture (Planner plan review + ActionNode field-level Review/Revise + HumanProvider LLM replacement) for coarse-to-fine human-Agent interaction, supports auto_run dual modes and pluggable input sources.",
+      "design_philosophy": [],
+      "migration_scenarios": []
+    },
+    {
+      "source_id": "scan",
+      "project": "OpenClaw",
+      "title": "Command Execution Approval System",
+      "description": "Promise-based approval manager: ExecApprovalManager uses Promise for async wait, returns Promise after creating approval record, resolves after human decision (src/gateway/exec-approval-manager.ts), supports multiple approval channels and timeout fallback.",
+      "design_philosophy": [],
+      "migration_scenarios": []
+    },
+    {
+      "source_id": "scan",
+      "project": "OpenManus",
+      "title": "AskHuman Tool Approach",
+      "description": "OpenManus implements human-Agent interaction as 22-line AskHuman BaseTool, synchronously blocks waiting for terminal input via input(), LLM autonomously decides call timing within ReAct loop.",
+      "design_philosophy": [],
+      "migration_scenarios": []
     }
   ],
-  "_version": 3
+  "_version": 5
 }

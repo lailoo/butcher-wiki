@@ -1,0 +1,23 @@
+{
+  "id": "PD-119",
+  "slug": "experience-pool-learning",
+  "title": "经验池与学习",
+  "subtitle": "Experience Pool & Learning",
+  "icon": "sparkles",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "跨会话积累和复用 Agent 执行经验，提升任务成功率",
+  "tags": [
+    "经验复用",
+    "学习",
+    "缓存"
+  ],
+  "sub_problems": [
+    "经验存储与检索",
+    "质量评估",
+    "上下文构建"
+  ],
+  "best_practices": [
+    "装饰器模式自动缓存执行结果"
+  ]
+}
