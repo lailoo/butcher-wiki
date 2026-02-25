@@ -205,3 +205,40 @@ code, .font-mono {
   from { opacity: 0; transform: translateX(-50%) scale(0.96); }
   to { opacity: 1; transform: translateX(-50%) scale(1); }
 }
+
+/* Mermaid diagram theme overrides */
+.mermaid-container .node rect,
+.mermaid-container .node circle,
+.mermaid-container .node ellipse,
+.mermaid-container .node polygon,
+.mermaid-container .node path {
+  fill: var(--bg-secondary) !important;
+  stroke: var(--border-default) !important;
+}
+
+.mermaid-container .nodeLabel,
+.mermaid-container .label,
+.mermaid-container .edgeLabel {
+  color: var(--text-primary) !important;
+  fill: var(--text-primary) !important;
+}
+
+.mermaid-container .edgePath .path,
+.mermaid-container .flowchart-link {
+  stroke: var(--border-default) !important;
+}
+
+.mermaid-container .edgeLabel rect {
+  fill: var(--bg-primary) !important;
+  stroke: none !important;
+}
+
+.mermaid-container .cluster rect {
+  fill: var(--bg-card) !important;
+  stroke: var(--glass-border) !important;
+}
+
+.mermaid-container .marker {
+  fill: var(--border-default) !important;
+  stroke: var(--border-default) !important;
+}

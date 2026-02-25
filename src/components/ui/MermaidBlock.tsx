@@ -2,28 +2,71 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-let mermaidInitialized = false;
+function isLightTheme() {
+  if (typeof document === 'undefined') return false;
+  return document.documentElement.getAttribute('data-theme') === 'light';
+}
 
-async function initMermaid() {
-  if (mermaidInitialized) return;
+const darkVars = {
+  background: '#0f172a',
+  primaryColor: '#1e293b',
+  primaryTextColor: '#e2e8f0',
+  primaryBorderColor: '#475569',
+  lineColor: '#64748b',
+  secondaryColor: '#1a1f2e',
+  secondaryTextColor: '#e2e8f0',
+  secondaryBorderColor: '#475569',
+  tertiaryColor: '#162032',
+  tertiaryTextColor: '#e2e8f0',
+  tertiaryBorderColor: '#475569',
+  noteBkgColor: '#1e293b',
+  noteTextColor: '#cbd5e1',
+  noteBorderColor: '#334155',
+  edgeLabelBackground: '#0f172a',
+  clusterBkg: '#0c1322',
+  clusterBorder: '#334155',
+  mainBkg: '#1e293b',
+};
+
+const lightVars = {
+  background: '#f8fafc',
+  primaryColor: '#e2e8f0',
+  primaryTextColor: '#0f172a',
+  primaryBorderColor: '#94a3b8',
+  lineColor: '#94a3b8',
+  secondaryColor: '#f1f5f9',
+  secondaryTextColor: '#0f172a',
+  secondaryBorderColor: '#94a3b8',
+  tertiaryColor: '#e8ecf1',
+  tertiaryTextColor: '#0f172a',
+  tertiaryBorderColor: '#94a3b8',
+  noteBkgColor: '#f1f5f9',
+  noteTextColor: '#334155',
+  noteBorderColor: '#cbd5e1',
+  edgeLabelBackground: '#f8fafc',
+  clusterBkg: '#f1f5f9',
+  clusterBorder: '#cbd5e1',
+  mainBkg: '#e2e8f0',
+};
+
+let lastTheme: string | null = null;
+
+async function initMermaid(force = false) {
+  const currentTheme = isLightTheme() ? 'light' : 'dark';
+  if (!force && lastTheme === currentTheme) return;
   const mermaid = (await import('mermaid')).default;
   mermaid.initialize({
     startOnLoad: false,
-    theme: 'dark',
+    theme: 'base',
     themeVariables: {
-      primaryColor: '#1e3a5f',
-      primaryTextColor: '#f1f5f9',
-      primaryBorderColor: '#3b82f6',
-      lineColor: '#64748b',
-      secondaryColor: '#1e293b',
-      tertiaryColor: '#0f172a',
+      ...(currentTheme === 'light' ? lightVars : darkVars),
       fontFamily: 'IBM Plex Sans, sans-serif',
       fontSize: '13px',
     },
-    flowchart: { curve: 'basis', padding: 12 },
+    flowchart: { curve: 'basis', padding: 16 },
     securityLevel: 'loose',
   });
-  mermaidInitialized = true;
+  lastTheme = currentTheme;
 }
 
 export function MermaidBlock({ code }: { code: string }) {
