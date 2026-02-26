@@ -1,0 +1,25 @@
+{
+  "id": "PD-135",
+  "slug": "mcp-protocol-integration",
+  "title": "MCP协议集成",
+  "subtitle": "MCP Protocol Integration",
+  "icon": "link",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "实现 Model Context Protocol 服务器，让 AI 编码助手直接调用代码分析能力",
+  "tags": [
+    "MCP",
+    "protocol",
+    "integration",
+    "AI assistant"
+  ],
+  "sub_problems": [
+    "MCP 工具定义与注册",
+    "stdio/SSE 双传输模式",
+    "懒加载引擎初始化",
+    "自动克隆与索引"
+  ],
+  "best_practices": [
+    "支持 stdio 和 SSE 双传输模式适配不同部署场景"
+  ]
+}

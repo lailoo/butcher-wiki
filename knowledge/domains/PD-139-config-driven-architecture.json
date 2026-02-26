@@ -1,0 +1,25 @@
+{
+  "id": "PD-139",
+  "slug": "config-driven-architecture",
+  "title": "配置驱动架构",
+  "subtitle": "Configuration-Driven Architecture",
+  "icon": "settings",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "YAML 集中配置管理所有组件参数，环境变量注入敏感信息，支持评估模式切换",
+  "tags": [
+    "config",
+    "YAML",
+    "environment",
+    "settings"
+  ],
+  "sub_problems": [
+    "集中式配置管理",
+    "环境变量与密钥注入",
+    "评估模式参数切换",
+    "多层配置合并"
+  ],
+  "best_practices": [
+    "敏感信息用 .env 注入，非敏感参数用 YAML 集中管理"
+  ]
+}

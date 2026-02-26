@@ -1,0 +1,25 @@
+{
+  "id": "PD-133",
+  "slug": "multi-channel-gateway",
+  "title": "多渠道消息网关",
+  "subtitle": "Multi-Channel Message Gateway",
+  "icon": "message-circle",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "统一管理多个消息平台的接入、路由和分发，解耦渠道层与业务逻辑",
+  "tags": [
+    "messaging",
+    "gateway",
+    "async",
+    "multi-platform"
+  ],
+  "sub_problems": [
+    "多平台协议适配",
+    "消息队列解耦",
+    "出站消息路由分发",
+    "渠道动态启停管理"
+  ],
+  "best_practices": [
+    "用 MessageBus 异步队列解耦渠道与核心逻辑"
+  ]
+}

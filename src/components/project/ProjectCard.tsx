@@ -19,6 +19,7 @@ export interface ProjectEntry {
   name: string;
   repo: string;
   domains: ProjectDomain[];
+  profileSlug?: string;
 }
 
 function DomainRow({ d, t }: { d: ProjectDomain; t: (key: string) => string }) {
@@ -125,6 +126,19 @@ export function ProjectCard({ project }: { project: ProjectEntry }) {
                 <path d="M9 18c-4.51 2-5-2-7-2" />
               </svg>
               {t('View GitHub source')}
+            </a>
+          )}
+          {project.profileSlug && (
+            <a
+              href={`/project/${project.profileSlug}`}
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors duration-200 cursor-pointer mt-3 ml-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+              </svg>
+              {t('Engineering Analysis')}
             </a>
           )}
         </div>

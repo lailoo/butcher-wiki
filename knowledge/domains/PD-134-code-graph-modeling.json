@@ -1,0 +1,25 @@
+{
+  "id": "PD-134",
+  "slug": "code-graph-modeling",
+  "title": "代码关系图建模",
+  "subtitle": "Code Relationship Graph Modeling",
+  "icon": "git-branch",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "构建代码调用图、依赖图、继承图等多层关系网络，支持跨文件结构导航",
+  "tags": [
+    "graph",
+    "NetworkX",
+    "call graph",
+    "dependency"
+  ],
+  "sub_problems": [
+    "调用图构建与遍历",
+    "模块依赖解析",
+    "继承关系追踪",
+    "跨文件符号解析"
+  ],
+  "best_practices": [
+    "分层构建调用/依赖/继承三种独立图，按需组合查询"
+  ]
+}

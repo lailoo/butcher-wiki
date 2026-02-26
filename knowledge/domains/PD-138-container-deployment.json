@@ -1,0 +1,25 @@
+{
+  "id": "PD-138",
+  "slug": "container-deployment",
+  "title": "容器化部署",
+  "subtitle": "Container Deployment",
+  "icon": "box",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "Docker Compose 多服务容器化部署方案，智能启动脚本自动管理服务生命周期",
+  "tags": [
+    "Docker",
+    "container",
+    "deployment",
+    "microservice"
+  ],
+  "sub_problems": [
+    "多服务编排",
+    "智能启动脚本",
+    "内部网络通信",
+    "卷挂载与配置注入"
+  ],
+  "best_practices": [
+    "用 docker-compose 内部网络替代公网暴露实现服务间安全通信"
+  ]
+}

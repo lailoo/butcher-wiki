@@ -1,0 +1,25 @@
+{
+  "id": "PD-137",
+  "slug": "task-scheduling",
+  "title": "定时任务调度",
+  "subtitle": "Task Scheduling",
+  "icon": "clock",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "支持定时、周期和 cron 表达式的任务调度系统，持久化存储任务状态",
+  "tags": [
+    "cron",
+    "scheduler",
+    "periodic",
+    "async"
+  ],
+  "sub_problems": [
+    "三种调度模式(at/every/cron)",
+    "任务持久化存储",
+    "异步回调执行",
+    "任务状态管理"
+  ],
+  "best_practices": [
+    "使用 croniter 解析标准 cron 表达式保证兼容性"
+  ]
+}

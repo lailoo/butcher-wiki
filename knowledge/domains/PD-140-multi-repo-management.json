@@ -1,0 +1,25 @@
+{
+  "id": "PD-140",
+  "slug": "multi-repo-management",
+  "title": "多仓库管理",
+  "subtitle": "Multi-Repository Management",
+  "icon": "layers",
+  "color": "#f97316",
+  "severity": "high",
+  "description": "多仓库并行索引、智能选择与跨仓库检索，支持 LLM/embedding 双模式仓库路由",
+  "tags": [
+    "multi-repo",
+    "index management",
+    "repository selection",
+    "batch"
+  ],
+  "sub_problems": [
+    "多仓库并行索引",
+    "LLM/embedding 仓库选择",
+    "filtered/full 双层索引隔离",
+    "仓库生命周期管理"
+  ],
+  "best_practices": [
+    "用 repo_overview 独立索引实现快速仓库级粗筛再精检"
+  ]
+}

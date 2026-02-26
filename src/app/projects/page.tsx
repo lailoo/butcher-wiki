@@ -1,5 +1,6 @@
 import { ALL_DOMAINS } from '@/data/domains';
 import { findKnowledgeDoc } from '@/data/knowledge-docs';
+import { ALL_PROJECTS } from '@/data/projects';
 import { type ProjectEntry } from '@/components/project/ProjectCard';
 import { ProjectsPageClient } from '@/components/project/ProjectsPageClient';
 
@@ -10,7 +11,8 @@ function aggregateProjects(): ProjectEntry[] {
     for (const sol of domain.solutions) {
       let entry = map.get(sol.project);
       if (!entry) {
-        entry = { name: sol.project, repo: sol.repo, domains: [] };
+        const profile = ALL_PROJECTS.find(p => p.name.toLowerCase() === sol.project.toLowerCase());
+        entry = { name: sol.project, repo: sol.repo, domains: [], profileSlug: profile?.slug };
         map.set(sol.project, entry);
       }
       if (!entry.domains.some(d => d.id === domain.id)) {

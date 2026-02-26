@@ -1,0 +1,25 @@
+{
+  "id": "PD-132",
+  "slug": "ast-code-parsing",
+  "title": "AST代码解析",
+  "subtitle": "AST-Based Code Parsing",
+  "icon": "code",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "基于抽象语法树的多语言代码结构化解析，提取函数、类、调用关系等语义元素",
+  "tags": [
+    "AST",
+    "tree-sitter",
+    "code analysis",
+    "multi-language"
+  ],
+  "sub_problems": [
+    "多语言语法树解析",
+    "代码元素提取与分类",
+    "调用关系与符号解析",
+    "代码复杂度计算"
+  ],
+  "best_practices": [
+    "使用 tree-sitter 实现跨语言统一解析接口"
+  ]
+}
