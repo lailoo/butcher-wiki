@@ -1,5 +1,6 @@
 import { ALL_DOMAINS } from '@/data/domains';
 import { buildSearchContext } from '@/lib/search-context';
+import { buildGraphData } from '@/lib/graph-data';
 import { HomePageClient } from '@/components/home/HomePageClient';
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
   const uniqueProjects = [...new Set(ALL_DOMAINS.flatMap(d => d.solutions.map(s => s.project)))].length;
   const totalComparisons = ALL_DOMAINS.reduce((sum, d) => sum + d.comparison_dimensions.length, 0);
   const knowledgeContext = buildSearchContext();
+  const graphData = buildGraphData();
 
   return (
     <HomePageClient
@@ -27,6 +29,7 @@ export default function HomePage() {
       uniqueProjects={uniqueProjects}
       totalComparisons={totalComparisons}
       knowledgeContext={knowledgeContext}
+      graphData={graphData}
     />
   );
 }

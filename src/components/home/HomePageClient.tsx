@@ -1,10 +1,14 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+import dynamic from 'next/dynamic';
 import { DomainCard } from '@/components/domain/DomainCard';
 import { AddDomainCard } from '@/components/domain/AddDomainCard';
 import { CopyContextButton } from '@/components/ui/CopyContextButton';
 import { ProblemDomain } from '@/types';
+import type { GraphData } from '@/lib/graph-data';
+
+const GraphBackground = dynamic(() => import('@/components/graph/GraphBackground'), { ssr: false });
 
 interface HomePageClientProps {
   domains: (ProblemDomain & { solution_count: number })[];
@@ -12,9 +16,10 @@ interface HomePageClientProps {
   uniqueProjects: number;
   totalComparisons: number;
   knowledgeContext: string;
+  graphData: GraphData;
 }
 
-export function HomePageClient({ domains, totalSolutions, uniqueProjects, totalComparisons, knowledgeContext }: HomePageClientProps) {
+export function HomePageClient({ domains, totalSolutions, uniqueProjects, totalComparisons, knowledgeContext, graphData }: HomePageClientProps) {
   const { t } = useTranslation();
 
   return (
@@ -48,6 +53,25 @@ export function HomePageClient({ domains, totalSolutions, uniqueProjects, totalC
             <dd className="text-xs text-[var(--text-secondary)]">{m.desc}</dd>
           </div>
         ))}
+      </section>
+
+      {/* Knowledge Graph Showcase */}
+      <section className="mb-10 hidden md:block">
+        <a href="/graph" className="block glass-card relative overflow-hidden cursor-pointer group" style={{ height: '360px' }}>
+          <GraphBackground data={graphData} />
+          <div className="absolute bottom-0 left-0 right-0 p-5 z-10 flex items-end justify-between"
+            style={{ background: 'linear-gradient(to top, var(--bg-primary) 0%, transparent 100%)' }}>
+            <div>
+              <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1">{t('Knowledge Graph')}</h3>
+              <p className="text-xs text-[var(--text-muted)]">
+                {graphData.nodes.filter(n => n.type === 'project').length} {t('projects')} · {graphData.nodes.filter(n => n.type === 'domain').length} {t('domains')} · {graphData.links.length} {t('connections')}
+              </p>
+            </div>
+            <span className="text-xs text-[var(--accent-blue)] group-hover:translate-x-1 transition-transform">
+              {t('Explore')} →
+            </span>
+          </div>
+        </a>
       </section>
 
       {/* Domain Grid */}

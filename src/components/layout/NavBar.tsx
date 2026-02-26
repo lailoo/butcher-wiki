@@ -22,6 +22,7 @@ export function NavBar() {
           <a href="/projects" className="hover:text-[var(--text-primary)] transition-colors duration-200 cursor-pointer">{t('Project Index')}</a>
           <a href="/scan" className="hover:text-[var(--text-primary)] transition-colors duration-200 cursor-pointer">{t('Scan New Project')}</a>
           <a href="/trending" className="hover:text-[var(--text-primary)] transition-colors duration-200 cursor-pointer">{t('Trending')}</a>
+          <a href="/graph" className="hover:text-[var(--text-primary)] transition-colors duration-200 cursor-pointer">{t('Graph')}</a>
           <SearchProvider />
           <LanguageToggle />
           <ThemeToggle />
