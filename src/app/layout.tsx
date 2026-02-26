@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
 import { I18nProvider } from '@/i18n/I18nProvider';
 import { NavBar } from '@/components/layout/NavBar';
@@ -41,6 +42,7 @@ export default function RootLayout({
             <main className="pt-20">{children}</main>
           </ThemeProvider>
         </I18nProvider>
+        <Analytics />
       </body>
     </html>
   );
