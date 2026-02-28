@@ -1,0 +1,25 @@
+{
+  "id": "PD-431",
+  "slug": "efficient-data-loading",
+  "title": "高效数据加载管道",
+  "subtitle": "Efficient Data Loading Pipeline",
+  "icon": "layers",
+  "color": "#10B981",
+  "severity": "high",
+  "description": "面向大规模预训练的分布式数据加载与文档打包策略",
+  "tags": [
+    "dataloader",
+    "best-fit packing",
+    "parquet",
+    "DDP sharding"
+  ],
+  "sub_problems": [
+    "文档打包算法(best-fit vs greedy)",
+    "BOS 对齐保证完整上下文",
+    "pinned memory 与异步传输",
+    "多 epoch 无限迭代与断点恢复"
+  ],
+  "best_practices": [
+    "Best-Fit 打包实现 100% 利用率零 padding"
+  ]
+}

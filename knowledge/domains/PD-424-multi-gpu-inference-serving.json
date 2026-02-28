@@ -1,0 +1,25 @@
+{
+  "id": "PD-424",
+  "slug": "multi-gpu-inference-serving",
+  "title": "多 GPU 推理服务",
+  "subtitle": "Multi-GPU Inference Serving",
+  "icon": "globe",
+  "color": "#0EA5E9",
+  "severity": "medium",
+  "description": "基于 Worker Pool 的多 GPU 数据并行推理服务",
+  "tags": [
+    "WorkerPool",
+    "FastAPI",
+    "SSE",
+    "data parallelism"
+  ],
+  "sub_problems": [
+    "Worker 池化与请求分发",
+    "SSE 流式响应",
+    "UTF-8 多字节安全处理",
+    "请求验证与防滥用"
+  ],
+  "best_practices": [
+    "asyncio.Queue 实现无锁 worker 分配"
+  ]
+}

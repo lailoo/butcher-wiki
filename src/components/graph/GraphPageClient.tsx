@@ -7,6 +7,7 @@ import { GraphLegend } from './GraphLegend';
 import { GraphFilters } from './GraphFilters';
 import { GraphTooltip } from './GraphTooltip';
 import type { GraphData, GraphNode } from '@/lib/graph-data';
+import type { GraphViewMode, GraphTheme } from './ForceGraph';
 
 const ForceGraph = dynamic(() => import('./ForceGraph'), { ssr: false });
 
@@ -19,6 +20,8 @@ export function GraphPageClient({ graphData }: Props) {
   const [severityFilter, setSeverityFilter] = useState<Set<string>>(
     new Set(['critical', 'high', 'medium'])
   );
+  const [viewMode, setViewMode] = useState<GraphViewMode>('project');
+  const [graphTheme, setGraphTheme] = useState<GraphTheme>('default');
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [hoveredNode, setHoveredNode] = useState<GraphNode | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
@@ -63,7 +66,43 @@ export function GraphPageClient({ graphData }: Props) {
             {stats.projects} {t('projects')} · {stats.domains} {t('domains')} · {stats.links} {t('connections')}
           </p>
         </div>
-        <GraphFilters severityFilter={severityFilter} onSeverityChange={setSeverityFilter} />
+        <div className="flex items-center gap-4 flex-wrap">
+          {/* View mode toggle */}
+          <div className="flex items-center gap-1 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-0.5">
+            {(['project', 'domain'] as const).map(mode => (
+              <button
+                key={mode}
+                onClick={() => { setViewMode(mode); setSelectedNode(null); }}
+                className="text-[11px] font-medium px-3 py-1 rounded-full transition-all duration-200 cursor-pointer"
+                style={{
+                  backgroundColor: viewMode === mode ? 'var(--accent-blue)' : 'transparent',
+                  color: viewMode === mode ? '#fff' : 'var(--text-muted)',
+                  opacity: viewMode === mode ? 1 : 0.7,
+                }}
+              >
+                {mode === 'project' ? t('Project View') : t('Domain View')}
+              </button>
+            ))}
+          </div>
+          {/* Theme toggle */}
+          <div className="flex items-center gap-1 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-0.5">
+            {(['default', 'cosmos'] as const).map(th => (
+              <button
+                key={th}
+                onClick={() => setGraphTheme(th)}
+                className="text-[11px] font-medium px-3 py-1 rounded-full transition-all duration-200 cursor-pointer"
+                style={{
+                  backgroundColor: graphTheme === th ? (th === 'cosmos' ? '#6366f1' : 'var(--accent-blue)') : 'transparent',
+                  color: graphTheme === th ? '#fff' : 'var(--text-muted)',
+                  opacity: graphTheme === th ? 1 : 0.7,
+                }}
+              >
+                {th === 'default' ? t('Default') : t('Cosmos')}
+              </button>
+            ))}
+          </div>
+          <GraphFilters severityFilter={severityFilter} onSeverityChange={setSeverityFilter} />
+        </div>
       </div>
 
       {/* Mobile fallback */}
@@ -78,11 +117,13 @@ export function GraphPageClient({ graphData }: Props) {
       <div className="hidden md:block glass-card relative overflow-hidden" style={{ height: '70vh' }}>
         <ForceGraph
           data={filteredData}
+          viewMode={viewMode}
+          theme={graphTheme}
           selectedNode={selectedNode}
           onNodeSelect={setSelectedNode}
           onNodeHover={handleNodeHover}
         />
-        <GraphLegend />
+        <GraphLegend viewMode={viewMode} />
         {hoveredNode && <GraphTooltip node={hoveredNode} position={tooltipPos} />}
       </div>
     </div>

@@ -1,0 +1,33 @@
+{
+  "id": "PD-432",
+  "slug": "advanced-optimizer",
+  "title": "高级优化器设计",
+  "subtitle": "Advanced Optimizer Design",
+  "icon": "refresh-cw",
+  "color": "#F97316",
+  "severity": "high",
+  "description": "结合 Muon 正交化与 AdamW 的混合优化器，含融合内核与分布式支持",
+  "tags": [
+    "Muon",
+    "AdamW",
+    "Polar Express",
+    "torch.compile"
+  ],
+  "sub_problems": [
+    "矩阵参数正交化(Polar Express)",
+    "方差归约(NorMuon)",
+    "参数分组与差异化学习率",
+    "torch.compile 融合避免 Python 开销",
+    "Cautious 权重衰减（仅梯度与参数同号时施加）",
+    "分布式 Muon 的参数 padding 与 buffer 复用",
+    "muP 风格跨模型尺寸的学习率迁移",
+    "Muon momentum 预热调度（0.85→0.95）"
+  ],
+  "best_practices": [
+    "0-D CPU tensor 避免 torch.compile 重编译",
+    "同形状矩阵参数 stack 为 3D tensor 减少 kernel launch 次数",
+    "Polar Express 预计算系数替代运行时 Newton-Schulz 迭代",
+    "reduce_scatter 输入 buffer 复用为 all_gather 输出节省显存",
+    "权重衰减线性衰减到零配合 T_epoch 理论保持训练稳定"
+  ]
+}

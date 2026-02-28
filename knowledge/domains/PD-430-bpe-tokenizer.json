@@ -1,0 +1,25 @@
+{
+  "id": "PD-430",
+  "slug": "bpe-tokenizer",
+  "title": "BPE Tokenizer 训练与推理",
+  "subtitle": "BPE Tokenizer Training & Inference",
+  "icon": "code",
+  "color": "#EC4899",
+  "severity": "medium",
+  "description": "从零训练 BPE tokenizer 并高效服务推理的完整方案",
+  "tags": [
+    "BPE",
+    "tokenizer",
+    "tiktoken",
+    "rustbpe"
+  ],
+  "sub_problems": [
+    "训练后端与推理后端分离",
+    "特殊 token 体系设计",
+    "对话渲染与 mask 生成",
+    "多线程批量编码"
+  ],
+  "best_practices": [
+    "rustbpe 训练 + tiktoken 推理的组合兼顾速度与灵活性"
+  ]
+}

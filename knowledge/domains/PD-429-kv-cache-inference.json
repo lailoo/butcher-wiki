@@ -1,0 +1,25 @@
+{
+  "id": "PD-429",
+  "slug": "kv-cache-inference",
+  "title": "KV Cache 推理引擎",
+  "subtitle": "KV Cache Inference Engine",
+  "icon": "cpu",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "高效的自回归推理引擎，含 KV 缓存管理和工具调用状态机",
+  "tags": [
+    "KV cache",
+    "inference",
+    "Flash Attention",
+    "streaming"
+  ],
+  "sub_problems": [
+    "缓存预分配与位置追踪",
+    "prefill-decode 分离",
+    "多 sample 并行解码",
+    "工具调用 token 注入"
+  ],
+  "best_practices": [
+    "batch=1 prefill 后克隆缓存到多 sample"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-425",
+  "slug": "runtime-memory-optimization",
+  "title": "GC 与内存管理优化",
+  "subtitle": "Runtime Memory Optimization",
+  "icon": "activity",
+  "color": "#EF4444",
+  "severity": "medium",
+  "description": "精细的 Python GC 控制与 GPU 内存管理策略",
+  "tags": [
+    "GC",
+    "memory",
+    "meta device",
+    "pinned memory"
+  ],
+  "sub_problems": [
+    "GC 暂停消除(freeze+disable)",
+    "meta device 延迟初始化",
+    "expandable segments 减少碎片",
+    "FP8 模块运行时热切换"
+  ],
+  "best_practices": [
+    "gc.freeze 冻结存活对象后 gc.disable 消除扫描开销"
+  ]
+}

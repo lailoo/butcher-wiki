@@ -1,0 +1,25 @@
+{
+  "id": "PD-428",
+  "slug": "scaling-laws-automation",
+  "title": "Scaling Laws 自动化",
+  "subtitle": "Scaling Laws Automation",
+  "icon": "settings",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "基于 scaling laws 自动推导计算最优的训练超参数",
+  "tags": [
+    "scaling laws",
+    "Chinchilla",
+    "muP",
+    "compute optimal"
+  ],
+  "sub_problems": [
+    "训练 token 数与模型大小的最优比例",
+    "批大小随数据量的缩放",
+    "学习率与批大小的联动",
+    "权重衰减的 T_epoch 缩放"
+  ],
+  "best_practices": [
+    "单一 depth 旋钮控制所有超参数"
+  ]
+}

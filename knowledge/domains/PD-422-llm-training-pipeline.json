@@ -1,0 +1,26 @@
+{
+  "id": "PD-422",
+  "slug": "llm-training-pipeline",
+  "title": "全栈 LLM 训练流水线",
+  "subtitle": "Full-Stack LLM Training Pipeline",
+  "icon": "git-branch",
+  "color": "#6366F1",
+  "severity": "high",
+  "description": "从 tokenizer 到 Web 聊天的端到端 LLM 训练与部署流水线",
+  "tags": [
+    "pretraining",
+    "SFT",
+    "RLHF",
+    "GRPO",
+    "deployment"
+  ],
+  "sub_problems": [
+    "阶段间超参数继承",
+    "SFT 数据混合策略",
+    "GRPO 简化 RL 训练",
+    "模型服务与 Web UI"
+  ],
+  "best_practices": [
+    "speedrun.sh 一键编排全流程实现可复现训练"
+  ]
+}

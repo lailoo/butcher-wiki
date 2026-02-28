@@ -1,0 +1,25 @@
+{
+  "id": "PD-427",
+  "slug": "mixed-precision-training",
+  "title": "混合精度与 FP8 训练",
+  "subtitle": "Mixed Precision & FP8 Training",
+  "icon": "zap",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "利用低精度浮点格式加速训练同时保持数值稳定性",
+  "tags": [
+    "FP8",
+    "BF16",
+    "quantization",
+    "cuBLAS"
+  ],
+  "sub_problems": [
+    "动态缩放策略",
+    "前向/反向不同精度选择",
+    "torch.compile 兼容性",
+    "评估时精度切换"
+  ],
+  "best_practices": [
+    "tensorwise 缩放比 rowwise 更快且足够准确"
+  ]
+}

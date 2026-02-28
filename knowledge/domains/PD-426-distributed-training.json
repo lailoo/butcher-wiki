@@ -1,0 +1,25 @@
+{
+  "id": "PD-426",
+  "slug": "distributed-training",
+  "title": "分布式训练编排",
+  "subtitle": "Distributed Training Orchestration",
+  "icon": "network",
+  "color": "#3B82F6",
+  "severity": "high",
+  "description": "多 GPU/多节点训练的通信、同步、状态分片与梯度聚合",
+  "tags": [
+    "DDP",
+    "ZeRO",
+    "gradient accumulation",
+    "NCCL"
+  ],
+  "sub_problems": [
+    "梯度同步与通信重叠",
+    "优化器状态分片",
+    "多 rank checkpoint 管理",
+    "自动设备检测与降级"
+  ],
+  "best_practices": [
+    "三阶段异步通信最大化计算-通信重叠"
+  ]
+}

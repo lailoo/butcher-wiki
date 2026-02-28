@@ -1,0 +1,25 @@
+{
+  "id": "PD-423",
+  "slug": "task-abstraction",
+  "title": "任务抽象与数据混合",
+  "subtitle": "Task Abstraction & Data Mixing",
+  "icon": "file-text",
+  "color": "#14B8A6",
+  "severity": "medium",
+  "description": "统一的评估任务抽象层，支持数据混合、课程学习和 RL reward",
+  "tags": [
+    "Task",
+    "TaskMixture",
+    "evaluation",
+    "curriculum"
+  ],
+  "sub_problems": [
+    "generative vs categorical 评估统一",
+    "确定性混洗保证可复现",
+    "课程学习(TaskSequence)",
+    "RL reward 函数设计"
+  ],
+  "best_practices": [
+    "重复传入同一 Task 实现过采样"
+  ]
+}
