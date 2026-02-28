@@ -1,0 +1,23 @@
+{
+  "id": "PD-231",
+  "slug": "plugin-factory-registry",
+  "title": "插件工厂注册系统",
+  "subtitle": "Plugin Factory Registry",
+  "icon": "settings",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "通过工厂模式和编译期/运行时自动注册实现可扩展的组件管理",
+  "tags": [
+    "设计模式",
+    "工厂模式",
+    "插件系统"
+  ],
+  "sub_problems": [
+    "组件自动发现与注册",
+    "按名称动态创建实例",
+    "编译期宏注册 vs 运行时注册"
+  ],
+  "best_practices": [
+    "使用静态注册避免手动维护组件列表"
+  ]
+}

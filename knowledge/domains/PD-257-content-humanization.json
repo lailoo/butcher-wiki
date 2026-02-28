@@ -1,0 +1,25 @@
+{
+  "id": "PD-257",
+  "slug": "content-humanization",
+  "title": "内容去AI化",
+  "subtitle": "Content Humanization",
+  "icon": "message-circle",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "两阶段去AI味处理：确定性文本清理+LLM驱动改写，使AI生成内容更自然",
+  "tags": [
+    "humanizer",
+    "text cleanup",
+    "AI detection"
+  ],
+  "sub_problems": [
+    "AI文本特征识别",
+    "确定性清理规则",
+    "LLM改写策略",
+    "风格一致性保持"
+  ],
+  "best_practices": [
+    "先用正则做确定性清理(零成本)再用LLM改写",
+    "异常时降级返回原始内容"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-378",
+  "slug": "lora-dynamic-adapter",
+  "title": "LoRA动态适配",
+  "subtitle": "LoRA Dynamic Adapter",
+  "icon": "layers",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "运行时动态加载和切换多个LoRA适配器，实现单基座模型多任务服务",
+  "tags": [
+    "LoRA",
+    "适配器",
+    "多租户",
+    "热切换"
+  ],
+  "sub_problems": [
+    "适配器LRU缓存管理",
+    "批量LoRA高效推理",
+    "适配器来源解析",
+    "显存预算控制"
+  ],
+  "best_practices": [
+    "使用LRU缓存管理活跃适配器数量",
+    "通过Punica实现批量LoRA融合推理"
+  ]
+}

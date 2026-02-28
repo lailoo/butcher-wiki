@@ -1,0 +1,23 @@
+{
+  "id": "PD-194",
+  "slug": "platform-api-integration",
+  "title": "平台 API 集成",
+  "subtitle": "Platform API Integration",
+  "icon": "globe",
+  "color": "#3b82f6",
+  "severity": "high",
+  "description": "封装第三方平台API实现素材管理、内容发布等核心业务操作",
+  "tags": [
+    "微信API",
+    "SDK封装",
+    "token管理"
+  ],
+  "sub_problems": [
+    "access_token生命周期管理",
+    "多种内容类型发布",
+    "API错误码映射与处理"
+  ],
+  "best_practices": [
+    "SDK封装+重试机制保证API调用可靠性"
+  ]
+}

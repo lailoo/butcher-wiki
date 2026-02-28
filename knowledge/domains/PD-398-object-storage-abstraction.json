@@ -1,0 +1,26 @@
+{
+  "id": "PD-398",
+  "slug": "object-storage-abstraction",
+  "title": "对象存储抽象",
+  "subtitle": "Object Storage Abstraction",
+  "icon": "file-text",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "统一文件存储接口，支持本地和云存储后端无缝切换",
+  "tags": [
+    "storage",
+    "S3",
+    "file",
+    "abstraction",
+    "cloud"
+  ],
+  "sub_problems": [
+    "存储后端抽象",
+    "流式读写",
+    "路径管理",
+    "多租户隔离"
+  ],
+  "best_practices": [
+    "抽象StorageService接口，通过配置切换本地/S3后端"
+  ]
+}

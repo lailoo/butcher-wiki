@@ -1,0 +1,25 @@
+{
+  "id": "PD-275",
+  "slug": "dom-awareness-a11y-tree",
+  "title": "DOM 感知与无障碍树",
+  "subtitle": "DOM Awareness & Accessibility Tree",
+  "icon": "eye",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "构建混合 DOM+a11y 快照为 LLM 提供结构化页面理解，支持差异比对和深度定位",
+  "tags": [
+    "DOM",
+    "a11y",
+    "XPath",
+    "snapshot"
+  ],
+  "sub_problems": [
+    "混合树快照捕获",
+    "页面变化差异检测",
+    "Shadow DOM 穿透",
+    "iframe 深度 XPath 解析"
+  ],
+  "best_practices": [
+    "同时捕获 a11y 树和 DOM 树提供互补信息"
+  ]
+}

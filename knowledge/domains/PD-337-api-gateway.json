@@ -1,0 +1,25 @@
+{
+  "id": "PD-337",
+  "slug": "api-gateway",
+  "title": "API 网关",
+  "subtitle": "API Gateway",
+  "icon": "globe",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "统一 API 入口、反向代理分离、RESTful 端点管理",
+  "tags": [
+    "gateway",
+    "fastapi",
+    "nginx",
+    "rest-api"
+  ],
+  "sub_problems": [
+    "多服务反向代理",
+    "RESTful API 设计",
+    "健康检查与监控",
+    "OpenAPI 文档自动生成"
+  ],
+  "best_practices": [
+    "Gateway 与 Agent Server 进程分离"
+  ]
+}

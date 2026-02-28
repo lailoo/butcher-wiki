@@ -1,0 +1,25 @@
+{
+  "id": "PD-169",
+  "slug": "environment-bootstrap-health-check",
+  "title": "环境引导与健康检查",
+  "subtitle": "Environment Bootstrap & Health Check",
+  "icon": "activity",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "自动检测运行环境、安装依赖、诊断服务状态并生成可操作的修复建议",
+  "tags": [
+    "installer",
+    "doctor",
+    "bootstrap",
+    "diagnostics"
+  ],
+  "sub_problems": [
+    "环境自动检测(本地/服务器)",
+    "跨平台依赖安装",
+    "服务健康检查与状态报告",
+    "安全模式与dry-run"
+  ],
+  "best_practices": [
+    "doctor命令输出包含具体修复步骤，而非仅报错"
+  ]
+}

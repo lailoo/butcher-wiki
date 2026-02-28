@@ -1,0 +1,26 @@
+{
+  "id": "PD-323",
+  "slug": "multi-provider-llm-abstraction",
+  "title": "多 Provider LLM 抽象",
+  "subtitle": "Multi-Provider LLM Abstraction",
+  "icon": "cpu",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "统一多模型 Provider 调用接口，支持 text/vision 模态和结构化输出验证",
+  "tags": [
+    "LLM",
+    "provider",
+    "factory",
+    "structured output"
+  ],
+  "sub_problems": [
+    "Provider 注册与动态路由",
+    "同步异步双接口统一",
+    "结构化 JSON 输出与 Pydantic 验证",
+    "Token 用量按 Provider 追踪"
+  ],
+  "best_practices": [
+    "VLMFactory 工厂模式按 provider 创建实例",
+    "StructuredVLM 封装 JSON Schema 约束输出"
+  ]
+}

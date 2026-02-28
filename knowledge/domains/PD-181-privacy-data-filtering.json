@@ -1,0 +1,24 @@
+{
+  "id": "PD-181",
+  "slug": "privacy-data-filtering",
+  "title": "隐私与数据过滤",
+  "subtitle": "Privacy & Data Filtering",
+  "icon": "lock",
+  "color": "#e74c3c",
+  "severity": "high",
+  "description": "在数据采集层实现隐私标签过滤、敏感内容剥离和 ReDoS 防护",
+  "tags": [
+    "privacy",
+    "data-filtering",
+    "edge-processing"
+  ],
+  "sub_problems": [
+    "用户级隐私标签识别与剥离",
+    "系统级递归存储防护",
+    "正则表达式拒绝服务防护",
+    "边缘处理 vs 中心处理架构选择"
+  ],
+  "best_practices": [
+    "在数据入口层(hook/edge)而非存储层过滤敏感内容"
+  ]
+}

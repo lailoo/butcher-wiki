@@ -1,0 +1,28 @@
+{
+  "id": "PD-156",
+  "slug": "database-migration",
+  "title": "数据库迁移",
+  "subtitle": "Database Schema Migration",
+  "icon": "database",
+  "color": "#3498db",
+  "severity": "high",
+  "description": "解决数据库 schema 版本演进、向前兼容和安全回滚问题",
+  "tags": [
+    "migration",
+    "schema",
+    "SQLite",
+    "idempotent",
+    "DDL"
+  ],
+  "sub_problems": [
+    "顺序迁移文件管理",
+    "幂等执行（重复运行不报错）",
+    "ALTER TABLE 增量演进",
+    "回滚安全设计"
+  ],
+  "best_practices": [
+    "migration 只增不删保证回滚安全",
+    "try-catch 捕获 duplicate column 实现幂等",
+    "启动时自动执行全部迁移"
+  ]
+}

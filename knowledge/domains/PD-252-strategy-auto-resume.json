@@ -1,0 +1,27 @@
+{
+  "id": "PD-252",
+  "slug": "strategy-auto-resume",
+  "title": "策略自动恢复",
+  "subtitle": "Strategy Auto-Resume",
+  "icon": "refresh-cw",
+  "color": "#f97316",
+  "severity": "high",
+  "description": "进程重启后自动恢复运行中的策略，保持仓位状态连续性",
+  "tags": [
+    "auto-resume",
+    "recovery",
+    "persistence"
+  ],
+  "sub_problems": [
+    "运行状态持久化",
+    "重启后策略扫描",
+    "配置还原与 ID 注入",
+    "仓位状态连续性",
+    "并发恢复调度"
+  ],
+  "best_practices": [
+    "SQLite 持久化策略状态",
+    "strategy_id 注入保持仓位连续",
+    "fire-and-forget 异步恢复"
+  ]
+}

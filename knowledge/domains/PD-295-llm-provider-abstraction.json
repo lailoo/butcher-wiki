@@ -1,0 +1,25 @@
+{
+  "id": "PD-295",
+  "slug": "llm-provider-abstraction",
+  "title": "LLM提供商抽象",
+  "subtitle": "LLM Provider Abstraction",
+  "icon": "sparkles",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "统一多LLM提供商接口，支持OpenAI/Azure/Anthropic/Gemini/Ollama等12+提供商",
+  "tags": [
+    "LLM",
+    "provider",
+    "abstraction"
+  ],
+  "sub_problems": [
+    "提供商接口标准化",
+    "配置参数自动映射",
+    "API密钥管理",
+    "模型切换与回退"
+  ],
+  "best_practices": [
+    "BindingOptions基类自动生成CLI参数和env模板",
+    "pipmaster动态安装缺失依赖"
+  ]
+}

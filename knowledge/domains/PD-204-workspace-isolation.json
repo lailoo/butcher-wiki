@@ -1,0 +1,26 @@
+{
+  "id": "PD-204",
+  "slug": "workspace-isolation",
+  "title": "工作区隔离",
+  "subtitle": "Workspace Isolation via Git Worktrees",
+  "icon": "git-branch",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "利用 git worktree 为每个 agent 会话创建独立工作目录，支持 symlink 共享和 postCreate 钩子",
+  "tags": [
+    "git",
+    "worktree",
+    "isolation",
+    "workspace"
+  ],
+  "sub_problems": [
+    "worktree 创建与分支管理",
+    "资源共享（symlink）",
+    "workspace 恢复与清理",
+    "路径安全校验"
+  ],
+  "best_practices": [
+    "hash-based 目录命名防止多实例冲突",
+    "原子 reserveSessionId 防止并发碰撞"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "PD-164",
+  "slug": "ci-cd-pipeline",
+  "title": "CI/CD 流水线",
+  "subtitle": "CI/CD Pipeline",
+  "icon": "git-branch",
+  "color": "#27ae60",
+  "severity": "high",
+  "description": "自动化代码质量检查、测试执行、安全审计和容器化构建部署",
+  "tags": [
+    "CI",
+    "CD",
+    "GitHub Actions",
+    "Docker",
+    "automation"
+  ],
+  "sub_problems": [
+    "Lint 自动检查",
+    "E2E 测试自动执行",
+    "npm 安全审计",
+    "多架构 Docker 构建",
+    "分支保护策略"
+  ],
+  "best_practices": [
+    "CI 中自动创建测试 DB 并注入种子数据",
+    "Docker 多阶段构建减小镜像体积",
+    "非 root 用户运行容器"
+  ]
+}

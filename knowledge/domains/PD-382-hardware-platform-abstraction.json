@@ -1,0 +1,27 @@
+{
+  "id": "PD-382",
+  "slug": "hardware-platform-abstraction",
+  "title": "硬件平台抽象",
+  "subtitle": "Hardware Platform Abstraction",
+  "icon": "settings",
+  "color": "#64748B",
+  "severity": "medium",
+  "description": "统一抽象层适配多种硬件平台，实现设备无关的推理引擎",
+  "tags": [
+    "平台抽象",
+    "CUDA",
+    "ROCm",
+    "TPU",
+    "XPU"
+  ],
+  "sub_problems": [
+    "平台检测与能力查询",
+    "设备通信器适配",
+    "attention后端选择",
+    "OOT插件扩展机制"
+  ],
+  "best_practices": [
+    "通过Platform接口隔离硬件差异",
+    "使用entry_points注册自定义硬件插件"
+  ]
+}

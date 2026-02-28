@@ -1,0 +1,26 @@
+{
+  "id": "PD-360",
+  "slug": "vector-indexing-embedding",
+  "title": "向量索引与嵌入",
+  "subtitle": "Vector Indexing & Embedding",
+  "icon": "database",
+  "color": "#1ABC9C",
+  "severity": "high",
+  "description": "多模态向量嵌入与索引系统，支持增量构建、多模型切换和高效检索",
+  "tags": [
+    "FAISS",
+    "embedding",
+    "ColQwen2",
+    "vector index",
+    "LlamaIndex"
+  ],
+  "sub_problems": [
+    "嵌入模型统一抽象",
+    "索引增量更新",
+    "多语料库合并",
+    "多模态嵌入对齐"
+  ],
+  "best_practices": [
+    "断点续建索引避免重复计算，统一嵌入接口支持模型热切换"
+  ]
+}

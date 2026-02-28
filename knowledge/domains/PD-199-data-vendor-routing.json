@@ -1,0 +1,26 @@
+{
+  "id": "PD-199",
+  "slug": "data-vendor-routing",
+  "title": "数据供应商路由",
+  "subtitle": "Data Vendor Routing",
+  "icon": "link",
+  "color": "#0891B2",
+  "severity": "high",
+  "description": "可配置的数据源路由系统，支持多供应商切换和自动降级",
+  "tags": [
+    "data-source",
+    "routing",
+    "fallback",
+    "configuration"
+  ],
+  "sub_problems": [
+    "供应商优先级配置",
+    "工具级与类别级配置覆盖",
+    "降级链构建",
+    "供应商实现映射"
+  ],
+  "best_practices": [
+    "分离工具接口与供应商实现",
+    "支持 category 级默认和 tool 级覆盖"
+  ]
+}

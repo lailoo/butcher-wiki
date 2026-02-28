@@ -1,0 +1,25 @@
+{
+  "id": "PD-347",
+  "slug": "multi-hardware-adaptation",
+  "title": "多硬件适配",
+  "subtitle": "Multi-Hardware Adaptation",
+  "icon": "settings",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "统一抽象多种GPU/NPU加速设备，自动检测并适配不同硬件平台",
+  "tags": [
+    "hardware abstraction",
+    "GPU",
+    "NPU",
+    "device management"
+  ],
+  "sub_problems": [
+    "设备自动检测",
+    "显存管理适配",
+    "缓存清理策略",
+    "batch size自适应"
+  ],
+  "best_practices": [
+    "通过统一接口抽象不同硬件的显存查询和缓存清理"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "PD-308",
+  "slug": "performance-benchmarking",
+  "title": "绩效评估体系",
+  "subtitle": "Performance Benchmarking",
+  "icon": "activity",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "标准化评估 Agent 交易绩效，计算风险调整后收益指标并支持跨模型对比",
+  "tags": [
+    "metrics",
+    "benchmarking",
+    "quantitative-finance"
+  ],
+  "sub_problems": [
+    "风险调整收益计算",
+    "多频率年化处理",
+    "跨市场标准化",
+    "可视化仪表盘"
+  ],
+  "best_practices": [
+    "使用 Sortino 而非 Sharpe 评估下行风险"
+  ]
+}

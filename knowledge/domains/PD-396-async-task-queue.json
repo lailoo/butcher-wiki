@@ -1,0 +1,26 @@
+{
+  "id": "PD-396",
+  "slug": "async-task-queue",
+  "title": "异步任务队列",
+  "subtitle": "Async Task Queue",
+  "icon": "clock",
+  "color": "#f97316",
+  "severity": "high",
+  "description": "管理长时间运行的异步任务，支持状态追踪和超时保护",
+  "tags": [
+    "async",
+    "queue",
+    "job",
+    "background",
+    "timeout"
+  ],
+  "sub_problems": [
+    "任务状态机",
+    "超时保护",
+    "队列清理",
+    "执行模式切换"
+  ],
+  "best_practices": [
+    "支持sync/stream/background三种执行模式按需选择"
+  ]
+}

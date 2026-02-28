@@ -1,0 +1,23 @@
+{
+  "id": "PD-340",
+  "slug": "checkpoint-resume-idempotent",
+  "title": "断点续跑与幂等推理",
+  "subtitle": "Checkpoint Resume & Idempotent Inference",
+  "icon": "refresh-cw",
+  "color": "#F59E0B",
+  "severity": "medium",
+  "description": "长时间批量推理任务中断后能从断点恢复，避免重复计算",
+  "tags": [
+    "checkpoint",
+    "resume",
+    "idempotent"
+  ],
+  "sub_problems": [
+    "如何追踪已完成的推理任务",
+    "如何在中断后安全恢复",
+    "如何保证结果文件的一致性"
+  ],
+  "best_practices": [
+    "启动时扫描输出文件构建已处理集合，跳过已完成项"
+  ]
+}

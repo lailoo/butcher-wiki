@@ -1,0 +1,24 @@
+{
+  "id": "PD-192",
+  "slug": "content-format-conversion",
+  "title": "内容格式转换",
+  "subtitle": "Content Format Conversion",
+  "icon": "file-text",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "将通用格式内容转换为特定平台要求的格式，含样式注入与约束适配",
+  "tags": [
+    "Markdown",
+    "HTML",
+    "微信",
+    "主题"
+  ],
+  "sub_problems": [
+    "平台HTML标签白名单适配",
+    "内联CSS样式注入",
+    "多主题模板管理"
+  ],
+  "best_practices": [
+    "所有CSS必须内联，避免外部样式表"
+  ]
+}

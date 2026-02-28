@@ -1,0 +1,30 @@
+{
+  "id": "PD-148",
+  "slug": "external-system-integration",
+  "title": "外部系统集成",
+  "subtitle": "External System Integration",
+  "icon": "link",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "统一接口抽象多平台 issue tracker 集成，支持 Jira/GitLab/Linear 双向同步",
+  "tags": [
+    "integration",
+    "Jira",
+    "GitLab",
+    "Linear",
+    "sync",
+    "adapter"
+  ],
+  "sub_problems": [
+    "统一 tracker 接口抽象",
+    "状态映射与转换",
+    "双向同步策略",
+    "认证与权限管理"
+  ],
+  "best_practices": [
+    "接口抽象隔离平台差异",
+    "状态映射表驱动",
+    "增量同步减少 API 调用",
+    "错误重试与限流"
+  ]
+}

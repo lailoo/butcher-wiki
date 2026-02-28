@@ -1,0 +1,25 @@
+{
+  "id": "PD-334",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#6366F1",
+  "severity": "high",
+  "description": "多层配置加载、环境变量解析、热重载与单例缓存",
+  "tags": [
+    "config",
+    "yaml",
+    "env-var",
+    "hot-reload"
+  ],
+  "sub_problems": [
+    "多格式配置文件加载",
+    "环境变量递归解析",
+    "配置热重载与缓存失效",
+    "多路径回退查找策略"
+  ],
+  "best_practices": [
+    "分离应用配置与扩展配置"
+  ]
+}

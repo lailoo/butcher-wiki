@@ -1,0 +1,25 @@
+{
+  "id": "PD-268",
+  "slug": "skill-package-management",
+  "title": "技能包管理",
+  "subtitle": "Skill Package Management",
+  "icon": "code",
+  "color": "#2ecc71",
+  "severity": "high",
+  "description": "技能的安装、发布、版本管理和注册表系统",
+  "tags": [
+    "skill",
+    "package",
+    "registry",
+    "cli"
+  ],
+  "sub_problems": [
+    "技能安装与依赖解析",
+    "版本管理与发布",
+    "GitHub仓库集成",
+    "技能到工作流映射"
+  ],
+  "best_practices": [
+    "CLI工具与API双入口支持技能管理"
+  ]
+}

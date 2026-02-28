@@ -1,0 +1,26 @@
+{
+  "id": "PD-200",
+  "slug": "realtime-terminal-dashboard",
+  "title": "实时终端仪表盘",
+  "subtitle": "Real-time Terminal Dashboard",
+  "icon": "activity",
+  "color": "#059669",
+  "severity": "medium",
+  "description": "基于 Rich 库构建多面板实时终端 UI，展示 Agent 执行进度和结果",
+  "tags": [
+    "cli",
+    "dashboard",
+    "rich",
+    "real-time"
+  ],
+  "sub_problems": [
+    "多面板布局管理",
+    "Agent 状态追踪",
+    "消息流缓冲与展示",
+    "报告实时更新"
+  ],
+  "best_practices": [
+    "使用 Rich Live 实现无闪烁刷新",
+    "MessageBuffer 解耦数据收集与展示"
+  ]
+}

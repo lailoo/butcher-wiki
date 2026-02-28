@@ -1,0 +1,24 @@
+{
+  "id": "PD-241",
+  "slug": "multi-platform-cicd",
+  "title": "CI/CD 多平台构建",
+  "subtitle": "Multi-Platform CI/CD",
+  "icon": "git-branch",
+  "color": "#84cc16",
+  "severity": "medium",
+  "description": "通过 GitHub Actions 矩阵策略实现多平台自动构建、测试和 wheel 发布",
+  "tags": [
+    "CI/CD",
+    "GitHub Actions",
+    "多平台",
+    "wheel"
+  ],
+  "sub_problems": [
+    "跨平台编译矩阵",
+    "C++ 与 Python 联合测试",
+    "wheel 打包与发布"
+  ],
+  "best_practices": [
+    "lint 先行快速失败，构建测试并行执行"
+  ]
+}

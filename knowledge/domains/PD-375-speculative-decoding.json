@@ -1,0 +1,26 @@
+{
+  "id": "PD-375",
+  "slug": "speculative-decoding",
+  "title": "推测解码",
+  "subtitle": "Speculative Decoding",
+  "icon": "zap",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "通过草稿模型预测+验证机制加速自回归生成，降低推理延迟",
+  "tags": [
+    "推理加速",
+    "草稿模型",
+    "EAGLE",
+    "Medusa"
+  ],
+  "sub_problems": [
+    "草稿模型选择与训练",
+    "验证策略与接受率优化",
+    "多方法统一调度框架",
+    "与KV Cache的协同管理"
+  ],
+  "best_practices": [
+    "根据模型大小选择ngram或EAGLE方法",
+    "监控接受率指标动态调整推测token数"
+  ]
+}

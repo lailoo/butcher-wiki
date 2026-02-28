@@ -1,0 +1,26 @@
+{
+  "id": "PD-203",
+  "slug": "event-driven-reactions",
+  "title": "事件驱动反应系统",
+  "subtitle": "Event-Driven Reaction System",
+  "icon": "zap",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "基于状态转换自动触发预配置反应，支持重试、升级和多通道通知路由",
+  "tags": [
+    "event",
+    "reaction",
+    "state-machine",
+    "notification"
+  ],
+  "sub_problems": [
+    "状态转换检测",
+    "反应配置与执行",
+    "重试计数与超时升级",
+    "通知优先级路由"
+  ],
+  "best_practices": [
+    "两级处理：routine 自动化 + judgment 通知人类",
+    "per-project reaction 覆盖全局默认"
+  ]
+}

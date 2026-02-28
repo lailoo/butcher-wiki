@@ -1,0 +1,25 @@
+{
+  "id": "PD-213",
+  "slug": "event-driven-reactions",
+  "title": "事件驱动反应系统",
+  "subtitle": "Event-Driven Reaction System",
+  "icon": "zap",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "基于事件类型自动触发预配置动作，支持重试计数和升级策略",
+  "tags": [
+    "event-driven",
+    "reaction",
+    "automation"
+  ],
+  "sub_problems": [
+    "事件类型到反应的映射",
+    "重试计数与时间升级",
+    "全局与项目级反应覆盖",
+    "反应追踪器状态管理"
+  ],
+  "best_practices": [
+    "支持 count-based 和 duration-based 两种升级策略",
+    "状态转换时重置对应 reaction tracker"
+  ]
+}

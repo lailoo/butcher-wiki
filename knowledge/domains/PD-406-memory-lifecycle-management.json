@@ -1,0 +1,26 @@
+{
+  "id": "PD-406",
+  "slug": "memory-lifecycle-management",
+  "title": "记忆生命周期管理",
+  "subtitle": "Memory Lifecycle Management",
+  "icon": "refresh-cw",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "记忆从创建、激活、归档到重组的完整生命周期管理",
+  "tags": [
+    "lifecycle",
+    "reorganize",
+    "graph-structure"
+  ],
+  "sub_problems": [
+    "三级记忆容量上限管理",
+    "记忆自动晋升与降级",
+    "图结构异步重组",
+    "过期记忆归档与清理"
+  ],
+  "best_practices": [
+    "PriorityQueue 异步重组避免阻塞",
+    "容量上限触发自动淘汰",
+    "working_binding 追踪临时记忆"
+  ]
+}

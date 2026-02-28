@@ -1,0 +1,27 @@
+{
+  "id": "PD-177",
+  "slug": "authentication-authorization",
+  "title": "认证授权",
+  "subtitle": "Authentication & Authorization",
+  "icon": "lock",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "应用级授权码验证和多 Git 平台私有仓库 token 认证",
+  "tags": [
+    "auth",
+    "token",
+    "security",
+    "access-control"
+  ],
+  "sub_problems": [
+    "应用授权码验证",
+    "私有仓库 token 认证",
+    "多平台认证格式适配",
+    "token 安全处理"
+  ],
+  "best_practices": [
+    "环境变量控制授权模式开关",
+    "URL 编码 token 防止特殊字符问题",
+    "日志中脱敏 token 信息"
+  ]
+}

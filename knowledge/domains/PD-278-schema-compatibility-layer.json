@@ -1,0 +1,25 @@
+{
+  "id": "PD-278",
+  "slug": "schema-compatibility-layer",
+  "title": "Schema 兼容层",
+  "subtitle": "Schema Compatibility Layer",
+  "icon": "layers",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "解决 Zod 跨版本兼容和 JSON Schema 到 Zod 的动态转换，确保结构化输出的类型安全",
+  "tags": [
+    "Zod",
+    "JSON Schema",
+    "type safety",
+    "compatibility"
+  ],
+  "sub_problems": [
+    "Zod v3/v4 跨版本兼容",
+    "JSON Schema 到 Zod 动态转换",
+    "结构化输出类型推断",
+    "MCP 工具 schema 适配"
+  ],
+  "best_practices": [
+    "提供统一的 toJsonSchema 抽象屏蔽版本差异"
+  ]
+}

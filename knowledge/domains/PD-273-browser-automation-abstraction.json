@@ -1,0 +1,25 @@
+{
+  "id": "PD-273",
+  "slug": "browser-automation-abstraction",
+  "title": "浏览器自动化抽象层",
+  "subtitle": "Browser Automation Abstraction",
+  "icon": "globe",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "封装 CDP 协议差异，提供跨引擎（Playwright/Puppeteer）的统一浏览器操作接口",
+  "tags": [
+    "CDP",
+    "browser",
+    "Playwright",
+    "Puppeteer"
+  ],
+  "sub_problems": [
+    "多引擎 Page/Frame 统一",
+    "CDP WebSocket 连接管理",
+    "跨 iframe 元素定位",
+    "浏览器生命周期管理"
+  ],
+  "best_practices": [
+    "基于 CDP 直连而非引擎 API 实现底层操作"
+  ]
+}

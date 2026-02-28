@@ -1,0 +1,24 @@
+{
+  "id": "PD-307",
+  "slug": "service-lifecycle-management",
+  "title": "服务生命周期管理",
+  "subtitle": "Service Lifecycle Management",
+  "icon": "refresh-cw",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "管理多个微服务的启动、健康检查、故障检测和优雅关闭",
+  "tags": [
+    "service-manager",
+    "health-check",
+    "process-management"
+  ],
+  "sub_problems": [
+    "端口冲突检测",
+    "服务健康探测",
+    "进程监控与重启",
+    "优雅关闭"
+  ],
+  "best_practices": [
+    "服务启动后必须做健康检查确认可用"
+  ]
+}

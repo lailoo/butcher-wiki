@@ -1,0 +1,25 @@
+{
+  "id": "PD-218",
+  "slug": "security-hardening",
+  "title": "安全加固",
+  "subtitle": "Security Hardening",
+  "icon": "shield",
+  "color": "#dc2626",
+  "severity": "high",
+  "description": "execFile 防注入、路径遍历校验、密钥扫描等多层安全防护",
+  "tags": [
+    "security",
+    "injection-prevention",
+    "secret-scanning"
+  ],
+  "sub_problems": [
+    "Shell 注入防护",
+    "路径遍历防护",
+    "密钥泄露检测",
+    "输入校验与白名单"
+  ],
+  "best_practices": [
+    "始终用 execFile+数组参数替代 exec+字符串拼接",
+    "用 POSIX 单引号转义而非 JSON.stringify"
+  ]
+}

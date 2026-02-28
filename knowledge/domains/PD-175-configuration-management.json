@@ -1,0 +1,27 @@
+{
+  "id": "PD-175",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "JSON 配置文件驱动的系统行为管理，支持环境变量替换和自定义路径",
+  "tags": [
+    "config",
+    "json",
+    "environment",
+    "settings"
+  ],
+  "sub_problems": [
+    "配置文件加载与合并",
+    "环境变量占位符替换",
+    "配置路径自定义",
+    "client_class 动态映射"
+  ],
+  "best_practices": [
+    "JSON 配置文件分离关注点",
+    "${ENV_VAR} 占位符支持敏感信息注入",
+    "DEEPWIKI_CONFIG_DIR 支持自定义配置目录"
+  ]
+}

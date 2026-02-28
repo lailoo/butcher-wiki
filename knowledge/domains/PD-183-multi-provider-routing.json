@@ -1,0 +1,24 @@
+{
+  "id": "PD-183",
+  "slug": "multi-provider-routing",
+  "title": "多 AI 提供商路由",
+  "subtitle": "Multi-Provider AI Routing",
+  "icon": "refresh-cw",
+  "color": "#3498db",
+  "severity": "high",
+  "description": "支持多个 AI 提供商(Claude/Gemini/OpenRouter)的动态切换、自动降级和共享上下文",
+  "tags": [
+    "provider-routing",
+    "model-switching",
+    "fallback"
+  ],
+  "sub_problems": [
+    "提供商选择与配置",
+    "自动降级链设计",
+    "跨提供商对话历史共享",
+    "速率限制与配额管理"
+  ],
+  "best_practices": [
+    "实现提供商无关的对话历史，支持运行时切换而不丢失上下文"
+  ]
+}

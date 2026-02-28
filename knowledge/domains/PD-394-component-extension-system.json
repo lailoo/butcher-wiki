@@ -1,0 +1,26 @@
+{
+  "id": "PD-394",
+  "slug": "component-extension-system",
+  "title": "组件化扩展体系",
+  "subtitle": "Component Extension System",
+  "icon": "layers",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "基于基类继承的声明式组件扩展系统，支持自定义组件热加载",
+  "tags": [
+    "component",
+    "plugin",
+    "extensible",
+    "custom",
+    "hot-reload"
+  ],
+  "sub_problems": [
+    "组件基类设计",
+    "Input/Output声明",
+    "代码验证与解析",
+    "组件发现与注册"
+  ],
+  "best_practices": [
+    "声明式Input/Output定义，自动生成前端表单和工具Schema"
+  ]
+}

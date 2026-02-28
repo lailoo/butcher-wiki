@@ -1,0 +1,26 @@
+{
+  "id": "PD-392",
+  "slug": "caching-strategy",
+  "title": "缓存策略",
+  "subtitle": "Caching Strategy",
+  "icon": "database",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "多层缓存体系设计，从LRU内存缓存到组件共享缓存",
+  "tags": [
+    "cache",
+    "LRU",
+    "TTL",
+    "in-memory",
+    "performance"
+  ],
+  "sub_problems": [
+    "缓存淘汰策略",
+    "TTL过期管理",
+    "跨组件缓存共享",
+    "序列化与反序列化"
+  ],
+  "best_practices": [
+    "分层缓存：Session级、Component级、LLM响应级"
+  ]
+}

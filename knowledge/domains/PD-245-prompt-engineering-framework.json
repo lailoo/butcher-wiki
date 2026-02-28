@@ -1,0 +1,28 @@
+{
+  "id": "PD-245",
+  "slug": "prompt-engineering-framework",
+  "title": "Prompt 工程框架",
+  "subtitle": "Prompt Engineering Framework",
+  "icon": "message-circle",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "结构化 prompt 构建、验证、压缩和编译的系统化方法论",
+  "tags": [
+    "prompt",
+    "LLM",
+    "video-generation",
+    "structured-output"
+  ],
+  "sub_problems": [
+    "prompt 分层结构设计",
+    "token 预算与压缩策略",
+    "引用标签系统",
+    "JSON schema 到纯文本编译",
+    "反空话质量过滤"
+  ],
+  "best_practices": [
+    "前 20-30 词前置加载主体和动作",
+    "每个 prompt 只含一个主要动作动词",
+    "用可测量描述替代空洞形容词"
+  ]
+}

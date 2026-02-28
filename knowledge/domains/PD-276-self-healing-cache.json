@@ -1,0 +1,25 @@
+{
+  "id": "PD-276",
+  "slug": "self-healing-cache",
+  "title": "自愈缓存系统",
+  "subtitle": "Self-Healing Cache System",
+  "icon": "refresh-cw",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "缓存的操作序列在回放时自动检测选择器变化并通过 LLM 重新定位，实现缓存自修复",
+  "tags": [
+    "cache",
+    "self-healing",
+    "replay",
+    "automation"
+  ],
+  "sub_problems": [
+    "操作序列录制与回放",
+    "选择器变化检测",
+    "缓存条目自动更新",
+    "变量化模板支持"
+  ],
+  "best_practices": [
+    "缓存键包含 URL+指令+变量键的 SHA256 哈希"
+  ]
+}

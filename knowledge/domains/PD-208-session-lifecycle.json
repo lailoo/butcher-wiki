@@ -1,0 +1,26 @@
+{
+  "id": "PD-208",
+  "slug": "session-lifecycle",
+  "title": "会话生命周期管理",
+  "subtitle": "Session Lifecycle State Machine",
+  "icon": "refresh-cw",
+  "color": "#f97316",
+  "severity": "high",
+  "description": "16 种会话状态的完整状态机，支持 spawn/restore/kill/cleanup 全生命周期，轮询驱动状态转换",
+  "tags": [
+    "state-machine",
+    "lifecycle",
+    "session",
+    "polling"
+  ],
+  "sub_problems": [
+    "状态定义与转换规则",
+    "会话创建与资源编排",
+    "崩溃检测与会话恢复",
+    "完成检测与资源清理"
+  ],
+  "best_practices": [
+    "原子 session ID 预留防并发冲突",
+    "逐层资源回滚确保无泄漏"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-413",
+  "slug": "output-style-persona",
+  "title": "输出风格系统",
+  "subtitle": "Output Style & Persona System",
+  "icon": "message-circle",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "解决 AI 助手行为模式和输出风格的灵活定制问题",
+  "tags": [
+    "persona",
+    "system prompt",
+    "output style",
+    "customization"
+  ],
+  "sub_problems": [
+    "系统提示词定制",
+    "风格模板管理",
+    "用户级与项目级风格",
+    "AI 辅助风格创建"
+  ],
+  "best_practices": [
+    "提供内置风格模板",
+    "支持 Markdown 自定义风格",
+    "分离风格与核心逻辑"
+  ]
+}

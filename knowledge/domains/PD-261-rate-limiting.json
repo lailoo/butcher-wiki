@@ -1,0 +1,25 @@
+{
+  "id": "PD-261",
+  "slug": "rate-limiting",
+  "title": "限流与速率控制",
+  "subtitle": "Rate Limiting & Throttling",
+  "icon": "shield",
+  "color": "#EF4444",
+  "severity": "high",
+  "description": "全局令牌桶限流器按domain分组控制API调用频率，防止触发服务商速率限制",
+  "tags": [
+    "rate limit",
+    "throttle",
+    "token bucket"
+  ],
+  "sub_problems": [
+    "多域独立限流",
+    "令牌桶算法实现",
+    "限流指标聚合",
+    "查询去重"
+  ],
+  "best_practices": [
+    "按API域名分组独立限流",
+    "在LLM调用前自动注入限流钩子"
+  ]
+}

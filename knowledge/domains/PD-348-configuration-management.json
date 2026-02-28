@@ -1,0 +1,24 @@
+{
+  "id": "PD-348",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "环境变量与配置文件双层配置体系，支持运行时参数灵活控制",
+  "tags": [
+    "config",
+    "environment variables",
+    "JSON config"
+  ],
+  "sub_problems": [
+    "配置优先级策略",
+    "环境变量命名规范",
+    "配置文件持久化",
+    "默认值与覆盖"
+  ],
+  "best_practices": [
+    "使用统一前缀的环境变量命名规范如MINERU_"
+  ]
+}

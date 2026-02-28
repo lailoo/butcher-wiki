@@ -1,0 +1,23 @@
+{
+  "id": "PD-232",
+  "slug": "cross-language-binding",
+  "title": "C++/Python 跨语言绑定",
+  "subtitle": "Cross-Language Binding",
+  "icon": "link",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "通过 pybind11 等工具实现 C++ 高性能核心与 Python 易用接口的桥接",
+  "tags": [
+    "pybind11",
+    "FFI",
+    "跨语言"
+  ],
+  "sub_problems": [
+    "对象生命周期管理",
+    "类型转换与零拷贝",
+    "异常跨语言传播"
+  ],
+  "best_practices": [
+    "Python 层用 Protocol 定义接口，C++ 层实现性能关键路径"
+  ]
+}

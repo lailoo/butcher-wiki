@@ -1,0 +1,25 @@
+{
+  "id": "PD-172",
+  "slug": "upstream-dependency-sync",
+  "title": "上游依赖同步",
+  "subtitle": "Upstream Dependency Sync",
+  "icon": "refresh-cw",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "追踪上游工具仓库变更，自动比较差异并辅助合并更新",
+  "tags": [
+    "sync",
+    "upstream",
+    "dependency",
+    "update"
+  ],
+  "sub_problems": [
+    "上游代码变更检测",
+    "import路径自动替换",
+    "新增渠道发现",
+    "手动review合并流程"
+  ],
+  "best_practices": [
+    "shallow clone + diff比较，自动替换命名空间后展示差异"
+  ]
+}

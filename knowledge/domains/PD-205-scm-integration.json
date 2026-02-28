@@ -1,0 +1,27 @@
+{
+  "id": "PD-205",
+  "slug": "scm-integration",
+  "title": "SCM 平台集成",
+  "subtitle": "Source Code Management Integration",
+  "icon": "code",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "通过 gh CLI 封装 GitHub PR 全生命周期管理，包括 CI 检查、Review 追踪、合并就绪判断",
+  "tags": [
+    "github",
+    "pr",
+    "ci",
+    "review",
+    "merge"
+  ],
+  "sub_problems": [
+    "PR 检测与状态查询",
+    "CI check 聚合与状态判断",
+    "Review 决策与评论获取",
+    "合并就绪度综合评估"
+  ],
+  "best_practices": [
+    "fail-closed 策略：CI 查询失败视为 failing 而非 passing",
+    "GraphQL 变量传参防止注入"
+  ]
+}

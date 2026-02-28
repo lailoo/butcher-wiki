@@ -1,0 +1,25 @@
+{
+  "id": "PD-363",
+  "slug": "checkpoint-management",
+  "title": "检查点管理",
+  "subtitle": "Checkpoint Management",
+  "icon": "refresh-cw",
+  "color": "#2ECC71",
+  "severity": "medium",
+  "description": "分布式训练的检查点保存、恢复和管理，支持断点续训和自动发现最新检查点",
+  "tags": [
+    "checkpoint",
+    "resume",
+    "FSDP",
+    "state management"
+  ],
+  "sub_problems": [
+    "分片状态保存",
+    "断点续训",
+    "检查点清理",
+    "跨后端兼容"
+  ],
+  "best_practices": [
+    "定期保存+自动清理旧检查点平衡存储与安全"
+  ]
+}

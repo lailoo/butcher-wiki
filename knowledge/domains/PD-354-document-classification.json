@@ -1,0 +1,25 @@
+{
+  "id": "PD-354",
+  "slug": "document-classification",
+  "title": "PDF智能分类",
+  "subtitle": "Document Classification",
+  "icon": "file-text",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "基于多维度特征分析自动判断PDF文档类型，选择最优处理路径",
+  "tags": [
+    "classification",
+    "PDF",
+    "OCR",
+    "text extraction"
+  ],
+  "sub_problems": [
+    "字符密度分析",
+    "乱码检测",
+    "图像覆盖率计算",
+    "采样策略"
+  ],
+  "best_practices": [
+    "综合字符数、乱码比例和图像覆盖率三维度判断PDF类型"
+  ]
+}

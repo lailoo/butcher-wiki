@@ -1,0 +1,24 @@
+{
+  "id": "PD-287",
+  "slug": "agent-economic-system",
+  "title": "Agent 经济系统",
+  "subtitle": "Agent Economic System",
+  "icon": "cpu",
+  "color": "#10B981",
+  "severity": "high",
+  "description": "为 AI Agent 设计收支平衡的经济生存机制，通过成本约束驱动高效行为",
+  "tags": [
+    "经济模拟",
+    "生存机制",
+    "成本约束"
+  ],
+  "sub_problems": [
+    "初始余额与成本模型设计",
+    "收入评估阈值与支付策略",
+    "生存状态分级与破产判定",
+    "经济时间线持久化与分析"
+  ],
+  "best_practices": [
+    "将 token 成本实时注入 Agent 上下文促进自我约束"
+  ]
+}

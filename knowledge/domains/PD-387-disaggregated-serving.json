@@ -1,0 +1,26 @@
+{
+  "id": "PD-387",
+  "slug": "disaggregated-serving",
+  "title": "disaggregated推理",
+  "subtitle": "Disaggregated Serving",
+  "icon": "link",
+  "color": "#D946EF",
+  "severity": "high",
+  "description": "将prefill和decode阶段分离到不同节点，实现异构资源调度",
+  "tags": [
+    "prefill-decode分离",
+    "KV传输",
+    "异构部署",
+    "分离式推理"
+  ],
+  "sub_problems": [
+    "KV Cache跨节点传输",
+    "prefill/decode节点调度",
+    "网络带宽优化",
+    "一致性保障"
+  ],
+  "best_practices": [
+    "高带宽互联场景下使用disagg提升资源利用率",
+    "通过KV Connector抽象传输协议"
+  ]
+}

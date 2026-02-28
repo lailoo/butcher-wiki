@@ -1,0 +1,27 @@
+{
+  "id": "PD-280",
+  "slug": "encryption-at-rest-vault",
+  "title": "加密保险库",
+  "subtitle": "Encryption-at-Rest Vault",
+  "icon": "shield",
+  "color": "#dc2626",
+  "severity": "high",
+  "description": "本地密钥管理、数据加密存储、seal/unseal 状态机与密钥恢复",
+  "tags": [
+    "encryption",
+    "vault",
+    "KDF",
+    "secret-management"
+  ],
+  "sub_problems": [
+    "DEK 密钥派生与包装",
+    "seal/unseal 状态机",
+    "recovery key 备份恢复",
+    "内存密钥清零"
+  ],
+  "best_practices": [
+    "XChaCha20-Poly1305 优于 AES-GCM（nonce 更长）",
+    "Argon2id KDF 抗 GPU 攻击",
+    "Zeroize 确保密钥不残留内存"
+  ]
+}

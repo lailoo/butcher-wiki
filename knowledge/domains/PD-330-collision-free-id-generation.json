@@ -1,0 +1,27 @@
+{
+  "id": "PD-330",
+  "slug": "collision-free-id-generation",
+  "title": "无冲突 ID 生成",
+  "subtitle": "Collision-Free ID Generation",
+  "icon": "lock",
+  "color": "#F59E0B",
+  "severity": "medium",
+  "description": "基于内容哈希的分布式 ID 生成，确保多 agent 并行场景下零冲突",
+  "tags": [
+    "hash",
+    "base36",
+    "distributed",
+    "collision-free"
+  ],
+  "sub_problems": [
+    "内容哈希 vs 随机 ID",
+    "Base36 编码密度优化",
+    "层级 ID 设计",
+    "Nonce 碰撞重试"
+  ],
+  "best_practices": [
+    "SHA256 + Base36 编码",
+    "可配置 ID 长度平衡可读性与唯一性",
+    "层级 ID 支持 Epic 子任务"
+  ]
+}

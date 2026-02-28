@@ -1,0 +1,25 @@
+{
+  "id": "PD-270",
+  "slug": "collaborative-editing",
+  "title": "协作编辑",
+  "subtitle": "Real-time Collaborative Editing",
+  "icon": "message-circle",
+  "color": "#16a085",
+  "severity": "medium",
+  "description": "基于CRDT的多用户实时协作编辑系统",
+  "tags": [
+    "collaboration",
+    "websocket",
+    "crdt",
+    "real-time"
+  ],
+  "sub_problems": [
+    "WebSocket连接管理",
+    "CRDT冲突解决",
+    "画布状态同步",
+    "编辑器协同"
+  ],
+  "best_practices": [
+    "使用Yjs CRDT协议而非OT实现无冲突同步"
+  ]
+}

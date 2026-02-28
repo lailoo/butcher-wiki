@@ -1,0 +1,27 @@
+{
+  "id": "PD-179",
+  "slug": "containerized-deployment",
+  "title": "容器化部署",
+  "subtitle": "Containerized Deployment",
+  "icon": "box",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "多阶段 Docker 构建优化镜像体积，docker-compose 编排前后端服务",
+  "tags": [
+    "docker",
+    "deployment",
+    "container",
+    "devops"
+  ],
+  "sub_problems": [
+    "多阶段构建优化",
+    "前后端服务编排",
+    "数据卷持久化",
+    "健康检查配置"
+  ],
+  "best_practices": [
+    "分离 node_deps/py_deps 构建阶段",
+    "~/.adalflow 卷挂载持久化数据",
+    "healthcheck 端点监控服务状态"
+  ]
+}

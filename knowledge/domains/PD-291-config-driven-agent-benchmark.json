@@ -1,0 +1,24 @@
+{
+  "id": "PD-291",
+  "slug": "config-driven-agent-benchmark",
+  "title": "配置驱动的 Agent 基准测试",
+  "subtitle": "Config-Driven Agent Benchmarking",
+  "icon": "settings",
+  "color": "#6366F1",
+  "severity": "high",
+  "description": "通过 JSON 配置文件驱动多 Agent 并行基准测试，支持多任务源和过滤策略",
+  "tags": [
+    "基准测试",
+    "配置驱动",
+    "可复现评测"
+  ],
+  "sub_problems": [
+    "多任务源适配(parquet/jsonl/inline)",
+    "Agent 过滤与任务分配策略",
+    "exhaust 模式与重试控制",
+    "评测结果持久化与对比分析"
+  ],
+  "best_practices": [
+    "将任务源、Agent参数、评估配置完全外部化为JSON实现可复现评测"
+  ]
+}

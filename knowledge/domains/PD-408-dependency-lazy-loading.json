@@ -1,0 +1,26 @@
+{
+  "id": "PD-408",
+  "slug": "dependency-lazy-loading",
+  "title": "依赖管理与懒加载",
+  "subtitle": "Dependency Management & Lazy Loading",
+  "icon": "box",
+  "color": "#78716c",
+  "severity": "medium",
+  "description": "可选依赖的运行时检测和懒加载，避免强制安装所有包",
+  "tags": [
+    "lazy-import",
+    "optional-dependency",
+    "singleton"
+  ],
+  "sub_problems": [
+    "可选依赖的运行时检测",
+    "友好的安装提示信息",
+    "重量级组件单例复用",
+    "按需加载减少启动时间"
+  ],
+  "best_practices": [
+    "装饰器封装 import 检测逻辑",
+    "提供 install_command 和 install_link",
+    "singleton_factory 避免重复实例化"
+  ]
+}

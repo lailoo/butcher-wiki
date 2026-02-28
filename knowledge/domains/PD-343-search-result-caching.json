@@ -1,0 +1,23 @@
+{
+  "id": "PD-343",
+  "slug": "search-result-caching",
+  "title": "搜索结果缓存",
+  "subtitle": "Search Result Caching",
+  "icon": "database",
+  "color": "#F97316",
+  "severity": "medium",
+  "description": "缓存搜索和网页抓取结果，避免重复API调用降低成本",
+  "tags": [
+    "caching",
+    "file lock",
+    "deduplication"
+  ],
+  "sub_problems": [
+    "如何设计并发安全的缓存存储",
+    "如何处理缓存失效和更新",
+    "如何在多进程间共享缓存"
+  ],
+  "best_practices": [
+    "使用文件锁保证JSONL缓存的并发读写安全"
+  ]
+}

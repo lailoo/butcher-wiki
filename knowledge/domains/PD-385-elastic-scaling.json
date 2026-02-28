@@ -1,0 +1,26 @@
+{
+  "id": "PD-385",
+  "slug": "elastic-scaling",
+  "title": "弹性伸缩",
+  "subtitle": "Elastic Scaling",
+  "icon": "git-branch",
+  "color": "#A855F7",
+  "severity": "medium",
+  "description": "运行时动态增减推理节点，实现集群弹性伸缩",
+  "tags": [
+    "弹性伸缩",
+    "动态扩缩",
+    "权重迁移",
+    "热重配置"
+  ],
+  "sub_problems": [
+    "节点加入与退出协调",
+    "权重在线迁移",
+    "进程组动态重配置",
+    "负载感知伸缩策略"
+  ],
+  "best_practices": [
+    "使用standby节点减少扩容延迟",
+    "批量传输权重降低迁移开销"
+  ]
+}

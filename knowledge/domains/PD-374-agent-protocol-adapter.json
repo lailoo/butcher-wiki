@@ -1,0 +1,26 @@
+{
+  "id": "PD-374",
+  "slug": "agent-protocol-adapter",
+  "title": "ACP协议适配",
+  "subtitle": "Agent Client Protocol Adapter",
+  "icon": "link",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "实现Agent Client Protocol标准协议，使标准客户端可接入自定义Agent系统",
+  "tags": [
+    "protocol",
+    "ACP",
+    "interoperability"
+  ],
+  "sub_problems": [
+    "协议翻译层",
+    "会话映射",
+    "速率限制",
+    "流式通信"
+  ],
+  "best_practices": [
+    "标准协议兼容",
+    "session映射隔离",
+    "prompt前缀注入"
+  ]
+}

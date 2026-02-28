@@ -1,0 +1,26 @@
+{
+  "id": "PD-402",
+  "slug": "factory-pattern-registry",
+  "title": "工厂模式与组件注册",
+  "subtitle": "Factory Pattern & Component Registry",
+  "icon": "settings",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "通过工厂模式实现组件可插拔，统一注册和实例化多种后端实现",
+  "tags": [
+    "factory",
+    "plugin",
+    "singleton"
+  ],
+  "sub_problems": [
+    "多后端统一抽象",
+    "配置驱动的实例化",
+    "单例复用避免重复创建",
+    "新后端的零侵入扩展"
+  ],
+  "best_practices": [
+    "backend_to_class 映射表集中管理",
+    "from_config 工厂方法统一入口",
+    "singleton_factory 装饰器确保单例"
+  ]
+}

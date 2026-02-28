@@ -1,0 +1,25 @@
+{
+  "id": "PD-255",
+  "slug": "multi-platform-publishing",
+  "title": "多平台内容发布",
+  "subtitle": "Multi-Platform Content Publishing",
+  "icon": "globe",
+  "color": "#F59E0B",
+  "severity": "medium",
+  "description": "配置驱动的多平台自动化发布，通过浏览器自动化适配不同内容平台",
+  "tags": [
+    "publishing",
+    "playwright",
+    "automation"
+  ],
+  "sub_problems": [
+    "平台适配与配置化",
+    "Cookie认证管理",
+    "内容格式转换",
+    "发布状态追踪"
+  ],
+  "best_practices": [
+    "用YAML配置描述平台发布流程",
+    "Playwright浏览器自动化替代API集成"
+  ]
+}

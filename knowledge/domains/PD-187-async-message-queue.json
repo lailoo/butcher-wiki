@@ -1,0 +1,24 @@
+{
+  "id": "PD-187",
+  "slug": "async-message-queue",
+  "title": "异步消息队列",
+  "subtitle": "Async Message Queue",
+  "icon": "layers",
+  "color": "#1abc9c",
+  "severity": "medium",
+  "description": "基于 EventEmitter 和 SQLite 持久化的异步消息队列，支持原子认领、空闲超时和自愈机制",
+  "tags": [
+    "message-queue",
+    "async-iterator",
+    "persistence"
+  ],
+  "sub_problems": [
+    "原子 claim-confirm 防重复处理",
+    "SQLite 持久化待处理消息",
+    "空闲超时自动终止子进程",
+    "stale 消息自愈恢复"
+  ],
+  "best_practices": [
+    "使用 AsyncIterableIterator 模式消费队列，结合 EventEmitter 实现非轮询等待"
+  ]
+}

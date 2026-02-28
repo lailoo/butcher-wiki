@@ -1,0 +1,25 @@
+{
+  "id": "PD-409",
+  "slug": "internationalization",
+  "title": "国际化",
+  "subtitle": "Internationalization (i18n)",
+  "icon": "globe",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "解决 AI CLI 工具的多语言用户体验问题，包括界面、文档、触发词的本地化",
+  "tags": [
+    "i18n",
+    "locale",
+    "multilingual"
+  ],
+  "sub_problems": [
+    "界面语言切换",
+    "文档多语言维护",
+    "触发词本地化",
+    "错误信息翻译"
+  ],
+  "best_practices": [
+    "分离语言资源文件",
+    "支持运行时语言切换"
+  ]
+}

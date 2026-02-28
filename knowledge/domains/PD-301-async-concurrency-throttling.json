@@ -1,0 +1,25 @@
+{
+  "id": "PD-301",
+  "slug": "async-concurrency-throttling",
+  "title": "异步并发限流",
+  "subtitle": "Async Concurrency Throttling",
+  "icon": "zap",
+  "color": "#F97316",
+  "severity": "high",
+  "description": "异步函数调用的并发限流与超时管理，防止LLM/Embedding API过载",
+  "tags": [
+    "async",
+    "throttle",
+    "rate-limit"
+  ],
+  "sub_problems": [
+    "并发上限控制",
+    "超时管理",
+    "优先级队列",
+    "批量处理调度"
+  ],
+  "best_practices": [
+    "装饰器模式透明限流",
+    "区分LLM和Embedding的超时阈值"
+  ]
+}

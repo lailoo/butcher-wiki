@@ -1,0 +1,25 @@
+{
+  "id": "PD-201",
+  "slug": "plugin-architecture",
+  "title": "插件化架构",
+  "subtitle": "Plugin Architecture",
+  "icon": "layers",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "通过接口定义+槽位注册实现可插拔组件系统，支持运行时动态加载",
+  "tags": [
+    "plugin",
+    "interface",
+    "extensibility"
+  ],
+  "sub_problems": [
+    "插件接口定义与类型安全",
+    "插件注册与发现机制",
+    "插件配置传递",
+    "内置插件与第三方插件共存"
+  ],
+  "best_practices": [
+    "使用 TypeScript satisfies 确保编译时类型检查",
+    "PluginModule 统一 manifest+create 导出模式"
+  ]
+}

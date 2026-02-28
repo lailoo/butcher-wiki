@@ -1,0 +1,26 @@
+{
+  "id": "PD-371",
+  "slug": "skill-system",
+  "title": "技能系统",
+  "subtitle": "Skill System",
+  "icon": "sparkles",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "通过SKILL.md文件定义可复用Agent能力，支持安装、同步和运行时注入",
+  "tags": [
+    "skills",
+    "reusable",
+    "agent-capability"
+  ],
+  "sub_problems": [
+    "技能定义格式",
+    "安装与分发",
+    "工作区同步",
+    "运行时eligibility"
+  ],
+  "best_practices": [
+    "声明式SKILL.md",
+    "技能环境变量隔离",
+    "bundled内置技能"
+  ]
+}

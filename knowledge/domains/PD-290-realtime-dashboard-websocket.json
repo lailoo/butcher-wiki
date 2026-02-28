@@ -1,0 +1,24 @@
+{
+  "id": "PD-290",
+  "slug": "realtime-dashboard-websocket",
+  "title": "实时仪表盘与 WebSocket",
+  "subtitle": "Real-time Dashboard & WebSocket",
+  "icon": "activity",
+  "color": "#F59E0B",
+  "severity": "medium",
+  "description": "通过 WebSocket 实时推送 Agent 运行状态到前端仪表盘实现可视化监控",
+  "tags": [
+    "实时推送",
+    "WebSocket",
+    "可视化"
+  ],
+  "sub_problems": [
+    "WebSocket 连接管理与广播",
+    "文件变更监听与增量推送",
+    "排行榜与经济指标聚合",
+    "产物预览与终端日志回放"
+  ],
+  "best_practices": [
+    "用 JSONL 文件作为数据源配合文件监听实现轻量级实时推送"
+  ]
+}

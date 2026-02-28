@@ -1,0 +1,24 @@
+{
+  "id": "PD-351",
+  "slug": "batch-processing-optimization",
+  "title": "批处理优化",
+  "subtitle": "Batch Processing Optimization",
+  "icon": "zap",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "按分辨率分组的智能批处理策略，根据硬件资源自适应调整batch size",
+  "tags": [
+    "batch processing",
+    "GPU optimization",
+    "throughput"
+  ],
+  "sub_problems": [
+    "分辨率分组策略",
+    "动态batch size推断",
+    "padding对齐",
+    "显存感知调度"
+  ],
+  "best_practices": [
+    "根据GPU显存自动推断batch_ratio实现资源最优利用"
+  ]
+}

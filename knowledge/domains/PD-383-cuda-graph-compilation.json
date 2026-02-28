@@ -1,0 +1,26 @@
+{
+  "id": "PD-383",
+  "slug": "cuda-graph-compilation",
+  "title": "CUDA Graph编译优化",
+  "subtitle": "CUDA Graph & Compilation",
+  "icon": "terminal",
+  "color": "#EF4444",
+  "severity": "high",
+  "description": "通过CUDA Graph捕获和torch.compile编译消除kernel启动开销",
+  "tags": [
+    "CUDA Graph",
+    "torch.compile",
+    "Dynamo",
+    "编译优化"
+  ],
+  "sub_problems": [
+    "Graph捕获与padding策略",
+    "Piecewise vs Full模式选择",
+    "编译缓存管理",
+    "动态shape处理"
+  ],
+  "best_practices": [
+    "使用O2优化级别获得最佳性能",
+    "监控CUDAGraph padding率避免浪费"
+  ]
+}

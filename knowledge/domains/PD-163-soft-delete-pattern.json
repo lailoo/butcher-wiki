@@ -1,0 +1,29 @@
+{
+  "id": "PD-163",
+  "slug": "soft-delete-pattern",
+  "title": "软删除模式",
+  "subtitle": "Soft Delete Pattern",
+  "icon": "refresh-cw",
+  "color": "#e74c3c",
+  "severity": "medium",
+  "description": "用标志位替代物理删除，保留数据完整性并支持关联数据的优雅降级",
+  "tags": [
+    "soft delete",
+    "data lifecycle",
+    "cascade",
+    "flag",
+    "archive"
+  ],
+  "sub_problems": [
+    "is_deleted 标志位设计",
+    "关联数据级联处理",
+    "查询默认过滤已删数据",
+    "防止僵尸数据复活",
+    "订阅者感知删除状态"
+  ],
+  "best_practices": [
+    "UPDATE 替代 DELETE 保留审计轨迹",
+    "查询 WHERE 默认加 is_deleted=0",
+    "Pack 安装跳过已删源防僵尸"
+  ]
+}

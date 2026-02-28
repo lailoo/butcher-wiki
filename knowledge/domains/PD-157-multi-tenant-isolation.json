@@ -1,0 +1,29 @@
+{
+  "id": "PD-157",
+  "slug": "multi-tenant-isolation",
+  "title": "多租户数据隔离",
+  "subtitle": "Multi-Tenant Data Isolation",
+  "icon": "shield",
+  "color": "#9b59b6",
+  "severity": "high",
+  "description": "解决多用户环境下数据所有权、可见性控制和跨用户隔离问题",
+  "tags": [
+    "multi-tenant",
+    "isolation",
+    "ownership",
+    "visibility",
+    "RBAC"
+  ],
+  "sub_problems": [
+    "用户级数据过滤",
+    "所有权校验（403）",
+    "public/private 可见性",
+    "订阅关系管理",
+    "新用户默认数据初始化"
+  ],
+  "best_practices": [
+    "所有查询附加 user_id 过滤",
+    "DELETE/PUT 前校验 created_by",
+    "E2E 测试覆盖跨用户不可见场景"
+  ]
+}

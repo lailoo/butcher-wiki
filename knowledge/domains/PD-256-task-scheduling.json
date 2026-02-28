@@ -1,0 +1,25 @@
+{
+  "id": "PD-256",
+  "slug": "task-scheduling",
+  "title": "定时任务调度",
+  "subtitle": "Task Scheduling & Cron",
+  "icon": "clock",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "纯Python自驱动定时任务调度，支持cron表达式、指数退避和卡死检测",
+  "tags": [
+    "cron",
+    "scheduler",
+    "asyncio"
+  ],
+  "sub_problems": [
+    "cron表达式解析",
+    "指数退避策略",
+    "卡死检测与恢复",
+    "任务状态持久化"
+  ],
+  "best_practices": [
+    "asyncio.call_later自驱动替代外部调度依赖",
+    "SQLite持久化任务状态支持重启恢复"
+  ]
+}

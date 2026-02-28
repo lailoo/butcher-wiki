@@ -1,0 +1,24 @@
+{
+  "id": "PD-333",
+  "slug": "skill-system",
+  "title": "技能系统",
+  "subtitle": "Skill System",
+  "icon": "sparkles",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "Agent 能力的模块化封装、渐进式加载与动态扩展",
+  "tags": [
+    "skill",
+    "capability",
+    "progressive-loading"
+  ],
+  "sub_problems": [
+    "技能定义与元数据解析",
+    "渐进式按需加载",
+    "技能启用状态管理",
+    "技能与沙箱路径映射"
+  ],
+  "best_practices": [
+    "Markdown 驱动的技能定义格式"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-364",
+  "slug": "multi-channel-gateway",
+  "title": "多渠道消息网关",
+  "subtitle": "Multi-Channel Messaging Gateway",
+  "icon": "message-circle",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "统一接入多个消息平台，实现跨渠道消息路由、会话管理和协议适配",
+  "tags": [
+    "messaging",
+    "gateway",
+    "channels"
+  ],
+  "sub_problems": [
+    "渠道插件化注册",
+    "消息格式统一",
+    "会话路由",
+    "渠道健康监控"
+  ],
+  "best_practices": [
+    "每个渠道作为独立插件实现",
+    "统一消息信封格式",
+    "渠道故障自动重连"
+  ]
+}

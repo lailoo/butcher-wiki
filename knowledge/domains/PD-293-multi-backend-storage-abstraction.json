@@ -1,0 +1,25 @@
+{
+  "id": "PD-293",
+  "slug": "multi-backend-storage-abstraction",
+  "title": "多后端存储抽象",
+  "subtitle": "Multi-Backend Storage Abstraction",
+  "icon": "database",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "统一存储接口抽象，支持多种后端(SQL/NoSQL/向量库/图数据库)插件化切换",
+  "tags": [
+    "storage",
+    "abstraction",
+    "plugin"
+  ],
+  "sub_problems": [
+    "存储接口标准化",
+    "后端注册与发现",
+    "环境变量校验",
+    "数据迁移兼容"
+  ],
+  "best_practices": [
+    "四层存储分离(KV/Vector/Graph/DocStatus)",
+    "lazy import减少启动依赖"
+  ]
+}

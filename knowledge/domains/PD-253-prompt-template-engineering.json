@@ -1,0 +1,25 @@
+{
+  "id": "PD-253",
+  "slug": "prompt-template-engineering",
+  "title": "Prompt模板工程",
+  "subtitle": "Prompt Template Engineering",
+  "icon": "file-text",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "统一管理和渲染LLM提示词模板，支持模板继承、变量注入和动态组合",
+  "tags": [
+    "prompt",
+    "jinja2",
+    "template"
+  ],
+  "sub_problems": [
+    "模板版本管理",
+    "多Agent提示词一致性",
+    "动态变量注入",
+    "模板继承与组合"
+  ],
+  "best_practices": [
+    "使用Jinja2等模板引擎统一管理Prompt",
+    "按Agent角色分目录组织模板文件"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "PD-233",
+  "slug": "thread-pool-concurrency",
+  "title": "线程池与并发执行",
+  "subtitle": "Thread Pool & Concurrency",
+  "icon": "cpu",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "通过线程池、任务分组和并行执行策略管理计算密集型工作负载",
+  "tags": [
+    "线程池",
+    "并发",
+    "并行计算"
+  ],
+  "sub_problems": [
+    "任务分组与等待",
+    "CPU 核绑定优化",
+    "查询与后台任务隔离"
+  ],
+  "best_practices": [
+    "分离查询线程池和优化线程池避免互相干扰"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-262",
+  "slug": "auth-system",
+  "title": "认证授权",
+  "subtitle": "Authentication & Authorization",
+  "icon": "lock",
+  "color": "#e74c3c",
+  "severity": "high",
+  "description": "多策略认证、OAuth集成、API Key管理和权限控制",
+  "tags": [
+    "auth",
+    "oauth",
+    "jwt",
+    "security"
+  ],
+  "sub_problems": [
+    "多OAuth提供商集成",
+    "JWT令牌刷新策略",
+    "API Key生命周期管理",
+    "密码哈希与加密"
+  ],
+  "best_practices": [
+    "使用argon2替代bcrypt做密码哈希"
+  ]
+}

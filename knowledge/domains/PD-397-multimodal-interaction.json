@@ -1,0 +1,26 @@
+{
+  "id": "PD-397",
+  "slug": "multimodal-interaction",
+  "title": "多模态交互",
+  "subtitle": "Multimodal Interaction",
+  "icon": "message-circle",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "支持语音、文本等多种交互模态的实时通信系统",
+  "tags": [
+    "voice",
+    "WebSocket",
+    "audio",
+    "realtime",
+    "TTS"
+  ],
+  "sub_problems": [
+    "语音活动检测",
+    "音频格式转换",
+    "实时双向通信",
+    "会话指令管理"
+  ],
+  "best_practices": [
+    "WebSocket实现低延迟双向音频流传输"
+  ]
+}

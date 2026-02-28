@@ -1,0 +1,23 @@
+{
+  "id": "PD-193",
+  "slug": "stylized-writing-system",
+  "title": "风格化写作系统",
+  "subtitle": "Stylized Writing System",
+  "icon": "sparkles",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "基于YAML配置的创作者风格管理，驱动AI生成符合特定写作风格的内容",
+  "tags": [
+    "写作风格",
+    "提示词",
+    "YAML配置"
+  ],
+  "sub_problems": [
+    "风格配置结构化定义",
+    "提示词模板变量替换",
+    "风格分类与检索"
+  ],
+  "best_practices": [
+    "风格定义与代码分离，YAML驱动可扩展"
+  ]
+}

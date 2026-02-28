@@ -1,0 +1,27 @@
+{
+  "id": "PD-250",
+  "slug": "cross-platform-distribution",
+  "title": "跨平台兼容",
+  "subtitle": "Cross-Platform Distribution",
+  "icon": "cpu",
+  "color": "#6366f1",
+  "severity": "medium",
+  "description": "统一技能包在多个 AI Agent 平台上的分发、安装和兼容性管理",
+  "tags": [
+    "cross-platform",
+    "distribution",
+    "agent",
+    "compatibility"
+  ],
+  "sub_problems": [
+    "平台特定安装路径映射",
+    "元数据多平台声明",
+    "一键安装命令标准化",
+    "平台约束差异适配"
+  ],
+  "best_practices": [
+    "每个技能声明所有支持平台的 metadata",
+    "提供 workspace 和 global 两种安装路径",
+    "README 包含完整平台矩阵"
+  ]
+}

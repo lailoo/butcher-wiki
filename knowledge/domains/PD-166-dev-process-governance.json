@@ -1,0 +1,29 @@
+{
+  "id": "PD-166",
+  "slug": "dev-process-governance",
+  "title": "研发流程规范",
+  "subtitle": "Development Process Governance",
+  "icon": "settings",
+  "color": "#95a5a6",
+  "severity": "medium",
+  "description": "建立 PRD 驱动的研发流程，规范分支策略、Code Review 和部署回滚机制",
+  "tags": [
+    "PRD",
+    "process",
+    "code review",
+    "staging",
+    "rollback"
+  ],
+  "sub_problems": [
+    "PRD 模板与审批流程",
+    "分支保护与合并策略",
+    "staging 验收机制",
+    "回滚方案设计",
+    "事故响应流程"
+  ],
+  "best_practices": [
+    "PRD 审批后才能开发",
+    "develop→staging→main 三环境隔离",
+    "git tag 标记 release 支持快速回滚"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-272",
+  "slug": "multi-llm-provider-abstraction",
+  "title": "多 LLM 供应商抽象",
+  "subtitle": "Multi-LLM Provider Abstraction",
+  "icon": "cpu",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一抽象多个 LLM 供应商的 API 差异，实现模型路由和客户端工厂模式",
+  "tags": [
+    "LLM",
+    "provider",
+    "AI SDK",
+    "model routing"
+  ],
+  "sub_problems": [
+    "供应商 API 差异适配",
+    "模型名称路由解析",
+    "API Key 自动加载",
+    "客户端实例缓存"
+  ],
+  "best_practices": [
+    "使用 provider/model 格式统一模型标识"
+  ]
+}

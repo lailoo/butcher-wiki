@@ -1,0 +1,26 @@
+{
+  "id": "PD-369",
+  "slug": "multi-provider-abstraction",
+  "title": "多模型Provider抽象",
+  "subtitle": "Multi-Provider Model Abstraction",
+  "icon": "cpu",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一抽象20+LLM提供商，实现模型别名、认证轮换和provider适配",
+  "tags": [
+    "provider",
+    "model",
+    "abstraction"
+  ],
+  "sub_problems": [
+    "Provider统一接口",
+    "模型别名映射",
+    "OAuth认证管理",
+    "Provider特定适配"
+  ],
+  "best_practices": [
+    "auth-profile优先级排序",
+    "模型ID标准化",
+    "provider-specific参数透传"
+  ]
+}

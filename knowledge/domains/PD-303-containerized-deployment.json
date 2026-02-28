@@ -1,0 +1,25 @@
+{
+  "id": "PD-303",
+  "slug": "containerized-deployment",
+  "title": "容器化部署",
+  "subtitle": "Containerized Deployment",
+  "icon": "box",
+  "color": "#0EA5E9",
+  "severity": "medium",
+  "description": "Docker/K8s多级部署方案，支持多worker模式和数据库依赖编排",
+  "tags": [
+    "docker",
+    "kubernetes",
+    "deployment"
+  ],
+  "sub_problems": [
+    "镜像构建优化",
+    "多worker进程管理",
+    "存储卷挂载",
+    "服务编排"
+  ],
+  "best_practices": [
+    "lite/full双镜像策略",
+    "Gunicorn preload共享初始化数据"
+  ]
+}

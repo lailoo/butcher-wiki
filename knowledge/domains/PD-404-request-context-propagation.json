@@ -1,0 +1,26 @@
+{
+  "id": "PD-404",
+  "slug": "request-context-propagation",
+  "title": "请求上下文传播",
+  "subtitle": "Request Context Propagation",
+  "icon": "link",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "跨线程的请求上下文自动传播，支持分布式追踪和日志关联",
+  "tags": [
+    "context",
+    "trace-id",
+    "thread-safety"
+  ],
+  "sub_problems": [
+    "ContextVar 线程安全存储",
+    "子线程上下文自动继承",
+    "日志 trace_id 自动注入",
+    "ThreadPoolExecutor 上下文传播"
+  ],
+  "best_practices": [
+    "ContextVar 替代 threading.local",
+    "自定义 ThreadPoolExecutor 包装 submit",
+    "ContextFilter 统一日志格式"
+  ]
+}

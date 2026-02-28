@@ -1,0 +1,28 @@
+{
+  "id": "PD-279",
+  "slug": "authentication-authorization",
+  "title": "认证授权",
+  "subtitle": "Authentication & Authorization",
+  "icon": "lock",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "多因素身份认证、API Key 权限管理、请求限流与访问控制",
+  "tags": [
+    "auth",
+    "security",
+    "WebAuthn",
+    "rate-limit"
+  ],
+  "sub_problems": [
+    "密码哈希与验证",
+    "Passkey/WebAuthn 集成",
+    "API Key 生命周期管理",
+    "per-IP 请求限流",
+    "scope 权限模型"
+  ],
+  "best_practices": [
+    "使用 Argon2id 而非 bcrypt 做密码哈希",
+    "API Key 只存哈希，前缀用于识别",
+    "滑动窗口限流优于固定窗口"
+  ]
+}

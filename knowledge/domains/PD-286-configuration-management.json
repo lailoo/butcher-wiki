@@ -1,0 +1,28 @@
+{
+  "id": "PD-286",
+  "slug": "configuration-management",
+  "title": "配置管理与校验",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "TOML 配置加载、环境变量替换、schema 语义校验与版本迁移",
+  "tags": [
+    "config",
+    "TOML",
+    "validation",
+    "migration"
+  ],
+  "sub_problems": [
+    "配置文件加载与合并",
+    "环境变量替换",
+    "schema 语义校验与警告",
+    "配置版本迁移",
+    "默认模板生成"
+  ],
+  "best_practices": [
+    "schema map 集中校验避免运行时错误",
+    "环境变量替换支持 12-factor 部署",
+    "迁移脚本保证向后兼容"
+  ]
+}

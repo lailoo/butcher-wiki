@@ -1,0 +1,26 @@
+{
+  "id": "PD-389",
+  "slug": "authentication-authorization",
+  "title": "认证授权",
+  "subtitle": "Authentication & Authorization",
+  "icon": "lock",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "多层认证体系设计，支持JWT/API Key/SSO等多种认证方式",
+  "tags": [
+    "auth",
+    "JWT",
+    "SSO",
+    "OIDC",
+    "API key"
+  ],
+  "sub_problems": [
+    "Token管理",
+    "SSO集成",
+    "API Key验证",
+    "权限控制"
+  ],
+  "best_practices": [
+    "支持HttpOnly Cookie和Bearer Token双通道认证"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-296",
+  "slug": "authentication-authorization",
+  "title": "认证授权",
+  "subtitle": "Authentication & Authorization",
+  "icon": "lock",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "JWT令牌认证与角色授权，支持用户/访客双角色和可配置过期策略",
+  "tags": [
+    "auth",
+    "JWT",
+    "security"
+  ],
+  "sub_problems": [
+    "令牌生成与验证",
+    "角色权限控制",
+    "密码安全存储",
+    "会话过期管理"
+  ],
+  "best_practices": [
+    "环境变量配置账户而非硬编码",
+    "角色区分过期时间"
+  ]
+}

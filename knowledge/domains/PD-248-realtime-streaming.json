@@ -1,0 +1,26 @@
+{
+  "id": "PD-248",
+  "slug": "realtime-streaming",
+  "title": "实时流式通信",
+  "subtitle": "Real-time Streaming Communication",
+  "icon": "activity",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "SSE 流式架构实现 Agent 响应实时推送与前端消费",
+  "tags": [
+    "SSE",
+    "streaming",
+    "real-time"
+  ],
+  "sub_problems": [
+    "SSE 事件格式化",
+    "生产者/消费者解耦",
+    "流式 chunk 段落聚合",
+    "多事件类型路由"
+  ],
+  "best_practices": [
+    "asyncio.Queue 解耦生产消费",
+    "ResponseBuffer 段落聚合",
+    "背景任务独立于 SSE 连接生命周期"
+  ]
+}

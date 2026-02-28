@@ -1,0 +1,29 @@
+{
+  "id": "PD-159",
+  "slug": "content-source-detection",
+  "title": "内容源自动检测",
+  "subtitle": "Content Source Auto-Detection",
+  "icon": "search",
+  "color": "#1abc9c",
+  "severity": "medium",
+  "description": "通过 URL 模式匹配和内容嗅探自动识别信息源类型，降低用户配置成本",
+  "tags": [
+    "auto-detect",
+    "URL pattern",
+    "content-type",
+    "RSS",
+    "source type"
+  ],
+  "sub_problems": [
+    "URL 正则匹配已知平台",
+    "HTTP Content-Type 嗅探",
+    "RSS/Atom XML 解析",
+    "JSON Feed 检测",
+    "HTML 降级处理"
+  ],
+  "best_practices": [
+    "先 URL 模式匹配再 HTTP 嗅探",
+    "支持多种 feed 格式降级",
+    "返回预览数据辅助用户确认"
+  ]
+}

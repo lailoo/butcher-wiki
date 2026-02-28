@@ -1,0 +1,29 @@
+{
+  "id": "PD-152",
+  "slug": "hash-id-collision-prevention",
+  "title": "哈希 ID 防冲突",
+  "subtitle": "Hash-Based ID Collision Prevention",
+  "icon": "shield",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "使用 hash-based ID 替代自增 ID，实现分布式环境下的 ID 唯一性保证",
+  "tags": [
+    "hash ID",
+    "collision detection",
+    "distributed",
+    "FNV",
+    "merge conflict"
+  ],
+  "sub_problems": [
+    "哈希算法选择",
+    "碰撞检测机制",
+    "ID 格式设计",
+    "分布式唯一性"
+  ],
+  "best_practices": [
+    "FNV-1a 快速哈希",
+    "碰撞时重新生成",
+    "短 ID 格式（bd-a1b2）",
+    "无中心化协调"
+  ]
+}

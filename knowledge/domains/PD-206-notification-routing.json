@@ -1,0 +1,26 @@
+{
+  "id": "PD-206",
+  "slug": "notification-routing",
+  "title": "通知路由",
+  "subtitle": "Multi-Channel Notification Routing",
+  "icon": "message-circle",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "按事件优先级路由通知到不同渠道（desktop/slack/webhook），支持 Block Kit 富文本",
+  "tags": [
+    "notification",
+    "slack",
+    "webhook",
+    "routing"
+  ],
+  "sub_problems": [
+    "优先级分级路由",
+    "多渠道适配",
+    "富文本消息构建",
+    "通知去重与抑制"
+  ],
+  "best_practices": [
+    "push not pull：人类不轮询，通知主动推送",
+    "priority-based routing 区分 urgent/action/warning/info"
+  ]
+}

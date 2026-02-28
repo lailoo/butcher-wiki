@@ -1,0 +1,25 @@
+{
+  "id": "PD-227",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "集中管理应用配置，支持默认值、环境变量和运行时覆盖",
+  "tags": [
+    "config",
+    "settings",
+    "env",
+    "defaults"
+  ],
+  "sub_problems": [
+    "默认配置与运行时覆盖",
+    "环境变量与 .env 文件加载",
+    "全局配置单例管理",
+    "CLI 交互式配置收集"
+  ],
+  "best_practices": [
+    "DEFAULT_CONFIG 字典 + get_config/set_config 单例模式，CLI 层覆盖默认值"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-221",
+  "slug": "data-vendor-routing",
+  "title": "数据源路由与 Fallback",
+  "subtitle": "Data Vendor Routing & Fallback",
+  "icon": "link",
+  "color": "#0891B2",
+  "severity": "high",
+  "description": "可配置的多数据源路由系统，支持分类级和工具级配置覆盖及自动 fallback",
+  "tags": [
+    "data-source",
+    "routing",
+    "fallback",
+    "vendor"
+  ],
+  "sub_problems": [
+    "多级配置优先级",
+    "Vendor 注册表管理",
+    "Rate limit 自动 fallback",
+    "数据格式统一"
+  ],
+  "best_practices": [
+    "tool 级配置覆盖 category 级",
+    "只有特定错误类型触发 fallback 而非所有异常"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-174",
+  "slug": "internationalization",
+  "title": "国际化",
+  "subtitle": "Internationalization (i18n)",
+  "icon": "globe",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "前后端协同的多语言支持系统，覆盖 UI 文案和 LLM 输出语言",
+  "tags": [
+    "i18n",
+    "locale",
+    "language",
+    "frontend"
+  ],
+  "sub_problems": [
+    "前端 UI 多语言",
+    "LLM 输出语言控制",
+    "浏览器语言自动检测",
+    "语言偏好持久化"
+  ],
+  "best_practices": [
+    "next-intl 管理前端翻译",
+    "LanguageContext 全局状态",
+    "prompt 中注入 language_name 控制 LLM 输出语言"
+  ]
+}

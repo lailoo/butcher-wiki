@@ -1,0 +1,27 @@
+{
+  "id": "PD-329",
+  "slug": "version-controlled-database",
+  "title": "版本控制数据库",
+  "subtitle": "Version-Controlled Database",
+  "icon": "git-branch",
+  "color": "#10B981",
+  "severity": "high",
+  "description": "使用版本控制数据库实现数据的分支、合并、历史追溯和分布式同步",
+  "tags": [
+    "Dolt",
+    "version-control",
+    "merge",
+    "federation"
+  ],
+  "sub_problems": [
+    "Cell-level 三路合并",
+    "Embedded vs Server 模式切换",
+    "Federation 远程同步",
+    "数据主权分级控制"
+  ],
+  "best_practices": [
+    "每次写操作自动 commit",
+    "Hash-based ID 避免合并冲突",
+    "Sovereignty 分级保护敏感数据"
+  ]
+}

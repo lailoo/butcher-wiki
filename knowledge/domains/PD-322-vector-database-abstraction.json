@@ -1,0 +1,26 @@
+{
+  "id": "PD-322",
+  "slug": "vector-database-abstraction",
+  "title": "向量数据库抽象层",
+  "subtitle": "Vector Database Abstraction Layer",
+  "icon": "database",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "通过适配器模式支持多种向量存储后端，统一 collection/index/store 三层架构",
+  "tags": [
+    "vector DB",
+    "adapter",
+    "factory",
+    "embedding"
+  ],
+  "sub_problems": [
+    "多后端适配器统一接口",
+    "dense+sparse 混合向量支持",
+    "collection 生命周期管理",
+    "向量化队列异步处理"
+  ],
+  "best_practices": [
+    "工厂模式按配置创建适配器",
+    "三层架构分离关注点"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-207",
+  "slug": "cli-design",
+  "title": "CLI 设计",
+  "subtitle": "CLI Design & Developer Experience",
+  "icon": "terminal",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "Commander.js 实现子命令体系，支持交互式 init 向导、auto 模式、batch-spawn 批量操作",
+  "tags": [
+    "cli",
+    "commander",
+    "dx",
+    "wizard"
+  ],
+  "sub_problems": [
+    "子命令注册与参数解析",
+    "交互式向导与自动模式",
+    "环境检测与智能默认值",
+    "输出格式化与脚本友好"
+  ],
+  "best_practices": [
+    "ao init --auto 零交互生成配置",
+    "batch-spawn 内置去重检测"
+  ]
+}

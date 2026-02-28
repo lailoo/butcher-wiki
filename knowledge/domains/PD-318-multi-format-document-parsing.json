@@ -1,0 +1,26 @@
+{
+  "id": "PD-318",
+  "slug": "multi-format-document-parsing",
+  "title": "多格式文档解析",
+  "subtitle": "Multi-Format Document Parsing",
+  "icon": "file-text",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "支持 15+ 种文档格式的统一解析框架，含 AST 级代码理解和自定义解析器扩展",
+  "tags": [
+    "parser",
+    "tree-sitter",
+    "AST",
+    "document"
+  ],
+  "sub_problems": [
+    "文件类型自动检测与路由",
+    "代码 AST 提取与骨架生成",
+    "自定义解析器注册机制",
+    "多媒体内容理解"
+  ],
+  "best_practices": [
+    "Registry 单例管理解析器生命周期",
+    "tree-sitter 实现语言无关的代码解析"
+  ]
+}

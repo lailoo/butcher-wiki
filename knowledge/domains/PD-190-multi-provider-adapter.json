@@ -1,0 +1,23 @@
+{
+  "id": "PD-190",
+  "slug": "multi-provider-adapter",
+  "title": "多供应商适配",
+  "subtitle": "Multi-Provider Adapter",
+  "icon": "layers",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "通过接口抽象统一多个第三方服务供应商的调用与切换",
+  "tags": [
+    "适配器",
+    "工厂模式",
+    "接口抽象"
+  ],
+  "sub_problems": [
+    "供应商接口统一",
+    "配置驱动的动态选择",
+    "供应商特定错误处理"
+  ],
+  "best_practices": [
+    "Provider接口+工厂模式实现开闭原则"
+  ]
+}

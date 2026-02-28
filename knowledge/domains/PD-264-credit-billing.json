@@ -1,0 +1,25 @@
+{
+  "id": "PD-264",
+  "slug": "credit-billing",
+  "title": "积分与计费",
+  "subtitle": "Credit & Billing System",
+  "icon": "cpu",
+  "color": "#f39c12",
+  "severity": "high",
+  "description": "积分经济系统、订阅管理、用量计量和支付集成",
+  "tags": [
+    "billing",
+    "credit",
+    "subscription",
+    "stripe"
+  ],
+  "sub_problems": [
+    "积分充值消费欠债三向流转",
+    "多来源充值归因",
+    "工具调用计费",
+    "Stripe订阅集成"
+  ],
+  "best_practices": [
+    "先偿还欠债再入账新积分"
+  ]
+}

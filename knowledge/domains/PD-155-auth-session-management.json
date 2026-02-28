@@ -1,0 +1,29 @@
+{
+  "id": "PD-155",
+  "slug": "auth-session-management",
+  "title": "认证与会话管理",
+  "subtitle": "Authentication & Session Management",
+  "icon": "lock",
+  "color": "#e74c3c",
+  "severity": "high",
+  "description": "解决用户身份验证、会话生命周期、OAuth 集成和 API 鉴权问题",
+  "tags": [
+    "OAuth",
+    "session",
+    "cookie",
+    "API key",
+    "CORS"
+  ],
+  "sub_problems": [
+    "OAuth 2.0 流程实现",
+    "会话 cookie 安全配置",
+    "CSRF state 签名验证",
+    "API Key 鉴权",
+    "CORS origin 白名单"
+  ],
+  "best_practices": [
+    "HMAC 签名 OAuth state 防 CSRF",
+    "timingSafeEqual 防时序攻击",
+    "HttpOnly+Secure+SameSite cookie"
+  ]
+}

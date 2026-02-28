@@ -1,0 +1,29 @@
+{
+  "id": "PD-158",
+  "slug": "ssrf-protection",
+  "title": "SSRF 防护",
+  "subtitle": "Server-Side Request Forgery Protection",
+  "icon": "alert-triangle",
+  "color": "#e67e22",
+  "severity": "high",
+  "description": "防止服务端发起对内网资源的非授权请求，保护内部服务安全",
+  "tags": [
+    "SSRF",
+    "security",
+    "DNS",
+    "IP filter",
+    "network"
+  ],
+  "sub_problems": [
+    "协议白名单校验",
+    "DNS 解析后 IP 检查",
+    "私有/特殊 IP 段拦截",
+    "localhost 和 IPv6 回环检测",
+    "重定向链安全"
+  ],
+  "best_practices": [
+    "DNS 解析后检查所有返回 IP",
+    "覆盖 IPv4 和 IPv6 私有网段",
+    "限制重定向次数和超时时间"
+  ]
+}

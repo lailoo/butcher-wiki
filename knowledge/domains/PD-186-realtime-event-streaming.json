@@ -1,0 +1,25 @@
+{
+  "id": "PD-186",
+  "slug": "realtime-event-streaming",
+  "title": "实时事件流",
+  "subtitle": "Real-time Event Streaming",
+  "icon": "activity",
+  "color": "#e67e22",
+  "severity": "medium",
+  "description": "通过 SSE 实现服务端到客户端的实时事件推送，支持多客户端广播和断连处理",
+  "tags": [
+    "SSE",
+    "real-time",
+    "event-streaming",
+    "web-viewer"
+  ],
+  "sub_problems": [
+    "SSE 客户端连接管理",
+    "事件广播与断连清理",
+    "前端实时消费(React hooks)",
+    "事件类型设计与序列化"
+  ],
+  "best_practices": [
+    "使用 Set 管理客户端连接，单次遍历广播避免两步清理"
+  ]
+}

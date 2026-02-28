@@ -1,0 +1,23 @@
+{
+  "id": "PD-338",
+  "slug": "parallel-inference-test-time-scaling",
+  "title": "并行推理与Test-Time Scaling",
+  "subtitle": "Parallel Inference & Test-Time Scaling",
+  "icon": "git-branch",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "通过多路径并行推理和不确定性驱动的分支采样提升Agent推理质量",
+  "tags": [
+    "test-time scaling",
+    "parallel rollout",
+    "uncertainty sampling"
+  ],
+  "sub_problems": [
+    "如何识别推理路径中的高不确定性步骤",
+    "如何高效分配采样预算到不同分支",
+    "如何聚合多条推理路径的结果"
+  ],
+  "best_practices": [
+    "基于token-level entropy/PPL识别分支点"
+  ]
+}

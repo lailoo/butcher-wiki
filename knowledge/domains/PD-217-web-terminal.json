@@ -1,0 +1,32 @@
+{
+  "id": "PD-217",
+  "slug": "web-terminal",
+  "title": "Web 终端集成",
+  "subtitle": "Web Terminal Integration",
+  "icon": "terminal",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "通过 ttyd 进程池为每个 session 提供 Web 终端访问，支持端口池化和健康检查",
+  "tags": [
+    "terminal",
+    "ttyd",
+    "tmux",
+    "websocket"
+  ],
+  "sub_problems": [
+    "ttyd 进程生命周期管理",
+    "端口分配与回收",
+    "tmux session 名称解析",
+    "WebSocket 代理与 CORS",
+    "xterm.js 缺失 XDA 响应导致 tmux 剪贴板失效",
+    "双通道方案的选择与渐进增强策略",
+    "node-pty 与 Node.js 版本兼容性约束"
+  ],
+  "best_practices": [
+    "端口池化避免 TIME_WAIT 问题",
+    "once(exit) 替代 on(exit) 防重复清理",
+    "进程引用守卫防止竞态条件下的 session 条目误删",
+    "createServer 工厂函数分离创建与监听以支持测试",
+    "xterm.js 动态 import 避免 Next.js SSR 报错"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-407",
+  "slug": "multimodal-message-parsing",
+  "title": "多模态消息解析",
+  "subtitle": "Multimodal Message Parsing",
+  "icon": "layers",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "将多模态对话消息（文本/文件/图片/音频）解析为结构化记忆条目",
+  "tags": [
+    "multimodal",
+    "parser",
+    "message"
+  ],
+  "sub_problems": [
+    "多种消息角色的差异化解析",
+    "文本/文件/图片/音频内容提取",
+    "fast/fine 两级解析精度",
+    "自动语言检测与标注"
+  ],
+  "best_practices": [
+    "Strategy 模式分离不同消息类型",
+    "SourceMessage 统一中间表示",
+    "fast 模式保证低延迟"
+  ]
+}

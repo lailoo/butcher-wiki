@@ -1,0 +1,27 @@
+{
+  "id": "PD-327",
+  "slug": "workflow-template-engine",
+  "title": "工作流模板引擎",
+  "subtitle": "Workflow Template Engine",
+  "icon": "layers",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "声明式工作流模板的解析、继承、组合与实例化，将模板编译为可执行的任务依赖图",
+  "tags": [
+    "workflow",
+    "template",
+    "DSL",
+    "composition"
+  ],
+  "sub_problems": [
+    "模板继承与变量替换",
+    "条件步骤与循环展开",
+    "AOP Advice 注入",
+    "Bond Point 组合"
+  ],
+  "best_practices": [
+    "支持 TOML/JSON 双格式",
+    "循环检测防止无限继承",
+    "Source tracing 追踪步骤来源"
+  ]
+}

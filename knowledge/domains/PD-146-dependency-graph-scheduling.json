@@ -1,0 +1,29 @@
+{
+  "id": "PD-146",
+  "slug": "dependency-graph-scheduling",
+  "title": "依赖图与任务调度",
+  "subtitle": "Dependency Graph & Task Scheduling",
+  "icon": "network",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "基于 DAG 的任务依赖管理，支持拓扑排序、循环检测和并行度分析",
+  "tags": [
+    "DAG",
+    "dependency",
+    "scheduling",
+    "graph",
+    "topological sort"
+  ],
+  "sub_problems": [
+    "依赖关系建模",
+    "拓扑排序算法",
+    "循环依赖检测",
+    "并行度分析"
+  ],
+  "best_practices": [
+    "支持多种关系类型（blocks/relates_to/duplicates）",
+    "wave 分析计算可并行任务",
+    "循环依赖早期检测",
+    "依赖图可视化"
+  ]
+}

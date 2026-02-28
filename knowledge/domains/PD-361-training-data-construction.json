@@ -1,0 +1,25 @@
+{
+  "id": "PD-361",
+  "slug": "training-data-construction",
+  "title": "训练数据构建",
+  "subtitle": "Training Data Construction",
+  "icon": "file-text",
+  "color": "#F39C12",
+  "severity": "medium",
+  "description": "利用专家模型自动构建高质量RL/SFT训练数据，包括CoT轨迹生成和格式转换",
+  "tags": [
+    "data pipeline",
+    "CoT",
+    "SFT",
+    "synthetic data"
+  ],
+  "sub_problems": [
+    "专家模型轨迹采样",
+    "坐标系归一化",
+    "多格式转换",
+    "数据质量过滤"
+  ],
+  "best_practices": [
+    "用强模型生成CoT数据再用弱模型SFT学习模式"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-314",
+  "slug": "websocket-realtime-streaming",
+  "title": "WebSocket实时通信",
+  "subtitle": "WebSocket Real-time Streaming",
+  "icon": "activity",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "WebSocket连接管理、消息队列化发送、多类型事件流式推送的实时通信系统",
+  "tags": [
+    "websocket",
+    "streaming",
+    "real-time",
+    "event"
+  ],
+  "sub_problems": [
+    "连接生命周期管理",
+    "消息队列防阻塞",
+    "多事件类型路由",
+    "断线重连处理"
+  ],
+  "best_practices": [
+    "asyncio.Queue解耦消息生产和发送",
+    "CustomLogsHandler统一封装不同输出目标"
+  ]
+}

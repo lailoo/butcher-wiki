@@ -1,0 +1,25 @@
+{
+  "id": "PD-399",
+  "slug": "feature-flag-system",
+  "title": "Feature Flag系统",
+  "subtitle": "Feature Flag System",
+  "icon": "eye",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "集中管理功能开关，实现渐进式功能发布和A/B测试",
+  "tags": [
+    "feature flag",
+    "toggle",
+    "release",
+    "configuration"
+  ],
+  "sub_problems": [
+    "功能开关定义",
+    "环境变量覆盖",
+    "运行时切换",
+    "依赖关系管理"
+  ],
+  "best_practices": [
+    "集中定义所有Feature Flag，支持环境变量覆盖默认值"
+  ]
+}

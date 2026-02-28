@@ -1,0 +1,27 @@
+{
+  "id": "PD-249",
+  "slug": "domain-template-system",
+  "title": "领域模板系统",
+  "subtitle": "Domain Template System",
+  "icon": "file-text",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "按领域/类型提供标准化的生产就绪模板，降低从零开始的创作门槛",
+  "tags": [
+    "template",
+    "recipe",
+    "scaffold",
+    "genre"
+  ],
+  "sub_problems": [
+    "模板结构标准化",
+    "参数化骨架设计",
+    "资产清单规范",
+    "模板选择决策树"
+  ],
+  "best_practices": [
+    "每个模板声明委托级别和模式",
+    "提供资产清单和注意事项",
+    "Quick Picker 表辅助模板选择"
+  ]
+}

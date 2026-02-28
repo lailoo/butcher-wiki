@@ -1,0 +1,26 @@
+{
+  "id": "PD-373",
+  "slug": "channel-health-monitoring",
+  "title": "渠道健康监控",
+  "subtitle": "Channel Health Monitoring",
+  "icon": "activity",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "自动监控消息渠道连接状态，支持故障检测、自动重启和重启风暴防护",
+  "tags": [
+    "health",
+    "monitoring",
+    "reconnect"
+  ],
+  "sub_problems": [
+    "连接状态检测",
+    "自动重启策略",
+    "重启风暴防护",
+    "宽限期管理"
+  ],
+  "best_practices": [
+    "指数退避重连",
+    "每小时重启次数限制",
+    "冷却周期机制"
+  ]
+}

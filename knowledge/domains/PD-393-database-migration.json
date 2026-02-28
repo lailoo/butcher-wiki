@@ -1,0 +1,26 @@
+{
+  "id": "PD-393",
+  "slug": "database-migration",
+  "title": "数据库迁移",
+  "subtitle": "Database Migration",
+  "icon": "refresh-cw",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "使用Alembic管理数据库Schema版本演进和增量迁移",
+  "tags": [
+    "alembic",
+    "migration",
+    "schema",
+    "SQLAlchemy",
+    "versioning"
+  ],
+  "sub_problems": [
+    "Schema版本管理",
+    "增量迁移生成",
+    "多数据库引擎适配",
+    "回滚策略"
+  ],
+  "best_practices": [
+    "每次Schema变更生成独立迁移文件，支持前进和回滚"
+  ]
+}

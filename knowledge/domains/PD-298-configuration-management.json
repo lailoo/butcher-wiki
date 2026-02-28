@@ -1,0 +1,25 @@
+{
+  "id": "PD-298",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#6366F1",
+  "severity": "medium",
+  "description": "多层配置体系(默认值→环境变量→CLI→配置文件)，统一类型转换和校验",
+  "tags": [
+    "config",
+    "env",
+    "CLI"
+  ],
+  "sub_problems": [
+    "多源配置优先级",
+    "类型安全转换",
+    "配置校验与警告",
+    "环境变量自动发现"
+  ],
+  "best_practices": [
+    "dataclass字段+get_env_value统一处理",
+    "BindingOptions自动生成argparse和.env模板"
+  ]
+}

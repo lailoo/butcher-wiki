@@ -1,0 +1,25 @@
+{
+  "id": "PD-299",
+  "slug": "multi-tenant-data-isolation",
+  "title": "多租户数据隔离",
+  "subtitle": "Multi-Tenant Data Isolation",
+  "icon": "box",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "workspace+namespace双层隔离实现多租户数据分离，每个租户独立存储空间",
+  "tags": [
+    "multi-tenant",
+    "isolation",
+    "namespace"
+  ],
+  "sub_problems": [
+    "命名空间设计",
+    "跨租户数据隔离",
+    "默认workspace兼容",
+    "初始化状态管理"
+  ],
+  "best_practices": [
+    "workspace:namespace组合key",
+    "shared_storage统一管理跨进程状态"
+  ]
+}

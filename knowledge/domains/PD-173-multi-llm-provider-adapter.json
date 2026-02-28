@@ -1,0 +1,27 @@
+{
+  "id": "PD-173",
+  "slug": "multi-llm-provider-adapter",
+  "title": "多 LLM Provider 适配",
+  "subtitle": "Multi-LLM Provider Adapter",
+  "icon": "cpu",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一适配多个 LLM 提供商的接口抽象层，支持运行时切换和配置驱动",
+  "tags": [
+    "LLM",
+    "provider",
+    "adapter",
+    "multi-model"
+  ],
+  "sub_problems": [
+    "统一 API 抽象",
+    "配置驱动模型选择",
+    "流式/非流式响应适配",
+    "自定义模型支持"
+  ],
+  "best_practices": [
+    "使用 ModelClient 接口统一不同 provider",
+    "JSON 配置文件管理模型参数",
+    "client_class 字符串到类的动态映射"
+  ]
+}

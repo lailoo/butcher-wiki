@@ -1,0 +1,24 @@
+{
+  "id": "PD-306",
+  "slug": "config-driven-architecture",
+  "title": "配置驱动架构",
+  "subtitle": "Configuration-Driven Architecture",
+  "icon": "settings",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "通过外部配置文件驱动系统行为，支持环境变量覆盖和运行时配置持久化",
+  "tags": [
+    "configuration",
+    "JSON-config",
+    "dynamic-loading"
+  ],
+  "sub_problems": [
+    "配置层级与覆盖",
+    "运行时配置持久化",
+    "动态类加载",
+    "配置校验"
+  ],
+  "best_practices": [
+    "配置分层：默认值 < 配置文件 < 环境变量 < 命令行参数"
+  ]
+}

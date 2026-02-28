@@ -1,0 +1,26 @@
+{
+  "id": "PD-391",
+  "slug": "event-driven-architecture",
+  "title": "事件驱动架构",
+  "subtitle": "Event-Driven Architecture",
+  "icon": "zap",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "基于事件管理器的实时通信和状态广播机制",
+  "tags": [
+    "event",
+    "SSE",
+    "pub-sub",
+    "realtime",
+    "webhook"
+  ],
+  "sub_problems": [
+    "事件注册与分发",
+    "SSE流式推送",
+    "Webhook事件广播",
+    "队列背压控制"
+  ],
+  "best_practices": [
+    "使用asyncio.Queue实现非阻塞事件传递"
+  ]
+}

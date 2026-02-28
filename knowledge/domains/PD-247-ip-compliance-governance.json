@@ -1,0 +1,28 @@
+{
+  "id": "PD-247",
+  "slug": "ip-compliance-governance",
+  "title": "IP 合规治理",
+  "subtitle": "IP Compliance Governance",
+  "icon": "shield",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "AI 生成内容的知识产权合规检查、安全替换和实时执法数据管理",
+  "tags": [
+    "copyright",
+    "IP",
+    "compliance",
+    "content-safety"
+  ],
+  "sub_problems": [
+    "受保护 IP 识别与分类",
+    "安全描述替换映射",
+    "多维度预生成合规门控",
+    "实时执法数据更新",
+    "美学借鉴与直接复制的边界"
+  ],
+  "best_practices": [
+    "描述外观而非名称",
+    "每次生成前运行 6 道合规检查",
+    "维护实时更新的执法数据库"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-381",
+  "slug": "multimodal-inference",
+  "title": "多模态推理",
+  "subtitle": "Multimodal Inference",
+  "icon": "eye",
+  "color": "#06B6D4",
+  "severity": "medium",
+  "description": "统一处理文本、图像、音频、视频等多模态输入的推理框架",
+  "tags": [
+    "多模态",
+    "图像",
+    "音频",
+    "视频",
+    "encoder"
+  ],
+  "sub_problems": [
+    "多模态输入预处理管道",
+    "encoder预算控制",
+    "多模态缓存策略",
+    "encoder-decoder架构支持"
+  ],
+  "best_practices": [
+    "使用MultiModalBudget控制encoder计算开销",
+    "通过registry统一注册多模态处理器"
+  ]
+}

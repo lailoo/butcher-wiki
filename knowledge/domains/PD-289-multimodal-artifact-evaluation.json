@@ -1,0 +1,24 @@
+{
+  "id": "PD-289",
+  "slug": "multimodal-artifact-evaluation",
+  "title": "多模态产物评估",
+  "subtitle": "Multimodal Artifact Evaluation",
+  "icon": "eye",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "对 Agent 生成的多格式文件产物进行视觉+文本的 LLM 多模态质量评估",
+  "tags": [
+    "多模态评估",
+    "产物评分",
+    "视觉分析"
+  ],
+  "sub_problems": [
+    "多格式文件解析(DOCX/XLSX/PPTX/PDF/图片)",
+    "文件转图片管道(LibreOffice+pdf2image)",
+    "职业专属评分 rubric 设计",
+    "评分结果解析与归一化"
+  ],
+  "best_practices": [
+    "为每个任务类别设计专属评分 rubric 而非通用标准"
+  ]
+}

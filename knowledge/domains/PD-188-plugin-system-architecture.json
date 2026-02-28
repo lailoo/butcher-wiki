@@ -1,0 +1,25 @@
+{
+  "id": "PD-188",
+  "slug": "plugin-system-architecture",
+  "title": "插件系统架构",
+  "subtitle": "Plugin System Architecture",
+  "icon": "box",
+  "color": "#8e44ad",
+  "severity": "high",
+  "description": "实现完整的插件生命周期：声明式元数据、钩子注册、技能系统和 marketplace 分发",
+  "tags": [
+    "plugin",
+    "skill-system",
+    "marketplace",
+    "extensibility"
+  ],
+  "sub_problems": [
+    "插件元数据声明与发现",
+    "生命周期钩子注册机制",
+    "技能(Skill)系统设计",
+    "依赖缓存与智能安装"
+  ],
+  "best_practices": [
+    "使用 hooks.json 声明式注册钩子，避免硬编码生命周期绑定"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-331",
+  "slug": "hierarchical-config-management",
+  "title": "层级配置管理",
+  "subtitle": "Hierarchical Configuration Management",
+  "icon": "settings",
+  "color": "#6366F1",
+  "severity": "medium",
+  "description": "多层级配置优先级链，支持项目级、用户级和全局级配置的合并与覆盖",
+  "tags": [
+    "config",
+    "YAML",
+    "viper",
+    "hierarchical"
+  ],
+  "sub_problems": [
+    "多级配置优先级链",
+    "环境变量自动绑定",
+    "配置覆盖检测与告警",
+    "本地覆盖文件隔离"
+  ],
+  "best_practices": [
+    "Flag > Env > Config > Default 优先级",
+    "config.local.yaml 隔离机器特定配置",
+    "配置变更源追踪"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "PD-160",
+  "slug": "internationalization",
+  "title": "国际化",
+  "subtitle": "Internationalization (i18n)",
+  "icon": "globe",
+  "color": "#2ecc71",
+  "severity": "medium",
+  "description": "解决多语言 UI 展示、语言偏好持久化和后端内容多语言返回问题",
+  "tags": [
+    "i18n",
+    "locale",
+    "language",
+    "translation",
+    "l10n"
+  ],
+  "sub_problems": [
+    "翻译字典管理",
+    "语言切换与持久化",
+    "后端内容多语言返回",
+    "日期时间本地化"
+  ],
+  "best_practices": [
+    "t(key) 函数统一翻译入口",
+    "localStorage 持久化语言偏好",
+    "API 支持 lang 参数"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-269",
+  "slug": "variable-extraction",
+  "title": "变量提取",
+  "subtitle": "Intelligent Variable Extraction",
+  "icon": "sparkles",
+  "color": "#8e44ad",
+  "severity": "medium",
+  "description": "LLM驱动的工作流变量自动提取与参数化",
+  "tags": [
+    "variable",
+    "extraction",
+    "llm",
+    "workflow"
+  ],
+  "sub_problems": [
+    "画布内容语义分析",
+    "变量类型推断",
+    "历史变量复用",
+    "置信度评分"
+  ],
+  "best_practices": [
+    "结合历史数据提高变量复用率"
+  ]
+}

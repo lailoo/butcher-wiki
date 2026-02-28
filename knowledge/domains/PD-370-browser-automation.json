@@ -1,0 +1,26 @@
+{
+  "id": "PD-370",
+  "slug": "browser-automation",
+  "title": "浏览器自动化",
+  "subtitle": "Browser Automation",
+  "icon": "globe",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "基于Playwright的浏览器自动化，支持CDP协议、多Profile和AI辅助交互",
+  "tags": [
+    "browser",
+    "playwright",
+    "automation"
+  ],
+  "sub_problems": [
+    "浏览器生命周期管理",
+    "多Profile隔离",
+    "AI辅助页面理解",
+    "沙箱浏览器容器"
+  ],
+  "best_practices": [
+    "CDP协议直连",
+    "导航守卫防止恶意跳转",
+    "截图作为Agent上下文"
+  ]
+}

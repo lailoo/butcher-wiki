@@ -1,0 +1,25 @@
+{
+  "id": "PD-254",
+  "slug": "declarative-workflow-config",
+  "title": "声明式工作流配置",
+  "subtitle": "Declarative Workflow Configuration",
+  "icon": "settings",
+  "color": "#06B6D4",
+  "severity": "medium",
+  "description": "通过YAML/JSON声明式定义工作流行为，支持继承、引用解析和Schema校验",
+  "tags": [
+    "declarative",
+    "workflow",
+    "config"
+  ],
+  "sub_problems": [
+    "配置继承与覆盖",
+    "运行时风格切换",
+    "Schema校验",
+    "环境变量与配置融合"
+  ],
+  "best_practices": [
+    "工作流行为与代码分离，用配置文件声明",
+    "支持extends继承减少配置重复"
+  ]
+}

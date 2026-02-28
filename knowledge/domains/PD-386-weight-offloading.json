@@ -1,0 +1,26 @@
+{
+  "id": "PD-386",
+  "slug": "weight-offloading",
+  "title": "权重卸载与预取",
+  "subtitle": "Weight Offloading & Prefetch",
+  "icon": "clock",
+  "color": "#14B8A6",
+  "severity": "medium",
+  "description": "将模型权重卸载到CPU内存，按需预取到GPU，突破显存限制",
+  "tags": [
+    "权重卸载",
+    "CPU offload",
+    "预取",
+    "UVA"
+  ],
+  "sub_problems": [
+    "卸载策略选择",
+    "预取调度与流水线",
+    "UVA统一虚拟寻址",
+    "与量化的协同"
+  ],
+  "best_practices": [
+    "优先使用Prefetch模式隐藏传输延迟",
+    "结合量化进一步降低传输量"
+  ]
+}

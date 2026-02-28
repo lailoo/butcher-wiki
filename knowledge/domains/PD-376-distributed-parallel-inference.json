@@ -1,0 +1,26 @@
+{
+  "id": "PD-376",
+  "slug": "distributed-parallel-inference",
+  "title": "分布式并行推理",
+  "subtitle": "Distributed Parallel Inference",
+  "icon": "network",
+  "color": "#6366F1",
+  "severity": "high",
+  "description": "多维并行策略实现大模型跨设备分布式推理",
+  "tags": [
+    "tensor并行",
+    "pipeline并行",
+    "data并行",
+    "expert并行"
+  ],
+  "sub_problems": [
+    "进程组拓扑管理",
+    "通信后端选择与优化",
+    "负载均衡策略",
+    "故障检测与恢复"
+  ],
+  "best_practices": [
+    "优先使用tensor并行，pipeline并行作为补充",
+    "使用NCCL作为GPU间通信后端"
+  ]
+}

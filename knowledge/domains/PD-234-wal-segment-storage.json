@@ -1,0 +1,24 @@
+{
+  "id": "PD-234",
+  "slug": "wal-segment-storage",
+  "title": "WAL 持久化与段管理",
+  "subtitle": "WAL & Segment Storage",
+  "icon": "database",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "通过写前日志和分段存储实现数据持久性、崩溃恢复和高效读写",
+  "tags": [
+    "WAL",
+    "段管理",
+    "持久化",
+    "崩溃恢复"
+  ],
+  "sub_problems": [
+    "WAL 写入与回放",
+    "段合并与压缩",
+    "版本快照管理"
+  ],
+  "best_practices": [
+    "WAL 保障写入原子性，段合并减少读放大"
+  ]
+}

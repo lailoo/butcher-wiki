@@ -1,0 +1,23 @@
+{
+  "id": "PD-196",
+  "slug": "cli-skill-architecture",
+  "title": "CLI 技能化架构",
+  "subtitle": "CLI Skill Architecture",
+  "icon": "terminal",
+  "color": "#14b8a6",
+  "severity": "high",
+  "description": "将CLI工具封装为AI Agent可调用的Skill，通过SKILL.md定义工作流和自然语言接口",
+  "tags": [
+    "Claude Skill",
+    "CLI",
+    "工作流"
+  ],
+  "sub_problems": [
+    "Skill元数据与工作流定义",
+    "自动安装与二进制分发",
+    "自然语言到CLI命令映射"
+  ],
+  "best_practices": [
+    "SKILL.md定义完整工作流步骤，run.sh处理安装与路由"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-350",
+  "slug": "storage-abstraction",
+  "title": "存储抽象层",
+  "subtitle": "Storage Abstraction Layer",
+  "icon": "database",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "统一文件读写接口，支持本地和云存储透明切换",
+  "tags": [
+    "storage",
+    "abstraction",
+    "S3",
+    "local filesystem"
+  ],
+  "sub_problems": [
+    "读写接口统一",
+    "多存储后端适配",
+    "编码安全处理",
+    "多桶S3支持"
+  ],
+  "best_practices": [
+    "通过ABC抽象基类定义DataReader/DataWriter统一接口"
+  ]
+}

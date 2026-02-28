@@ -1,0 +1,25 @@
+{
+  "id": "PD-267",
+  "slug": "multi-provider-adapter",
+  "title": "多模型提供商适配",
+  "subtitle": "Multi-Provider LLM Adapter",
+  "icon": "layers",
+  "color": "#e67e22",
+  "severity": "high",
+  "description": "统一适配多家LLM/Embedding/Reranker提供商的抽象层",
+  "tags": [
+    "provider",
+    "llm",
+    "adapter",
+    "multi-model"
+  ],
+  "sub_problems": [
+    "提供商工厂模式",
+    "多区域负载均衡",
+    "监控包装器注入",
+    "能力自动检测"
+  ],
+  "best_practices": [
+    "工厂函数按providerKey分发避免if-else链"
+  ]
+}

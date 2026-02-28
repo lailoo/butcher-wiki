@@ -1,0 +1,27 @@
+{
+  "id": "PD-414",
+  "slug": "ci-cd-ai-integration",
+  "title": "CI/CD 自动化集成",
+  "subtitle": "CI/CD AI Integration",
+  "icon": "git-branch",
+  "color": "#22c55e",
+  "severity": "medium",
+  "description": "解决 AI CLI 工具与 CI/CD 流水线的集成，实现 AI 驱动的自动化任务",
+  "tags": [
+    "CI/CD",
+    "GitHub Actions",
+    "automation",
+    "DevOps"
+  ],
+  "sub_problems": [
+    "GitHub Actions 集成",
+    "API 密钥安全管理",
+    "Prompt 驱动任务执行",
+    "Issue/PR 自动化"
+  ],
+  "best_practices": [
+    "提供官方 Action 封装",
+    "通过 Secret 管理密钥",
+    "支持 prompt 参数化"
+  ]
+}

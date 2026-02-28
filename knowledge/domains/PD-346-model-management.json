@@ -1,0 +1,24 @@
+{
+  "id": "PD-346",
+  "slug": "model-management",
+  "title": "模型管理与自动下载",
+  "subtitle": "Model Management & Auto-Download",
+  "icon": "cpu",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "AI模型的生命周期管理，包括自动下载、缓存、多源切换和单例复用",
+  "tags": [
+    "model management",
+    "auto-download",
+    "singleton"
+  ],
+  "sub_problems": [
+    "模型自动下载与缓存",
+    "多模型源切换",
+    "模型实例单例管理",
+    "模型版本控制"
+  ],
+  "best_practices": [
+    "使用Singleton模式避免重复加载大模型"
+  ]
+}

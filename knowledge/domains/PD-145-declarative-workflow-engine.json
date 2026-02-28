@@ -1,0 +1,29 @@
+{
+  "id": "PD-145",
+  "slug": "declarative-workflow-engine",
+  "title": "声明式工作流引擎",
+  "subtitle": "Declarative Workflow Engine",
+  "icon": "git-branch",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "通过声明式模板定义可复用工作流，支持步骤编排、依赖管理、变量替换和条件分支",
+  "tags": [
+    "workflow",
+    "template",
+    "declarative",
+    "TOML",
+    "orchestration"
+  ],
+  "sub_problems": [
+    "工作流模板定义",
+    "步骤依赖编排",
+    "变量与条件分支",
+    "模板继承与复用"
+  ],
+  "best_practices": [
+    "使用 TOML 格式提升可读性",
+    "支持层级搜索路径（project/user/orchestrator）",
+    "模板继承机制避免重复",
+    "变量验证与默认值"
+  ]
+}

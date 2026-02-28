@@ -1,0 +1,23 @@
+{
+  "id": "PD-191",
+  "slug": "image-processing-pipeline",
+  "title": "图片处理管线",
+  "subtitle": "Image Processing Pipeline",
+  "icon": "layers",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "多来源图片的获取、压缩、格式转换与平台上传的完整处理链",
+  "tags": [
+    "图片压缩",
+    "管线",
+    "上传"
+  ],
+  "sub_problems": [
+    "多来源图片统一处理",
+    "自适应压缩与质量控制",
+    "占位符异步替换机制"
+  ],
+  "best_practices": [
+    "压缩后比原图大则跳过，保持Lanczos高质量缩放"
+  ]
+}

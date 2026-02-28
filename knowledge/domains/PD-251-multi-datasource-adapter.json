@@ -1,0 +1,27 @@
+{
+  "id": "PD-251",
+  "slug": "multi-datasource-adapter",
+  "title": "多数据源适配器",
+  "subtitle": "Multi-DataSource Adapter",
+  "icon": "database",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "统一抽象多个金融数据源，基于交易所路由自动选择适配器",
+  "tags": [
+    "adapter",
+    "data source",
+    "routing"
+  ],
+  "sub_problems": [
+    "数据源抽象接口",
+    "交易所路由表",
+    "能力声明与动态注册",
+    "ticker 缓存",
+    "并发数据获取"
+  ],
+  "best_practices": [
+    "BaseAdapter 抽象 + 能力声明",
+    "Exchange 路由表自动选择",
+    "ThreadPoolExecutor 并发获取"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-356",
+  "slug": "api-design-patterns",
+  "title": "API设计模式",
+  "subtitle": "API Design Patterns",
+  "icon": "terminal",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "REST API与Web UI双入口设计，支持多格式响应和安全防护",
+  "tags": [
+    "REST API",
+    "FastAPI",
+    "Gradio",
+    "security"
+  ],
+  "sub_problems": [
+    "多格式响应",
+    "文件上传处理",
+    "路径遍历防护",
+    "临时文件清理"
+  ],
+  "best_practices": [
+    "提供JSON和ZIP双格式响应满足不同消费场景"
+  ]
+}

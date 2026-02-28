@@ -1,0 +1,27 @@
+{
+  "id": "PD-178",
+  "slug": "multi-git-platform",
+  "title": "多 Git 平台适配",
+  "subtitle": "Multi-Git Platform Adapter",
+  "icon": "git-branch",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "统一适配 GitHub/GitLab/Bitbucket 的仓库克隆和文件内容获取",
+  "tags": [
+    "git",
+    "github",
+    "gitlab",
+    "bitbucket"
+  ],
+  "sub_problems": [
+    "多平台 clone URL 构造",
+    "各平台 API 文件获取",
+    "默认分支检测",
+    "GitHub Enterprise 支持"
+  ],
+  "best_practices": [
+    "repo_type 参数统一路由",
+    "urlparse 解析支持自定义域名",
+    "各平台 API 差异封装在独立函数中"
+  ]
+}

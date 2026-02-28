@@ -1,0 +1,23 @@
+{
+  "id": "PD-341",
+  "slug": "web-content-extraction-summarization",
+  "title": "网页内容提取与摘要",
+  "subtitle": "Web Content Extraction & Summarization",
+  "icon": "file-text",
+  "color": "#10B981",
+  "severity": "high",
+  "description": "从原始网页中提取结构化信息并生成面向目标的摘要",
+  "tags": [
+    "content extraction",
+    "summarization",
+    "Jina"
+  ],
+  "sub_problems": [
+    "如何高效抓取和清洗网页内容",
+    "如何面向特定目标提取关键信息",
+    "如何处理超长网页内容的截断与降级"
+  ],
+  "best_practices": [
+    "使用rational-evidence-summary三段式提取框架"
+  ]
+}

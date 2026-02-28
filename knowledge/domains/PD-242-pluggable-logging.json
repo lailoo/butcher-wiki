@@ -1,0 +1,24 @@
+{
+  "id": "PD-242",
+  "slug": "pluggable-logging",
+  "title": "可插拔日志系统",
+  "subtitle": "Pluggable Logging System",
+  "icon": "file-text",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "通过 Factory 模式实现可插拔日志后端，支持控制台和文件输出、日志轮转和级别过滤",
+  "tags": [
+    "日志",
+    "轮转",
+    "可插拔",
+    "Factory"
+  ],
+  "sub_problems": [
+    "日志后端切换",
+    "文件轮转策略",
+    "跨语言日志配置"
+  ],
+  "best_practices": [
+    "LoggerBroker 单例管理全局日志，atexit 保证清理"
+  ]
+}

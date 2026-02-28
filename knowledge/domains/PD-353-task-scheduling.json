@@ -1,0 +1,25 @@
+{
+  "id": "PD-353",
+  "slug": "task-scheduling",
+  "title": "任务调度",
+  "subtitle": "Task Scheduling",
+  "icon": "clock",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "基于SQLite的异步任务队列，支持监控、健康检查和超时恢复",
+  "tags": [
+    "task queue",
+    "scheduler",
+    "SQLite",
+    "async"
+  ],
+  "sub_problems": [
+    "任务队列管理",
+    "Worker健康检查",
+    "超时任务重置",
+    "旧数据清理"
+  ],
+  "best_practices": [
+    "Worker自动循环模式减少调度器开销"
+  ]
+}

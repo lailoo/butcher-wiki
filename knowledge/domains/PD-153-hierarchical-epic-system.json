@@ -1,0 +1,29 @@
+{
+  "id": "PD-153",
+  "slug": "hierarchical-epic-system",
+  "title": "层级 Epic 系统",
+  "subtitle": "Hierarchical Epic System",
+  "icon": "layers",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "层级化任务分解，支持 epic/task/subtask 树形结构和层级 ID",
+  "tags": [
+    "epic",
+    "hierarchy",
+    "task decomposition",
+    "parent-child",
+    "tree"
+  ],
+  "sub_problems": [
+    "层级 ID 设计",
+    "任务分解策略",
+    "层级查询",
+    "状态聚合"
+  ],
+  "best_practices": [
+    "点分层级 ID（bd-a3f8.1.1）",
+    "自动状态向上传播",
+    "层级深度限制",
+    "epic 进度追踪"
+  ]
+}

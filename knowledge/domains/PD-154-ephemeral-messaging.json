@@ -1,0 +1,29 @@
+{
+  "id": "PD-154",
+  "slug": "ephemeral-messaging",
+  "title": "临时消息系统",
+  "subtitle": "Ephemeral Messaging System",
+  "icon": "message-circle",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "临时消息机制用于 agent 间通信，支持 threading 和自动过期，不污染持久化数据",
+  "tags": [
+    "messaging",
+    "ephemeral",
+    "threading",
+    "agent communication",
+    "wisp"
+  ],
+  "sub_problems": [
+    "消息生命周期管理",
+    "线程化讨论",
+    "消息路由与委托",
+    "自动过期清理"
+  ],
+  "best_practices": [
+    "ephemeral 标记区分临时消息",
+    "threading 支持上下文关联",
+    "mail delegation 转发机制",
+    "自动清理过期消息"
+  ]
+}

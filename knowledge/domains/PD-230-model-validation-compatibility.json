@@ -1,0 +1,25 @@
+{
+  "id": "PD-230",
+  "slug": "model-validation-compatibility",
+  "title": "模型验证与兼容",
+  "subtitle": "Model Validation & Compatibility",
+  "icon": "check-circle",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "验证模型名称合法性，自动处理不同模型的参数和输出格式差异",
+  "tags": [
+    "validation",
+    "compatibility",
+    "model",
+    "normalization"
+  ],
+  "sub_problems": [
+    "模型白名单维护",
+    "推理模型参数自动剥离",
+    "输出格式归一化",
+    "Provider 特定参数映射"
+  ],
+  "best_practices": [
+    "VALID_MODELS 白名单 + 子类覆写自动适配不兼容参数"
+  ]
+}

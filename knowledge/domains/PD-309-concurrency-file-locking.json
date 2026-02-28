@@ -1,0 +1,24 @@
+{
+  "id": "PD-309",
+  "slug": "concurrency-file-locking",
+  "title": "并发与文件锁",
+  "subtitle": "Concurrency & File Locking",
+  "icon": "lock",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "在多进程并行场景下通过文件锁保证共享状态的原子性更新",
+  "tags": [
+    "concurrency",
+    "file-lock",
+    "atomic-operation"
+  ],
+  "sub_problems": [
+    "竞态条件防护",
+    "原子读-改-写",
+    "进程间同步",
+    "锁粒度控制"
+  ],
+  "best_practices": [
+    "使用 fcntl 文件锁而非内存锁实现跨进程同步"
+  ]
+}

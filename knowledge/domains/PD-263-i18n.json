@@ -1,0 +1,23 @@
+{
+  "id": "PD-263",
+  "slug": "i18n",
+  "title": "国际化",
+  "subtitle": "Internationalization",
+  "icon": "globe",
+  "color": "#3498db",
+  "severity": "medium",
+  "description": "多语言支持、翻译管理和语言自动跟随",
+  "tags": [
+    "i18n",
+    "locale",
+    "translation"
+  ],
+  "sub_problems": [
+    "翻译文件按模块拆分",
+    "运行时语言切换",
+    "LLM输出语言跟随用户"
+  ],
+  "best_practices": [
+    "按功能模块拆分翻译键而非按页面"
+  ]
+}

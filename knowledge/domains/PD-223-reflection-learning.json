@@ -1,0 +1,25 @@
+{
+  "id": "PD-223",
+  "slug": "reflection-learning",
+  "title": "反思学习机制",
+  "subtitle": "Reflection & Learning Mechanism",
+  "icon": "refresh-cw",
+  "color": "#D97706",
+  "severity": "high",
+  "description": "Agent 交易后自动反思决策质量，将教训存入记忆供未来相似情境检索",
+  "tags": [
+    "reflection",
+    "self-improvement",
+    "experiential-learning"
+  ],
+  "sub_problems": [
+    "反思 prompt 设计",
+    "多角色独立反思",
+    "记忆检索与应用",
+    "经验积累与遗忘"
+  ],
+  "best_practices": [
+    "每个角色维护独立记忆避免交叉污染",
+    "反思时提供客观市场数据作为参照"
+  ]
+}

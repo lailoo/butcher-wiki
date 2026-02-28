@@ -1,0 +1,26 @@
+{
+  "id": "PD-380",
+  "slug": "kv-cache-paged-management",
+  "title": "KV Cache分页管理",
+  "subtitle": "KV Cache Paged Management",
+  "icon": "database",
+  "color": "#F97316",
+  "severity": "high",
+  "description": "将KV Cache按block分页管理，消除内存碎片，支持前缀共享和跨节点传输",
+  "tags": [
+    "PagedAttention",
+    "KV Cache",
+    "前缀缓存",
+    "内存管理"
+  ],
+  "sub_problems": [
+    "block分配与回收策略",
+    "前缀哈希匹配",
+    "KV offload到CPU/磁盘",
+    "跨节点KV传输"
+  ],
+  "best_practices": [
+    "启用prefix caching复用公共前缀",
+    "选择合适的block size平衡碎片和开销"
+  ]
+}

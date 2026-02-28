@@ -1,0 +1,26 @@
+{
+  "id": "PD-384",
+  "slug": "openai-compatible-api",
+  "title": "OpenAI兼容API",
+  "subtitle": "OpenAI Compatible API",
+  "icon": "globe",
+  "color": "#3B82F6",
+  "severity": "medium",
+  "description": "提供OpenAI协议兼容的HTTP/gRPC推理服务端点",
+  "tags": [
+    "OpenAI API",
+    "REST",
+    "gRPC",
+    "流式输出"
+  ],
+  "sub_problems": [
+    "协议兼容性维护",
+    "流式SSE输出",
+    "多端点路由",
+    "认证与限流"
+  ],
+  "best_practices": [
+    "保持与OpenAI SDK完全兼容",
+    "使用gRPC提升内部服务间通信效率"
+  ]
+}

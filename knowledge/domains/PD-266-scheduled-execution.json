@@ -1,0 +1,25 @@
+{
+  "id": "PD-266",
+  "slug": "scheduled-execution",
+  "title": "定时调度",
+  "subtitle": "Scheduled Execution",
+  "icon": "clock",
+  "color": "#1abc9c",
+  "severity": "medium",
+  "description": "基于Cron表达式的工作流定时执行系统",
+  "tags": [
+    "schedule",
+    "cron",
+    "automation",
+    "queue"
+  ],
+  "sub_problems": [
+    "Cron表达式解析与校验",
+    "时区处理",
+    "优先级队列",
+    "执行配额管理"
+  ],
+  "best_practices": [
+    "使用BullMQ延迟任务而非轮询实现定时"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-245",
+  "slug": "i18n",
+  "title": "国际化",
+  "subtitle": "Internationalization (i18n)",
+  "icon": "globe",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "前后端多语言支持、本地化格式化、翻译管理与语言回退机制",
+  "tags": [
+    "i18n",
+    "locale",
+    "translation"
+  ],
+  "sub_problems": [
+    "翻译文件管理与加载",
+    "嵌套 key 查找与回退",
+    "日期/数字/货币本地化",
+    "前后端语言同步"
+  ],
+  "best_practices": [
+    "JSON 翻译文件 + 点号嵌套 key",
+    "默认语言回退链",
+    "全局单例 I18nService"
+  ]
+}

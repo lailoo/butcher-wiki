@@ -1,0 +1,25 @@
+{
+  "id": "PD-277",
+  "slug": "computer-use-agent",
+  "title": "Computer Use Agent 多模态",
+  "subtitle": "Computer Use Agent (CUA)",
+  "icon": "terminal",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "实现多供应商 Computer Use Agent 框架，通过截图+坐标实现视觉驱动的浏览器操作",
+  "tags": [
+    "CUA",
+    "computer use",
+    "multi-modal",
+    "vision"
+  ],
+  "sub_problems": [
+    "多供应商 CUA 协议适配",
+    "坐标归一化处理",
+    "截图压缩与传输",
+    "键盘映射跨平台"
+  ],
+  "best_practices": [
+    "提供 dom/hybrid/cua 三种模式让用户按场景选择"
+  ]
+}

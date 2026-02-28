@@ -1,0 +1,26 @@
+{
+  "id": "PD-210",
+  "slug": "security-hardening",
+  "title": "安全加固",
+  "subtitle": "Security Hardening",
+  "icon": "shield",
+  "color": "#dc2626",
+  "severity": "high",
+  "description": "强制 execFile 替代 exec 防 shell 注入，sessionId 正则校验防路径穿越，GraphQL 变量传参防注入",
+  "tags": [
+    "security",
+    "injection",
+    "validation",
+    "execFile"
+  ],
+  "sub_problems": [
+    "shell 注入防护",
+    "路径穿越防护",
+    "API 注入防护",
+    "输入校验与类型守卫"
+  ],
+  "best_practices": [
+    "execFile+数组参数替代 exec+字符串拼接",
+    "POSIX shellEscape 单引号包裹"
+  ]
+}

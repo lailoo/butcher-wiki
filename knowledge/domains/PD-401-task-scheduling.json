@@ -1,0 +1,26 @@
+{
+  "id": "PD-401",
+  "slug": "task-scheduling",
+  "title": "任务调度系统",
+  "subtitle": "Task Scheduling System",
+  "icon": "clock",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "管理异步任务的优先级调度、分发、批量消费和超时回收",
+  "tags": [
+    "scheduler",
+    "redis-stream",
+    "priority-queue"
+  ],
+  "sub_problems": [
+    "任务优先级与权重分配",
+    "Redis Stream 消费组管理",
+    "批量任务分发与并行执行",
+    "Pending 消息超时回收"
+  ],
+  "best_practices": [
+    "使用 Redis Stream 实现可靠的任务队列",
+    "按用户维度隔离任务流",
+    "支持动态优先级配置"
+  ]
+}

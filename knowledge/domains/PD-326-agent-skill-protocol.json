@@ -1,0 +1,27 @@
+{
+  "id": "PD-326",
+  "slug": "agent-skill-protocol",
+  "title": "Agent 技能协议",
+  "subtitle": "Agent Skill Protocol",
+  "icon": "file-text",
+  "color": "#9b59b6",
+  "severity": "medium",
+  "description": "定义 Agent 可消费的技能指令格式，实现跨 Agent 平台的能力注入与命令参考",
+  "tags": [
+    "agent",
+    "skill",
+    "protocol",
+    "instruction"
+  ],
+  "sub_problems": [
+    "技能指令格式标准化(SKILL.md)",
+    "多 Agent 平台技能目录适配",
+    "触发词与命令映射",
+    "故障排查指南集成"
+  ],
+  "best_practices": [
+    "SKILL.md 包含完整命令参考让 Agent 自主调用",
+    "自动检测并部署到已知 Agent 平台的 skills 目录",
+    "技能文件随包分发确保版本一致"
+  ]
+}

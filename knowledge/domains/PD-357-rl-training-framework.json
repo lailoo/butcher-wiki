@@ -1,0 +1,25 @@
+{
+  "id": "PD-357",
+  "slug": "rl-training-framework",
+  "title": "强化学习训练框架",
+  "subtitle": "RL Training Framework",
+  "icon": "zap",
+  "color": "#E74C3C",
+  "severity": "high",
+  "description": "为LLM/VLM Agent提供基于策略梯度的强化学习训练管道，支持多种优势估计和奖励塑形",
+  "tags": [
+    "GRPO",
+    "PPO",
+    "RLHF",
+    "advantage estimation"
+  ],
+  "sub_problems": [
+    "优势估计算法选择",
+    "KL散度控制",
+    "奖励函数设计",
+    "多轮rollout生成"
+  ],
+  "best_practices": [
+    "支持多种优势估计器(GAE/GRPO/RLOO)以适配不同场景"
+  ]
+}

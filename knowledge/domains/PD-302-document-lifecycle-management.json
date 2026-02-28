@@ -1,0 +1,25 @@
+{
+  "id": "PD-302",
+  "slug": "document-lifecycle-management",
+  "title": "文档生命周期管理",
+  "subtitle": "Document Lifecycle Management",
+  "icon": "file-text",
+  "color": "#A855F7",
+  "severity": "medium",
+  "description": "文档从上传到处理完成的全生命周期状态跟踪与管理",
+  "tags": [
+    "document",
+    "lifecycle",
+    "status"
+  ],
+  "sub_problems": [
+    "状态机设计",
+    "处理进度追踪",
+    "错误恢复",
+    "删除与重建"
+  ],
+  "best_practices": [
+    "DocStatus枚举明确状态转换",
+    "chunk列表关联支持精确删除重建"
+  ]
+}

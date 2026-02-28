@@ -1,0 +1,28 @@
+{
+  "id": "PD-251",
+  "slug": "troubleshooting-knowledge-base",
+  "title": "故障诊断知识库",
+  "subtitle": "Troubleshooting Knowledge Base",
+  "icon": "alert-triangle",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "结构化的故障模式数据库，按症状→原因→修复方案组织，支持快速定位和解决问题",
+  "tags": [
+    "troubleshoot",
+    "diagnostic",
+    "error-handling",
+    "knowledge-base"
+  ],
+  "sub_problems": [
+    "故障模式分类与编目",
+    "症状-原因-修复三元组",
+    "静默失败识别",
+    "降级策略与压缩阶梯",
+    "跨技能错误路由"
+  ],
+  "best_practices": [
+    "每个故障模式包含完整的症状-原因-修复链",
+    "区分平台限制和用户错误",
+    "提供紧急修复快速参考表"
+  ]
+}

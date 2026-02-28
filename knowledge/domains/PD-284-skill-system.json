@@ -1,0 +1,28 @@
+{
+  "id": "PD-284",
+  "slug": "skill-system",
+  "title": "技能系统",
+  "subtitle": "Skill System",
+  "icon": "sparkles",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "可扩展的技能发现、安装与注册，增强 agent 能力边界",
+  "tags": [
+    "skill",
+    "plugin",
+    "extensibility",
+    "marketplace"
+  ],
+  "sub_problems": [
+    "技能格式定义与解析",
+    "文件系统自动发现",
+    "远程安装（git URL）",
+    "依赖声明与校验",
+    "prompt 注入 agent 系统提示"
+  ],
+  "best_practices": [
+    "SKILL.md 声明式格式降低开发门槛",
+    "discoverer 模式自动扫描本地技能",
+    "兼容第三方 store 扩大生态"
+  ]
+}

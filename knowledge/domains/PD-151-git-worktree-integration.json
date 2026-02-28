@@ -1,0 +1,29 @@
+{
+  "id": "PD-151",
+  "slug": "git-worktree-integration",
+  "title": "Git 工作树集成",
+  "subtitle": "Git Worktree Integration",
+  "icon": "git-branch",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "深度集成 git worktree，通过 hooks 自动同步 Dolt 数据，支持多分支并行开发",
+  "tags": [
+    "git",
+    "worktree",
+    "hooks",
+    "multi-branch",
+    "sync"
+  ],
+  "sub_problems": [
+    "worktree 数据隔离",
+    "git hooks 自动同步",
+    "分支切换处理",
+    "合并冲突解决"
+  ],
+  "best_practices": [
+    "post-commit hook 自动同步",
+    "post-merge hook 处理合并",
+    "独立 Dolt 数据库实例",
+    "hash ID 避免冲突"
+  ]
+}

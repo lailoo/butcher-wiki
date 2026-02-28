@@ -1,0 +1,25 @@
+{
+  "id": "PD-265",
+  "slug": "webhook-trigger",
+  "title": "Webhook触发",
+  "subtitle": "Webhook Trigger System",
+  "icon": "link",
+  "color": "#9b59b6",
+  "severity": "medium",
+  "description": "外部事件触发工作流执行的Webhook系统",
+  "tags": [
+    "webhook",
+    "trigger",
+    "integration",
+    "api"
+  ],
+  "sub_problems": [
+    "Webhook URL生成与管理",
+    "请求认证与安全",
+    "执行记录与数据脱敏",
+    "外部平台集成"
+  ],
+  "best_practices": [
+    "Redis缓存webhook配置减少数据库查询"
+  ]
+}

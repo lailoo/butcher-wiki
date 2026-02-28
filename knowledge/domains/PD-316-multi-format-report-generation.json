@@ -1,0 +1,26 @@
+{
+  "id": "PD-316",
+  "slug": "multi-format-report-generation",
+  "title": "多格式报告生成",
+  "subtitle": "Multi-format Report Generation",
+  "icon": "file-text",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "支持多种报告类型和导出格式，结构化报告生成流水线，内联AI图片和引用管理",
+  "tags": [
+    "report",
+    "export",
+    "markdown",
+    "generation"
+  ],
+  "sub_problems": [
+    "报告类型路由",
+    "结构化内容组装",
+    "多格式导出",
+    "引用和图片嵌入"
+  ],
+  "best_practices": [
+    "枚举定义报告类型确保类型安全",
+    "报告生成与研究过程解耦"
+  ]
+}

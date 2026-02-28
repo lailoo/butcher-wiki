@@ -1,0 +1,24 @@
+{
+  "id": "PD-243",
+  "slug": "schema-driven-data-model",
+  "title": "Schema 驱动数据模型",
+  "subtitle": "Schema-Driven Data Model",
+  "icon": "layers",
+  "color": "#0ea5e9",
+  "severity": "medium",
+  "description": "以 Schema 为核心驱动数据定义、校验和运行时 DDL 操作",
+  "tags": [
+    "Schema",
+    "DDL",
+    "数据模型",
+    "类型系统"
+  ],
+  "sub_problems": [
+    "标量与向量字段统一管理",
+    "运行时 Schema 变更",
+    "跨语言 Schema 映射"
+  ],
+  "best_practices": [
+    "Schema 作为单一事实来源驱动所有数据操作"
+  ]
+}

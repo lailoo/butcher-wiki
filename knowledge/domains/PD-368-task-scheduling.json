@@ -1,0 +1,26 @@
+{
+  "id": "PD-368",
+  "slug": "task-scheduling",
+  "title": "定时任务调度",
+  "subtitle": "Task Scheduling",
+  "icon": "clock",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "Cron表达式驱动的定时任务系统，支持持久化、补偿执行和隔离运行",
+  "tags": [
+    "cron",
+    "scheduling",
+    "automation"
+  ],
+  "sub_problems": [
+    "Cron表达式解析",
+    "任务持久化",
+    "补偿执行",
+    "隔离Agent环境"
+  ],
+  "best_practices": [
+    "任务运行日志持久化",
+    "catch-up补偿机制",
+    "防重复触发"
+  ]
+}

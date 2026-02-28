@@ -1,0 +1,26 @@
+{
+  "id": "PD-372",
+  "slug": "daemon-management",
+  "title": "守护进程管理",
+  "subtitle": "Daemon Process Management",
+  "icon": "terminal",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "跨平台守护进程管理，支持launchd/systemd/schtasks三大平台服务注册",
+  "tags": [
+    "daemon",
+    "service",
+    "cross-platform"
+  ],
+  "sub_problems": [
+    "平台服务文件生成",
+    "服务安装卸载",
+    "环境变量注入",
+    "服务健康审计"
+  ],
+  "best_practices": [
+    "平台原生服务管理",
+    "自动检测运行时路径",
+    "服务审计与诊断"
+  ]
+}

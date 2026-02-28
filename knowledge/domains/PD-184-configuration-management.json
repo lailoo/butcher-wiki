@@ -1,0 +1,24 @@
+{
+  "id": "PD-184",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#f39c12",
+  "severity": "medium",
+  "description": "统一管理多层级配置(文件/环境变量/默认值)，支持模式继承和运行时切换",
+  "tags": [
+    "configuration",
+    "settings",
+    "mode-system"
+  ],
+  "sub_problems": [
+    "多层级配置优先级合并",
+    "模式继承与覆盖机制",
+    "配置热加载与验证",
+    "敏感配置隔离(.env)"
+  ],
+  "best_practices": [
+    "使用单一 SettingsDefaultsManager 作为配置真相源，避免散落的 process.env 读取"
+  ]
+}

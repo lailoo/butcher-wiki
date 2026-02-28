@@ -1,0 +1,25 @@
+{
+  "id": "PD-259",
+  "slug": "cross-section-deduplication",
+  "title": "跨章节语义去重",
+  "subtitle": "Cross-Section Semantic Deduplication",
+  "icon": "layers",
+  "color": "#F97316",
+  "severity": "medium",
+  "description": "多Agent协作生成长文时检测并消除不同章节间的语义重复内容",
+  "tags": [
+    "deduplication",
+    "semantic",
+    "long-form"
+  ],
+  "sub_problems": [
+    "跨章节重复检测",
+    "语义相似度计算",
+    "冗余内容合并策略",
+    "去重后连贯性保持"
+  ],
+  "best_practices": [
+    "在Assembler阶段统一做跨章节去重",
+    "LLM识别语义相似段落而非简单文本匹配"
+  ]
+}

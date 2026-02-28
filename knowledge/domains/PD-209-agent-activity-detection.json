@@ -1,0 +1,26 @@
+{
+  "id": "PD-209",
+  "slug": "agent-activity-detection",
+  "title": "Agent 活跃度检测",
+  "subtitle": "Agent Activity Detection",
+  "icon": "activity",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "通过 JSONL 日志尾部读取和终端输出模式匹配双重机制检测 agent 活跃状态",
+  "tags": [
+    "activity",
+    "detection",
+    "jsonl",
+    "monitoring"
+  ],
+  "sub_problems": [
+    "JSONL 文件尾部高效读取",
+    "终端输出模式分类",
+    "进程存活检测",
+    "idle 超时阈值判断"
+  ],
+  "best_practices": [
+    "只读文件尾部避免大文件全量解析",
+    "file mtime 作为活跃度时间戳"
+  ]
+}

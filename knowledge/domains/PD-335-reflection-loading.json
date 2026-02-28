@@ -1,0 +1,25 @@
+{
+  "id": "PD-335",
+  "slug": "reflection-loading",
+  "title": "反射加载",
+  "subtitle": "Reflection & Dynamic Loading",
+  "icon": "refresh-cw",
+  "color": "#EC4899",
+  "severity": "medium",
+  "description": "运行时从字符串路径动态导入类和变量，实现插件化组件替换",
+  "tags": [
+    "reflection",
+    "dynamic-import",
+    "plugin",
+    "class-path"
+  ],
+  "sub_problems": [
+    "模块路径解析与导入",
+    "类型安全验证",
+    "基类兼容性检查",
+    "错误信息友好化"
+  ],
+  "best_practices": [
+    "统一的 module:class 路径格式"
+  ]
+}

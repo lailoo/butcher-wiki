@@ -1,0 +1,26 @@
+{
+  "id": "PD-379",
+  "slug": "continuous-batching-scheduler",
+  "title": "连续批处理调度",
+  "subtitle": "Continuous Batching Scheduler",
+  "icon": "refresh-cw",
+  "color": "#10B981",
+  "severity": "high",
+  "description": "动态合并请求实现连续批处理，最大化GPU吞吐量",
+  "tags": [
+    "调度器",
+    "连续批处理",
+    "抢占",
+    "优先级"
+  ],
+  "sub_problems": [
+    "prefill与decode混合调度",
+    "请求抢占与恢复",
+    "优先级队列策略",
+    "多引擎负载均衡"
+  ],
+  "best_practices": [
+    "使用chunked prefill平衡首token延迟和吞吐",
+    "根据SLO选择调度策略"
+  ]
+}

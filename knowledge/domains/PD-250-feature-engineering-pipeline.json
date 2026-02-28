@@ -1,0 +1,26 @@
+{
+  "id": "PD-250",
+  "slug": "feature-engineering-pipeline",
+  "title": "特征工程管道",
+  "subtitle": "Feature Engineering Pipeline",
+  "icon": "layers",
+  "color": "#6366f1",
+  "severity": "medium",
+  "description": "并发获取多源金融数据并计算特征向量供 LLM 决策",
+  "tags": [
+    "feature engineering",
+    "pipeline",
+    "financial data"
+  ],
+  "sub_problems": [
+    "多时间粒度 K 线获取",
+    "市场快照实时采集",
+    "技术指标计算",
+    "特征向量统一模型"
+  ],
+  "best_practices": [
+    "asyncio.gather 并发数据获取",
+    "Pipeline 模式封装数据流",
+    "FeatureVector 统一数据契约"
+  ]
+}

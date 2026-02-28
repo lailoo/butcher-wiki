@@ -1,0 +1,25 @@
+{
+  "id": "PD-226",
+  "slug": "data-source-routing",
+  "title": "数据源路由与抽象",
+  "subtitle": "Data Source Routing & Abstraction",
+  "icon": "link",
+  "color": "#14b8a6",
+  "severity": "high",
+  "description": "统一多数据源接口，支持配置驱动的路由和自动 fallback",
+  "tags": [
+    "data",
+    "routing",
+    "vendor",
+    "fallback"
+  ],
+  "sub_problems": [
+    "多数据源统一接口",
+    "配置优先级(工具级>类别级)",
+    "Rate limit 触发的自动降级",
+    "数据缓存策略"
+  ],
+  "best_practices": [
+    "VENDOR_METHODS 映射表 + route_to_vendor 路由函数，仅特定错误触发 fallback"
+  ]
+}

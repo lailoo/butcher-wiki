@@ -1,0 +1,29 @@
+{
+  "id": "PD-147",
+  "slug": "data-migration-framework",
+  "title": "数据迁移框架",
+  "subtitle": "Data Migration Framework",
+  "icon": "refresh-cw",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "版本化数据库 schema 迁移，支持自动迁移、安全检查、备份验证和格式兼容",
+  "tags": [
+    "migration",
+    "schema",
+    "database",
+    "versioning",
+    "backward compatibility"
+  ],
+  "sub_problems": [
+    "Schema 版本追踪",
+    "自动迁移触发",
+    "迁移安全检查",
+    "旧格式兼容层"
+  ],
+  "best_practices": [
+    "迁移前自动备份",
+    "安全检查防止数据丢失",
+    "shim 层兼容旧格式",
+    "断点续传支持"
+  ]
+}

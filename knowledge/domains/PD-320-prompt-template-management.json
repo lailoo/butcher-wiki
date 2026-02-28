@@ -1,0 +1,26 @@
+{
+  "id": "PD-320",
+  "slug": "prompt-template-management",
+  "title": "Prompt 模板管理",
+  "subtitle": "Prompt Template Management",
+  "icon": "message-circle",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "YAML 驱动的 Prompt 模板系统，支持变量校验、Jinja2 渲染和线程安全缓存",
+  "tags": [
+    "prompt",
+    "template",
+    "Jinja2",
+    "YAML"
+  ],
+  "sub_problems": [
+    "模板加载与缓存策略",
+    "变量类型校验与截断",
+    "模板分类组织",
+    "LLM 配置关联"
+  ],
+  "best_practices": [
+    "YAML 定义模板元数据和变量约束",
+    "全局单例 + 线程安全缓存"
+  ]
+}

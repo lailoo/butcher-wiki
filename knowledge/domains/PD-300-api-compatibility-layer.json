@@ -1,0 +1,25 @@
+{
+  "id": "PD-300",
+  "slug": "api-compatibility-layer",
+  "title": "API兼容层",
+  "subtitle": "API Compatibility Layer",
+  "icon": "link",
+  "color": "#14B8A6",
+  "severity": "medium",
+  "description": "实现第三方API协议兼容(如Ollama)，让现有工具无缝接入自定义RAG系统",
+  "tags": [
+    "API",
+    "compatibility",
+    "Ollama"
+  ],
+  "sub_problems": [
+    "协议模拟与适配",
+    "流式响应兼容",
+    "模型信息伪装",
+    "多端点路由"
+  ],
+  "best_practices": [
+    "伪装为已有生态模型降低接入成本",
+    "RESTful+兼容层双API并行"
+  ]
+}

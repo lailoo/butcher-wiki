@@ -1,0 +1,29 @@
+{
+  "id": "PD-150",
+  "slug": "template-molecule-system",
+  "title": "模板分子系统",
+  "subtitle": "Template Molecule System",
+  "icon": "layers",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "可复用 issue 模板库，支持层级加载和实例化，实现工作项标准化",
+  "tags": [
+    "template",
+    "molecule",
+    "catalog",
+    "reusable",
+    "instantiation"
+  ],
+  "sub_problems": [
+    "模板定义与存储",
+    "层级加载机制",
+    "模板实例化",
+    "模板版本管理"
+  ],
+  "best_practices": [
+    "层级覆盖（built-in < town < user < project）",
+    "模板只读保护",
+    "实例化时变量替换",
+    "模板目录组织"
+  ]
+}

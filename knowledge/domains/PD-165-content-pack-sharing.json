@@ -1,0 +1,29 @@
+{
+  "id": "PD-165",
+  "slug": "content-pack-sharing",
+  "title": "Source Pack 分享机制",
+  "subtitle": "Content Pack Sharing",
+  "icon": "layers",
+  "color": "#3498db",
+  "severity": "medium",
+  "description": "将信息源打包为可分享的社区资源包，支持一键安装和去重",
+  "tags": [
+    "pack",
+    "share",
+    "community",
+    "install",
+    "bundle"
+  ],
+  "sub_problems": [
+    "源数据 JSON 快照",
+    "安装时去重逻辑",
+    "已删源跳过处理",
+    "slug 唯一性保证",
+    "安装计数统计"
+  ],
+  "best_practices": [
+    "按 type+config 去重避免重复创建",
+    "安装时跳过已软删源防僵尸",
+    "slug 冲突自动追加数字后缀"
+  ]
+}

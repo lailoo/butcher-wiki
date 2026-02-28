@@ -1,0 +1,23 @@
+{
+  "id": "PD-189",
+  "slug": "config-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "多层级配置加载、验证、热更新与敏感信息保护",
+  "tags": [
+    "配置",
+    "环境变量",
+    "YAML"
+  ],
+  "sub_problems": [
+    "多源配置合并优先级",
+    "配置校验与友好错误提示",
+    "敏感信息掩码"
+  ],
+  "best_practices": [
+    "环境变量>配置文件>默认值三层优先级"
+  ]
+}

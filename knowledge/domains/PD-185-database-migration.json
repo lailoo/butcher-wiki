@@ -1,0 +1,24 @@
+{
+  "id": "PD-185",
+  "slug": "database-migration",
+  "title": "数据库迁移",
+  "subtitle": "Database Migration",
+  "icon": "database",
+  "color": "#27ae60",
+  "severity": "medium",
+  "description": "管理数据库 schema 版本演进，支持增量迁移、平台兼容性探测和双向回滚",
+  "tags": [
+    "migration",
+    "schema-evolution",
+    "versioning"
+  ],
+  "sub_problems": [
+    "增量迁移版本管理",
+    "平台兼容性探测(FTS5可用性)",
+    "迁移失败回滚策略",
+    "数据回填与索引重建"
+  ],
+  "best_practices": [
+    "每个迁移包含 up/down 方法，迁移前探测平台能力再决定执行路径"
+  ]
+}

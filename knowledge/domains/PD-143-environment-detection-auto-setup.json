@@ -1,0 +1,27 @@
+{
+  "id": "PD-143",
+  "slug": "environment-detection-auto-setup",
+  "title": "环境检测与自动化安装",
+  "subtitle": "Environment Detection & Auto Setup",
+  "icon": "terminal",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "自动检测运行环境并智能安装配置依赖，提供安全模式和预览模式",
+  "tags": [
+    "installer",
+    "auto-detect",
+    "cross-platform",
+    "devops"
+  ],
+  "sub_problems": [
+    "本地vs服务器环境检测",
+    "跨平台依赖安装",
+    "安全模式与dry-run",
+    "MCP服务自动配置"
+  ],
+  "best_practices": [
+    "多信号综合判断环境类型",
+    "提供safe-mode避免意外修改",
+    "dry-run预览所有操作"
+  ]
+}

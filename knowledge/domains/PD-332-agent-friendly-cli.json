@@ -1,0 +1,27 @@
+{
+  "id": "PD-332",
+  "slug": "agent-friendly-cli",
+  "title": "Agent 友好 CLI 设计",
+  "subtitle": "Agent-Friendly CLI Design",
+  "icon": "terminal",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "专为 AI Agent 优化的 CLI 设计模式，包括 JSON 输出、原子操作和非交互式接口",
+  "tags": [
+    "CLI",
+    "agent",
+    "JSON",
+    "non-interactive"
+  ],
+  "sub_problems": [
+    "JSON 输出模式",
+    "原子性操作（CAS claim）",
+    "Doctor-Fix 统一健康检查",
+    "避免交互式命令"
+  ],
+  "best_practices": [
+    "所有命令支持 --json flag",
+    "原子 claim 防止多 agent 竞争",
+    "Doctor 模式统一诊断与修复入口"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-176",
+  "slug": "streaming-response",
+  "title": "流式响应",
+  "subtitle": "Streaming Response",
+  "icon": "zap",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "HTTP SSE 和 WebSocket 双通道实时流式传输 LLM 生成内容",
+  "tags": [
+    "streaming",
+    "websocket",
+    "SSE",
+    "real-time"
+  ],
+  "sub_problems": [
+    "HTTP StreamingResponse 实现",
+    "WebSocket 连接管理",
+    "多 provider 流式适配",
+    "前端流式消费"
+  ],
+  "best_practices": [
+    "FastAPI StreamingResponse 用于 HTTP 流",
+    "WebSocket 用于双向实时通信",
+    "async generator 统一流式接口"
+  ]
+}

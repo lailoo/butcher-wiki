@@ -1,0 +1,25 @@
+{
+  "id": "PD-214",
+  "slug": "config-driven-system",
+  "title": "配置驱动系统",
+  "subtitle": "Configuration-Driven System",
+  "icon": "file-text",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "YAML+Zod 配置驱动的系统设计，convention over configuration 自动推导",
+  "tags": [
+    "yaml",
+    "zod",
+    "convention-over-configuration"
+  ],
+  "sub_problems": [
+    "配置文件发现与加载",
+    "Zod schema 验证",
+    "默认值推导与覆盖",
+    "多项目唯一性校验"
+  ],
+  "best_practices": [
+    "用 hash(configDir) 实现多实例隔离",
+    "配置搜索支持目录树向上查找"
+  ]
+}

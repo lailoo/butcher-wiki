@@ -1,0 +1,24 @@
+{
+  "id": "PD-244",
+  "slug": "lazy-dependency-loading",
+  "title": "懒加载依赖管理",
+  "subtitle": "Lazy Dependency Loading",
+  "icon": "refresh-cw",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "通过懒加载机制延迟导入可选依赖，减少安装体积并提供友好的错误提示",
+  "tags": [
+    "懒加载",
+    "可选依赖",
+    "ImportError",
+    "用户体验"
+  ],
+  "sub_problems": [
+    "可选依赖检测",
+    "友好错误提示",
+    "安装体积优化"
+  ],
+  "best_practices": [
+    "require_module 统一处理懒加载，失败时给出 pip install 命令"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-219",
+  "slug": "adversarial-debate",
+  "title": "对抗辩论系统",
+  "subtitle": "Adversarial Debate System",
+  "icon": "message-circle",
+  "color": "#E11D48",
+  "severity": "high",
+  "description": "通过结构化多视角对抗辩论（多轮 + 裁判）提升 Agent 决策质量",
+  "tags": [
+    "debate",
+    "multi-perspective",
+    "decision-quality"
+  ],
+  "sub_problems": [
+    "辩论轮次控制",
+    "多视角角色设计",
+    "裁判评估机制",
+    "辩论历史管理"
+  ],
+  "best_practices": [
+    "设置可配置的最大辩论轮次避免无限循环",
+    "裁判应综合所有视角而非简单投票"
+  ]
+}

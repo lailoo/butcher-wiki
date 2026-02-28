@@ -1,0 +1,28 @@
+{
+  "id": "PD-246",
+  "slug": "modular-skill-architecture",
+  "title": "模块化技能架构",
+  "subtitle": "Modular Skill Architecture",
+  "icon": "layers",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "将领域知识拆分为独立可加载的技能模块，支持按需组合和跨平台分发",
+  "tags": [
+    "skill",
+    "modular",
+    "agent",
+    "architecture"
+  ],
+  "sub_problems": [
+    "技能注册与元数据标准",
+    "父子技能关系管理",
+    "跨技能路由与引用",
+    "按需加载与 token 节省",
+    "多平台兼容性声明"
+  ],
+  "best_practices": [
+    "遵循开放标准（AgentSkills）声明技能元数据",
+    "根技能作为路由器保持精简",
+    "每个子技能独立可用不依赖其他子技能"
+  ]
+}

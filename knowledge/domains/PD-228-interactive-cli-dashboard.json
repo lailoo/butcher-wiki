@@ -1,0 +1,25 @@
+{
+  "id": "PD-228",
+  "slug": "interactive-cli-dashboard",
+  "title": "交互式 CLI 界面",
+  "subtitle": "Interactive CLI Dashboard",
+  "icon": "terminal",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "构建实时更新的终端仪表盘，展示 Agent 执行进度和分析结果",
+  "tags": [
+    "CLI",
+    "TUI",
+    "Rich",
+    "dashboard"
+  ],
+  "sub_problems": [
+    "实时布局与刷新机制",
+    "Agent 状态追踪与可视化",
+    "消息流与工具调用日志",
+    "报告分段展示与保存"
+  ],
+  "best_practices": [
+    "Rich Live + Layout 分区布局，MessageBuffer 管理状态，装饰器模式同步日志到磁盘"
+  ]
+}

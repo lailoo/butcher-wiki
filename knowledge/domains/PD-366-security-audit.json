@@ -1,0 +1,26 @@
+{
+  "id": "PD-366",
+  "slug": "security-audit",
+  "title": "安全审计框架",
+  "subtitle": "Security Audit Framework",
+  "icon": "shield",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "自动化安全检查，发现配置漏洞、权限问题和攻击面暴露",
+  "tags": [
+    "security",
+    "audit",
+    "compliance"
+  ],
+  "sub_problems": [
+    "密钥泄露检测",
+    "文件权限审计",
+    "攻击面分析",
+    "自动修复建议"
+  ],
+  "best_practices": [
+    "分级severity输出",
+    "可执行的remediation建议",
+    "定期自动审计"
+  ]
+}

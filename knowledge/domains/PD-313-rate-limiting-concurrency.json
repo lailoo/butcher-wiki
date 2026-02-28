@@ -1,0 +1,26 @@
+{
+  "id": "PD-313",
+  "slug": "rate-limiting-concurrency",
+  "title": "速率限制与并发控制",
+  "subtitle": "Rate Limiting & Concurrency Control",
+  "icon": "clock",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "全局单例速率限制器、Worker池并发控制、异步信号量协调多层并发请求",
+  "tags": [
+    "rate limit",
+    "concurrency",
+    "semaphore",
+    "throttle"
+  ],
+  "sub_problems": [
+    "全局vs局部速率限制",
+    "多实例共享限流",
+    "并发数动态调整",
+    "API配额保护"
+  ],
+  "best_practices": [
+    "单例GlobalRateLimiter确保跨实例全局限流",
+    "Semaphore+ThreadPoolExecutor双层并发控制"
+  ]
+}

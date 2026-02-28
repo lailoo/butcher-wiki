@@ -1,0 +1,25 @@
+{
+  "id": "PD-171",
+  "slug": "anti-crawl-proxy-management",
+  "title": "反爬与代理管理",
+  "subtitle": "Anti-Crawl & Proxy Management",
+  "icon": "shield",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "系统化应对平台IP封锁、登录墙、反爬检测，提供代理和Cookie认证方案",
+  "tags": [
+    "proxy",
+    "anti-crawl",
+    "cookie-auth",
+    "bypass"
+  ],
+  "sub_problems": [
+    "住宅代理配置与路由",
+    "Cookie认证绕过登录墙",
+    "Node.js fetch代理注入",
+    "被封平台的降级搜索方案"
+  ],
+  "best_practices": [
+    "提供Exa等替代搜索作为被封平台的降级方案"
+  ]
+}

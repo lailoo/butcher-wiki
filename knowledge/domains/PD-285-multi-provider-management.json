@@ -1,0 +1,29 @@
+{
+  "id": "PD-285",
+  "slug": "multi-provider-management",
+  "title": "多 LLM Provider 管理",
+  "subtitle": "Multi-Provider Management",
+  "icon": "globe",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "统一接口管理多个 LLM 提供者，动态模型发现与连接池复用",
+  "tags": [
+    "LLM",
+    "provider",
+    "OpenAI",
+    "Anthropic",
+    "local"
+  ],
+  "sub_problems": [
+    "provider trait 统一抽象",
+    "feature flag 条件编译",
+    "动态模型发现",
+    "HTTP/WS 连接池复用",
+    "provider 引导配置"
+  ],
+  "best_practices": [
+    "trait 抽象隔离 provider 差异",
+    "feature flag 减小二进制体积",
+    "共享 HTTP client 复用连接池"
+  ]
+}

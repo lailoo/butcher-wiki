@@ -1,0 +1,25 @@
+{
+  "id": "PD-297",
+  "slug": "llm-response-caching",
+  "title": "LLM响应缓存",
+  "subtitle": "LLM Response Caching",
+  "icon": "refresh-cw",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "LLM调用结果缓存，通过hash key去重避免重复计算，降低API成本",
+  "tags": [
+    "cache",
+    "LLM",
+    "cost-optimization"
+  ],
+  "sub_problems": [
+    "缓存key设计",
+    "缓存命中策略",
+    "流式响应处理",
+    "缓存失效与清理"
+  ],
+  "best_practices": [
+    "扁平化key结构(mode:type:hash)",
+    "区分entity extraction和query缓存模式"
+  ]
+}

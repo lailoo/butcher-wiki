@@ -1,0 +1,23 @@
+{
+  "id": "PD-195",
+  "slug": "smart-cover-generation",
+  "title": "封面智能生成",
+  "subtitle": "Smart Cover Generation",
+  "icon": "eye",
+  "color": "#f43f5e",
+  "severity": "medium",
+  "description": "通过NLP分析文章内容自动提取主题与情绪，生成匹配的AI图片提示词",
+  "tags": [
+    "封面",
+    "NLP",
+    "情绪分析"
+  ],
+  "sub_problems": [
+    "文章主题与观点提取",
+    "情绪基调判定",
+    "视觉锚点发现与隐喻构建"
+  ],
+  "best_practices": [
+    "内容分析驱动prompt生成，而非通用模板"
+  ]
+}

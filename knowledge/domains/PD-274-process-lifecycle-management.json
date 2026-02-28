@@ -1,0 +1,25 @@
+{
+  "id": "PD-274",
+  "slug": "process-lifecycle-management",
+  "title": "进程生命周期管理",
+  "subtitle": "Process Lifecycle Management",
+  "icon": "refresh-cw",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "通过看门狗子进程确保父进程崩溃时自动清理浏览器和远程会话资源",
+  "tags": [
+    "process",
+    "cleanup",
+    "watchdog",
+    "graceful shutdown"
+  ],
+  "sub_problems": [
+    "父进程崩溃检测",
+    "子进程资源清理",
+    "远程会话释放",
+    "临时文件清理"
+  ],
+  "best_practices": [
+    "使用 stdin lifeline 检测父进程存活而非 PID 轮询"
+  ]
+}

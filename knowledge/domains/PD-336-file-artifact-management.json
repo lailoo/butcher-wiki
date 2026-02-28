@@ -1,0 +1,25 @@
+{
+  "id": "PD-336",
+  "slug": "file-artifact-management",
+  "title": "文件与制品管理",
+  "subtitle": "File & Artifact Management",
+  "icon": "file-text",
+  "color": "#F59E0B",
+  "severity": "medium",
+  "description": "用户文件上传、工作区管理、制品交付与增量注入",
+  "tags": [
+    "upload",
+    "artifact",
+    "file-system",
+    "workspace"
+  ],
+  "sub_problems": [
+    "文件上传与增量检测",
+    "工作区/上传/输出三目录隔离",
+    "制品呈现与下载",
+    "文件信息自动注入上下文"
+  ],
+  "best_practices": [
+    "增量文件注入避免重复"
+  ]
+}

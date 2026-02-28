@@ -1,0 +1,28 @@
+{
+  "id": "PD-412",
+  "slug": "hierarchical-configuration",
+  "title": "层级配置管理",
+  "subtitle": "Hierarchical Configuration Management",
+  "icon": "settings",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "解决 AI CLI 工具在多环境、多项目场景下的配置优先级和覆盖问题",
+  "tags": [
+    "configuration",
+    "settings",
+    "hierarchy",
+    "environment"
+  ],
+  "sub_problems": [
+    "多层配置优先级",
+    "环境变量映射",
+    "配置文件格式",
+    "文件过滤规则",
+    "敏感信息保护"
+  ],
+  "best_practices": [
+    "实现多层配置优先级",
+    "支持环境变量引用",
+    "提供 .ignore 文件过滤"
+  ]
+}

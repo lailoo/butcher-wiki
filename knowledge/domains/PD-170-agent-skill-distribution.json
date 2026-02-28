@@ -1,0 +1,25 @@
+{
+  "id": "PD-170",
+  "slug": "agent-skill-distribution",
+  "title": "Agent 技能分发",
+  "subtitle": "Agent Skill Distribution",
+  "icon": "sparkles",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "将工具能力打包为SKILL.md分发到多个Agent平台，实现跨Agent能力复用",
+  "tags": [
+    "skill",
+    "agent",
+    "distribution",
+    "llms.txt"
+  ],
+  "sub_problems": [
+    "技能描述格式标准化",
+    "多Agent平台自动安装",
+    "命令参考文档生成",
+    "LLM可发现性(llms.txt)"
+  ],
+  "best_practices": [
+    "SKILL.md包含完整命令示例，Agent读后即可直接调用上游工具"
+  ]
+}

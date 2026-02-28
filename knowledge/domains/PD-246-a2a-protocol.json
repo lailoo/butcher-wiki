@@ -1,0 +1,26 @@
+{
+  "id": "PD-246",
+  "slug": "a2a-protocol",
+  "title": "A2A 协议集成",
+  "subtitle": "Agent-to-Agent Protocol",
+  "icon": "link",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "基于标准协议实现 Agent 间发现、通信和能力协商",
+  "tags": [
+    "A2A",
+    "agent protocol",
+    "interop"
+  ],
+  "sub_problems": [
+    "AgentCard 能力声明",
+    "远程 agent 发现与连接",
+    "推送通知机制",
+    "本地/远程 agent 混合部署"
+  ],
+  "best_practices": [
+    "AgentCard JSON 声明能力",
+    "HTTP+SSE 双向通信",
+    "懒加载 agent 类避免启动阻塞"
+  ]
+}

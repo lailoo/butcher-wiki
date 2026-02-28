@@ -1,0 +1,24 @@
+{
+  "id": "PD-182",
+  "slug": "process-lifecycle-management",
+  "title": "进程生命周期管理",
+  "subtitle": "Process Lifecycle Management",
+  "icon": "cpu",
+  "color": "#9b59b6",
+  "severity": "high",
+  "description": "管理子进程注册、僵尸进程清理、有序关闭和跨平台端口释放",
+  "tags": [
+    "process-management",
+    "graceful-shutdown",
+    "zombie-prevention"
+  ],
+  "sub_problems": [
+    "子进程 PID 追踪与注册",
+    "僵尸进程检测与强制终止",
+    "多步有序关闭编排",
+    "跨平台(Windows/Unix)端口释放"
+  ],
+  "best_practices": [
+    "使用 PID 注册表追踪所有子进程，定期收割孤儿进程"
+  ]
+}

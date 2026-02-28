@@ -1,0 +1,25 @@
+{
+  "id": "PD-352",
+  "slug": "multilingual-detection",
+  "title": "多语言检测",
+  "subtitle": "Multilingual Detection",
+  "icon": "globe",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "自动语言检测与多语言OCR路由，支持30+语言族",
+  "tags": [
+    "language detection",
+    "multilingual",
+    "OCR",
+    "i18n"
+  ],
+  "sub_problems": [
+    "自动语言识别",
+    "OCR模型路由",
+    "编码异常处理",
+    "语言族映射"
+  ],
+  "best_practices": [
+    "集成fast_langdetect实现零配置语言自动检测"
+  ]
+}

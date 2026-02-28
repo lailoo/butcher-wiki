@@ -1,0 +1,26 @@
+{
+  "id": "PD-367",
+  "slug": "config-management",
+  "title": "配置管理与校验",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "类型安全的配置系统，支持schema校验、环境变量替换、热重载和迁移",
+  "tags": [
+    "config",
+    "schema",
+    "validation"
+  ],
+  "sub_problems": [
+    "配置schema定义",
+    "环境变量注入",
+    "配置迁移",
+    "热重载"
+  ],
+  "best_practices": [
+    "Zod schema类型安全",
+    "include文件组合",
+    "legacy配置自动迁移"
+  ]
+}

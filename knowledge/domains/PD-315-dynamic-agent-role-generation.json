@@ -1,0 +1,26 @@
+{
+  "id": "PD-315",
+  "slug": "dynamic-agent-role-generation",
+  "title": "动态Agent角色生成",
+  "subtitle": "Dynamic Agent Role Generation",
+  "icon": "sparkles",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "通过LLM分析查询自动生成专业Agent角色和系统提示词，实现查询驱动的动态专家分配",
+  "tags": [
+    "agent",
+    "role",
+    "dynamic",
+    "prompt generation"
+  ],
+  "sub_problems": [
+    "查询意图识别",
+    "角色提示词生成",
+    "JSON解析容错",
+    "默认角色回退"
+  ],
+  "best_practices": [
+    "json_repair+regex双重容错解析LLM输出",
+    "失败时回退到通用默认Agent角色"
+  ]
+}

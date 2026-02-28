@@ -1,0 +1,23 @@
+{
+  "id": "PD-342",
+  "slug": "multimodal-file-parsing",
+  "title": "文件解析与多模态处理",
+  "subtitle": "Multimodal File Parsing",
+  "icon": "layers",
+  "color": "#EC4899",
+  "severity": "medium",
+  "description": "支持PDF/Office/视频/音频等多格式文件的解析和内容提取",
+  "tags": [
+    "file parsing",
+    "multimodal",
+    "document processing"
+  ],
+  "sub_problems": [
+    "如何统一处理不同格式的文件",
+    "如何处理超大文件的token限制",
+    "如何集成云端文档解析服务"
+  ],
+  "best_practices": [
+    "按文件类型分发到专用解析器，超限时自动压缩"
+  ]
+}

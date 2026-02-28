@@ -1,0 +1,26 @@
+{
+  "id": "PD-222",
+  "slug": "realtime-cli-dashboard",
+  "title": "实时 CLI 仪表盘",
+  "subtitle": "Real-time CLI Dashboard",
+  "icon": "terminal",
+  "color": "#059669",
+  "severity": "medium",
+  "description": "基于 Rich 库的实时终端仪表盘，展示多 Agent 执行进度和结果",
+  "tags": [
+    "CLI",
+    "Rich",
+    "real-time",
+    "dashboard"
+  ],
+  "sub_problems": [
+    "多面板布局管理",
+    "Agent 状态追踪",
+    "消息流实时更新",
+    "报告聚合与展示"
+  ],
+  "best_practices": [
+    "使用 Live 上下文管理刷新频率",
+    "MessageBuffer 解耦数据收集与展示"
+  ]
+}

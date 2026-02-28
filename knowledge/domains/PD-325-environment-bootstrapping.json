@@ -1,0 +1,27 @@
+{
+  "id": "PD-325",
+  "slug": "environment-bootstrapping",
+  "title": "环境引导与依赖管理",
+  "subtitle": "Environment Bootstrapping & Dependency Management",
+  "icon": "terminal",
+  "color": "#2ecc71",
+  "severity": "high",
+  "description": "自动检测运行环境、安装系统依赖、配置上游工具链的一键引导系统",
+  "tags": [
+    "installer",
+    "dependency",
+    "environment",
+    "cross-platform"
+  ],
+  "sub_problems": [
+    "运行环境自动检测(本地/服务器/容器)",
+    "跨平台依赖安装(macOS/Linux)",
+    "多模式安装(自动/安全/预览)",
+    "上游工具链版本管理"
+  ],
+  "best_practices": [
+    "提供 safe 模式让用户控制系统变更",
+    "dry-run 预览所有操作再执行",
+    "自动检测已安装依赖避免重复安装"
+  ]
+}

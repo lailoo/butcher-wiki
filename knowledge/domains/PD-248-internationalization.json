@@ -1,0 +1,27 @@
+{
+  "id": "PD-248",
+  "slug": "internationalization",
+  "title": "国际化",
+  "subtitle": "Internationalization (i18n)",
+  "icon": "globe",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "多语言术语词汇表和本地化 prompt 支持，提升非英语场景的生成质量",
+  "tags": [
+    "i18n",
+    "multilingual",
+    "vocabulary",
+    "localization"
+  ],
+  "sub_problems": [
+    "领域术语双语对照",
+    "prompt 就绪短语库",
+    "语言特定语义密度优化",
+    "方言和地区变体支持"
+  ],
+  "best_practices": [
+    "中文 prompt 语义密度是英文的 2-3 倍",
+    "术语表含拼音和使用示例",
+    "支持混合语言 prompt"
+  ]
+}

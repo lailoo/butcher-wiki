@@ -1,0 +1,26 @@
+{
+  "id": "PD-312",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "多层配置合并、环境变量覆盖、类型自动转换、deprecated属性迁移的统一配置系统",
+  "tags": [
+    "config",
+    "environment",
+    "settings",
+    "validation"
+  ],
+  "sub_problems": [
+    "多源配置合并优先级",
+    "环境变量类型转换",
+    "配置项废弃迁移",
+    "运行时配置验证"
+  ],
+  "best_practices": [
+    "环境变量优先于配置文件优先于默认值",
+    "deprecated配置项发出FutureWarning并自动迁移"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "PD-305",
+  "slug": "multi-market-adaptation",
+  "title": "多市场适配",
+  "subtitle": "Multi-Market Adaptation",
+  "icon": "globe",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "同一系统适配不同市场的交易规则、数据格式和业务约束",
+  "tags": [
+    "market-rules",
+    "adaptation",
+    "polymorphism"
+  ],
+  "sub_problems": [
+    "交易规则引擎",
+    "市场特定数据源",
+    "多币种支持",
+    "Agent多态设计"
+  ],
+  "best_practices": [
+    "通过策略模式隔离市场规则，避免硬编码条件分支"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-294",
+  "slug": "multiprocess-concurrency-control",
+  "title": "多进程并发控制",
+  "subtitle": "Multi-Process Concurrency Control",
+  "icon": "cpu",
+  "color": "#EF4444",
+  "severity": "high",
+  "description": "单进程/多进程统一锁抽象，支持Gunicorn多worker模式下的数据一致性",
+  "tags": [
+    "concurrency",
+    "lock",
+    "multiprocess"
+  ],
+  "sub_problems": [
+    "asyncio与multiprocessing锁统一",
+    "keyed lock死锁预防",
+    "锁资源自动清理",
+    "跨进程状态同步"
+  ],
+  "best_practices": [
+    "排序获取防死锁",
+    "ContextVar实现协程隔离",
+    "asyncio.shield保护锁释放"
+  ]
+}

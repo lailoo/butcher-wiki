@@ -1,0 +1,27 @@
+{
+  "id": "PD-247",
+  "slug": "multi-llm-provider",
+  "title": "多 LLM Provider 抽象",
+  "subtitle": "Multi-LLM Provider Abstraction",
+  "icon": "cpu",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "统一抽象多个 LLM 提供商，支持自动降级和配置驱动切换",
+  "tags": [
+    "model factory",
+    "provider",
+    "abstraction"
+  ],
+  "sub_problems": [
+    "Provider 注册与工厂模式",
+    "三层配置合并",
+    "自动 fallback 链",
+    "per-agent 模型绑定",
+    "Embedding provider 自动发现"
+  ],
+  "best_practices": [
+    "Provider 注册表 + 工厂模式",
+    "YAML+env+环境变量三层配置",
+    "primary→fallback 自动降级"
+  ]
+}

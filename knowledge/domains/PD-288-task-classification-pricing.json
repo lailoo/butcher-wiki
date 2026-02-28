@@ -1,0 +1,24 @@
+{
+  "id": "PD-288",
+  "slug": "task-classification-pricing",
+  "title": "任务分类与定价",
+  "subtitle": "Task Classification & Pricing",
+  "icon": "layers",
+  "color": "#8B5CF6",
+  "severity": "medium",
+  "description": "用 LLM 将自由文本任务自动分类到职业类别并估算经济价值",
+  "tags": [
+    "任务分类",
+    "动态定价",
+    "LLM分类器"
+  ],
+  "sub_problems": [
+    "职业分类体系与工资映射",
+    "LLM 分类 prompt 设计",
+    "模糊匹配与 fallback 策略",
+    "工时估算与价值计算"
+  ],
+  "best_practices": [
+    "维护标准化的职业-工资映射表作为分类锚点"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-180",
+  "slug": "caching-strategy",
+  "title": "缓存策略",
+  "subtitle": "Caching Strategy",
+  "icon": "database",
+  "color": "#f97316",
+  "severity": "high",
+  "description": "三层缓存架构：仓库克隆缓存、embedding 数据库缓存、wiki 内容缓存",
+  "tags": [
+    "cache",
+    "persistence",
+    "performance",
+    "storage"
+  ],
+  "sub_problems": [
+    "仓库克隆去重",
+    "embedding 向量持久化",
+    "wiki 内容 CRUD 缓存",
+    "缓存键设计与索引"
+  ],
+  "best_practices": [
+    "pkl 文件持久化 embedding 避免重复计算",
+    "wikicache JSON 按 repo_type/owner/repo/language 维度索引",
+    "缓存存在性检查避免重复处理"
+  ]
+}

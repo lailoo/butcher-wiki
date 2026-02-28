@@ -1,0 +1,27 @@
+{
+  "id": "PD-215",
+  "slug": "scm-integration",
+  "title": "SCM 平台集成",
+  "subtitle": "SCM Platform Integration",
+  "icon": "git-branch",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "完整的 PR 生命周期管理：检测、CI 聚合、Review 追踪、Merge 就绪判断",
+  "tags": [
+    "github",
+    "pr",
+    "ci",
+    "code-review"
+  ],
+  "sub_problems": [
+    "PR 自动检测与状态追踪",
+    "CI check 聚合与 fail-closed 策略",
+    "Review decision 解析",
+    "Merge readiness 多维判断",
+    "Bot 评论识别与分类"
+  ],
+  "best_practices": [
+    "CI 查询失败时 fail-closed 而非 fail-open",
+    "用 GraphQL 获取 review thread isResolved 状态"
+  ]
+}

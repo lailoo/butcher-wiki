@@ -1,0 +1,25 @@
+{
+  "id": "PD-355",
+  "slug": "distributed-inference",
+  "title": "多GPU分布式推理",
+  "subtitle": "Distributed GPU Inference",
+  "icon": "network",
+  "color": "#14b8a6",
+  "severity": "high",
+  "description": "基于LitServe的多GPU推理服务，支持自动设备分配和负载均衡",
+  "tags": [
+    "distributed",
+    "multi-GPU",
+    "LitServe",
+    "inference"
+  ],
+  "sub_problems": [
+    "多卡设备分配",
+    "推理负载均衡",
+    "模型并行部署",
+    "客户端请求路由"
+  ],
+  "best_practices": [
+    "使用LitServe框架简化多GPU推理服务部署"
+  ]
+}

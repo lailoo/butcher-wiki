@@ -1,0 +1,23 @@
+{
+  "id": "PD-339",
+  "slug": "concurrent-execution-load-balancing",
+  "title": "并发执行与负载均衡",
+  "subtitle": "Concurrent Execution & Load Balancing",
+  "icon": "cpu",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "大规模Agent推理场景下的并发控制、多实例负载均衡和数据分片策略",
+  "tags": [
+    "concurrency",
+    "load balancing",
+    "distributed inference"
+  ],
+  "sub_problems": [
+    "如何在多GPU实例间均衡分配推理请求",
+    "如何控制并发度避免资源耗尽",
+    "如何实现数据分片支持分布式推理"
+  ],
+  "best_practices": [
+    "使用Semaphore控制并发上限，round-robin分配请求"
+  ]
+}

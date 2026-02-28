@@ -1,0 +1,26 @@
+{
+  "id": "PD-202",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "YAML 配置文件 + Zod 校验 + 智能默认值推导，支持多项目多实例",
+  "tags": [
+    "config",
+    "yaml",
+    "zod",
+    "validation"
+  ],
+  "sub_problems": [
+    "配置文件发现与加载",
+    "Schema 校验与类型安全",
+    "默认值推导与覆盖",
+    "多实例配置隔离"
+  ],
+  "best_practices": [
+    "Zod schema 编译时+运行时双重校验",
+    "convention over configuration 减少必填项"
+  ]
+}

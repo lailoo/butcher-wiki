@@ -1,0 +1,26 @@
+{
+  "id": "PD-403",
+  "slug": "authentication-authorization",
+  "title": "认证授权",
+  "subtitle": "Authentication & Authorization",
+  "icon": "lock",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "API Key 认证、scope 权限控制和内部服务白名单机制",
+  "tags": [
+    "auth",
+    "api-key",
+    "rbac"
+  ],
+  "sub_problems": [
+    "API Key 生成与哈希存储",
+    "Scope 权限分级控制",
+    "内部服务免认证白名单",
+    "密钥过期与轮换"
+  ],
+  "best_practices": [
+    "SHA-256 哈希存储密钥",
+    "FastAPI Depends 注入权限检查",
+    "Master Key 与普通 Key 分离"
+  ]
+}

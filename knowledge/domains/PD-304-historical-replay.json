@@ -1,0 +1,24 @@
+{
+  "id": "PD-304",
+  "slug": "historical-replay",
+  "title": "历史回放与回测",
+  "subtitle": "Historical Replay & Backtesting",
+  "icon": "clock",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "在历史数据上回放交易策略，严格防止未来信息泄露，确保实验可复现",
+  "tags": [
+    "backtesting",
+    "simulation",
+    "anti-look-ahead"
+  ],
+  "sub_problems": [
+    "时间边界控制",
+    "未来信息过滤",
+    "交易日历管理",
+    "数据回放引擎"
+  ],
+  "best_practices": [
+    "所有数据访问必须经过时间戳过滤层"
+  ]
+}

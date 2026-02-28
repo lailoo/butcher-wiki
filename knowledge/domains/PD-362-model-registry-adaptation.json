@@ -1,0 +1,25 @@
+{
+  "id": "PD-362",
+  "slug": "model-registry-adaptation",
+  "title": "模型注册与适配",
+  "subtitle": "Model Registry & Adaptation",
+  "icon": "settings",
+  "color": "#8E44AD",
+  "severity": "medium",
+  "description": "统一的模型架构注册表和运行时适配层，支持多架构动态加载和monkey patch",
+  "tags": [
+    "registry",
+    "model adapter",
+    "monkey patch",
+    "architecture"
+  ],
+  "sub_problems": [
+    "多架构统一抽象",
+    "运行时模型补丁",
+    "权重加载策略",
+    "推理后端适配"
+  ],
+  "best_practices": [
+    "注册表模式解耦模型架构与训练框架"
+  ]
+}

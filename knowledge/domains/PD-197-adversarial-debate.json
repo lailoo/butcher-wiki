@@ -1,0 +1,25 @@
+{
+  "id": "PD-197",
+  "slug": "adversarial-debate",
+  "title": "对抗辩论架构",
+  "subtitle": "Adversarial Debate Architecture",
+  "icon": "message-circle",
+  "color": "#E11D48",
+  "severity": "high",
+  "description": "通过结构化多方对抗辩论提升 Agent 决策质量，支持正反方和多角色辩论",
+  "tags": [
+    "debate",
+    "decision-quality",
+    "multi-perspective"
+  ],
+  "sub_problems": [
+    "辩论轮次控制",
+    "角色立场设计",
+    "裁判仲裁机制",
+    "辩论历史管理"
+  ],
+  "best_practices": [
+    "设置可配置的辩论轮次上限",
+    "为每个角色设计明确的立场和论证策略"
+  ]
+}

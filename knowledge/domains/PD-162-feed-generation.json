@@ -1,0 +1,29 @@
+{
+  "id": "PD-162",
+  "slug": "feed-generation",
+  "title": "Feed 生成",
+  "subtitle": "RSS & JSON Feed Generation",
+  "icon": "file-text",
+  "color": "#8e44ad",
+  "severity": "medium",
+  "description": "将应用数据输出为标准订阅格式（RSS 2.0/JSON Feed 1.1），实现内容跨平台分发",
+  "tags": [
+    "RSS",
+    "JSON Feed",
+    "syndication",
+    "feed",
+    "XML"
+  ],
+  "sub_problems": [
+    "RSS 2.0 XML 生成",
+    "JSON Feed 1.1 规范实现",
+    "XML 转义处理",
+    "用户级 feed 路由",
+    "时区处理"
+  ],
+  "best_practices": [
+    "严格遵循 RSS 2.0 和 JSON Feed 1.1 规范",
+    "XML 特殊字符转义",
+    "按用户 slug 路由独立 feed"
+  ]
+}

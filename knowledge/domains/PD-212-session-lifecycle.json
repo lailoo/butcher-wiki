@@ -1,0 +1,25 @@
+{
+  "id": "PD-212",
+  "slug": "session-lifecycle",
+  "title": "会话生命周期管理",
+  "subtitle": "Session Lifecycle Management",
+  "icon": "refresh-cw",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "Agent 会话从 spawn 到 merge 的完整状态机管理，含状态转换、活跃度检测和自动清理",
+  "tags": [
+    "state-machine",
+    "lifecycle",
+    "session"
+  ],
+  "sub_problems": [
+    "会话状态机设计",
+    "活跃度检测机制",
+    "会话恢复与归档",
+    "并发会话 ID 分配"
+  ],
+  "best_practices": [
+    "用 O_EXCL 原子锁定 session ID 防并发冲突",
+    "区分 terminal/non-terminal 状态控制恢复逻辑"
+  ]
+}

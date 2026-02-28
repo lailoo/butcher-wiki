@@ -1,0 +1,25 @@
+{
+  "id": "PD-260",
+  "slug": "skill-extension-system",
+  "title": "Skill扩展系统",
+  "subtitle": "Skill Extension System",
+  "icon": "sparkles",
+  "color": "#A855F7",
+  "severity": "medium",
+  "description": "插件化技能注册与执行系统，支持装饰器注册、超时保护和批量执行",
+  "tags": [
+    "skill",
+    "plugin",
+    "extensible"
+  ],
+  "sub_problems": [
+    "技能注册与发现",
+    "超时保护",
+    "技能依赖管理",
+    "批量执行编排"
+  ],
+  "best_practices": [
+    "@register装饰器简化技能注册",
+    "统一执行器封装超时和错误处理"
+  ]
+}

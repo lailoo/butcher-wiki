@@ -1,0 +1,25 @@
+{
+  "id": "PD-258",
+  "slug": "sse-realtime-progress",
+  "title": "SSE实时进度推送",
+  "subtitle": "SSE Real-time Progress",
+  "icon": "activity",
+  "color": "#3B82F6",
+  "severity": "medium",
+  "description": "通过Server-Sent Events实现长时间任务的实时进度推送和前端可视化",
+  "tags": [
+    "SSE",
+    "real-time",
+    "progress"
+  ],
+  "sub_problems": [
+    "SSE连接管理",
+    "步骤级进度追踪",
+    "前端进度可视化",
+    "断线重连"
+  ],
+  "best_practices": [
+    "Flask SSE配合TaskService管理事件流",
+    "前端用composables封装SSE连接生命周期"
+  ]
+}

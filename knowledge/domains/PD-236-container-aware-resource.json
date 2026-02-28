@@ -1,0 +1,24 @@
+{
+  "id": "PD-236",
+  "slug": "container-aware-resource",
+  "title": "容器感知资源管理",
+  "subtitle": "Container-Aware Resource Management",
+  "icon": "box",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "自动检测 cgroup/Docker/K8s 环境的 CPU 和内存限制，自适应配置运行参数",
+  "tags": [
+    "cgroup",
+    "Docker",
+    "K8s",
+    "资源管理"
+  ],
+  "sub_problems": [
+    "cgroup v1/v2 兼容检测",
+    "内存限制自适应",
+    "跨平台资源探测"
+  ],
+  "best_practices": [
+    "默认使用 cgroup 限制的 80% 作为内存上限"
+  ]
+}

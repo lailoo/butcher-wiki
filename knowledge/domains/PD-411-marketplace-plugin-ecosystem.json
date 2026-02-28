@@ -1,0 +1,28 @@
+{
+  "id": "PD-411",
+  "slug": "marketplace-plugin-ecosystem",
+  "title": "市场与插件生态",
+  "subtitle": "Marketplace & Plugin Ecosystem",
+  "icon": "layers",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "解决 AI CLI 工具的能力扩展和社区生态建设问题",
+  "tags": [
+    "marketplace",
+    "plugin",
+    "ecosystem",
+    "community"
+  ],
+  "sub_problems": [
+    "资源发现与安装",
+    "作用域管理",
+    "版本追踪",
+    "安全审计",
+    "社区贡献流程"
+  ],
+  "best_practices": [
+    "提供在线市场浏览",
+    "支持 project/global 双作用域",
+    "声明式配置格式"
+  ]
+}

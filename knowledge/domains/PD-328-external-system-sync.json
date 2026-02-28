@@ -1,0 +1,27 @@
+{
+  "id": "PD-328",
+  "slug": "external-system-sync",
+  "title": "外部系统双向同步",
+  "subtitle": "External System Bidirectional Sync",
+  "icon": "refresh-cw",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "与外部 issue tracker 的双向数据同步，包括冲突检测与解决策略",
+  "tags": [
+    "sync",
+    "bidirectional",
+    "adapter",
+    "conflict"
+  ],
+  "sub_problems": [
+    "Pull-Detect-Resolve-Push 四阶段同步",
+    "字段映射与类型转换",
+    "冲突检测与解决策略",
+    "增量同步与全量同步"
+  ],
+  "best_practices": [
+    "Plugin 接口 + Registry 工厂模式",
+    "Hook 机制定制同步行为",
+    "Content-hash 去重避免无效 API 调用"
+  ]
+}

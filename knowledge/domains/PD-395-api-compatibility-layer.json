@@ -1,0 +1,26 @@
+{
+  "id": "PD-395",
+  "slug": "api-compatibility-layer",
+  "title": "API兼容层",
+  "subtitle": "API Compatibility Layer",
+  "icon": "link",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "将内部服务包装为标准API格式，实现与外部生态的无缝对接",
+  "tags": [
+    "OpenAI",
+    "API",
+    "compatibility",
+    "adapter",
+    "protocol"
+  ],
+  "sub_problems": [
+    "请求格式转换",
+    "流式响应适配",
+    "错误码映射",
+    "多协议支持"
+  ],
+  "best_practices": [
+    "实现OpenAI兼容API使现有工具链可直接对接"
+  ]
+}

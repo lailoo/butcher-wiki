@@ -1,0 +1,25 @@
+{
+  "id": "PD-358",
+  "slug": "multi-modal-processing",
+  "title": "多模态处理",
+  "subtitle": "Multi-Modal Processing",
+  "icon": "eye",
+  "color": "#3498DB",
+  "severity": "high",
+  "description": "处理文本、图像、视频等多模态输入的统一管道，包括预处理、编码、上下文拼接",
+  "tags": [
+    "image processing",
+    "vision-language",
+    "multi-modal",
+    "VLM"
+  ],
+  "sub_problems": [
+    "图像分辨率自适应",
+    "多模态token拼接",
+    "坐标系映射",
+    "视觉token计算"
+  ],
+  "best_practices": [
+    "统一的像素范围约束避免OOM，动态计算vision token数量"
+  ]
+}

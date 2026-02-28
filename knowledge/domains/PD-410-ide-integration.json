@@ -1,0 +1,27 @@
+{
+  "id": "PD-410",
+  "slug": "ide-integration",
+  "title": "IDE 集成",
+  "subtitle": "IDE Integration",
+  "icon": "terminal",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "解决终端 AI 助手与 IDE 编辑器的双向通信和上下文共享问题",
+  "tags": [
+    "IDE",
+    "VSCode",
+    "JetBrains",
+    "editor"
+  ],
+  "sub_problems": [
+    "编辑器上下文传递",
+    "文件感知与选择",
+    "自动检测连接",
+    "多 IDE 协议适配"
+  ],
+  "best_practices": [
+    "支持主流 IDE 插件",
+    "实现自动发现连接",
+    "传递编辑器选中内容作为上下文"
+  ]
+}

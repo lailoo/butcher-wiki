@@ -1,0 +1,33 @@
+{
+  "id": "PD-144",
+  "slug": "agent-skill-distribution",
+  "title": "Agent 技能分发",
+  "subtitle": "Agent Skill Distribution",
+  "icon": "sparkles",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "通过结构化知识文件向 AI Agent 注入工具使用能力，支持多平台自动安装",
+  "tags": [
+    "agent-skill",
+    "knowledge-injection",
+    "SKILL.md",
+    "multi-agent-platform"
+  ],
+  "sub_problems": [
+    "技能知识结构化编写",
+    "多Agent平台适配安装",
+    "触发词与使用场景定义",
+    "上游工具命令参考",
+    "零包装层设计与上游工具版本跟踪",
+    "doctor 驱动的 Agent 自愈式故障排除",
+    "配置文件权限安全（Cookie/Token 保护）"
+  ],
+  "best_practices": [
+    "SKILL.md包含完整命令参考",
+    "自动检测并安装到已有Agent平台",
+    "触发词覆盖中英文场景",
+    "SKILL.md 指示 Agent 不记忆步骤而依赖 doctor 实时输出",
+    "importlib.resources 从 pip 包内读取技能文件确保分发一致性",
+    "pyproject.toml force-include 确保 skill 目录被打包进 wheel"
+  ]
+}

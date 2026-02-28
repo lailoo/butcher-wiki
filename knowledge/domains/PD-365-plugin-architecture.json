@@ -1,0 +1,26 @@
+{
+  "id": "PD-365",
+  "slug": "plugin-architecture",
+  "title": "插件系统架构",
+  "subtitle": "Plugin Architecture",
+  "icon": "layers",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "提供可扩展的插件注册机制，支持工具、渠道、Hook等多种扩展点",
+  "tags": [
+    "plugin",
+    "extensibility",
+    "architecture"
+  ],
+  "sub_problems": [
+    "插件发现与加载",
+    "多扩展点注册",
+    "插件隔离与安全",
+    "版本兼容性"
+  ],
+  "best_practices": [
+    "声明式manifest描述插件能力",
+    "统一的注册API",
+    "插件错误不影响宿主"
+  ]
+}

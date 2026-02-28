@@ -1,0 +1,25 @@
+{
+  "id": "PD-216",
+  "slug": "notification-routing",
+  "title": "通知路由",
+  "subtitle": "Notification Routing",
+  "icon": "message-circle",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "按事件优先级路由到不同通知渠道，支持多渠道并发推送",
+  "tags": [
+    "notification",
+    "routing",
+    "priority"
+  ],
+  "sub_problems": [
+    "优先级到渠道的映射",
+    "多渠道并发推送",
+    "Slack Block Kit 富文本构建",
+    "通知失败容错"
+  ],
+  "best_practices": [
+    "Push not Pull 设计理念",
+    "通知渠道失败不影响主流程"
+  ]
+}

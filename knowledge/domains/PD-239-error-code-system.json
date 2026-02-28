@@ -1,0 +1,24 @@
+{
+  "id": "PD-239",
+  "slug": "error-code-system",
+  "title": "错误码体系",
+  "subtitle": "Error Code System",
+  "icon": "alert-triangle",
+  "color": "#ef4444",
+  "severity": "medium",
+  "description": "通过自注册错误码和 Status 类实现结构化错误传播与跨语言错误映射",
+  "tags": [
+    "错误处理",
+    "错误码",
+    "Status",
+    "异常"
+  ],
+  "sub_problems": [
+    "错误码自动注册",
+    "跨语言错误映射",
+    "错误分类与分级"
+  ],
+  "best_practices": [
+    "用宏实现编译期错误码注册，避免运行时遗漏"
+  ]
+}

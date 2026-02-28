@@ -1,0 +1,25 @@
+{
+  "id": "PD-388",
+  "slug": "service-registry-di",
+  "title": "服务注册与依赖注入",
+  "subtitle": "Service Registry & Dependency Injection",
+  "icon": "settings",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "通过IoC容器管理服务生命周期，支持多种服务发现和依赖自动注入",
+  "tags": [
+    "IoC",
+    "DI",
+    "service discovery",
+    "plugin"
+  ],
+  "sub_problems": [
+    "服务发现机制",
+    "依赖拓扑排序",
+    "生命周期管理",
+    "热插拔替换"
+  ],
+  "best_practices": [
+    "支持多种注册方式（装饰器/配置/Entry Points）"
+  ]
+}

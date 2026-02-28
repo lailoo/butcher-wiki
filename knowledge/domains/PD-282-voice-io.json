@@ -1,0 +1,29 @@
+{
+  "id": "PD-282",
+  "slug": "voice-io",
+  "title": "语音输入输出",
+  "subtitle": "Voice I/O",
+  "icon": "cpu",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "TTS/STT 多提供者抽象层，支持云端和本地语音推理",
+  "tags": [
+    "TTS",
+    "STT",
+    "voice",
+    "speech",
+    "audio"
+  ],
+  "sub_problems": [
+    "TTS 提供者抽象与切换",
+    "STT 提供者抽象与切换",
+    "SSML 支持",
+    "音频格式转换",
+    "本地推理集成"
+  ],
+  "best_practices": [
+    "provider-agnostic trait 设计便于扩展",
+    "本地推理降低延迟和成本",
+    "SSML 支持提升语音表现力"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-321",
+  "slug": "semantic-dag-processing",
+  "title": "语义 DAG 处理引擎",
+  "subtitle": "Semantic DAG Processing Engine",
+  "icon": "git-branch",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "事件驱动的 DAG 执行器，自底向上聚合语义摘要，支持并发控制和收敛检测",
+  "tags": [
+    "DAG",
+    "async",
+    "semantic",
+    "concurrency"
+  ],
+  "sub_problems": [
+    "目录树 DAG 构建",
+    "LLM 并发信号量控制",
+    "自底向上摘要聚合",
+    "收敛检测与提前终止"
+  ],
+  "best_practices": [
+    "asyncio.Semaphore 限制 LLM 并发",
+    "事件驱动惰性调度避免资源浪费"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "PD-141",
+  "slug": "pluggable-channel-architecture",
+  "title": "可插拔渠道架构",
+  "subtitle": "Pluggable Channel Architecture",
+  "icon": "layers",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "通过抽象基类和注册表实现平台渠道的可插拔管理，支持独立替换和分级配置",
+  "tags": [
+    "plugin",
+    "channel",
+    "registry",
+    "abstraction"
+  ],
+  "sub_problems": [
+    "渠道抽象接口设计",
+    "URL路由与平台识别",
+    "后端工具热替换",
+    "渠道分级与状态管理",
+    "搜索型渠道与 URL 型渠道的统一建模（can_handle 返回 False 的特殊渠道）",
+    "MCP 服务型后端的多步可用性探测（安装→配置→功能验证）",
+    "渠道配置的双源管理（文件 + 环境变量）与敏感信息脱敏"
+  ],
+  "best_practices": [
+    "每个渠道独立文件，单一职责",
+    "tier分级标识配置复杂度",
+    "注册表集中管理渠道列表",
+    "Fallback 渠道放注册表末尾，can_handle 返回 True 兜底任意 URL",
+    "check() 返回人类可读修复指引（含具体安装命令），降低用户配置门槛",
+    "配置文件自动设置 0o600 权限，Doctor 报告检测权限过宽并提示修复"
+  ]
+}

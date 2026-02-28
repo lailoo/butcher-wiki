@@ -1,0 +1,29 @@
+{
+  "id": "PD-281",
+  "slug": "multi-channel-communication",
+  "title": "多渠道通信",
+  "subtitle": "Multi-Channel Communication",
+  "icon": "message-circle",
+  "color": "#3b82f6",
+  "severity": "high",
+  "description": "统一接口适配多个即时通讯平台，消息路由与访问控制",
+  "tags": [
+    "Telegram",
+    "Discord",
+    "Teams",
+    "WhatsApp",
+    "channel"
+  ],
+  "sub_problems": [
+    "渠道适配器统一接口",
+    "消息路由与 agent 绑定",
+    "OTP 访问控制",
+    "outbound 消息格式化",
+    "PWA 推送通知"
+  ],
+  "best_practices": [
+    "plugin trait 统一渠道接口",
+    "级联绑定规则实现灵活路由",
+    "OTP 流程保护渠道访问安全"
+  ]
+}

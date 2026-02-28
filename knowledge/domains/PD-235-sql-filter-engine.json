@@ -1,0 +1,24 @@
+{
+  "id": "PD-235",
+  "slug": "sql-filter-engine",
+  "title": "SQL 过滤引擎",
+  "subtitle": "SQL Filter Engine",
+  "icon": "terminal",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "内嵌 SQL 解析与查询规划引擎，支持结构化过滤与向量检索的混合查询",
+  "tags": [
+    "SQL",
+    "ANTLR",
+    "查询优化",
+    "过滤"
+  ],
+  "sub_problems": [
+    "SQL 解析与语义分析",
+    "查询计划生成与优化",
+    "倒排索引与正排扫描切换"
+  ],
+  "best_practices": [
+    "根据选择率自动切换倒排/正排扫描策略"
+  ]
+}

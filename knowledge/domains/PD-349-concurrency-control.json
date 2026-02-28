@@ -1,0 +1,24 @@
+{
+  "id": "PD-349",
+  "slug": "concurrency-control",
+  "title": "并发控制",
+  "subtitle": "Concurrency Control",
+  "icon": "lock",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "请求级并发限制保护GPU等有限资源不被过载",
+  "tags": [
+    "concurrency",
+    "semaphore",
+    "rate limiting"
+  ],
+  "sub_problems": [
+    "请求并发限制",
+    "资源保护",
+    "过载拒绝策略",
+    "动态并发调整"
+  ],
+  "best_practices": [
+    "使用Semaphore实现请求级并发控制并返回503拒绝过载请求"
+  ]
+}

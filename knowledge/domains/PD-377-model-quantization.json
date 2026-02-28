@@ -1,0 +1,27 @@
+{
+  "id": "PD-377",
+  "slug": "model-quantization",
+  "title": "模型量化",
+  "subtitle": "Model Quantization",
+  "icon": "cpu",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "通过低精度表示压缩模型权重，降低显存占用和计算开销",
+  "tags": [
+    "GPTQ",
+    "AWQ",
+    "FP8",
+    "INT4",
+    "量化推理"
+  ],
+  "sub_problems": [
+    "量化方案选择与精度权衡",
+    "量化kernel优化",
+    "混合精度策略",
+    "量化感知训练集成"
+  ],
+  "best_practices": [
+    "FP8适合高端GPU，GPTQ/AWQ适合通用场景",
+    "使用Marlin kernel加速量化推理"
+  ]
+}

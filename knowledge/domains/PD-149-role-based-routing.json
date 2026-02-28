@@ -1,0 +1,29 @@
+{
+  "id": "PD-149",
+  "slug": "role-based-routing",
+  "title": "角色路由系统",
+  "subtitle": "Role-Based Routing",
+  "icon": "settings",
+  "color": "#6366f1",
+  "severity": "medium",
+  "description": "基于用户角色的智能路由，自动检测 maintainer/contributor 并路由到不同仓库",
+  "tags": [
+    "routing",
+    "role",
+    "maintainer",
+    "contributor",
+    "multi-repo"
+  ],
+  "sub_problems": [
+    "角色自动检测",
+    "路由策略配置",
+    "多仓库管理",
+    "权限隔离"
+  ],
+  "best_practices": [
+    "git config 显式配置优先",
+    "URL 启发式作为 fallback",
+    "stealth mode 支持本地使用",
+    "contributor mode 隔离实验性工作"
+  ]
+}

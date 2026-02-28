@@ -1,0 +1,28 @@
+{
+  "id": "PD-283",
+  "slug": "task-scheduling",
+  "title": "任务调度",
+  "subtitle": "Task Scheduling",
+  "icon": "clock",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "Cron 定时任务调度、多存储后端、限流与健康检查",
+  "tags": [
+    "cron",
+    "scheduler",
+    "job",
+    "timer"
+  ],
+  "sub_problems": [
+    "cron 表达式解析与下次运行计算",
+    "多存储后端（SQLite/文件/内存）",
+    "任务创建限流",
+    "heartbeat 健康检查",
+    "agent turn 隔离执行"
+  ],
+  "best_practices": [
+    "滑动窗口限流防止任务爆炸",
+    "多存储后端适配不同部署场景",
+    "system_events 注入主会话保持上下文"
+  ]
+}

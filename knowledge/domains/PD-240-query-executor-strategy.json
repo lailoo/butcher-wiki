@@ -1,0 +1,23 @@
+{
+  "id": "PD-240",
+  "slug": "query-executor-strategy",
+  "title": "查询执行器策略",
+  "subtitle": "Query Executor Strategy",
+  "icon": "search",
+  "color": "#3b82f6",
+  "severity": "high",
+  "description": "根据 schema 自动选择查询执行策略，支持单向量/多向量/无向量三种模式的流水线执行",
+  "tags": [
+    "策略模式",
+    "查询执行",
+    "流水线"
+  ],
+  "sub_problems": [
+    "执行器自动选择",
+    "多向量并行查询",
+    "结果融合与重排序"
+  ],
+  "best_practices": [
+    "Factory 根据 schema 自动匹配执行器，避免用户手动选择"
+  ]
+}

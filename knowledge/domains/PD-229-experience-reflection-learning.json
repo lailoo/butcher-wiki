@@ -1,0 +1,25 @@
+{
+  "id": "PD-229",
+  "slug": "experience-reflection-learning",
+  "title": "经验反思学习",
+  "subtitle": "Experience Reflection & Learning",
+  "icon": "refresh-cw",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "交易后反思盈亏原因，将经验写入记忆库供后续决策参考",
+  "tags": [
+    "reflection",
+    "learning",
+    "experience",
+    "feedback-loop"
+  ],
+  "sub_problems": [
+    "反思 prompt 设计",
+    "盈亏归因分析",
+    "经验存储与检索",
+    "跨角色独立记忆管理"
+  ],
+  "best_practices": [
+    "LLM 生成结构化反思 + BM25 记忆检索，每个角色维护独立记忆实例"
+  ]
+}

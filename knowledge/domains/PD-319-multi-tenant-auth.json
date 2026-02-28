@@ -1,0 +1,26 @@
+{
+  "id": "PD-319",
+  "slug": "multi-tenant-auth",
+  "title": "多租户认证授权",
+  "subtitle": "Multi-Tenant Authentication",
+  "icon": "lock",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "API Key 驱动的多租户认证体系，支持三级角色和租户级数据隔离",
+  "tags": [
+    "auth",
+    "RBAC",
+    "multi-tenant",
+    "API key"
+  ],
+  "sub_problems": [
+    "API Key 生成与轮换",
+    "角色权限校验链",
+    "租户数据空间隔离",
+    "请求上下文传播"
+  ],
+  "best_practices": [
+    "hmac.compare_digest 防时序攻击",
+    "RequestContext 贯穿全链路传播租户信息"
+  ]
+}

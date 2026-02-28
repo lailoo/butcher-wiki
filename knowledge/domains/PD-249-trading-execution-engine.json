@@ -1,0 +1,27 @@
+{
+  "id": "PD-249",
+  "slug": "trading-execution-engine",
+  "title": "交易执行引擎",
+  "subtitle": "Trading Execution Engine",
+  "icon": "zap",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "从数据采集到订单执行的完整交易决策管道",
+  "tags": [
+    "trading",
+    "execution",
+    "CCXT"
+  ],
+  "sub_problems": [
+    "决策协调器全流程编排",
+    "多交易所统一 API 对接",
+    "模拟交易与实盘切换",
+    "杠杆/保证金管理",
+    "PnL 计算与仓位跟踪"
+  ],
+  "best_practices": [
+    "Coordinator 模式编排决策管道",
+    "CCXT 统一交易所抽象",
+    "Paper/Live 模式工厂切换"
+  ]
+}

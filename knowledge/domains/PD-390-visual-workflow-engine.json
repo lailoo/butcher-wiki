@@ -1,0 +1,26 @@
+{
+  "id": "PD-390",
+  "slug": "visual-workflow-engine",
+  "title": "可视化工作流引擎",
+  "subtitle": "Visual Workflow Engine",
+  "icon": "git-branch",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "基于Graph-Vertex-Edge模型的可视化工作流编排引擎",
+  "tags": [
+    "workflow",
+    "DAG",
+    "visual",
+    "low-code",
+    "graph"
+  ],
+  "sub_problems": [
+    "图解析与拓扑排序",
+    "循环检测与处理",
+    "条件路由",
+    "增量构建"
+  ],
+  "best_practices": [
+    "前后端统一的Graph数据模型，JSON序列化可导入导出"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-359",
+  "slug": "distributed-training",
+  "title": "分布式训练",
+  "subtitle": "Distributed Training",
+  "icon": "cpu",
+  "color": "#9B59B6",
+  "severity": "high",
+  "description": "大模型分布式训练基础设施，包括数据并行、张量并行、资源调度和推理引擎集成",
+  "tags": [
+    "Ray",
+    "FSDP",
+    "Megatron",
+    "tensor parallel",
+    "vLLM"
+  ],
+  "sub_problems": [
+    "GPU资源池管理",
+    "分片策略选择",
+    "训练推理引擎切换",
+    "多GPU批次对齐"
+  ],
+  "best_practices": [
+    "FSDP+vLLM混合引擎实现训练推理一体化"
+  ]
+}

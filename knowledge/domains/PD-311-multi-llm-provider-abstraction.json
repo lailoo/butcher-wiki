@@ -1,0 +1,26 @@
+{
+  "id": "PD-311",
+  "slug": "multi-llm-provider-abstraction",
+  "title": "多LLM Provider抽象",
+  "subtitle": "Multi-LLM Provider Abstraction",
+  "icon": "cpu",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一封装多种LLM/Embedding提供商，实现provider无关的模型调用抽象层",
+  "tags": [
+    "LLM",
+    "provider",
+    "abstraction",
+    "factory pattern"
+  ],
+  "sub_problems": [
+    "Provider统一接口设计",
+    "依赖自动安装",
+    "流式响应适配",
+    "模型参数标准化"
+  ],
+  "best_practices": [
+    "使用工厂模式按provider名称动态实例化",
+    "懒加载provider依赖避免全量安装"
+  ]
+}

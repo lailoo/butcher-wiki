@@ -1,0 +1,25 @@
+{
+  "id": "PD-211",
+  "slug": "plugin-architecture",
+  "title": "插件架构",
+  "subtitle": "Plugin Architecture",
+  "icon": "settings",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "可插拔的模块化架构设计，通过接口定义+注册发现实现组件热替换",
+  "tags": [
+    "plugin",
+    "extensibility",
+    "interface"
+  ],
+  "sub_problems": [
+    "插件接口定义与类型安全",
+    "插件注册与发现机制",
+    "插件配置传递",
+    "多插件槽位协调"
+  ],
+  "best_practices": [
+    "用 TypeScript satisfies 保证编译期类型检查",
+    "每个插件 export manifest+create 标准结构"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-271",
+  "slug": "share-publish",
+  "title": "分享与发布",
+  "subtitle": "Content Sharing & Publishing",
+  "icon": "globe",
+  "color": "#c0392b",
+  "severity": "medium",
+  "description": "内容分享、复制和公开发布的权限与速率控制",
+  "tags": [
+    "share",
+    "publish",
+    "rate-limit",
+    "permission"
+  ],
+  "sub_problems": [
+    "分享链接生成",
+    "权限控制",
+    "速率限制防滥用",
+    "异步分享处理"
+  ],
+  "best_practices": [
+    "分享操作异步化避免阻塞用户请求"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "PD-310",
+  "slug": "domain-specific-prompt-engineering",
+  "title": "领域特定 Prompt 工程",
+  "subtitle": "Domain-Specific Prompt Engineering",
+  "icon": "message-circle",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "为不同业务领域设计专用 prompt 模板，动态注入运行时数据驱动 Agent 行为",
+  "tags": [
+    "prompt-engineering",
+    "dynamic-prompt",
+    "domain-prompt"
+  ],
+  "sub_problems": [
+    "模板变量注入",
+    "领域规则嵌入",
+    "多语言prompt",
+    "终止信号设计"
+  ],
+  "best_practices": [
+    "将领域规则直接写入 prompt 约束而非依赖后处理校验"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "PD-345",
+  "slug": "document-processing-pipeline",
+  "title": "文档处理管线",
+  "subtitle": "Document Processing Pipeline",
+  "icon": "layers",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "多阶段串联的文档解析管线设计，支持多后端路由和阶段组合",
+  "tags": [
+    "pipeline",
+    "document parsing",
+    "multi-backend"
+  ],
+  "sub_problems": [
+    "管线阶段编排",
+    "后端路由选择",
+    "中间结果传递",
+    "异步管线执行"
+  ],
+  "best_practices": [
+    "通过backend参数统一路由不同处理管线"
+  ]
+}

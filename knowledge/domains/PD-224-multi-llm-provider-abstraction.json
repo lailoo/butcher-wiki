@@ -1,0 +1,25 @@
+{
+  "id": "PD-224",
+  "slug": "multi-llm-provider-abstraction",
+  "title": "多 LLM Provider 抽象",
+  "subtitle": "Multi-LLM Provider Abstraction",
+  "icon": "cpu",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一多个 LLM 提供商的接口差异，实现模型无关的调用层",
+  "tags": [
+    "LLM",
+    "provider",
+    "factory",
+    "abstraction"
+  ],
+  "sub_problems": [
+    "Provider API 差异适配",
+    "模型参数兼容性处理",
+    "推理模型特殊参数管理",
+    "输出格式归一化"
+  ],
+  "best_practices": [
+    "使用抽象基类定义统一接口，Factory 模式按 provider 分发"
+  ]
+}

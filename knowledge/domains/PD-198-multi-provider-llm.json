@@ -1,0 +1,26 @@
+{
+  "id": "PD-198",
+  "slug": "multi-provider-llm",
+  "title": "多供应商 LLM 抽象",
+  "subtitle": "Multi-Provider LLM Abstraction",
+  "icon": "cpu",
+  "color": "#7C3AED",
+  "severity": "high",
+  "description": "统一多个 LLM 供应商的接口差异，实现供应商无关的模型调用",
+  "tags": [
+    "llm",
+    "provider",
+    "abstraction",
+    "factory-pattern"
+  ],
+  "sub_problems": [
+    "供应商参数差异归一化",
+    "模型验证与兼容性",
+    "推理模型特殊处理",
+    "响应格式统一"
+  ],
+  "best_practices": [
+    "使用抽象基类定义统一接口",
+    "工厂模式按 provider 分发创建"
+  ]
+}

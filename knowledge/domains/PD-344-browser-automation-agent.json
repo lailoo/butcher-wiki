@@ -1,0 +1,23 @@
+{
+  "id": "PD-344",
+  "slug": "browser-automation-agent",
+  "title": "浏览器自动化Agent",
+  "subtitle": "Browser Automation Agent",
+  "icon": "globe",
+  "color": "#3B82F6",
+  "severity": "high",
+  "description": "通过MCP协议控制真实浏览器实现深度网页交互和信息获取",
+  "tags": [
+    "browser automation",
+    "MCP",
+    "web interaction"
+  ],
+  "sub_problems": [
+    "如何通过MCP协议管理浏览器会话",
+    "如何实现可靠的页面导航和元素交互",
+    "如何处理浏览器会话的并发和生命周期"
+  ],
+  "best_practices": [
+    "使用SSE长连接+心跳保活维持MCP会话稳定性"
+  ]
+}

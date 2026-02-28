@@ -1,0 +1,24 @@
+{
+  "id": "PD-237",
+  "slug": "vector-quantization",
+  "title": "向量量化压缩",
+  "subtitle": "Vector Quantization",
+  "icon": "zap",
+  "color": "#f97316",
+  "severity": "high",
+  "description": "通过 INT8/半精度/二值化等量化技术压缩向量存储，降低内存和计算开销",
+  "tags": [
+    "量化",
+    "INT8",
+    "压缩",
+    "性能优化"
+  ],
+  "sub_problems": [
+    "精度与压缩率权衡",
+    "量化编码与解码",
+    "距离计算适配"
+  ],
+  "best_practices": [
+    "INT8 量化可在精度损失 <1% 的情况下减少 75% 内存"
+  ]
+}
