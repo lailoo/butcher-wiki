@@ -1,0 +1,25 @@
+{
+  "id": "PD-478",
+  "slug": "project-scoped-state",
+  "title": "项目级状态隔离",
+  "subtitle": "Project-Scoped State Isolation",
+  "icon": "database",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "多项目数据隔离存储，支持项目切换时状态重载和跨项目资源共享",
+  "tags": [
+    "状态管理",
+    "项目隔离",
+    "Zustand"
+  ],
+  "sub_problems": [
+    "按项目路由存储路径",
+    "项目切换时状态rehydrate",
+    "跨项目资源共享控制",
+    "单体到多项目数据迁移"
+  ],
+  "best_practices": [
+    "Storage Adapter模式解耦存储路由",
+    "迁移前写新文件后备份旧文件确保安全"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-519",
+  "slug": "electron-ipc-security",
+  "title": "Electron IPC 安全桥接",
+  "subtitle": "Electron IPC Security Bridge",
+  "icon": "lock",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "Electron 渲染进程与主进程的安全通信，contextBridge 隔离与 API 命名空间设计",
+  "tags": [
+    "Electron",
+    "IPC",
+    "安全隔离"
+  ],
+  "sub_problems": [
+    "contextBridge API 命名空间设计",
+    "文件系统操作 IPC 封装",
+    "图片存储本地协议处理",
+    "缓存管理与数据导入导出"
+  ],
+  "best_practices": [
+    "渲染进程无直接 fs 访问",
+    "所有文件操作通过 IPC invoke",
+    "按功能划分 API 命名空间"
+  ]
+}

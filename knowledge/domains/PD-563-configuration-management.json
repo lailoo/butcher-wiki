@@ -1,0 +1,26 @@
+{
+  "id": "PD-563",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "类型安全的配置加载、验证和路径解析",
+  "tags": [
+    "config",
+    "TOML",
+    "Pydantic",
+    "validation"
+  ],
+  "sub_problems": [
+    "配置文件格式选择",
+    "类型安全验证",
+    "相对路径解析",
+    "环境变量覆盖"
+  ],
+  "best_practices": [
+    "用 Pydantic 模型做配置验证",
+    "相对路径基于配置文件目录而非 cwd 解析"
+  ]
+}

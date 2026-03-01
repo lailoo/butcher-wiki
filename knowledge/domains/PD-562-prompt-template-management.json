@@ -1,0 +1,26 @@
+{
+  "id": "PD-562",
+  "slug": "prompt-template-management",
+  "title": "Prompt 模板管理",
+  "subtitle": "Prompt Template Management",
+  "icon": "file-text",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "文件级 prompt 模板的组织、渲染、缓存和多语言支持",
+  "tags": [
+    "prompt",
+    "template",
+    "i18n",
+    "rendering"
+  ],
+  "sub_problems": [
+    "模板目录结构设计",
+    "变量渲染与校验",
+    "多语言切换",
+    "模板缓存策略"
+  ],
+  "best_practices": [
+    "按 task/lang/role 三级目录组织模板文件",
+    "使用 LRU 缓存避免重复文件读取"
+  ]
+}

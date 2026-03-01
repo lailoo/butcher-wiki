@@ -1,0 +1,27 @@
+{
+  "id": "PD-567",
+  "slug": "data-compression-transfer",
+  "title": "数据压缩传输",
+  "subtitle": "Data Compression & Transfer",
+  "icon": "layers",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "Client-Server 间大文件的压缩编码传输与完整性校验",
+  "tags": [
+    "compression",
+    "base64",
+    "gzip",
+    "transfer",
+    "MD5"
+  ],
+  "sub_problems": [
+    "压缩算法选择",
+    "base64 编码传输",
+    "MD5 完整性校验",
+    "未修改文件跳过传输"
+  ],
+  "best_practices": [
+    "用 MD5 比对避免重复传输未修改文件",
+    "gzip 压缩 + base64 编码平衡传输效率"
+  ]
+}

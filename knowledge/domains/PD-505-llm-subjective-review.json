@@ -1,0 +1,25 @@
+{
+  "id": "PD-505",
+  "slug": "llm-subjective-review",
+  "title": "LLM 主观评审系统",
+  "subtitle": "LLM Subjective Review System",
+  "icon": "eye",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "基于 LLM 的盲审流水线，分批评估代码设计质量并合并多轮评审结果",
+  "tags": [
+    "llm-review",
+    "subjective",
+    "blind-review"
+  ],
+  "sub_problems": [
+    "Review packet generation with file context",
+    "Batch splitting and parallel subagent execution",
+    "Evidence-weighted score merging across batches",
+    "Finding deduplication and concept matching"
+  ],
+  "best_practices": [
+    "Fail-closed import validation prevents low-quality reviews",
+    "Blind review isolation prevents score-aware bias"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-514",
+  "slug": "web-worker-communication",
+  "title": "Web Worker 通信桥",
+  "subtitle": "Web Worker Communication Bridge",
+  "icon": "cpu",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "主线程与 Worker 的异步命令/事件通信、Promise 管理与媒体注入",
+  "tags": [
+    "Web Worker",
+    "消息路由",
+    "异步通信"
+  ],
+  "sub_problems": [
+    "命令-事件消息协议设计",
+    "pendingPromises 请求-响应映射",
+    "Worker 生命周期管理",
+    "跨线程媒体数据传输"
+  ],
+  "best_practices": [
+    "单例 Bridge 模式",
+    "ready Promise 等待 Worker 初始化",
+    "动态 import 避免循环依赖"
+  ]
+}

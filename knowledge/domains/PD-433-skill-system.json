@@ -1,0 +1,25 @@
+{
+  "id": "PD-433",
+  "slug": "skill-system",
+  "title": "技能系统",
+  "subtitle": "Agent Skill System",
+  "icon": "sparkles",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "Agent 技能的发现、加载、分层覆盖和渐进式披露机制",
+  "tags": [
+    "skills",
+    "progressive-disclosure",
+    "SKILL.md"
+  ],
+  "sub_problems": [
+    "技能发现与元数据解析",
+    "多源分层加载与优先级覆盖",
+    "渐进式披露注入系统提示",
+    "技能验证与安全限制"
+  ],
+  "best_practices": [
+    "使用 YAML frontmatter 标准化技能元数据",
+    "支持 base→user→project 分层覆盖"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-483",
+  "slug": "async-task-polling",
+  "title": "异步任务轮询",
+  "subtitle": "Async Task Polling",
+  "icon": "clock",
+  "color": "#a855f7",
+  "severity": "high",
+  "description": "对异步AI生成API的任务提交-轮询-结果获取模式，支持超时和状态追踪",
+  "tags": [
+    "任务轮询",
+    "异步API",
+    "状态机"
+  ],
+  "sub_problems": [
+    "任务提交与ID获取",
+    "轮询间隔与超时控制",
+    "任务状态转换追踪",
+    "结果下载与格式转换"
+  ],
+  "best_practices": [
+    "指数退避轮询减少API压力",
+    "任务队列管理多个并发轮询"
+  ]
+}

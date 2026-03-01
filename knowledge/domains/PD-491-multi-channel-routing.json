@@ -1,0 +1,24 @@
+{
+  "id": "PD-491",
+  "slug": "multi-channel-routing",
+  "title": "多渠道消息路由",
+  "subtitle": "Multi-Channel Message Routing",
+  "icon": "message-circle",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一管理多个 IM 渠道的消息接收、路由、去重和分发",
+  "tags": [
+    "channel",
+    "routing",
+    "messaging"
+  ],
+  "sub_problems": [
+    "渠道注册与发现",
+    "消息队列与去重",
+    "渠道热替换",
+    "跨渠道消息格式适配"
+  ],
+  "best_practices": [
+    "基于注册表模式动态加载渠道插件"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-544",
+  "slug": "multi-provider-ai-dispatch",
+  "title": "多供应商 AI 调度",
+  "subtitle": "Multi-Provider AI Dispatch",
+  "icon": "globe",
+  "color": "#10B981",
+  "severity": "high",
+  "description": "多 API Key 轮换、黑名单、负载均衡和模型能力自动分类",
+  "tags": [
+    "multi-provider",
+    "key-rotation",
+    "load-balancing",
+    "model-registry"
+  ],
+  "sub_problems": [
+    "API Key 池管理与轮换",
+    "临时黑名单与自动恢复",
+    "模型能力自动分类",
+    "API 端点格式路由"
+  ],
+  "best_practices": [
+    "随机起始索引实现负载均衡",
+    "90秒黑名单自动恢复避免永久封禁",
+    "error-driven discovery 动态学习模型限制"
+  ]
+}

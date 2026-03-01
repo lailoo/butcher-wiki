@@ -1,0 +1,24 @@
+{
+  "id": "PD-473",
+  "slug": "config-driven-architecture",
+  "title": "配置驱动架构",
+  "subtitle": "Configuration-Driven Architecture",
+  "icon": "settings",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "通过声明式配置控制系统行为，减少硬编码，支持运行时调整",
+  "tags": [
+    "config",
+    "pydantic",
+    "declarative"
+  ],
+  "sub_problems": [
+    "配置校验与默认值",
+    "Prompt 模板组合",
+    "Provider 级默认值切换",
+    "配置热更新"
+  ],
+  "best_practices": [
+    "使用 Pydantic model_validator 实现 provider 感知的默认值自动切换"
+  ]
+}

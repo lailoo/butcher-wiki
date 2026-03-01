@@ -1,0 +1,26 @@
+{
+  "id": "PD-532",
+  "slug": "proactive-agent-memory",
+  "title": "主动式 Agent 记忆",
+  "subtitle": "Proactive Agent Memory",
+  "icon": "brain",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "在对话过程中后台异步执行记忆化，达到阈值自动触发，实现持续记忆同步",
+  "tags": [
+    "proactive",
+    "async",
+    "background",
+    "agent"
+  ],
+  "sub_problems": [
+    "后台记忆化任务管理",
+    "消息阈值触发策略",
+    "会话结束时的剩余消息处理",
+    "并发记忆化任务防重"
+  ],
+  "best_practices": [
+    "用 asyncio.create_task 实现非阻塞记忆化",
+    "会话结束前 await 所有未完成任务"
+  ]
+}

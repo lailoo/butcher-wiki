@@ -1,0 +1,26 @@
+{
+  "id": "PD-460",
+  "slug": "cross-platform-deployment",
+  "title": "跨平台部署",
+  "subtitle": "Cross-Platform Deployment",
+  "icon": "layers",
+  "color": "#2DD4BF",
+  "severity": "medium",
+  "description": "单代码库部署到Web/Desktop/Mobile：PWA、Electron、Capacitor/iOS",
+  "tags": [
+    "Electron",
+    "Capacitor",
+    "PWA",
+    "Nix",
+    "Monorepo"
+  ],
+  "sub_problems": [
+    "平台特定代码隔离",
+    "共享UI组件",
+    "IPC通信抽象",
+    "原生能力桥接"
+  ],
+  "best_practices": [
+    "使用stage-shared/stage-ui抽取跨平台共享逻辑"
+  ]
+}

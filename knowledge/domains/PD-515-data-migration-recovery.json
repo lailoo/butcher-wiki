@@ -1,0 +1,26 @@
+{
+  "id": "PD-515",
+  "slug": "data-migration-recovery",
+  "title": "数据迁移与恢复",
+  "subtitle": "Data Migration & Recovery",
+  "icon": "refresh-cw",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "存储架构升级时的安全迁移、幂等执行与数据恢复机制",
+  "tags": [
+    "数据迁移",
+    "数据恢复",
+    "幂等"
+  ],
+  "sub_problems": [
+    "单体→按项目目录迁移",
+    "幂等标志位防重复执行",
+    "遗留数据自动恢复",
+    "多 Store 协调 rehydrate 顺序"
+  ],
+  "best_practices": [
+    "先写新文件再标记完成",
+    "旧文件保留作为回退",
+    "启动时自动检测并恢复被覆盖数据"
+  ]
+}

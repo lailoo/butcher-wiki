@@ -1,0 +1,25 @@
+{
+  "id": "PD-480",
+  "slug": "ai-output-parsing",
+  "title": "AI 输出解析与清洗",
+  "subtitle": "AI Output Parsing & Sanitization",
+  "icon": "code",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "清洗 AI 返回的非标准 JSON，提取有效数据边界，修正类型异常",
+  "tags": [
+    "JSON清洗",
+    "AI输出",
+    "数据校验"
+  ],
+  "sub_problems": [
+    "去除markdown围栏和多余文本",
+    "提取JSON对象数组边界",
+    "数值型ID转字符串修正",
+    "AI返回数据的校准验证"
+  ],
+  "best_practices": [
+    "先清洗再解析的两步策略",
+    "提供fallback默认值防止解析失败"
+  ]
+}

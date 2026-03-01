@@ -1,0 +1,27 @@
+{
+  "id": "PD-466",
+  "slug": "ai-content-scoring",
+  "title": "AI 内容评分",
+  "subtitle": "AI Content Scoring",
+  "icon": "zap",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "用 LLM 对内容进行结构化评分、标签生成和质量过滤",
+  "tags": [
+    "AI scoring",
+    "content curation",
+    "structured output",
+    "filtering"
+  ],
+  "sub_problems": [
+    "评分标准的prompt工程",
+    "互动信号的融合评估",
+    "JSON响应的容错解析",
+    "批量评分的进度管理"
+  ],
+  "best_practices": [
+    "定义明确的分级评分标准",
+    "融合社区讨论质量而非仅看数字",
+    "支持markdown代码块JSON的fallback解析"
+  ]
+}

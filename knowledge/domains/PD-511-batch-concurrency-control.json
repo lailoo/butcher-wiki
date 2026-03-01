@@ -1,0 +1,26 @@
+{
+  "id": "PD-511",
+  "slug": "batch-concurrency-control",
+  "title": "批量并发处理",
+  "subtitle": "Batch Concurrency Control",
+  "icon": "layers",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "大规模 AI 任务的自适应分批、并发控制、错开启动与容错隔离",
+  "tags": [
+    "批处理",
+    "并发控制",
+    "任务队列"
+  ],
+  "sub_problems": [
+    "双重约束（input+output token）自适应分批",
+    "信号量+错开启动并发控制",
+    "优先级任务队列",
+    "批间延迟与限流"
+  ],
+  "best_practices": [
+    "贪心分组保证每批至少1项",
+    "单批次失败不影响其他批次",
+    "runStaggered 错开启动避免瞬时并发"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-464",
+  "slug": "multi-source-data-aggregation",
+  "title": "多源数据聚合",
+  "subtitle": "Multi-Source Data Aggregation",
+  "icon": "globe",
+  "color": "#3B82F6",
+  "severity": "high",
+  "description": "从多个异构数据源并发抓取、归一化为统一模型的工程能力",
+  "tags": [
+    "scraper",
+    "aggregation",
+    "async",
+    "data pipeline"
+  ],
+  "sub_problems": [
+    "数据源抽象与统一模型",
+    "并发抓取与错误隔离",
+    "源配置的声明式管理",
+    "HTTP客户端共享与连接池"
+  ],
+  "best_practices": [
+    "定义抽象基类统一 fetch 接口",
+    "使用 asyncio.gather + return_exceptions 隔离单源故障",
+    "Pydantic 模型验证源配置"
+  ]
+}

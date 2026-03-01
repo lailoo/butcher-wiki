@@ -1,0 +1,24 @@
+{
+  "id": "PD-471",
+  "slug": "multi-llm-provider",
+  "title": "多 LLM Provider 抽象",
+  "subtitle": "Multi-LLM Provider Abstraction",
+  "icon": "cpu",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一多个 LLM 提供商的接口差异，支持按场景选择不同模型配置",
+  "tags": [
+    "LLM",
+    "provider",
+    "abstraction"
+  ],
+  "sub_problems": [
+    "Provider 接口标准化",
+    "多配置文件管理",
+    "懒加载与连接池",
+    "模型路由策略"
+  ],
+  "best_practices": [
+    "使用 Profile 机制按场景(chat/embed/vision)选择不同模型"
+  ]
+}

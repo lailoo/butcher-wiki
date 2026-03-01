@@ -1,0 +1,24 @@
+{
+  "id": "PD-493",
+  "slug": "config-hot-reload",
+  "title": "配置热重载",
+  "subtitle": "Configuration Hot Reload",
+  "icon": "refresh-cw",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "运行时监控配置文件变更并自动重载受影响组件",
+  "tags": [
+    "config",
+    "hot-reload",
+    "watcher"
+  ],
+  "sub_problems": [
+    "文件变更检测（mtime轮询）",
+    "配置差异比对",
+    "组件级热替换",
+    "失败重试与回退"
+  ],
+  "best_practices": [
+    "mtime + hash 双重检测避免无效重载"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-450",
+  "slug": "model-weight-loading",
+  "title": "模型权重加载与分片",
+  "subtitle": "Model Weight Loading & Sharding",
+  "icon": "file-text",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "解决 HuggingFace 模型权重到自定义并行架构的映射问题，通过声明式映射实现自动权重融合与分片",
+  "tags": [
+    "safetensors",
+    "weight-loading",
+    "model",
+    "sharding"
+  ],
+  "sub_problems": [
+    "QKV 权重融合映射",
+    "Gate/Up 权重合并",
+    "张量并行分片加载",
+    "自定义 weight_loader 回调"
+  ],
+  "best_practices": [
+    "用 packed_modules_mapping 声明式定义权重融合规则",
+    "每个参数附带 weight_loader 回调处理分片逻辑"
+  ]
+}

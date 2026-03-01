@@ -1,0 +1,25 @@
+{
+  "id": "PD-502",
+  "slug": "anti-gaming-score-integrity",
+  "title": "Anti-Gaming 评分完整性",
+  "subtitle": "Anti-Gaming Score Integrity",
+  "icon": "shield",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "防止 AI 或人类通过作弊手段提升质量分数的完整性保护机制",
+  "tags": [
+    "anti-gaming",
+    "integrity",
+    "scoring"
+  ],
+  "sub_problems": [
+    "Target score proximity detection",
+    "Blind review session isolation",
+    "Low-score evidence enforcement",
+    "Wontfix penalty in strict scoring"
+  ],
+  "best_practices": [
+    "Fail-closed import validation for review findings",
+    "Evidence-weighted assessment merging"
+  ]
+}

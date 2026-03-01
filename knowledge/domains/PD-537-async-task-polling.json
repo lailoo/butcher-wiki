@@ -1,0 +1,26 @@
+{
+  "id": "PD-537",
+  "slug": "async-task-polling",
+  "title": "异步任务轮询",
+  "subtitle": "Async Task Polling",
+  "icon": "clock",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "提交异步AI生成任务后通过轮询机制追踪任务状态直到完成",
+  "tags": [
+    "异步",
+    "轮询",
+    "任务队列"
+  ],
+  "sub_problems": [
+    "任务提交与ID获取",
+    "轮询间隔与退避策略",
+    "任务状态机管理",
+    "超时与取消处理"
+  ],
+  "best_practices": [
+    "轮询间隔应随时间递增避免API压力",
+    "任务队列应支持优先级和并发限制",
+    "提供任务进度回调而非仅完成通知"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-488",
+  "slug": "config-hot-reload",
+  "title": "配置热重载",
+  "subtitle": "Configuration Hot Reload",
+  "icon": "refresh-cw",
+  "color": "#8b5cf6",
+  "severity": "medium",
+  "description": "监听配置文件变更，自动差异对比并热重载变更的组件配置",
+  "tags": [
+    "hot-reload",
+    "config",
+    "watcher",
+    "diff"
+  ],
+  "sub_problems": [
+    "文件变更检测（mtime 轮询）",
+    "配置差异对比",
+    "组件无中断替换",
+    "失败重试与回退",
+    "多组件独立热重载"
+  ],
+  "best_practices": [
+    "mtime 快速检测 + hash 精确对比，仅重载变更的组件"
+  ]
+}

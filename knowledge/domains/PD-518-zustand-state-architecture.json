@@ -1,0 +1,26 @@
+{
+  "id": "PD-518",
+  "slug": "zustand-state-architecture",
+  "title": "Zustand 状态管理架构",
+  "subtitle": "Zustand State Architecture",
+  "icon": "database",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "大型 Electron 应用的 Zustand 多 Store 架构、持久化适配与项目切换协调",
+  "tags": [
+    "Zustand",
+    "状态管理",
+    "持久化"
+  ],
+  "sub_problems": [
+    "多 Store 职责划分",
+    "自定义 fileStorage 持久化适配器",
+    "partialize 选择性序列化",
+    "多 Store 协调切换与 rehydrate"
+  ],
+  "best_practices": [
+    "persist 中间件+自定义 storage 适配器",
+    "onRehydrateStorage 恢复派生状态",
+    "project-switcher 统一协调切换顺序"
+  ]
+}

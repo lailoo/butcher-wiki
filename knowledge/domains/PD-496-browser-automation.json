@@ -1,0 +1,24 @@
+{
+  "id": "PD-496",
+  "slug": "browser-automation",
+  "title": "浏览器自动化",
+  "subtitle": "Browser Automation",
+  "icon": "globe",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "Agent 内置的 Playwright 浏览器控制能力",
+  "tags": [
+    "browser",
+    "playwright",
+    "automation"
+  ],
+  "sub_problems": [
+    "多动作统一 API 设计",
+    "ARIA snapshot ref 定位",
+    "多标签页状态管理",
+    "headless/headed 模式切换"
+  ],
+  "best_practices": [
+    "单一 browser_use 工具 + action 参数统一所有浏览器操作"
+  ]
+}

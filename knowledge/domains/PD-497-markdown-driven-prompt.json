@@ -1,0 +1,24 @@
+{
+  "id": "PD-497",
+  "slug": "markdown-driven-prompt",
+  "title": "Markdown 驱动的 Prompt 工程",
+  "subtitle": "Markdown-Driven Prompt Engineering",
+  "icon": "file-text",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "通过 Markdown 文件组合构建 Agent 的 system prompt",
+  "tags": [
+    "prompt",
+    "markdown",
+    "configuration"
+  ],
+  "sub_problems": [
+    "多文件有序加载",
+    "YAML frontmatter 处理",
+    "运行时 prompt 刷新",
+    "Bootstrap 引导流程"
+  ],
+  "best_practices": [
+    "AGENTS.md + SOUL.md + PROFILE.md 三层分离关注点"
+  ]
+}

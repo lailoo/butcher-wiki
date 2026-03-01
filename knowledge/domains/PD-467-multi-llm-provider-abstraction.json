@@ -1,0 +1,27 @@
+{
+  "id": "PD-467",
+  "slug": "multi-llm-provider-abstraction",
+  "title": "多 LLM 提供商适配",
+  "subtitle": "Multi-LLM Provider Abstraction",
+  "icon": "cpu",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "通过抽象层统一适配多家 LLM API，实现提供商无关的调用",
+  "tags": [
+    "LLM",
+    "abstraction",
+    "factory pattern",
+    "API adapter"
+  ],
+  "sub_problems": [
+    "统一调用接口设计",
+    "提供商特定参数映射",
+    "自定义端点和代理支持",
+    "配置驱动的提供商切换"
+  ],
+  "best_practices": [
+    "ABC抽象基类定义统一complete接口",
+    "工厂函数根据配置创建具体客户端",
+    "支持base_url自定义端点"
+  ]
+}

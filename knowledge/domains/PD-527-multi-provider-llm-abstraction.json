@@ -1,0 +1,25 @@
+{
+  "id": "PD-527",
+  "slug": "multi-provider-llm-abstraction",
+  "title": "多 Provider LLM 抽象层",
+  "subtitle": "Multi-Provider LLM Abstraction",
+  "icon": "cpu",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一多个 LLM 提供商的接口差异，实现按配置切换模型和后端",
+  "tags": [
+    "LLM",
+    "provider",
+    "abstraction"
+  ],
+  "sub_problems": [
+    "Provider 接口标准化",
+    "Profile 驱动的模型路由",
+    "SDK vs HTTP 客户端切换",
+    "嵌入模型与聊天模型分离"
+  ],
+  "best_practices": [
+    "使用 Profile 配置而非硬编码模型名",
+    "懒加载非默认 Provider 依赖"
+  ]
+}

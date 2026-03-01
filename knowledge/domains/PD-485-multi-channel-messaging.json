@@ -1,0 +1,25 @@
+{
+  "id": "PD-485",
+  "slug": "multi-channel-messaging",
+  "title": "多渠道消息适配",
+  "subtitle": "Multi-Channel Messaging Adapter",
+  "icon": "message-circle",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "统一接入多个即时通讯渠道，抽象消息收发、渲染和去抖逻辑",
+  "tags": [
+    "channel",
+    "messaging",
+    "adapter"
+  ],
+  "sub_problems": [
+    "渠道抽象与统一接口",
+    "消息格式转换与渲染",
+    "多媒体内容处理",
+    "消息去抖与合并",
+    "自定义渠道插件发现"
+  ],
+  "best_practices": [
+    "基于抽象基类定义渠道协议，子类实现具体平台适配"
+  ]
+}

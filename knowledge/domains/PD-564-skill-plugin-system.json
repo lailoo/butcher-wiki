@@ -1,0 +1,26 @@
+{
+  "id": "PD-564",
+  "slug": "skill-plugin-system",
+  "title": "Skill 技能系统",
+  "subtitle": "Skill Plugin System",
+  "icon": "sparkles",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "可扩展的技能/插件系统，支持运行时发现、加载和保存",
+  "tags": [
+    "skill",
+    "plugin",
+    "extensibility",
+    "markdown"
+  ],
+  "sub_problems": [
+    "技能发现与加载",
+    "技能保存与路径安全",
+    "技能到工具的转换",
+    "技能版本管理"
+  ],
+  "best_practices": [
+    "用 Markdown 作为技能载体降低创建门槛",
+    "实现路径遍历防护防止安全漏洞"
+  ]
+}

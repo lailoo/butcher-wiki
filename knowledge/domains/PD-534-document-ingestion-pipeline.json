@@ -1,0 +1,26 @@
+{
+  "id": "PD-534",
+  "slug": "document-ingestion-pipeline",
+  "title": "文档摄入管道",
+  "subtitle": "Document Ingestion Pipeline",
+  "icon": "file-text",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "解决非结构化文档到可检索向量索引的端到端转换问题，包括格式转换、分层切块和索引构建",
+  "tags": [
+    "document processing",
+    "chunking",
+    "indexing",
+    "ETL"
+  ],
+  "sub_problems": [
+    "PDF/文档格式转换",
+    "分层切块策略(Parent-Child)",
+    "块大小优化与合并清理",
+    "向量索引构建与混合嵌入"
+  ],
+  "best_practices": [
+    "采用 Parent-Child 分层索引平衡检索精度与上下文丰富度",
+    "实现 merge-split-clean 三阶段块优化防止碎片化"
+  ]
+}

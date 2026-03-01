@@ -1,0 +1,26 @@
+{
+  "id": "PD-555",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "如何实现类型安全、路径自动解析、多环境回退的配置系统",
+  "tags": [
+    "config",
+    "TOML",
+    "Pydantic",
+    "validation"
+  ],
+  "sub_problems": [
+    "类型安全的配置模型",
+    "相对路径自动解析",
+    "环境变量回退机制",
+    "多模型配置管理"
+  ],
+  "best_practices": [
+    "用Pydantic BaseModel做配置校验",
+    "field_validator递归处理Path类型字段"
+  ]
+}

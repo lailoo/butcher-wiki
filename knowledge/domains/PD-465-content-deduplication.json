@@ -1,0 +1,27 @@
+{
+  "id": "PD-465",
+  "slug": "content-deduplication",
+  "title": "内容去重",
+  "subtitle": "Content Deduplication",
+  "icon": "layers",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "跨数据源的 URL 级和语义级内容去重与合并策略",
+  "tags": [
+    "deduplication",
+    "NLP",
+    "similarity",
+    "data quality"
+  ],
+  "sub_problems": [
+    "URL归一化与跨源合并",
+    "标题语义相似度计算",
+    "CJK与ASCII混合文本的token化",
+    "去重后内容合并策略"
+  ],
+  "best_practices": [
+    "URL归一化去除www/尾斜杠/fragment",
+    "Jaccard相似度+标签重叠双重判定",
+    "保留最丰富内容作为主记录"
+  ]
+}

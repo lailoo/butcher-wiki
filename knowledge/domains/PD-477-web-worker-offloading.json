@@ -1,0 +1,25 @@
+{
+  "id": "PD-477",
+  "slug": "web-worker-offloading",
+  "title": "Web Worker 任务卸载",
+  "subtitle": "Web Worker Task Offloading",
+  "icon": "cpu",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "将 AI 生成等重计算任务卸载到 Web Worker，通过 Bridge 模式管理通信",
+  "tags": [
+    "Web Worker",
+    "并发",
+    "Bridge模式"
+  ],
+  "sub_problems": [
+    "主线程与Worker消息路由",
+    "Promise管理与超时",
+    "事件驱动的进度回调",
+    "Worker生命周期管理"
+  ],
+  "best_practices": [
+    "Singleton Bridge 模式统一管理Worker通信",
+    "事件类型枚举确保类型安全"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-486",
+  "slug": "skill-marketplace",
+  "title": "技能市场与热安装",
+  "subtitle": "Skill Marketplace & Hot Install",
+  "icon": "sparkles",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "从多个技能源发现、安装和管理可扩展的 Agent 技能",
+  "tags": [
+    "skill",
+    "marketplace",
+    "plugin",
+    "extensibility"
+  ],
+  "sub_problems": [
+    "技能声明式定义与元数据",
+    "多源技能发现与安装",
+    "技能生命周期管理",
+    "技能目录同步策略",
+    "技能版本与依赖管理"
+  ],
+  "best_practices": [
+    "SKILL.md 声明式定义技能元数据，三级目录分离内置/自定义/激活技能"
+  ]
+}

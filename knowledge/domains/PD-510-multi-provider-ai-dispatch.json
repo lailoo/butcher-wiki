@@ -1,0 +1,26 @@
+{
+  "id": "PD-510",
+  "slug": "multi-provider-ai-dispatch",
+  "title": "多供应商 AI 调度",
+  "subtitle": "Multi-Provider AI Dispatch",
+  "icon": "refresh-cw",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "管理多个 AI 供应商的 Key 轮转、负载均衡、模型能力发现与动态路由",
+  "tags": [
+    "AI调度",
+    "负载均衡",
+    "Key轮转"
+  ],
+  "sub_problems": [
+    "API Key 多 Key 轮询与黑名单",
+    "功能→供应商动态绑定",
+    "模型能力自动分类",
+    "Error-driven 模型限制发现"
+  ],
+  "best_practices": [
+    "随机起始索引避免热点",
+    "失败 Key 临时黑名单+自动恢复",
+    "从 API 错误中学习模型限制并缓存"
+  ]
+}

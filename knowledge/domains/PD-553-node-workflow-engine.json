@@ -1,0 +1,26 @@
+{
+  "id": "PD-553",
+  "slug": "node-workflow-engine",
+  "title": "节点式工作流引擎",
+  "subtitle": "Node-based Workflow Engine",
+  "icon": "git-branch",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "如何设计声明式依赖的节点工作流引擎并自动解析执行顺序",
+  "tags": [
+    "workflow",
+    "node",
+    "dependency",
+    "DAG"
+  ],
+  "sub_problems": [
+    "节点元数据与依赖声明",
+    "自动递归依赖解析",
+    "节点优先级与候选fallback",
+    "执行模式切换(auto/skip/default)"
+  ],
+  "best_practices": [
+    "用NodeMeta声明依赖而非硬编码",
+    "递归解析缺失前置节点避免手动编排"
+  ]
+}

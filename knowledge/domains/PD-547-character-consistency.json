@@ -1,0 +1,27 @@
+{
+  "id": "PD-547",
+  "slug": "character-consistency",
+  "title": "角色一致性系统",
+  "subtitle": "Character Consistency System",
+  "icon": "eye",
+  "color": "#F97316",
+  "severity": "medium",
+  "description": "通过角色圣经管理视觉特征、风格 token 和参考图实现跨场景一致性",
+  "tags": [
+    "character-bible",
+    "visual-consistency",
+    "style-tokens",
+    "reference-image"
+  ],
+  "sub_problems": [
+    "角色视觉特征提取与存储",
+    "跨场景一致性 prompt 注入",
+    "多参考图合并分析",
+    "三视图生成"
+  ],
+  "best_practices": [
+    "Character Bible 模式集中管理角色视觉身份",
+    "styleTokens 去重合并保证一致性",
+    "Singleton Manager 全局共享角色数据"
+  ]
+}

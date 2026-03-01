@@ -1,0 +1,26 @@
+{
+  "id": "PD-531",
+  "slug": "transparent-memory-injection",
+  "title": "透明记忆注入",
+  "subtitle": "Transparent Memory Injection",
+  "icon": "zap",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "通过包装 LLM 客户端在调用前自动检索并注入相关记忆，对业务代码零侵入",
+  "tags": [
+    "wrapper",
+    "injection",
+    "transparent",
+    "auto-recall"
+  ],
+  "sub_problems": [
+    "客户端代理包装",
+    "自动查询提取",
+    "记忆格式化与注入位置",
+    "同步/异步兼容"
+  ],
+  "best_practices": [
+    "注入失败时静默降级不阻断主流程",
+    "使用 XML 标签包裹注入内容便于模型区分"
+  ]
+}

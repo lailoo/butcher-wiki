@@ -1,0 +1,26 @@
+{
+  "id": "PD-560",
+  "slug": "node-dependency-dag",
+  "title": "节点依赖 DAG 编排",
+  "subtitle": "Node Dependency DAG Orchestration",
+  "icon": "git-branch",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "管理节点间依赖关系，自动检测并递归执行缺失前置节点",
+  "tags": [
+    "DAG",
+    "dependency",
+    "workflow",
+    "orchestration"
+  ],
+  "sub_problems": [
+    "依赖声明与解析",
+    "缺失依赖自动补全",
+    "循环依赖检测",
+    "执行模式切换(auto/default/skip)"
+  ],
+  "best_practices": [
+    "用声明式元数据定义依赖而非硬编码",
+    "支持多候选节点的优先级回退"
+  ]
+}

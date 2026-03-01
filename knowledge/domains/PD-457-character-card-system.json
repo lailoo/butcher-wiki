@@ -1,0 +1,25 @@
+{
+  "id": "PD-457",
+  "slug": "character-card-system",
+  "title": "角色卡片系统",
+  "subtitle": "Character Card System",
+  "icon": "file-text",
+  "color": "#FB923C",
+  "severity": "medium",
+  "description": "角色定义、导出和互操作的标准化系统，支持V3规范",
+  "tags": [
+    "Character Card",
+    "V3 Spec",
+    "PNG Export",
+    "SillyTavern"
+  ],
+  "sub_problems": [
+    "角色属性定义",
+    "多格式导出",
+    "角色书知识库",
+    "示例对话管理"
+  ],
+  "best_practices": [
+    "遵循Character Card V3开放规范确保跨平台互操作"
+  ]
+}

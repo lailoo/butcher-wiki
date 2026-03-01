@@ -1,0 +1,27 @@
+{
+  "id": "PD-523",
+  "slug": "database-migration",
+  "title": "数据库迁移",
+  "subtitle": "Database Migration",
+  "icon": "git-branch",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "管理数据库 schema 的版本演进，支持自动建表和增量迁移",
+  "tags": [
+    "migration",
+    "schema",
+    "DDL",
+    "alembic"
+  ],
+  "sub_problems": [
+    "Schema 版本管理",
+    "自动建表与验证",
+    "增量迁移脚本",
+    "多后端 DDL 适配"
+  ],
+  "best_practices": [
+    "区分 create 和 validate 模式适应开发与生产环境",
+    "迁移脚本与 scope model 动态绑定",
+    "pgvector 扩展检测与自动启用"
+  ]
+}

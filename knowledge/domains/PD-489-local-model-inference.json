@@ -1,0 +1,26 @@
+{
+  "id": "PD-489",
+  "slug": "local-model-inference",
+  "title": "本地模型推理",
+  "subtitle": "Local Model Inference",
+  "icon": "cpu",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "支持多后端本地模型加载与推理，统一 chat 接口",
+  "tags": [
+    "local-model",
+    "llama.cpp",
+    "MLX",
+    "inference"
+  ],
+  "sub_problems": [
+    "多后端抽象（llama.cpp/MLX）",
+    "模型生命周期管理",
+    "单例模式资源复用",
+    "流式输出支持",
+    "模型热切换"
+  ],
+  "best_practices": [
+    "单例工厂模式管理模型加载，避免重复加载同一模型"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-513",
+  "slug": "character-consistency",
+  "title": "角色一致性管理",
+  "subtitle": "Character Consistency Management",
+  "icon": "eye",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "跨分镜角色视觉一致性保障，包括角色圣经、参考图绑定与风格 token 管理",
+  "tags": [
+    "角色一致性",
+    "角色圣经",
+    "视觉锚点"
+  ],
+  "sub_problems": [
+    "角色圣经数据结构设计",
+    "跨分镜一致性提示词生成",
+    "多参考图分析结果合并",
+    "6层身份锚点校准"
+  ],
+  "best_practices": [
+    "视觉特征+风格token+色板三维描述",
+    "参考图主次标记",
+    "一致性 prompt 自动注入每个分镜"
+  ]
+}

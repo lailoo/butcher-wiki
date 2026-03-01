@@ -1,0 +1,27 @@
+{
+  "id": "PD-549",
+  "slug": "adaptive-batch-processing",
+  "title": "自适应批处理",
+  "subtitle": "Adaptive Batch Processing",
+  "icon": "zap",
+  "color": "#EF4444",
+  "severity": "high",
+  "description": "根据模型 token 限制自动分批 AI 调用，双重约束贪心分组",
+  "tags": [
+    "batch",
+    "token-aware",
+    "greedy",
+    "fault-isolation"
+  ],
+  "sub_problems": [
+    "双重约束分批（input+output token）",
+    "60K Hard Cap 防止 TTFT 过高",
+    "容错隔离（部分成功返回）",
+    "并发批次执行与进度回调"
+  ],
+  "best_practices": [
+    "贪心分组保证每批至少1个item",
+    "TOKEN_BUDGET_EXCEEDED 不重试节省成本",
+    "runStaggered 错开启动避免 API 突发"
+  ]
+}

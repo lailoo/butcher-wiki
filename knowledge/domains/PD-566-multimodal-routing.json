@@ -1,0 +1,26 @@
+{
+  "id": "PD-566",
+  "slug": "multimodal-routing",
+  "title": "多模态路由",
+  "subtitle": "Multimodal Model Routing",
+  "icon": "eye",
+  "color": "#f97316",
+  "severity": "high",
+  "description": "根据输入内容自动路由到文本 LLM 或视觉 VLM",
+  "tags": [
+    "multimodal",
+    "VLM",
+    "routing",
+    "vision"
+  ],
+  "sub_problems": [
+    "模态检测与模型选择",
+    "视频抽帧策略",
+    "图片压缩与尺寸控制",
+    "全局 token/图片数量限制"
+  ],
+  "best_practices": [
+    "按 media 字段有无自动切换 LLM/VLM",
+    "视频按时间窗口分段采样避免 token 溢出"
+  ]
+}

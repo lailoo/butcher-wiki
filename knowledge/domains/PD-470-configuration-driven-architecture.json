@@ -1,0 +1,27 @@
+{
+  "id": "PD-470",
+  "slug": "configuration-driven-architecture",
+  "title": "配置驱动架构",
+  "subtitle": "Configuration-Driven Architecture",
+  "icon": "settings",
+  "color": "#6366F1",
+  "severity": "medium",
+  "description": "单一JSON配置文件驱动全部行为，Pydantic验证+环境变量替换",
+  "tags": [
+    "config",
+    "Pydantic",
+    "env vars",
+    "declarative"
+  ],
+  "sub_problems": [
+    "配置模型的类型安全验证",
+    "敏感信息与配置的分离",
+    "URL中环境变量的运行时替换",
+    "配置模板与示例管理"
+  ],
+  "best_practices": [
+    "Pydantic BaseModel验证配置结构",
+    "${VAR}语法支持URL中嵌入密钥",
+    ".env文件分离敏感信息避免泄露"
+  ]
+}

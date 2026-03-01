@@ -1,0 +1,27 @@
+{
+  "id": "PD-522",
+  "slug": "multi-llm-backend-adapter",
+  "title": "多 LLM 后端适配",
+  "subtitle": "Multi-LLM Backend Adapter",
+  "icon": "cpu",
+  "color": "#06B6D4",
+  "severity": "high",
+  "description": "通过策略模式统一适配多个 LLM/Embedding 提供商，支持按步骤配置不同模型",
+  "tags": [
+    "provider",
+    "backend",
+    "adapter",
+    "strategy pattern"
+  ],
+  "sub_problems": [
+    "LLM 提供商协议统一",
+    "Embedding 后端抽象",
+    "客户端通信层选择",
+    "按工作流步骤分配模型 profile"
+  ],
+  "best_practices": [
+    "Backend 基类定义 payload 构建和响应解析接口",
+    "懒加载可选依赖避免安装全部 SDK",
+    "LLM Profile 配置与工作流步骤解耦"
+  ]
+}

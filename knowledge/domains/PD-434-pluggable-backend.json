@@ -1,0 +1,26 @@
+{
+  "id": "PD-434",
+  "slug": "pluggable-backend",
+  "title": "可插拔后端架构",
+  "subtitle": "Pluggable Backend Architecture",
+  "icon": "layers",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "通过协议抽象实现文件操作和执行环境的可插拔后端",
+  "tags": [
+    "backend",
+    "protocol",
+    "abstraction",
+    "composite"
+  ],
+  "sub_problems": [
+    "统一文件操作协议定义",
+    "多后端实现与组合",
+    "工厂模式延迟创建",
+    "跨后端一致性保证"
+  ],
+  "best_practices": [
+    "定义 Protocol 接口而非抽象基类",
+    "支持 CompositeBackend 组合多后端能力"
+  ]
+}

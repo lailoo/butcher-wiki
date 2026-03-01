@@ -1,0 +1,26 @@
+{
+  "id": "PD-445",
+  "slug": "langgraph-state-patterns",
+  "title": "LangGraph 状态图模式",
+  "subtitle": "LangGraph State Graph Patterns",
+  "icon": "git-branch",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "解决基于 LangGraph 构建复杂 Agent 工作流的状态管理、子图嵌套和条件路由问题",
+  "tags": [
+    "LangGraph",
+    "StateGraph",
+    "subgraph",
+    "workflow"
+  ],
+  "sub_problems": [
+    "自定义 reducer 实现状态覆盖与追加",
+    "嵌套子图实现模块化架构",
+    "Command 对象条件路由",
+    "Send API 动态并行分发"
+  ],
+  "best_practices": [
+    "用 override_reducer 支持状态重置",
+    "input/output schema 分离控制子图数据边界"
+  ]
+}

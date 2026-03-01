@@ -1,0 +1,26 @@
+{
+  "id": "PD-516",
+  "slug": "async-task-polling",
+  "title": "异步任务轮询",
+  "subtitle": "Async Task Polling",
+  "icon": "clock",
+  "color": "#3b82f6",
+  "severity": "medium",
+  "description": "异步 AI 生成任务的状态轮询、动态超时与网络容错",
+  "tags": [
+    "轮询",
+    "异步任务",
+    "超时管理"
+  ],
+  "sub_problems": [
+    "固定间隔轮询",
+    "动态超时调整",
+    "网络错误容忍",
+    "取消检测与进度回调"
+  ],
+  "best_practices": [
+    "根据服务端 estimatedTime 动态延长超时",
+    "网络错误不中断轮询",
+    "最大超时保护防止无限等待"
+  ]
+}

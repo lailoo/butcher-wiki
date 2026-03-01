@@ -1,0 +1,26 @@
+{
+  "id": "PD-446",
+  "slug": "paged-kv-cache",
+  "title": "KV Cache 分页与前缀缓存",
+  "subtitle": "Paged KV Cache & Prefix Caching",
+  "icon": "database",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "解决 LLM 推理中 KV Cache 内存碎片化和重复计算问题，通过分页管理和内容哈希实现高效缓存复用",
+  "tags": [
+    "inference",
+    "memory",
+    "caching",
+    "paged-attention"
+  ],
+  "sub_problems": [
+    "KV Cache 内存碎片化",
+    "前缀重复计算",
+    "Block 引用计数与生命周期",
+    "内容哈希冲突处理"
+  ],
+  "best_practices": [
+    "使用 xxhash 等快速哈希算法做内容寻址",
+    "Block 粒度对齐到 256 token 以平衡碎片与命中率"
+  ]
+}

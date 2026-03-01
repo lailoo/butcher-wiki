@@ -1,0 +1,27 @@
+{
+  "id": "PD-521",
+  "slug": "memory-dedup-reinforcement",
+  "title": "记忆去重与强化",
+  "subtitle": "Memory Deduplication & Reinforcement",
+  "icon": "refresh-cw",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "检测重复记忆并通过强化计数和时间衰减实现记忆显著性排序",
+  "tags": [
+    "deduplication",
+    "reinforcement",
+    "salience",
+    "decay"
+  ],
+  "sub_problems": [
+    "内容哈希去重",
+    "强化计数追踪",
+    "时间衰减建模",
+    "显著性综合评分"
+  ],
+  "best_practices": [
+    "对 summary 归一化后计算哈希避免格式差异",
+    "使用对数函数抑制高频强化的分数膨胀",
+    "半衰期参数可配以适应不同记忆场景"
+  ]
+}

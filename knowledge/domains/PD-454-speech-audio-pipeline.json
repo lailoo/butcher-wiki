@@ -1,0 +1,26 @@
+{
+  "id": "PD-454",
+  "slug": "speech-audio-pipeline",
+  "title": "语音音频管道",
+  "subtitle": "Speech & Audio Pipeline",
+  "icon": "cpu",
+  "color": "#E879F9",
+  "severity": "high",
+  "description": "端到端语音处理：VAD检测、STT转录、TTS合成的完整音频管道",
+  "tags": [
+    "STT",
+    "TTS",
+    "VAD",
+    "Whisper",
+    "ElevenLabs"
+  ],
+  "sub_problems": [
+    "语音活动检测",
+    "多引擎语音转录",
+    "语音合成与情感控制",
+    "音频格式转换"
+  ],
+  "best_practices": [
+    "支持本地和云端双模式STT"
+  ]
+}

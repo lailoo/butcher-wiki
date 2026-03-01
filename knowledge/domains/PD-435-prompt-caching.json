@@ -1,0 +1,24 @@
+{
+  "id": "PD-435",
+  "slug": "prompt-caching",
+  "title": "Prompt 缓存优化",
+  "subtitle": "Prompt Caching Optimization",
+  "icon": "zap",
+  "color": "#f59e0b",
+  "severity": "medium",
+  "description": "利用 LLM 提供商的 prompt 缓存能力降低重复 token 计费",
+  "tags": [
+    "caching",
+    "cost-optimization",
+    "anthropic"
+  ],
+  "sub_problems": [
+    "缓存标记自动注入",
+    "非支持模型静默降级",
+    "缓存命中率优化"
+  ],
+  "best_practices": [
+    "将缓存中间件放在管道末端",
+    "对非支持模型使用 ignore 策略而非报错"
+  ]
+}

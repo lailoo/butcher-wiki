@@ -1,0 +1,26 @@
+{
+  "id": "PD-439",
+  "slug": "agent-communication-protocol",
+  "title": "Agent 通信协议",
+  "subtitle": "Agent Communication Protocol",
+  "icon": "message-circle",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "标准化 Agent 间通信协议，支持会话管理和多模态内容",
+  "tags": [
+    "ACP",
+    "protocol",
+    "session",
+    "multimodal"
+  ],
+  "sub_problems": [
+    "会话生命周期管理",
+    "工具调用流式更新",
+    "多模态内容块转换",
+    "MCP 服务器集成"
+  ],
+  "best_practices": [
+    "遵循 ACP 标准协议实现互操作性",
+    "支持文本/图片/音频/资源多种内容块"
+  ]
+}

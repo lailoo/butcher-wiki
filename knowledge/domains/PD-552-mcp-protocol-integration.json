@@ -1,0 +1,26 @@
+{
+  "id": "PD-552",
+  "slug": "mcp-protocol-integration",
+  "title": "MCP协议集成",
+  "subtitle": "MCP Protocol Integration",
+  "icon": "link",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "如何基于MCP协议实现Agent与工具服务的标准化通信",
+  "tags": [
+    "MCP",
+    "FastMCP",
+    "sampling",
+    "protocol"
+  ],
+  "sub_problems": [
+    "MCP Server创建与工具注册",
+    "Sampling回调实现模型路由",
+    "Session管理与状态传递",
+    "传输协议选择(stdio/sse/streamable-http)"
+  ],
+  "best_practices": [
+    "使用FastMCP简化Server端开发",
+    "通过Sampling回调实现Server端LLM调用"
+  ]
+}

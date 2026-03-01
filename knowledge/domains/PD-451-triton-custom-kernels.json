@@ -1,0 +1,26 @@
+{
+  "id": "PD-451",
+  "slug": "triton-custom-kernels",
+  "title": "Triton 自定义算子",
+  "subtitle": "Custom Triton Kernels",
+  "icon": "terminal",
+  "color": "#ef4444",
+  "severity": "medium",
+  "description": "解决 PyTorch 原生算子无法高效处理分页内存访问的问题，通过 Triton JIT 编写自定义 GPU 内核",
+  "tags": [
+    "triton",
+    "gpu-kernel",
+    "cuda",
+    "performance"
+  ],
+  "sub_problems": [
+    "分页 KV Cache 的分散写入",
+    "Triton 内核的线程映射",
+    "与 PyTorch 张量的互操作",
+    "内核自动调优"
+  ],
+  "best_practices": [
+    "用 slot_mapping 实现逻辑地址到物理地址的映射",
+    "Triton 内核粒度对齐到 head_dim 以最大化并行度"
+  ]
+}

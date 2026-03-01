@@ -1,0 +1,26 @@
+{
+  "id": "PD-462",
+  "slug": "module-lifecycle-protocol",
+  "title": "模块生命周期协议",
+  "subtitle": "Module Lifecycle Protocol",
+  "icon": "refresh-cw",
+  "color": "#818CF8",
+  "severity": "high",
+  "description": "完整的模块编排协议：认证→兼容性协商→声明→准备→配置→贡献→激活的10步生命周期",
+  "tags": [
+    "Protocol",
+    "Lifecycle",
+    "WebSocket",
+    "Module",
+    "Eventa"
+  ],
+  "sub_problems": [
+    "模块认证与兼容性",
+    "配置验证与迁移",
+    "能力声明与激活",
+    "状态机转换"
+  ],
+  "best_practices": [
+    "使用乐观并发控制（baseRevision）处理配置冲突"
+  ]
+}

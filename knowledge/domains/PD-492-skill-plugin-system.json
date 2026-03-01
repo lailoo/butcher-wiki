@@ -1,0 +1,24 @@
+{
+  "id": "PD-492",
+  "slug": "skill-plugin-system",
+  "title": "技能插件系统",
+  "subtitle": "Skill Plugin System",
+  "icon": "sparkles",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "Agent 技能的创建、安装、启用和市场化分发",
+  "tags": [
+    "skill",
+    "plugin",
+    "marketplace"
+  ],
+  "sub_problems": [
+    "技能包格式定义",
+    "多源安装（Hub/GitHub/URL）",
+    "技能启用禁用管理",
+    "技能版本控制"
+  ],
+  "best_practices": [
+    "SKILL.md + references + scripts 标准化技能包结构"
+  ]
+}

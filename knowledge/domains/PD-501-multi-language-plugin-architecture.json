@@ -1,0 +1,25 @@
+{
+  "id": "PD-501",
+  "slug": "multi-language-plugin-architecture",
+  "title": "多语言插件架构",
+  "subtitle": "Multi-Language Plugin Architecture",
+  "icon": "layers",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "可扩展的语言插件系统，支持零代码变更接入新语言",
+  "tags": [
+    "plugin",
+    "extensibility",
+    "multi-language"
+  ],
+  "sub_problems": [
+    "Plugin registration and validation",
+    "Static config vs runtime state separation",
+    "Generic plugin factory from tool specs",
+    "Tree-sitter AST integration"
+  ],
+  "best_practices": [
+    "Decorator-based registration with structure validation",
+    "Factory pattern for tool-based generic plugins"
+  ]
+}

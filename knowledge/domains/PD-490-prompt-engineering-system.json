@@ -1,0 +1,26 @@
+{
+  "id": "PD-490",
+  "slug": "prompt-engineering-system",
+  "title": "系统提示词工程",
+  "subtitle": "System Prompt Engineering",
+  "icon": "file-text",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "声明式 Markdown 文件构建系统提示词，支持分层组合和运行时动态更新",
+  "tags": [
+    "prompt",
+    "system-prompt",
+    "markdown",
+    "bootstrap"
+  ],
+  "sub_problems": [
+    "多文件分层提示词构建",
+    "YAML frontmatter 元数据",
+    "首次引导流程",
+    "运行时提示词重建",
+    "多语言提示词支持"
+  ],
+  "best_practices": [
+    "AGENTS.md/SOUL.md/PROFILE.md 三层分离关注点，运行时自动重建最新提示词"
+  ]
+}

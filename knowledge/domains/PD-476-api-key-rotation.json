@@ -1,0 +1,25 @@
+{
+  "id": "PD-476",
+  "slug": "api-key-rotation",
+  "title": "API Key 轮询与多供应商管理",
+  "subtitle": "API Key Rotation & Multi-Provider Management",
+  "icon": "refresh-cw",
+  "color": "#6366f1",
+  "severity": "high",
+  "description": "管理多个 API Key 的轮询调度、多供应商路由和功能级模型绑定",
+  "tags": [
+    "API管理",
+    "Key轮询",
+    "供应商路由"
+  ],
+  "sub_problems": [
+    "多Key轮询负载均衡",
+    "供应商模型自动发现",
+    "功能级模型绑定",
+    "Key失效检测与切换"
+  ],
+  "best_practices": [
+    "按功能域绑定模型而非全局配置",
+    "支持多Key逗号分隔自动轮询"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-484",
+  "slug": "store-version-migration",
+  "title": "Store 版本迁移",
+  "subtitle": "Store Version Migration",
+  "icon": "git-branch",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "Zustand persist 的多版本迁移链，支持数据格式升级、废弃字段清理和向后兼容",
+  "tags": [
+    "数据迁移",
+    "版本管理",
+    "Zustand"
+  ],
+  "sub_problems": [
+    "多版本迁移链设计",
+    "废弃供应商和字段清理",
+    "单选到多选格式升级",
+    "platform到id格式转换"
+  ],
+  "best_practices": [
+    "每个版本号对应独立迁移函数",
+    "保留旧字段确保向后兼容"
+  ]
+}

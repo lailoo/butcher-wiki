@@ -1,0 +1,25 @@
+{
+  "id": "PD-475",
+  "slug": "memory-dedup-reinforcement",
+  "title": "记忆去重与强化",
+  "subtitle": "Memory Deduplication & Reinforcement",
+  "icon": "refresh-cw",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "通过内容哈希去重和强化计数实现记忆的自然遗忘与巩固",
+  "tags": [
+    "deduplication",
+    "reinforcement",
+    "salience",
+    "decay"
+  ],
+  "sub_problems": [
+    "内容哈希去重",
+    "强化计数追踪",
+    "时间衰减评分",
+    "Salience 综合排序"
+  ],
+  "best_practices": [
+    "使用 log(count+1) 阻尼强化因子防止高频记忆垄断，配合指数衰减实现自然遗忘"
+  ]
+}

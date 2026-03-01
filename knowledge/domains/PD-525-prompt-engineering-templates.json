@@ -1,0 +1,27 @@
+{
+  "id": "PD-525",
+  "slug": "prompt-engineering-templates",
+  "title": "Prompt 工程模板化",
+  "subtitle": "Prompt Engineering Templates",
+  "icon": "file-text",
+  "color": "#F97316",
+  "severity": "medium",
+  "description": "将 LLM prompt 结构化为可组合、可覆盖的模板块，支持按类型和场景定制",
+  "tags": [
+    "prompt",
+    "template",
+    "composable",
+    "customizable"
+  ],
+  "sub_problems": [
+    "Prompt 块排序与组合",
+    "默认 prompt 与用户覆盖合并",
+    "按记忆类型定制提取 prompt",
+    "检索意图判断 prompt 设计"
+  ],
+  "best_practices": [
+    "PromptBlock 按 ordinal 排序保证组合顺序",
+    "complete_prompt_blocks 自动补全缺失的默认块",
+    "prompt 与业务逻辑分离存放在独立 prompts 包中"
+  ]
+}

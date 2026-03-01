@@ -1,0 +1,25 @@
+{
+  "id": "PD-481",
+  "slug": "batch-generation-pipeline",
+  "title": "批量生成管道",
+  "subtitle": "Batch Generation Pipeline",
+  "icon": "zap",
+  "color": "#3b82f6",
+  "severity": "high",
+  "description": "批量AI内容生成的并发控制、断点续传、进度追踪和失败重试",
+  "tags": [
+    "批量处理",
+    "并发控制",
+    "断点续传"
+  ],
+  "sub_problems": [
+    "可配置并发度的批量执行",
+    "断点续传从中断位置继续",
+    "内容审核失败自动跳过",
+    "视觉连续性帧传递"
+  ],
+  "best_practices": [
+    "并发度由用户配置适配不同API限制",
+    "尾帧传递实现视觉连续性"
+  ]
+}

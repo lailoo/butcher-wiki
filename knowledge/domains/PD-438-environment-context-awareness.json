@@ -1,0 +1,26 @@
+{
+  "id": "PD-438",
+  "slug": "environment-context-awareness",
+  "title": "环境上下文感知",
+  "subtitle": "Environment Context Awareness",
+  "icon": "eye",
+  "color": "#84cc16",
+  "severity": "medium",
+  "description": "自动检测运行环境信息并注入 Agent 系统提示",
+  "tags": [
+    "local-context",
+    "auto-detect",
+    "git",
+    "project-structure"
+  ],
+  "sub_problems": [
+    "运行环境自动检测脚本",
+    "上下文注入系统提示",
+    "摘要后自动刷新",
+    "跨后端兼容执行"
+  ],
+  "best_practices": [
+    "通过 backend.execute() 在目标环境内执行检测",
+    "摘要事件后自动刷新避免上下文过期"
+  ]
+}

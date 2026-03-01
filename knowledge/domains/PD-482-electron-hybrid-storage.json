@@ -1,0 +1,25 @@
+{
+  "id": "PD-482",
+  "slug": "electron-hybrid-storage",
+  "title": "Electron 混合存储架构",
+  "subtitle": "Electron Hybrid Storage Architecture",
+  "icon": "box",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "Electron 文件系统与浏览器 localStorage 的双模存储，通过 preload bridge 暴露 API",
+  "tags": [
+    "Electron",
+    "文件存储",
+    "IPC"
+  ],
+  "sub_problems": [
+    "Electron preload安全暴露API",
+    "文件系统与localStorage双模适配",
+    "图片本地持久化与base64转换",
+    "存储路径配置与数据迁移"
+  ],
+  "best_practices": [
+    "contextBridge安全暴露最小API集",
+    "运行时检测isElectron自动切换存储后端"
+  ]
+}

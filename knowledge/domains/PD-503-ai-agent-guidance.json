@@ -1,0 +1,25 @@
+{
+  "id": "PD-503",
+  "slug": "ai-agent-guidance",
+  "title": "AI Agent 引导系统",
+  "subtitle": "AI Agent Guidance System",
+  "icon": "sparkles",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "为 AI 编码 Agent 生成结构化行动指引，驱动自主代码改善循环",
+  "tags": [
+    "agent-guidance",
+    "narrative",
+    "coaching"
+  ],
+  "sub_problems": [
+    "Phase detection and milestone tracking",
+    "Strategy computation for optimal fix ordering",
+    "Skill document generation for multiple AI IDEs",
+    "Risk flag and reminder system"
+  ],
+  "best_practices": [
+    "Structured narrative output for agent consumption",
+    "Multi-IDE skill doc templating with version tracking"
+  ]
+}

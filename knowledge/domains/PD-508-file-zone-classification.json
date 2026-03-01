@@ -1,0 +1,25 @@
+{
+  "id": "PD-508",
+  "slug": "file-zone-classification",
+  "title": "文件区域分类",
+  "subtitle": "File Zone Classification",
+  "icon": "box",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "基于路径模式的文件意图分类系统，驱动检测和评分策略",
+  "tags": [
+    "zone",
+    "classification",
+    "file-intent"
+  ],
+  "sub_problems": [
+    "Pattern-based zone matching (dir/suffix/prefix)",
+    "Zone-aware detector skipping",
+    "Scoring exclusion for non-production zones",
+    "Manual zone override support"
+  ],
+  "best_practices": [
+    "First-match-wins rule ordering for deterministic classification",
+    "Zone metadata flows through entire pipeline"
+  ]
+}

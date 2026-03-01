@@ -1,0 +1,26 @@
+{
+  "id": "PD-561",
+  "slug": "mcp-protocol-integration",
+  "title": "MCP 协议集成",
+  "subtitle": "MCP Protocol Integration",
+  "icon": "link",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "基于 Model Context Protocol 实现 Agent 与工具服务的标准化通信",
+  "tags": [
+    "MCP",
+    "protocol",
+    "server-client",
+    "sampling"
+  ],
+  "sub_problems": [
+    "MCP Server 工具注册",
+    "Sampling 回调实现",
+    "传输层选择(stdio/SSE/HTTP)",
+    "Session 生命周期绑定"
+  ],
+  "best_practices": [
+    "用 FastMCP 简化服务端开发",
+    "通过 sampling 让服务端工具调用客户端 LLM"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "PD-495",
+  "slug": "local-model-management",
+  "title": "本地模型管理",
+  "subtitle": "Local Model Management",
+  "icon": "cpu",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "本地 LLM 模型的下载、注册、选择和推理后端管理",
+  "tags": [
+    "local-model",
+    "GGUF",
+    "MLX",
+    "llama.cpp"
+  ],
+  "sub_problems": [
+    "多源下载（HuggingFace/ModelScope）",
+    "量化格式自动选择",
+    "推理后端适配",
+    "模型清单管理"
+  ],
+  "best_practices": [
+    "manifest.json 注册表追踪已下载模型元数据"
+  ]
+}

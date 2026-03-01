@@ -1,0 +1,26 @@
+{
+  "id": "PD-535",
+  "slug": "api-key-rotation",
+  "title": "API Key 轮转管理",
+  "subtitle": "API Key Rotation Management",
+  "icon": "refresh-cw",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "管理多个API Key的轮转调度、失败标记与冷却恢复，确保服务高可用",
+  "tags": [
+    "API管理",
+    "高可用",
+    "密钥轮转"
+  ],
+  "sub_problems": [
+    "多Key解析与池化管理",
+    "失败检测与自动切换",
+    "冷却期与恢复策略",
+    "按供应商独立管理Key池"
+  ],
+  "best_practices": [
+    "支持逗号/换行分隔的多Key配置",
+    "失败Key自动冷却而非永久移除",
+    "轮转策略应支持Round-Robin和权重模式"
+  ]
+}

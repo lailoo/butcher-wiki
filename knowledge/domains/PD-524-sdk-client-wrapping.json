@@ -1,0 +1,27 @@
+{
+  "id": "PD-524",
+  "slug": "sdk-client-wrapping",
+  "title": "SDK 客户端包装",
+  "subtitle": "SDK Client Wrapping",
+  "icon": "layers",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "透明代理包装第三方 SDK 客户端，在不改变原始 API 的前提下注入增强功能",
+  "tags": [
+    "wrapper",
+    "proxy",
+    "transparent",
+    "backward-compatible"
+  ],
+  "sub_problems": [
+    "API 调用拦截与增强",
+    "同步异步双模式支持",
+    "上下文自动注入",
+    "向后兼容性保障"
+  ],
+  "best_practices": [
+    "使用 __getattr__ 代理未包装的属性保持完全兼容",
+    "记忆注入失败时 fail-silently 不影响原始调用",
+    "支持 sync/async 两种调用路径"
+  ]
+}

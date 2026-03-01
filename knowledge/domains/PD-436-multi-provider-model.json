@@ -1,0 +1,26 @@
+{
+  "id": "PD-436",
+  "slug": "multi-provider-model",
+  "title": "多模型提供商管理",
+  "subtitle": "Multi-Provider Model Management",
+  "icon": "settings",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "统一管理多个 LLM 提供商的模型配置、凭证检测和运行时切换",
+  "tags": [
+    "model-config",
+    "provider",
+    "hot-swap",
+    "TOML"
+  ],
+  "sub_problems": [
+    "提供商注册与凭证检测",
+    "模型热切换与持久化",
+    "自定义 class_path 加载",
+    "per-model 参数覆盖"
+  ],
+  "best_practices": [
+    "使用 provider:model 格式统一模型标识",
+    "TOML 配置支持自定义提供商扩展"
+  ]
+}

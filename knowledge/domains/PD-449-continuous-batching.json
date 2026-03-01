@@ -1,0 +1,26 @@
+{
+  "id": "PD-449",
+  "slug": "continuous-batching",
+  "title": "连续批处理调度",
+  "subtitle": "Continuous Batching & Scheduling",
+  "icon": "layers",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "解决 LLM 推理中静态批处理导致 GPU 利用率低的问题，通过动态调度实现序列级别的连续批处理",
+  "tags": [
+    "scheduling",
+    "batching",
+    "throughput",
+    "inference"
+  ],
+  "sub_problems": [
+    "Prefill/Decode 阶段分离",
+    "序列抢占与重新排队",
+    "动态 batch 组装约束",
+    "EOS 检测与序列完成"
+  ],
+  "best_practices": [
+    "Prefill 优先调度以降低首 token 延迟",
+    "内存不足时抢占最后加入的序列（LIFO）"
+  ]
+}

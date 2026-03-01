@@ -1,0 +1,27 @@
+{
+  "id": "PD-550",
+  "slug": "electron-secure-bridge",
+  "title": "Electron 安全桥接",
+  "subtitle": "Electron Secure Bridge",
+  "icon": "lock",
+  "color": "#64748B",
+  "severity": "medium",
+  "description": "通过 contextBridge 安全暴露主进程能力给渲染进程",
+  "tags": [
+    "electron",
+    "ipc",
+    "preload",
+    "security"
+  ],
+  "sub_problems": [
+    "安全的 IPC 通道设计",
+    "文件系统操作封装",
+    "图片存储与 base64 转换",
+    "数据导入导出与缓存管理"
+  ],
+  "best_practices": [
+    "contextBridge 替代 nodeIntegration 保证安全",
+    "按功能域分组 API（imageStorage/fileStorage/storageManager）",
+    "invoke 模式统一异步通信"
+  ]
+}

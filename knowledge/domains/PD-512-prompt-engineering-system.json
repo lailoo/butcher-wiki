@@ -1,0 +1,26 @@
+{
+  "id": "PD-512",
+  "slug": "prompt-engineering-system",
+  "title": "Prompt 工程系统",
+  "subtitle": "Prompt Engineering System",
+  "icon": "terminal",
+  "color": "#ec4899",
+  "severity": "high",
+  "description": "结构化 Prompt 模板编译、多层语义组装与媒介类型适配",
+  "tags": [
+    "Prompt工程",
+    "模板引擎",
+    "语义分层"
+  ],
+  "sub_problems": [
+    "Mustache 模板编译",
+    "多层语义管道组装",
+    "摄影参数按媒介类型翻译",
+    "负面提示词管理"
+  ],
+  "best_practices": [
+    "语义层次组装避免信号稀释",
+    "项目级摄影档案作为逐镜默认回退",
+    "模板运行时可更新"
+  ]
+}

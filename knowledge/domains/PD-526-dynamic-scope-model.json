@@ -1,0 +1,27 @@
+{
+  "id": "PD-526",
+  "slug": "dynamic-scope-model",
+  "title": "动态作用域模型",
+  "subtitle": "Dynamic Scope Model",
+  "icon": "lock",
+  "color": "#6366F1",
+  "severity": "high",
+  "description": "运行时动态生成带用户作用域的数据模型，实现多租户数据隔离",
+  "tags": [
+    "multi-tenant",
+    "scope",
+    "dynamic-model",
+    "isolation"
+  ],
+  "sub_problems": [
+    "用户字段与核心模型动态合并",
+    "多租户记忆隔离",
+    "按 user/agent/session 维度过滤",
+    "字段冲突检测"
+  ],
+  "best_practices": [
+    "merge_scope_model 检测字段冲突防止覆盖核心字段",
+    "用户模型通过 Pydantic BaseModel 定义保证类型安全",
+    "where 过滤器统一应用于所有 Repository 查询"
+  ]
+}

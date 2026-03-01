@@ -1,0 +1,26 @@
+{
+  "id": "PD-442",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "解决 Agent 系统运行时参数管理、多环境配置和 UI 驱动配置的问题",
+  "tags": [
+    "config",
+    "Pydantic",
+    "runtime",
+    "environment"
+  ],
+  "sub_problems": [
+    "多层配置源优先级合并",
+    "配置驱动 UI 自动生成",
+    "运行时热切换模型和参数",
+    "配置校验与类型安全"
+  ],
+  "best_practices": [
+    "用 Pydantic BaseModel 定义配置 schema",
+    "字段元数据驱动 UI 组件自动生成"
+  ]
+}

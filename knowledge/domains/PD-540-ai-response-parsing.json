@@ -1,0 +1,26 @@
+{
+  "id": "PD-540",
+  "slug": "ai-response-parsing",
+  "title": "AI 响应解析",
+  "subtitle": "AI Response Parsing",
+  "icon": "code",
+  "color": "#f97316",
+  "severity": "high",
+  "description": "清洗和解析LLM输出中格式不稳定的JSON/结构化数据",
+  "tags": [
+    "LLM输出",
+    "JSON解析",
+    "数据清洗"
+  ],
+  "sub_problems": [
+    "Markdown代码围栏移除",
+    "JSON边界检测与提取",
+    "类型归一化(数字ID转字符串)",
+    "解析失败的fallback策略"
+  ],
+  "best_practices": [
+    "先清洗再解析的两阶段处理",
+    "提供泛型fallback避免运行时崩溃",
+    "支持对象和数组两种JSON结构提取"
+  ]
+}

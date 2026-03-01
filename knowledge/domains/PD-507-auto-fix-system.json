@@ -1,0 +1,25 @@
+{
+  "id": "PD-507",
+  "slug": "auto-fix-system",
+  "title": "自动修复系统",
+  "subtitle": "Auto-Fix System",
+  "icon": "wrench",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "自动化代码修复框架，支持 dry-run 预览和修复后状态联动",
+  "tags": [
+    "auto-fix",
+    "refactoring",
+    "automation"
+  ],
+  "sub_problems": [
+    "Fixer registration and detection pipeline",
+    "Dry-run preview before applying changes",
+    "Post-fix state update and score recomputation",
+    "Move command with import update"
+  ],
+  "best_practices": [
+    "FixerConfig separates detect/fix/report concerns",
+    "Dry-run mode prevents unintended changes"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-551",
+  "slug": "intelligent-grouping",
+  "title": "智能分组算法",
+  "subtitle": "Intelligent Grouping Algorithm",
+  "icon": "git-branch",
+  "color": "#A855F7",
+  "severity": "medium",
+  "description": "基于时长、场景和角色重叠度的贪心分镜分组算法",
+  "tags": [
+    "grouping",
+    "greedy",
+    "scene-detection",
+    "character-overlap"
+  ],
+  "sub_problems": [
+    "双重约束贪心填装",
+    "场景切换断点检测",
+    "角色重叠度计算（Jaccard）",
+    "组时长重算与自动命名"
+  ],
+  "best_practices": [
+    "场景切换优先断开保证叙事连贯",
+    "角色重叠度阈值允许跨场景同组",
+    "最后一组允许不满最小数量"
+  ]
+}

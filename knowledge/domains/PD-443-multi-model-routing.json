@@ -1,0 +1,26 @@
+{
+  "id": "PD-443",
+  "slug": "multi-model-routing",
+  "title": "多模型路由",
+  "subtitle": "Multi-Model Routing",
+  "icon": "cpu",
+  "color": "#06b6d4",
+  "severity": "high",
+  "description": "解决不同任务阶段使用不同 LLM 模型的选择、切换和成本优化问题",
+  "tags": [
+    "model-routing",
+    "multi-provider",
+    "cost-optimization",
+    "LLM"
+  ],
+  "sub_problems": [
+    "按任务复杂度选择模型",
+    "多供应商 API Key 管理",
+    "模型 token 限制感知",
+    "运行时模型热切换"
+  ],
+  "best_practices": [
+    "用 init_chat_model configurable_fields 实现运行时切换",
+    "维护 MODEL_TOKEN_LIMITS 映射表感知各模型限制"
+  ]
+}

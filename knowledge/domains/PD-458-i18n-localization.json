@@ -1,0 +1,25 @@
+{
+  "id": "PD-458",
+  "slug": "i18n-localization",
+  "title": "国际化",
+  "subtitle": "Internationalization",
+  "icon": "globe",
+  "color": "#A78BFA",
+  "severity": "medium",
+  "description": "集中式多语言翻译系统，支持8种语言和Crowdin协作翻译",
+  "tags": [
+    "i18n",
+    "vue-i18n",
+    "Crowdin",
+    "Localization"
+  ],
+  "sub_problems": [
+    "翻译键管理",
+    "语言切换",
+    "翻译协作流程",
+    "本地化格式"
+  ],
+  "best_practices": [
+    "集中管理翻译文件在独立包中避免分散"
+  ]
+}

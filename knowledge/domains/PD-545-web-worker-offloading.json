@@ -1,0 +1,27 @@
+{
+  "id": "PD-545",
+  "slug": "web-worker-offloading",
+  "title": "Web Worker 后台处理",
+  "subtitle": "Web Worker Offloading",
+  "icon": "cpu",
+  "color": "#6366F1",
+  "severity": "medium",
+  "description": "将 AI 生成任务卸载到 Web Worker 避免阻塞主线程 UI",
+  "tags": [
+    "web-worker",
+    "background",
+    "message-passing",
+    "bridge"
+  ],
+  "sub_problems": [
+    "Command/Event 双向消息协议",
+    "Promise 管理与超时",
+    "批量并行场景处理",
+    "取消操作与状态同步"
+  ],
+  "best_practices": [
+    "Singleton Bridge 模式统一管理 Worker 生命周期",
+    "事件驱动架构解耦 Worker 与 UI 状态",
+    "动态 import 避免循环依赖"
+  ]
+}

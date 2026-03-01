@@ -1,0 +1,26 @@
+{
+  "id": "PD-437",
+  "slug": "session-thread-management",
+  "title": "会话与线程管理",
+  "subtitle": "Session & Thread Management",
+  "icon": "git-branch",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "多线程会话的创建、切换、持久化和状态隔离",
+  "tags": [
+    "session",
+    "thread",
+    "checkpoint",
+    "SQLite"
+  ],
+  "sub_problems": [
+    "线程创建与元数据管理",
+    "对话历史持久化",
+    "线程切换与状态恢复",
+    "会话压缩与清理"
+  ],
+  "best_practices": [
+    "基于 LangGraph Checkpointer 实现线程级状态隔离",
+    "使用 SQLite 持久化线程元数据"
+  ]
+}

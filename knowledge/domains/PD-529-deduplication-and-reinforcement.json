@@ -1,0 +1,26 @@
+{
+  "id": "PD-529",
+  "slug": "deduplication-and-reinforcement",
+  "title": "记忆去重与强化",
+  "subtitle": "Deduplication & Reinforcement",
+  "icon": "refresh-cw",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "通过内容哈希去重，重复信息转为强化计数，结合时间衰减实现记忆显著性排序",
+  "tags": [
+    "deduplication",
+    "reinforcement",
+    "salience",
+    "decay"
+  ],
+  "sub_problems": [
+    "内容归一化与哈希",
+    "重复检测与强化计数",
+    "Salience 评分公式设计",
+    "时间半衰期衰减"
+  ],
+  "best_practices": [
+    "对摘要而非原文做哈希",
+    "用对数函数抑制强化次数的极端影响"
+  ]
+}

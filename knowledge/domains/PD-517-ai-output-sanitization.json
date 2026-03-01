@@ -1,0 +1,26 @@
+{
+  "id": "PD-517",
+  "slug": "ai-output-sanitization",
+  "title": "AI 输出清洗",
+  "subtitle": "AI Output Sanitization",
+  "icon": "check-circle",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "AI 返回文本的鲁棒解析，包括 markdown 围栏剥离、JSON 边界定位与类型修正",
+  "tags": [
+    "JSON解析",
+    "输出清洗",
+    "鲁棒性"
+  ],
+  "sub_problems": [
+    "Markdown 代码围栏剥离",
+    "JSON 对象/数组边界智能定位",
+    "数字 ID 到字符串的类型修正",
+    "带 fallback 的安全解析"
+  ],
+  "best_practices": [
+    "先清洗再解析",
+    "safeParseJson 带默认值防崩溃",
+    "extractJson 从混合文本中提取 JSON"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "PD-440",
+  "slug": "agent-evaluation",
+  "title": "Agent 评估框架",
+  "subtitle": "Agent Evaluation Framework",
+  "icon": "check-circle",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "Agent 行为的标准化评估、基准测试和追踪基础设施",
+  "tags": [
+    "evaluation",
+    "benchmark",
+    "harbor",
+    "tracing"
+  ],
+  "sub_problems": [
+    "评估用 Agent 封装",
+    "评估追踪集成",
+    "标准化评估场景",
+    "基准测试运行"
+  ],
+  "best_practices": [
+    "独立 harbor 模块隔离评估逻辑",
+    "集成 LangSmith 追踪评估运行"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-546",
+  "slug": "ai-output-parsing",
+  "title": "AI 输出解析与清洗",
+  "subtitle": "AI Output Parsing & Cleaning",
+  "icon": "code",
+  "color": "#EC4899",
+  "severity": "high",
+  "description": "处理 AI 返回的非标准 JSON：代码围栏剥离、边界定位、安全解析",
+  "tags": [
+    "json-cleaning",
+    "parsing",
+    "fallback",
+    "validation"
+  ],
+  "sub_problems": [
+    "Markdown 代码围栏剥离",
+    "JSON 边界自动定位",
+    "类型安全的 fallback 解析",
+    "ID 规范化与字段校验"
+  ],
+  "best_practices": [
+    "先清洗再解析的两阶段策略",
+    "safeParseJson 带 fallback 防止崩溃",
+    "normalizeIds 统一 AI 返回的混合类型 ID"
+  ]
+}

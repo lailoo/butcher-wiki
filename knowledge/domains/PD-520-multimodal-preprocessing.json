@@ -1,0 +1,27 @@
+{
+  "id": "PD-520",
+  "slug": "multimodal-preprocessing",
+  "title": "多模态预处理",
+  "subtitle": "Multimodal Preprocessing",
+  "icon": "eye",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "将图片、音频、视频等非文本输入转化为结构化文本，供下游 LLM 处理",
+  "tags": [
+    "multimodal",
+    "vision",
+    "audio",
+    "video"
+  ],
+  "sub_problems": [
+    "图片描述生成",
+    "音频转录与清洗",
+    "视频帧提取与批量分析",
+    "模态路由与预处理管道"
+  ],
+  "best_practices": [
+    "按模态类型路由到专用预处理 prompt",
+    "视频按时间间隔抽帧避免冗余",
+    "预处理结果缓存避免重复 LLM 调用"
+  ]
+}

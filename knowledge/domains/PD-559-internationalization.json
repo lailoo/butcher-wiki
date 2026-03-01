@@ -1,0 +1,25 @@
+{
+  "id": "PD-559",
+  "slug": "internationalization",
+  "title": "国际化",
+  "subtitle": "Internationalization (i18n)",
+  "icon": "globe",
+  "color": "#14b8a6",
+  "severity": "medium",
+  "description": "如何在Agent系统中实现多语言支持覆盖提示词和用户交互",
+  "tags": [
+    "i18n",
+    "multilingual",
+    "localization"
+  ],
+  "sub_problems": [
+    "提示词多语言模板",
+    "运行时语言参数传递",
+    "用户语言自动检测",
+    "响应语言切换"
+  ],
+  "best_practices": [
+    "NodeState携带lang参数贯穿全流程",
+    "按语言目录隔离prompt模板"
+  ]
+}

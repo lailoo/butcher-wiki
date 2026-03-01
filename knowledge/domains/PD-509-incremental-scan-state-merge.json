@@ -1,0 +1,25 @@
+{
+  "id": "PD-509",
+  "slug": "incremental-scan-state-merge",
+  "title": "增量扫描与状态合并",
+  "subtitle": "Incremental Scan & State Merge",
+  "icon": "refresh-cw",
+  "color": "#14b8a6",
+  "severity": "high",
+  "description": "跨会话增量扫描，智能合并新旧 findings 并追踪质量趋势",
+  "tags": [
+    "incremental",
+    "merge",
+    "scan-state"
+  ],
+  "sub_problems": [
+    "Finding upsert with first_seen/last_seen tracking",
+    "Auto-resolve disappeared findings",
+    "Suspect detector detection for anomaly alerting",
+    "Mechanical-to-subjective staleness propagation"
+  ],
+  "best_practices": [
+    "Atomic state save with backup for corruption recovery",
+    "Scan history enables trend analysis and regression detection"
+  ]
+}

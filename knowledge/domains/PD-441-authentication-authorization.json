@@ -1,0 +1,32 @@
+{
+  "id": "PD-441",
+  "slug": "authentication-authorization",
+  "title": "认证授权",
+  "subtitle": "Authentication & Authorization",
+  "icon": "lock",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "解决 Agent 服务的身份验证、资源隔离和多租户访问控制问题",
+  "tags": [
+    "auth",
+    "JWT",
+    "RBAC",
+    "multi-tenant"
+  ],
+  "sub_problems": [
+    "JWT token 验证与刷新",
+    "资源级别的所有权隔离",
+    "OAuth token exchange for MCP",
+    "多租户数据隔离",
+    "LangGraph Store 的 namespace 级数据隔离",
+    "MCP 工具交互错误码(-32003)的用户友好处理",
+    "同步认证 SDK 在异步事件循环中的线程池适配"
+  ],
+  "best_practices": [
+    "使用中间件装饰器统一拦截认证",
+    "基于 metadata owner 实现资源级 RBAC",
+    "通过 langgraph.json 声明式挂载 auth 模块实现零侵入集成",
+    "利用 Store 的 created_at 时间戳管理令牌过期而非额外存储过期时间",
+    "为开发环境提供 StudioUser 豁免机制避免本地调试配置负担"
+  ]
+}

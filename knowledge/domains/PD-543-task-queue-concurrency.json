@@ -1,0 +1,27 @@
+{
+  "id": "PD-543",
+  "slug": "task-queue-concurrency",
+  "title": "任务队列与并发控制",
+  "subtitle": "Task Queue & Concurrency Control",
+  "icon": "layers",
+  "color": "#F59E0B",
+  "severity": "high",
+  "description": "优先级任务队列、错开启动并发执行器和批间限流",
+  "tags": [
+    "queue",
+    "concurrency",
+    "stagger",
+    "rate-limit"
+  ],
+  "sub_problems": [
+    "优先级排序与并发槽位管理",
+    "错开启动避免 API 突发",
+    "批间延迟与进度回调",
+    "取消与恢复机制"
+  ],
+  "best_practices": [
+    "信号量模式控制最大并发",
+    "stagger 间隔防止 API 突发限流",
+    "Promise.allSettled 容错收集结果"
+  ]
+}

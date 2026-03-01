@@ -1,0 +1,26 @@
+{
+  "id": "PD-459",
+  "slug": "cognitive-architecture",
+  "title": "认知架构",
+  "subtitle": "Cognitive Architecture",
+  "icon": "brain",
+  "color": "#F472B6",
+  "severity": "high",
+  "description": "分层认知系统：感知层→反射层→意识层的仿生Agent架构",
+  "tags": [
+    "Perception",
+    "Reflex",
+    "Conscious",
+    "Brain",
+    "EventBus"
+  ],
+  "sub_problems": [
+    "感知事件聚合",
+    "反射行为触发",
+    "意识决策循环",
+    "事件优先级调度"
+  ],
+  "best_practices": [
+    "使用EventBus解耦认知层间通信，YAML规则引擎配置化感知逻辑"
+  ]
+}

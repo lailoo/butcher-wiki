@@ -1,0 +1,26 @@
+{
+  "id": "PD-453",
+  "slug": "torch-compilation",
+  "title": "Torch 编译优化",
+  "subtitle": "Torch Compilation Optimization",
+  "icon": "sparkles",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "解决手写 CUDA kernel 成本高的问题，通过 @torch.compile 装饰器让编译器自动进行算子融合优化",
+  "tags": [
+    "torch-compile",
+    "kernel-fusion",
+    "optimization",
+    "pytorch"
+  ],
+  "sub_problems": [
+    "编译器兼容的代码模式",
+    "动态 shape 处理",
+    "编译缓存与预热",
+    "与 CUDA Graph 的兼容性"
+  ],
+  "best_practices": [
+    "在计算密集的小模块上使用 @torch.compile 而非整个模型",
+    "保持被编译函数的输入 shape 稳定以提高缓存命中率"
+  ]
+}

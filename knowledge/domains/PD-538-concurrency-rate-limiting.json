@@ -1,0 +1,26 @@
+{
+  "id": "PD-538",
+  "slug": "concurrency-rate-limiting",
+  "title": "并发与限流",
+  "subtitle": "Concurrency & Rate Limiting",
+  "icon": "activity",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "控制AI API调用的并发数量和请求频率，防止触发供应商限流",
+  "tags": [
+    "并发控制",
+    "限流",
+    "批处理"
+  ],
+  "sub_problems": [
+    "RPM/RPD限制遵守",
+    "并发任务数控制",
+    "批量任务的受控并行",
+    "动态限流参数调整"
+  ],
+  "best_practices": [
+    "按供应商和端点分别配置限流参数",
+    "批处理应支持失败重试不影响整体进度",
+    "并发控制应考虑全局和per-key两个维度"
+  ]
+}

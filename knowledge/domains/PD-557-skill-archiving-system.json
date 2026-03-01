@@ -1,0 +1,26 @@
+{
+  "id": "PD-557",
+  "slug": "skill-archiving-system",
+  "title": "技能归档系统",
+  "subtitle": "Skill Archiving System",
+  "icon": "sparkles",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "如何将Agent工作流保存为可复用的技能模板实现风格迁移",
+  "tags": [
+    "skill",
+    "plugin",
+    "reuse",
+    "template"
+  ],
+  "sub_problems": [
+    "技能格式定义(Markdown)",
+    "技能发现与加载",
+    "技能转工具集成",
+    "安全写入与路径防护"
+  ],
+  "best_practices": [
+    "用Markdown定义技能便于人类可读",
+    "路径遍历防护防止任意文件写入"
+  ]
+}

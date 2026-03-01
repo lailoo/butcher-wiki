@@ -1,0 +1,27 @@
+{
+  "id": "PD-468",
+  "slug": "bilingual-content-generation",
+  "title": "双语内容生成",
+  "subtitle": "Bilingual Content Generation",
+  "icon": "message-circle",
+  "color": "#06B6D4",
+  "severity": "medium",
+  "description": "AI驱动的中英双语结构化内容生成与排版优化",
+  "tags": [
+    "bilingual",
+    "i18n",
+    "CJK",
+    "content generation"
+  ],
+  "sub_problems": [
+    "双语字段的prompt设计",
+    "CJK-ASCII混排的排版处理",
+    "多语言模板与标签体系",
+    "语言特定的内容渲染"
+  ],
+  "best_practices": [
+    "AI一次生成双语字段避免二次翻译",
+    "Pangu算法自动处理中英混排间距",
+    "按语言分别渲染和部署"
+  ]
+}

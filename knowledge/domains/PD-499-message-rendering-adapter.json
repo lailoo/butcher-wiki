@@ -1,0 +1,24 @@
+{
+  "id": "PD-499",
+  "slug": "message-rendering-adapter",
+  "title": "消息渲染适配",
+  "subtitle": "Message Rendering Adapter",
+  "icon": "layers",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "将 Agent 输出统一渲染为各渠道可发送的格式",
+  "tags": [
+    "renderer",
+    "adapter",
+    "format"
+  ],
+  "sub_problems": [
+    "渠道能力声明（markdown/emoji/code）",
+    "工具调用结果格式化",
+    "多媒体内容转换",
+    "文本截断与预览"
+  ],
+  "best_practices": [
+    "RenderStyle 声明渠道能力，Renderer 据此适配输出格式"
+  ]
+}

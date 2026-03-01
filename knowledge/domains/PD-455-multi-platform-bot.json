@@ -1,0 +1,26 @@
+{
+  "id": "PD-455",
+  "slug": "multi-platform-bot",
+  "title": "多平台Bot框架",
+  "subtitle": "Multi-Platform Bot Framework",
+  "icon": "message-circle",
+  "color": "#60A5FA",
+  "severity": "high",
+  "description": "统一的多平台聊天机器人框架，支持Telegram/Discord/Satori协议",
+  "tags": [
+    "Telegram",
+    "Discord",
+    "Satori",
+    "Bot",
+    "Chat"
+  ],
+  "sub_problems": [
+    "平台适配器抽象",
+    "消息格式统一",
+    "会话上下文管理",
+    "事件队列处理"
+  ],
+  "best_practices": [
+    "使用Satori协议作为通用聊天协议适配层"
+  ]
+}

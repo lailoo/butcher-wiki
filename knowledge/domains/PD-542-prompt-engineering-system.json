@@ -1,0 +1,27 @@
+{
+  "id": "PD-542",
+  "slug": "prompt-engineering-system",
+  "title": "提示词工程系统",
+  "subtitle": "Prompt Engineering System",
+  "icon": "sparkles",
+  "color": "#8B5CF6",
+  "severity": "high",
+  "description": "多层级提示词模板编译、语义组装和多模态引用管理",
+  "tags": [
+    "prompt",
+    "template",
+    "multi-modal",
+    "compilation"
+  ],
+  "sub_problems": [
+    "模板引擎设计",
+    "语义层次组装",
+    "多模态引用收集与约束校验",
+    "摄影参数翻译"
+  ],
+  "best_practices": [
+    "分层组装避免信号稀释",
+    "Mustache 模板支持运行时更新",
+    "约束校验前置防止 API 浪费"
+  ]
+}

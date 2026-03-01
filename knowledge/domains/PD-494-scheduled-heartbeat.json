@@ -1,0 +1,24 @@
+{
+  "id": "PD-494",
+  "slug": "scheduled-heartbeat",
+  "title": "定时心跳任务",
+  "subtitle": "Scheduled Heartbeat Tasks",
+  "icon": "clock",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "Agent 定时自主执行任务并将结果推送到指定渠道",
+  "tags": [
+    "cron",
+    "heartbeat",
+    "scheduler"
+  ],
+  "sub_problems": [
+    "间隔解析与调度",
+    "活跃时间窗口控制",
+    "结果分发路由",
+    "任务超时处理"
+  ],
+  "best_practices": [
+    "HEARTBEAT.md 文件驱动查询内容，支持用户自定义"
+  ]
+}

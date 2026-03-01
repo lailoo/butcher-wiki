@@ -1,0 +1,26 @@
+{
+  "id": "PD-558",
+  "slug": "media-data-transfer",
+  "title": "媒体数据传输协议",
+  "subtitle": "Media Data Transfer Protocol",
+  "icon": "refresh-cw",
+  "color": "#06b6d4",
+  "severity": "medium",
+  "description": "如何在分布式Agent组件间高效传输大体积媒体文件",
+  "tags": [
+    "compression",
+    "base64",
+    "transfer",
+    "checksum"
+  ],
+  "sub_problems": [
+    "压缩编码策略(gzip/zlib+base64)",
+    "完整性校验(MD5)",
+    "增量传输(差异检测)",
+    "双向序列化(pack/unpack)"
+  ],
+  "best_practices": [
+    "MD5校验检测文件是否变更避免重传",
+    "gzip压缩减少网络传输量"
+  ]
+}

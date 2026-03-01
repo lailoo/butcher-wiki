@@ -1,0 +1,25 @@
+{
+  "id": "PD-506",
+  "slug": "configuration-management",
+  "title": "配置管理",
+  "subtitle": "Configuration Management",
+  "icon": "settings",
+  "color": "#64748b",
+  "severity": "medium",
+  "description": "类型化项目配置系统，支持 CLI 管理和运行时安全解析",
+  "tags": [
+    "config",
+    "settings",
+    "schema"
+  ],
+  "sub_problems": [
+    "Typed config schema with defaults",
+    "CLI get/set/unset operations",
+    "Zone override configuration",
+    "Safe parsing with fallback values"
+  ],
+  "best_practices": [
+    "ConfigKey dataclass for self-documenting schema",
+    "Bounded validation for numeric config values"
+  ]
+}

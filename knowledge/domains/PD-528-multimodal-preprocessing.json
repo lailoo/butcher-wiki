@@ -1,0 +1,26 @@
+{
+  "id": "PD-528",
+  "slug": "multimodal-preprocessing",
+  "title": "多模态预处理",
+  "subtitle": "Multimodal Preprocessing",
+  "icon": "eye",
+  "color": "#ec4899",
+  "severity": "medium",
+  "description": "将图片、音频、视频等非文本输入统一转换为文本表示后进入处理管道",
+  "tags": [
+    "multimodal",
+    "vision",
+    "audio",
+    "preprocessing"
+  ],
+  "sub_problems": [
+    "模态检测与路由",
+    "图片理解(Vision API)",
+    "音频转写(STT)",
+    "模态特定 prompt 配置"
+  ],
+  "best_practices": [
+    "每种模态独立配置预处理 prompt",
+    "统一输出为文本摘要后进入下游"
+  ]
+}

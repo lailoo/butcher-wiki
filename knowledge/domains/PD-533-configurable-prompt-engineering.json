@@ -1,0 +1,26 @@
+{
+  "id": "PD-533",
+  "slug": "configurable-prompt-engineering",
+  "title": "配置驱动的 Prompt 工程",
+  "subtitle": "Configurable Prompt Engineering",
+  "icon": "file-text",
+  "color": "#f97316",
+  "severity": "medium",
+  "description": "将 LLM prompt 模板化并支持用户覆盖，通过分块组合与排序实现灵活的 prompt 定制",
+  "tags": [
+    "prompt",
+    "template",
+    "configurable",
+    "customization"
+  ],
+  "sub_problems": [
+    "Prompt 分块与排序(PromptBlock)",
+    "默认 prompt 与用户覆盖合并",
+    "记忆类型特定 prompt 配置",
+    "Prompt 值转义防注入"
+  ],
+  "best_practices": [
+    "提供合理默认值同时允许完全覆盖",
+    "用 ordinal 字段控制 prompt 块排序"
+  ]
+}

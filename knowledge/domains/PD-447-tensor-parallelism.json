@@ -1,0 +1,26 @@
+{
+  "id": "PD-447",
+  "slug": "tensor-parallelism",
+  "title": "张量并行推理",
+  "subtitle": "Tensor Parallel Inference",
+  "icon": "cpu",
+  "color": "#8b5cf6",
+  "severity": "high",
+  "description": "解决单 GPU 显存不足时的大模型推理问题，通过权重分片和通信原语实现多卡并行",
+  "tags": [
+    "distributed",
+    "multi-gpu",
+    "NCCL",
+    "parallelism"
+  ],
+  "sub_problems": [
+    "权重矩阵分片策略",
+    "跨卡通信开销",
+    "进程间指令同步",
+    "词表并行与 logits 聚合"
+  ],
+  "best_practices": [
+    "Column 并行切输出维度，Row 并行切输入维度后 all_reduce",
+    "使用 SharedMemory+Event 替代 socket 做进程间通信"
+  ]
+}

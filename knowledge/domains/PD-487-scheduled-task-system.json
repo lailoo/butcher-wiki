@@ -1,0 +1,26 @@
+{
+  "id": "PD-487",
+  "slug": "scheduled-task-system",
+  "title": "定时任务调度",
+  "subtitle": "Scheduled Task System",
+  "icon": "clock",
+  "color": "#10b981",
+  "severity": "high",
+  "description": "基于 Cron 表达式的定时任务调度，支持 Agent 查询和消息推送",
+  "tags": [
+    "cron",
+    "scheduler",
+    "heartbeat",
+    "automation"
+  ],
+  "sub_problems": [
+    "Cron 表达式解析与调度",
+    "任务并发控制",
+    "心跳检查机制",
+    "任务状态追踪与错误处理",
+    "跨渠道结果推送"
+  ],
+  "best_practices": [
+    "APScheduler 异步调度器配合 Semaphore 控制单任务并发"
+  ]
+}

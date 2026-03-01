@@ -1,0 +1,25 @@
+{
+  "id": "PD-474",
+  "slug": "pluggable-storage-backend",
+  "title": "可插拔存储后端",
+  "subtitle": "Pluggable Storage Backend",
+  "icon": "database",
+  "color": "#14b8a6",
+  "severity": "high",
+  "description": "通过 Repository+Factory 模式抽象存储层，支持按需切换数据库后端",
+  "tags": [
+    "repository",
+    "factory",
+    "storage",
+    "database"
+  ],
+  "sub_problems": [
+    "Repository 接口抽象",
+    "Factory 按 provider 构建",
+    "向量索引独立抽象",
+    "Schema 迁移管理"
+  ],
+  "best_practices": [
+    "将向量索引与元数据存储分离，允许独立选择最优后端"
+  ]
+}

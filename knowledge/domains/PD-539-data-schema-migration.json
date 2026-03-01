@@ -1,0 +1,26 @@
+{
+  "id": "PD-539",
+  "slug": "data-schema-migration",
+  "title": "数据版本迁移",
+  "subtitle": "Data Schema Migration",
+  "icon": "database",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "管理客户端持久化数据的版本演进，确保旧数据平滑升级到新schema",
+  "tags": [
+    "数据迁移",
+    "版本管理",
+    "schema演进"
+  ],
+  "sub_problems": [
+    "版本号管理与检测",
+    "迁移函数链式执行",
+    "向后兼容与数据修复",
+    "迁移失败的回滚策略"
+  ],
+  "best_practices": [
+    "每个版本定义独立迁移函数便于测试",
+    "迁移应是幂等的可重复执行",
+    "保留迁移前数据快照用于回滚"
+  ]
+}

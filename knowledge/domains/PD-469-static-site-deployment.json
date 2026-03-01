@@ -1,0 +1,27 @@
+{
+  "id": "PD-469",
+  "slug": "static-site-deployment",
+  "title": "静态站点部署",
+  "subtitle": "Static Site Generation & Deployment",
+  "icon": "globe",
+  "color": "#10B981",
+  "severity": "medium",
+  "description": "自动生成Markdown报告并通过CI/CD部署为静态站点",
+  "tags": [
+    "GitHub Pages",
+    "Jekyll",
+    "CI/CD",
+    "automation"
+  ],
+  "sub_problems": [
+    "Markdown报告的模板化生成",
+    "Jekyll front matter注入",
+    "GitHub Actions自动化工作流",
+    "定时触发与手动触发支持"
+  ],
+  "best_practices": [
+    "使用peaceiris/actions-gh-pages简化部署",
+    "keep_files保留历史摘要",
+    "git worktree实现无切换分支部署"
+  ]
+}

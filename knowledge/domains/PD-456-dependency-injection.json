@@ -1,0 +1,25 @@
+{
+  "id": "PD-456",
+  "slug": "dependency-injection",
+  "title": "依赖注入",
+  "subtitle": "Dependency Injection",
+  "icon": "settings",
+  "color": "#34D399",
+  "severity": "medium",
+  "description": "使用IoC容器管理服务依赖，实现模块解耦和可测试性",
+  "tags": [
+    "DI",
+    "IoC",
+    "Awilix",
+    "Container"
+  ],
+  "sub_problems": [
+    "服务注册与解析",
+    "生命周期管理",
+    "作用域隔离",
+    "延迟初始化"
+  ],
+  "best_practices": [
+    "使用Awilix PROXY注入模式实现透明依赖解析"
+  ]
+}

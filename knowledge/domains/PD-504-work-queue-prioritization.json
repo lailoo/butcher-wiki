@@ -1,0 +1,25 @@
+{
+  "id": "PD-504",
+  "slug": "work-queue-prioritization",
+  "title": "工作队列与优先级排序",
+  "subtitle": "Work Queue & Prioritization",
+  "icon": "layers",
+  "color": "#10b981",
+  "severity": "medium",
+  "description": "智能工作队列系统，自动排序和聚类代码问题，控制信息密度",
+  "tags": [
+    "work-queue",
+    "prioritization",
+    "clustering"
+  ],
+  "sub_problems": [
+    "Multi-dimensional finding ranking",
+    "Auto-clustering related findings",
+    "Plan operations (focus/skip/defer/move)",
+    "Noise budget for information density control"
+  ],
+  "best_practices": [
+    "Round-robin global budget for fair detector representation",
+    "Tier-weighted scoring for impact-based prioritization"
+  ]
+}

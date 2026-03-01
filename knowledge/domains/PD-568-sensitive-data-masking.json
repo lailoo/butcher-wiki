@@ -1,0 +1,26 @@
+{
+  "id": "PD-568",
+  "slug": "sensitive-data-masking",
+  "title": "敏感信息脱敏",
+  "subtitle": "Sensitive Data Masking",
+  "icon": "lock",
+  "color": "#ef4444",
+  "severity": "high",
+  "description": "递归检测并遮蔽日志和输出中的敏感字段",
+  "tags": [
+    "security",
+    "masking",
+    "secrets",
+    "logging"
+  ],
+  "sub_problems": [
+    "敏感字段识别",
+    "递归遍历嵌套结构",
+    "多输出路径覆盖",
+    "自定义敏感字段扩展"
+  ],
+  "best_practices": [
+    "维护敏感 key 集合统一匹配",
+    "在中间件层统一处理而非各处分散脱敏"
+  ]
+}

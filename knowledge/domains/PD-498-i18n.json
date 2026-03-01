@@ -1,0 +1,24 @@
+{
+  "id": "PD-498",
+  "slug": "i18n",
+  "title": "国际化",
+  "subtitle": "Internationalization",
+  "icon": "globe",
+  "color": "#a855f7",
+  "severity": "medium",
+  "description": "前后端统一的多语言支持机制",
+  "tags": [
+    "i18n",
+    "localization",
+    "language"
+  ],
+  "sub_problems": [
+    "前端翻译资源管理",
+    "后端 Agent 语言配置",
+    "语言切换持久化",
+    "引导文案多语言"
+  ],
+  "best_practices": [
+    "i18next 前端 + 后端 language 配置联动"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PD-548",
+  "slug": "data-migration-recovery",
+  "title": "数据迁移与恢复",
+  "subtitle": "Data Migration & Recovery",
+  "icon": "refresh-cw",
+  "color": "#14B8A6",
+  "severity": "medium",
+  "description": "安全的存储结构迁移（单体→per-project）和自动数据恢复",
+  "tags": [
+    "migration",
+    "recovery",
+    "idempotent",
+    "backward-compatible"
+  ],
+  "sub_problems": [
+    "幂等迁移执行",
+    "Record 和 FlatArray 两种迁移策略",
+    "shared/project 数据分离",
+    "遗留数据自动恢复"
+  ],
+  "best_practices": [
+    "迁移标志位保证幂等",
+    "先写新文件再标记完成防止数据丢失",
+    "richness 比较决定恢复方向"
+  ]
+}

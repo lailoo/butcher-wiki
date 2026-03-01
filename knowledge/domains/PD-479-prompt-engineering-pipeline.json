@@ -1,0 +1,25 @@
+{
+  "id": "PD-479",
+  "slug": "prompt-engineering-pipeline",
+  "title": "提示词工程管道",
+  "subtitle": "Prompt Engineering Pipeline",
+  "icon": "layers",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "多层语义提示词组装系统，支持摄影参数翻译、风格档案回退和媒介类型适配",
+  "tags": [
+    "Prompt工程",
+    "语义分层",
+    "视频生成"
+  ],
+  "sub_problems": [
+    "多层语义优先级组装",
+    "摄影参数到prompt token翻译",
+    "风格档案逐镜回退机制",
+    "多镜头叙事prompt模板"
+  ],
+  "best_practices": [
+    "按Camera-Lighting-Subject-Mood-Style五层组织",
+    "预设token表支持媒介类型翻译"
+  ]
+}

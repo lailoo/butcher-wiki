@@ -1,0 +1,26 @@
+{
+  "id": "PD-448",
+  "slug": "cuda-graph-optimization",
+  "title": "CUDA Graph 捕获优化",
+  "subtitle": "CUDA Graph Capture Optimization",
+  "icon": "zap",
+  "color": "#f59e0b",
+  "severity": "high",
+  "description": "解决 GPU 推理中内核启动开销占比过高的问题，通过预捕获计算图实现零开销重放",
+  "tags": [
+    "cuda",
+    "optimization",
+    "latency",
+    "gpu"
+  ],
+  "sub_problems": [
+    "不同 batch size 的图捕获",
+    "图变量的动态填充",
+    "Eager 模式回退",
+    "Graph pool 内存共享"
+  ],
+  "best_practices": [
+    "预捕获 1/2/4/8/16...N 等离散 batch size 的图",
+    "大 batch 或 prefill 阶段回退到 eager 模式"
+  ]
+}
